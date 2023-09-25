@@ -3,4 +3,6 @@
   import '@unocss/reset/tailwind.css';
 </script>
 
-<slot />
+<div class="font-primary">
+  <slot />
+</div>
