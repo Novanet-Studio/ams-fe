@@ -2,12 +2,12 @@
   "colors": {
     "default": {
       "theme_color": {
-        "color_1": "#003b49", // Gunmetal
-        "color_2": "#93b7bb", // Ash Gray
-        "color_3": "#acc37e", // Olivine
-        "color_4": "#e3d268", // Citrine
-        "color_5": "#55555a", // Dim gray
-        "color_6": "#dddddd"  // Platinum
+        "color_1": "#003b49", 
+        "color_2": "#93b7bb", 
+        "color_3": "#acc37e", 
+        "color_4": "#e3d268", 
+        "color_5": "#55555a", 
+        "color_6": "#dddddd"  
       },
       "text_color": {
         "default": "#888888",
