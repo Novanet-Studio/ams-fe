@@ -15,7 +15,7 @@ topics:
     
     En resumen, nuestra filosofía se basa en inspirar y empoderar a las personas a través del deporte, brindando el apoyo y los recursos necesarios para que puedan disfrutar de una vida activa y saludable.'
 
-  - title: ''
+  - title: 'No title'
     content:
       - title: 'Misión'
         description: 'Nuestra misión como distribuidores de equipos deportivos es proporcionar a nuestros clientes productos de alta calidad que les ayuden a alcanzar su máximo potencial atlético. Nos esforzamos por ser un socio confiable y brindar un excelente servicio al cliente, satisfaciendo las necesidades individuales de cada deportista y fomentando un estilo de vida saludable a través del deporte.'
