@@ -9,7 +9,7 @@ import {
 } from 'unocss';
 import { presetForms } from '@julr/unocss-preset-forms';
 import extractorSvelte from '@unocss/extractor-svelte';
-import * as theme from './src/config/theme.json';
+import * as theme from './src/lib/config/theme.json';
 
 let fontPrimary, fontPrimaryType;
 // let fontBase = Number(theme.fonts.font_size.base.replace('px', ''));
