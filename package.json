@@ -14,27 +14,27 @@
 	"devDependencies": {
 		"@iconify-json/ph": "^1.1.6",
 		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.25.1",
-		"@types/node": "^20.7.0",
-		"@typescript-eslint/eslint-plugin": "^6.7.2",
-		"@typescript-eslint/parser": "^6.7.2",
-		"eslint": "^8.50.0",
+		"@sveltejs/kit": "^1.26.0",
+		"@types/node": "^20.8.7",
+		"@typescript-eslint/eslint-plugin": "^6.8.0",
+		"@typescript-eslint/parser": "^6.8.0",
+		"eslint": "^8.51.0",
 		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-svelte": "^2.33.2",
+		"eslint-plugin-svelte": "^2.34.0",
 		"mdsvex": "^0.11.0",
 		"prettier": "^3.0.3",
 		"prettier-plugin-svelte": "^3.0.3",
-		"svelte": "^4.2.1",
+		"svelte": "^4.2.2",
 		"svelte-check": "^3.5.2",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
-		"unocss": "^0.56.2",
-		"vite": "^4.4.2"
+		"unocss": "^0.56.5",
+		"vite": "^4.5.0"
 	},
 	"type": "module",
 	"dependencies": {
 		"@julr/unocss-preset-forms": "^0.0.5",
-		"@unocss/extractor-svelte": "^0.56.2",
-		"@unocss/reset": "^0.56.2"
+		"@unocss/extractor-svelte": "^0.56.5",
+		"@unocss/reset": "^0.56.5"
 	}
 }
