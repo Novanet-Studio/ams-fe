@@ -13,28 +13,28 @@
 	},
 	"devDependencies": {
 		"@iconify-json/ph": "^1.1.6",
-		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.26.0",
-		"@types/node": "^20.8.7",
-		"@typescript-eslint/eslint-plugin": "^6.8.0",
-		"@typescript-eslint/parser": "^6.8.0",
-		"eslint": "^8.51.0",
+		"@sveltejs/adapter-auto": "^2.1.1",
+		"@sveltejs/kit": "^1.27.6",
+		"@types/node": "^20.9.0",
+		"@typescript-eslint/eslint-plugin": "^6.11.0",
+		"@typescript-eslint/parser": "^6.11.0",
+		"eslint": "^8.53.0",
 		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-svelte": "^2.34.0",
+		"eslint-plugin-svelte": "^2.35.0",
 		"mdsvex": "^0.11.0",
-		"prettier": "^3.0.3",
-		"prettier-plugin-svelte": "^3.0.3",
-		"svelte": "^4.2.2",
-		"svelte-check": "^3.5.2",
+		"prettier": "^3.1.0",
+		"prettier-plugin-svelte": "^3.1.0",
+		"svelte": "^4.2.3",
+		"svelte-check": "^3.6.0",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
-		"unocss": "^0.56.5",
+		"unocss": "^0.57.4",
 		"vite": "^4.5.0"
 	},
 	"type": "module",
 	"dependencies": {
-		"@julr/unocss-preset-forms": "^0.0.5",
-		"@unocss/extractor-svelte": "^0.56.5",
-		"@unocss/reset": "^0.56.5"
+		"@julr/unocss-preset-forms": "^0.1.0",
+		"@unocss/extractor-svelte": "^0.57.4",
+		"@unocss/reset": "^0.57.4"
 	}
 }
