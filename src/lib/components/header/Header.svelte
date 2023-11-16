@@ -3,7 +3,7 @@
 	import BurgerMenu from "./BurgerMenu.svelte";
 </script>
 
-<header class="flex border border-red-500 items-center justify-between">
+<header class="flex items-center justify-between">
   <AmsLogo />
   <BurgerMenu />
 </header>
