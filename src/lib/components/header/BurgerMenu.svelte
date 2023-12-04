@@ -1,11 +1,11 @@
 <script lang="ts">
+import { isOpen } from '$lib/store';
 import { timeline, type AnimationControls } from 'motion';
 
-let open = false
 let tl: AnimationControls;
 
 $: {
-  if (open) {
+  if ($isOpen) {
     tl = timeline(
       [
         'burg',
@@ -39,10 +39,10 @@ $: {
 }
 </script>
 
-<button on:click={() => open = !open}>
-  <svg id="burger" width="30" class="openmenu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+<button class="z-99" on:click={() => $isOpen = !$isOpen}>
+  <svg id="burger" width="30" class="openmenu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill={$isOpen ? 'white':  'black'}>
     <path class="top" d="M0 9h30v2H0z"/>
-    <line class="mid" x1="0" y1="15" x2="30" y2="15" stroke="black" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <line class="mid" x1="0" y1="15" x2="30" y2="15" stroke={$isOpen ? 'white' : 'black'} stroke-width="2" vector-effect="non-scaling-stroke"/>
     <path class="bot" d="M0 19h30v2H0z"/>
   </svg>
 </button>

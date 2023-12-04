@@ -5,7 +5,7 @@
 	import Footer from '$lib/components/footer/Footer.svelte';
 </script>
 
-<div class="font-primary p-6 min-h-screen">
+<div class="font-primary p-6 min-h-screen relative">
   <Header />
   <main>
     <slot />

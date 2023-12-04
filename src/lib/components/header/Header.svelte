@@ -1,9 +1,11 @@
 <script lang="ts">
-	import AmsLogo from "./AmsLogo.svelte";
-	import BurgerMenu from "./BurgerMenu.svelte";
+	import Sidebar from '../navigation/Sidebar.svelte';
+	import AmsLogo from './AmsLogo.svelte';
+	import BurgerMenu from './BurgerMenu.svelte';
 </script>
 
 <header class="flex items-center justify-between">
-  <AmsLogo />
-  <BurgerMenu />
+	<AmsLogo />
+	<BurgerMenu />
+	<Sidebar />
 </header>

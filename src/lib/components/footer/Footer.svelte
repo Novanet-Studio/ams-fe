@@ -1,17 +1,32 @@
-<footer class="flex justify-between items-center">
-  <section class="flex gap-2">
-    <p class="text-xs text-[#55555A]">Sitio hecho por </p>
-    <img src="/novanet-logo-dark.svg" alt="Novanet logo">
-  </section>
-  <section class="flex gap-4">
-    <button class="w-10 h-10 rounded-full bg-[#93B7BB] text-[#003B49] flex items-center justify-center">
-      <div class="i-fa6-brands-whatsapp text-xl"></div>
-    </button>
-    <button class="w-10 h-10 rounded-full bg-[#ACC37E] text-[#003B49] flex items-center justify-center">
-      <div class="i-fa6-brands-facebook-f text-xl"></div>
-    </button>
-    <button class="w-10 h-10 rounded-full bg-[#E3D268] text-[#003B49] flex items-center justify-center">
-      <div class="i-fa6-brands-instagram text-xl"></div>
-    </button>
-  </section>
+<script>
+	import { isOpen } from '$lib/store';
+	import { blur } from 'svelte/transition';
+	import NovanetLogo from '../common/NovanetLogo.svelte';
+</script>
+
+<footer
+	class="ml-4 flex justify-between items-center absolute bottom-6 w-[calc(100%-5rem)]"
+	transition:blur={{ amount: 10 }}
+>
+	<section class="flex gap-2">
+		<p class="text-sm {$isOpen ? 'text-white' : 'text-[#55555A]'}">Sitio hecho por</p>
+		<NovanetLogo height={24} class="w-24 p-0 m-0" isDark={!$isOpen} />
+	</section>
+	<section class="flex gap-4">
+		<button
+			class="w-10 h-10 rounded-full bg-[#93B7BB] text-[#003B49] flex items-center justify-center"
+		>
+			<div class="i-fa6-brands-whatsapp text-xl"></div>
+		</button>
+		<button
+			class="w-10 h-10 rounded-full bg-[#ACC37E] text-[#003B49] flex items-center justify-center"
+		>
+			<div class="i-fa6-brands-facebook-f text-xl"></div>
+		</button>
+		<button
+			class="w-10 h-10 rounded-full bg-[#E3D268] text-[#003B49] flex items-center justify-center"
+		>
+			<div class="i-fa6-brands-instagram text-xl"></div>
+		</button>
+	</section>
 </footer>
