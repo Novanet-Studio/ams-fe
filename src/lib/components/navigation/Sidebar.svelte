@@ -2,6 +2,16 @@
 	import { isOpen } from '$lib/store';
 	import { animate, stagger } from 'motion';
 
+	function disableScroll() {
+		document.body.style.overflow = 'hidden';
+		document.body.style.userSelect = 'none';
+	}
+
+	function enableScroll() {
+		document.body.style.overflow = 'auto';
+		document.body.style.userSelect = 'auto';
+	}
+
 	$: if ($isOpen) {
 		animate(
 			'.link',
@@ -13,10 +23,16 @@
 			}
 		);
 	}
+
+	$: if ($isOpen) {
+		disableScroll();
+	} else {
+		enableScroll();
+	}
 </script>
 
 <aside
-	class="absolute w-full min-h-screen bg-[#003B49] border-r-2 text-white shadow-lg bottom-0"
+	class="absolute w-full min-h-screen bg-[#003B49] text-white shadow-lg top-0 bottom-0 z-10 max-h-screen overflow-hidden"
 	class:open={$isOpen}
 >
 	<nav class="p-12 text-2xl flex flex-col gap-4 items-center mt-24">

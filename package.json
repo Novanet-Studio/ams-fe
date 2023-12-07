@@ -37,6 +37,7 @@
 		"@julr/unocss-preset-forms": "^0.1.0",
 		"@unocss/extractor-svelte": "^0.58.0",
 		"@unocss/reset": "^0.58.0",
-		"motion": "^10.16.4"
+		"motion": "^10.16.4",
+		"swiper": "11.0.5"
 	}
 }
