@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { clickOutside } from '$lib/actions/clickOutside';
+	import { productsImages } from '$lib/images';
 	import { animate } from 'motion';
+	import { fly } from 'svelte/transition';
 
 	interface Data {
 		title: string;
@@ -38,8 +40,8 @@
 
 		return {
 			duration: an.duration,
-			tick: (t) => {
-				console.log(t);
+			tick: () => {
+				// console.log(t);
 			}
 		};
 	}
@@ -51,6 +53,10 @@
 		}
 
 		active = item;
+	}
+
+	function getImageName(path: string) {
+		return path.split('/').at(-1)?.replace('.png', '');
 	}
 </script>
 
@@ -72,21 +78,16 @@
 							transition:middleAnimation
 						>
 							<h4 id="name" class="text-#003B49 font-bold text-lg">{category.name}</h4>
-							<div class="i-ph-arrow-right"></div>
+							<div class="i-ph-arrow-right" transition:fly={{ x: -10, delay: 0.5 }}></div>
 						</div>
 						<div
 							id="bottom"
 							class="absolute bottom-0 left-0 w-full h-12 [clip-path:polygon(76.92%_24.99%,_101.28%_100%,_0%_103%)] bg-#93B7BB"
 						/>
 					{/if}
-					<img
-						id="image"
-						src={import.meta.resolve(`../../lib/${category.image}`)}
-						alt={category.name}
-					/>
+					<img id="image" src={productsImages[getImageName(category.image)]} alt={category.name} />
 				</li>
 			</button>
-			<!-- </a> -->
 		{/each}
 	</ul>
 </section>
