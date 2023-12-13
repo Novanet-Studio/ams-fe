@@ -4,17 +4,17 @@ page_title: 'Avila MultiSport - Productos'
 
 categories:
   - name: Cardio
-    image: '/assets/products/cardio.png'
+    image: 'cardio.png'
     items:
       - name: 'treadmills'
-        image: 'assets/products/treadmills.png'
+        image: 'treadmills.png'
       - name: 'elípticas'
-        image: 'assets/products/elipticas.png'
+        image: 'elipticas.png'
       - name: 'bicicletas'
-        image: 'assets/products/bicicletas.png'
+        image: 'bicicletas.png'
 
   - name: Fuerza
-    image: '/assets/products/strength.png'
+    image: 'strength.png'
     items:
       - name: 'multi estaciones'
         image: ''
@@ -32,15 +32,15 @@ products:
   - name: 'wilier'
     items:
       - title: 'Wilier Filante SLR'
-        image: 'assets/products/bycicle.png'
+        image: 'bycicle.png'
         category: 'bicicletas'
         link: ''
       - title: 'Wilier 0 SLR'
-        image: 'assets/products/bycicle-2.png'
+        image: 'bycicle-2.png'
         category: 'bicicletas'
         link: ''
       - title: 'Wilier 0 SL'
-        image: 'assets/products/bycicle-3.png'
+        image: 'bycicle-3.png'
         category: 'bicicletas'
         link: ''
       - title: 'Wilier Turbine Tt/Triathlon Bike'

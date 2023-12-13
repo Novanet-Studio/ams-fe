@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { productsImages } from '$lib/images';
+	import { getImage } from '$lib/utils';
 
 	interface Data {
 		title: string;
@@ -25,7 +27,7 @@
 		}
 	});
 
-	const getImage = (path: string) => import.meta.resolve(`../../../../lib/${path}`);
+	// const getImage = (path: string) => import.meta.resolve(`../../../../lib/${path}`);
 </script>
 
 <section class="h-screen bg-#003B49 flex flex-col items-center pt-14">
@@ -41,7 +43,7 @@
 			>
 				<h4 id="name" class="text-#003B49 font-bold text-lg">{category?.name}</h4>
 			</div>
-			<img id="image" src={getImage(category?.image)} alt={category?.name} />
+			<img id="image" src={productsImages[getImage(category?.image)]} alt={category?.name} />
 		</div>
 		<div
 			id="bottom"
@@ -53,7 +55,7 @@
 		<h3 class="text-center text-2xl text-#003B49 first-letter:uppercase">{productName}</h3>
 		{#each products as product (product.title)}
 			<li class="border-b pb-3 border-b-#DDDDDD last:pb-34">
-				<img src={getImage(product.image)} alt={product.title} />
+				<img src={productsImages[getImage(product.image)]} alt={product.title} />
 				<h4 class="text-#003B49 text-lg font-bold mt-4">{product.title}</h4>
 				<button>Ver especificaciones</button>
 			</li>

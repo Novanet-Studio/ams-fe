@@ -2,6 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { clickOutside } from '$lib/actions/clickOutside';
+	import { productsImages } from '$lib/images';
+	import { getImage } from '$lib/utils';
 	import { blur, fly } from 'svelte/transition';
 
 	interface Data {
@@ -19,8 +21,6 @@
 	$: category = data.content.categories.find(
 		(category) => category.name.toLowerCase() === categoryName
 	);
-
-	const getImage = (path: string) => import.meta.resolve(`../../../lib/${path}`);
 
 	function handleActive(item: string) {
 		if (item === active) {
@@ -45,7 +45,11 @@
 			>
 				<h4 id="name" class="text-#003B49 font-bold text-lg">{category?.name}</h4>
 			</div>
-			<img id="image" src={getImage(category?.image)} alt={category?.name} />
+			<img
+				id="image"
+				src={productsImages[getImage(category?.name.toLowerCase())]}
+				alt={category?.name}
+			/>
 		</div>
 		<div
 			id="bottom"
@@ -60,7 +64,7 @@
 		{#each category?.items as item}
 			<button class="last:mb-36" on:click|preventDefault={() => handleActive(item.name)}>
 				<li class="relative">
-					<img src={getImage(item.image)} alt={item.name} />
+					<img src={productsImages[getImage(item.image)]} alt={item.name} />
 					{#if active === item.name}
 						<div
 							class="absolute top-0 left-0 w-full h-full bg-#003B49/70 flex justify-center items-center backdrop-blur-2px"

@@ -24,9 +24,9 @@
 		);
 
 		return {
-			duration: ctrl.duration * 1000,
+			duration: ctrl.duration,
 			tick: (t, u) => {
-				ctrl.currentTime = t;
+				// ctrl.currentTime = t;
 			}
 		};
 	}
@@ -56,7 +56,7 @@
 	}
 
 	function getImageName(path: string) {
-		return path.split('/').at(-1)?.replace('.png', '');
+		return path.replace('.png', '');
 	}
 </script>
 
@@ -70,12 +70,12 @@
 						<div
 							id="top"
 							class="absolute top-0 left-0 w-full h-12 [clip-path:polygon(0%_0%,_100%_0%,_19.74%_81.25%)] bg-#93B7BB"
-							transition:topAnimation
+							in:topAnimation
 						/>
 						<div
 							id="middle"
 							class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2"
-							transition:middleAnimation
+							in:middleAnimation
 						>
 							<h4 id="name" class="text-#003B49 font-bold text-lg">{category.name}</h4>
 							<div class="i-ph-arrow-right" transition:fly={{ x: -10, delay: 0.5 }}></div>
