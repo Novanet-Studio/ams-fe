@@ -1,12 +1,58 @@
 <script lang="ts">
 	import image from '$lib/assets/web/about_1.png';
+	import { timeline } from 'motion';
+	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
+
+	let section: HTMLElement;
+
+	onMount(() => {
+		timeline(
+			[
+				[
+					'#firstImg',
+					{
+						opacity: [0, 1],
+						clipPath: [
+							'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
+							'polygon(0% 0%,100% 0%,100% 92%,0% 99%)'
+						]
+					},
+					{ duration: 0.5, delay: 0.2 }
+				],
+				[
+					'#firstImg > img',
+					{
+						opacity: [0, 1],
+						filter: ['blur(10px)', 'blur(0px)']
+					},
+					{ duration: 0.5, delay: 0.3 }
+				],
+				[
+					'#firstImgFill',
+					{
+						opacity: [0, 1],
+						clipPath: [
+							'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
+							'polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 83.06%)'
+						]
+					},
+					{ duration: 0.5, delay: 0 }
+				]
+			],
+			{
+				duration: 1
+			}
+		);
+	});
 </script>
 
-<section class="w-full h-screen snap-start relative">
-	<div class="[clip-path:polygon(0_0,_100%_0,_100%_93%,_0%_100%)]">
-		<img class="h-44rem object-cover" src={image} alt="Ciclistas" />
+<section bind:this={section} class="w-full h-screen snap-start relative" transition:fade>
+	<div id="firstImg" class="bg-#003B49 h-44rem">
+		<img class="h-full object-cover" src={image} alt="Ciclistas" />
 	</div>
 	<div
-		class="absolute top-0 right-0 bottom-0 [clip-path:polygon(0%_0.59%,_100%_0%,_100%_88.75%,_0.4%_83.06%)] bg-[#E3D268] w-full -z-1"
+		id="firstImgFill"
+		class="absolute top-0 right-0 bottom-0 [clip-path:polygon(0%_0%,_100%_0%,_100%_88.75%,_0%_83.06%)] bg-[#E3D268] w-full -z-1"
 	/>
 </section>

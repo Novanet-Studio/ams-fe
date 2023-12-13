@@ -1,15 +1,55 @@
 <script lang="ts">
+	import { stagger, timeline } from 'motion';
+	import inView from '$lib/actions/inView';
 	import type { Topic } from '$lib/types';
 
 	export let info: {
 		title: string;
 		content: Topic[];
 	};
+
+	function enterAnimation() {
+		timeline(
+			[
+				[
+					'#goals',
+					{
+						opacity: [0, 1]
+					},
+					{ duration: 0.5, delay: 0.3, easing: [0.17, 0.55, 0.55, 1] }
+				],
+				[
+					'#goals > div',
+					{
+						opacity: [0, 1],
+						clipPath: [
+							'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
+							'polygon(0 0, 100% 0, 100% 85.77%, 0% 91.23%)'
+						]
+					},
+					{ duration: 0.5 }
+				],
+				[
+					'#goals > div > ul > li',
+					{
+						opacity: [0, 1],
+						x: [-10, 0]
+					},
+					{ delay: stagger(0.1) }
+				]
+			],
+			{
+				duration: 2
+			}
+		);
+	}
 </script>
 
-<section class="w-full h-screen snap-start relative">
+<section id="goals" class="w-full h-screen snap-start relative">
 	<div
 		class="p-8 pt-24 bg-#003B49 h-full [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)]"
+		use:inView={{ bottom: 100, top: 100 }}
+		on:enter={enterAnimation}
 	>
 		<ul>
 			{#each info.content as item}

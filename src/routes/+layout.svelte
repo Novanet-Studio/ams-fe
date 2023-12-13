@@ -16,7 +16,7 @@
 <div class="font-primary relative">
 	<Header />
 	<Sidebar />
-	<main class="snap-y snap-mandatory">
+	<main>
 		<slot />
 	</main>
 	<Footer />
