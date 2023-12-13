@@ -5,6 +5,10 @@
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Sidebar from '$lib/components/navigation/Sidebar.svelte';
 	import { scrollY } from '$lib/store';
+	import { register } from 'swiper/element/bundle';
+
+	// register Swiper custom elements
+	register();
 </script>
 
 <svelte:window bind:scrollY={$scrollY} />

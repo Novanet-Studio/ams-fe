@@ -1,85 +1,88 @@
 <script lang="ts">
-	import { isOpen } from '$lib/store';
-	import { page } from '$app/stores';
-	import { timeline, type AnimationControls } from 'motion';
+	import { isOpen, elementColor } from '$lib/store';
+	import { timeline } from 'motion';
 
-	let tl: AnimationControls;
-
-	$: {
-		if ($isOpen) {
-			tl = timeline(
+	function animationOpen() {
+		return timeline(
+			[
+				'burg',
 				[
-					'burg',
-					[
-						'.top',
-						{ y: -9, transformOrigin: '50% 50%' },
-						{ duration: 0.5, easing: 'ease-in', at: 'burg' }
-					],
-					[
-						'.mid',
-						{ scale: 0.1, transformOrigin: '50% 50%' },
-						{ duration: 0.5, easing: 'ease-in', at: 'burg' }
-					],
-					[
-						'.bot',
-						{ y: 9, transformOrigin: '50% 50%' },
-						{ duration: 0.5, easing: 'ease-in', at: 'burg' }
-					],
-					'rotate',
-					['.top', { y: 4 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
-					['.bot', { y: -4 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
-					[
-						'.top',
-						{ rotateZ: 45, transformOrigin: '50% 50%' },
-						{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
-					],
-					[
-						'.bot',
-						{ rotateZ: -45, transformOrigin: '50% 50%' },
-						{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
-					]
+					'.top',
+					{ y: -9, transformOrigin: '50% 50%' },
+					{ duration: 0.5, easing: 'ease-in', at: 'burg' }
 				],
-				{ duration: 0.5 }
-			);
-		} else {
-			timeline(
 				[
-					'rotate',
-					['.top', { y: 0 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
-					['.bot', { y: 0 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
-					[
-						'.top',
-						{ rotateZ: 0, transformOrigin: '50% 50%' },
-						{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
-					],
-					[
-						'.bot',
-						{ rotateZ: 0, transformOrigin: '50% 50%' },
-						{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
-					],
-					'burg',
-					[
-						'.top',
-						{ y: 0, transformOrigin: '50% 50%' },
-						{ duration: 0.5, easing: 'ease-in', at: 'burg' }
-					],
-					[
-						'.mid',
-						{ scale: 1, transformOrigin: '50% 50%' },
-						{ duration: 0.5, easing: 'ease-in', at: 'burg' }
-					],
-					[
-						'.bot',
-						{ y: 0, transformOrigin: '50% 50%' },
-						{ duration: 0.5, easing: 'ease-in', at: 'burg' }
-					]
+					'.mid',
+					{ scale: 0.1, transformOrigin: '50% 50%' },
+					{ duration: 0.5, easing: 'ease-in', at: 'burg' }
 				],
-				{ duration: 0.5 }
-			);
-		}
+				[
+					'.bot',
+					{ y: 9, transformOrigin: '50% 50%' },
+					{ duration: 0.5, easing: 'ease-in', at: 'burg' }
+				],
+				'rotate',
+				['.top', { y: 4 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
+				['.bot', { y: -4 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
+				[
+					'.top',
+					{ rotateZ: 45, transformOrigin: '50% 50%' },
+					{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
+				],
+				[
+					'.bot',
+					{ rotateZ: -45, transformOrigin: '50% 50%' },
+					{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
+				]
+			],
+			{ duration: 0.5 }
+		);
 	}
 
-	$: color = $isOpen || $page.url.pathname === '/' ? 'white' : 'black';
+	function animationClose() {
+		return timeline(
+			[
+				'rotate',
+				['.top', { y: 0 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
+				['.bot', { y: 0 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
+				[
+					'.top',
+					{ rotateZ: 0, transformOrigin: '50% 50%' },
+					{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
+				],
+				[
+					'.bot',
+					{ rotateZ: 0, transformOrigin: '50% 50%' },
+					{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
+				],
+				'burg',
+				[
+					'.top',
+					{ y: 0, transformOrigin: '50% 50%' },
+					{ duration: 0.5, easing: 'ease-in', at: 'burg' }
+				],
+				[
+					'.mid',
+					{ scale: [1.1, 1], opacity: [0.1, 1], x: [-20, 0] },
+					{ duration: 0.2, easing: 'ease-in', at: 'burg' }
+				],
+				[
+					'.bot',
+					{ y: 0, transformOrigin: '50% 50%' },
+					{ duration: 0.5, easing: 'ease-in', at: 'burg' }
+				]
+			],
+			{ duration: 0.5 }
+		);
+	}
+
+	const colors = {
+		light: '#ddd',
+		dark: '#003B49'
+	};
+
+	$: $isOpen ? animationOpen() : animationClose();
+	$: color = $isOpen ? 'white' : colors[$elementColor];
 </script>
 
 <button class="z-99" on:click={() => ($isOpen = !$isOpen)}>
@@ -99,6 +102,7 @@
 			x2="30"
 			y2="15"
 			stroke={color}
+			fill="none"
 			stroke-width="2"
 			vector-effect="non-scaling-stroke"
 		/>

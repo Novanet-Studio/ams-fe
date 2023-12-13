@@ -8,6 +8,7 @@ import WilierBrand from '$lib/assets/brands/wilier.png';
 
 // Banners
 import WilierBanner from '$lib/assets/web/Banner_Willier.png';
+import NzManufacturingBanner from '$lib/assets/web/Banner_NZManufacturing.png';
 
 export const brands = [
 	{
@@ -38,7 +39,7 @@ export const brands = [
 				'Una excelente opción para ciclistas que desean una bicicleta de carretera italiana de alta calidad'
 		},
 		image: NzManufacturingBrand,
-		banner: WilierBanner
+		banner: NzManufacturingBanner
 	},
 	{
 		name: 'Saffeti',

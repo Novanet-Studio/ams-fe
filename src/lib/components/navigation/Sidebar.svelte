@@ -1,4 +1,5 @@
 <script>
+	import { beforeNavigate } from '$app/navigation';
 	import { isOpen } from '$lib/store';
 	import { animate, stagger } from 'motion';
 
@@ -24,11 +25,11 @@
 		);
 	}
 
-	$: if ($isOpen) {
-		disableScroll();
-	} else {
-		enableScroll();
-	}
+	$: $isOpen ? disableScroll() : enableScroll();
+
+	beforeNavigate(() => {
+		$isOpen = false;
+	});
 </script>
 
 <aside
@@ -36,11 +37,11 @@
 	class:open={$isOpen}
 >
 	<nav class="p-12 text-2xl flex flex-col gap-4 items-center mt-24">
-		<a class="link block" href="#about">Inicio</a>
-		<a class="link block" href="#about">Nosotros</a>
-		<a class="link block" href="#products">Productos</a>
-		<a class="link block" href="#coaches">Coaches</a>
-		<a class="link block" href="#contact">Contact</a>
+		<a class="link block" href="/">Inicio</a>
+		<a class="link block" href="/nosotros">Nosotros</a>
+		<a class="link block" href="/productos">Productos</a>
+		<a class="link block" href="/coaches">Coaches</a>
+		<a class="link block" href="/contacto">Contact</a>
 	</nav>
 </aside>
 

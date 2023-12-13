@@ -1,31 +1,47 @@
 ---
-title: 'Products'
+title: 'Productos'
+page_title: 'Avila MultiSport - Productos'
 
 categories:
-  - cardio:
+  - name: Cardio
+    image: '/assets/products/cardio.png'
+    items:
       - name: 'treadmills'
+        image: 'assets/products/treadmills.png'
       - name: 'elípticas'
+        image: 'assets/products/elipticas.png'
       - name: 'bicicletas'
-  - fuerza:
+        image: 'assets/products/bicicletas.png'
+
+  - name: Fuerza
+    image: '/assets/products/strength.png'
+    items:
       - name: 'multi estaciones'
+        image: ''
       - name: 'entrenadores'
-      - name: 'Funcionales'
+        image: ''
+      - name: 'funcionales'
+        image: ''
       - name: 'Sistema de entrenamiento grupal'
+        image: ''
       - name: 'Banco de almacenaje'
+        image: ''
+      
 
 products:
-  - wilier:
+  - name: 'wilier'
+    items:
       - title: 'Wilier Filante SLR'
-        image: ''
-        category: ''
+        image: 'assets/products/bycicle.png'
+        category: 'bicicletas'
         link: ''
       - title: 'Wilier 0 SLR'
-        image: ''
-        category: ''
+        image: 'assets/products/bycicle-2.png'
+        category: 'bicicletas'
         link: ''
       - title: 'Wilier 0 SL'
-        image: ''
-        category: ''
+        image: 'assets/products/bycicle-3.png'
+        category: 'bicicletas'
         link: ''
       - title: 'Wilier Turbine Tt/Triathlon Bike'
         image: ''
@@ -60,7 +76,8 @@ products:
         category: ''
         link: ''
 
-  - true:
+  - name: 'true'
+    items:
       - title: 'Corredora True Performance 100'
         image: ''
         category: ''
@@ -154,7 +171,8 @@ products:
         category: ''
         link: ''
 
-  - inspire:
+  - name: 'inspire'
+    items:
       - title: 'Entrenador Multifuncional Inspire FT2'
         image: ''
         category: ''

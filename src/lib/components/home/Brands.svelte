@@ -5,7 +5,7 @@
 	import SRMBrand from '$lib/assets/brands/srm.png';
 	import TrueBrand from '$lib/assets/brands/true.png';
 	import WilierBrand from '$lib/assets/brands/wilier.png';
-	import { scrollY } from '$lib/store';
+	import { scrollY, elementColor } from '$lib/store';
 	import { animate, stagger } from 'motion';
 
 	const brands = [
@@ -40,6 +40,7 @@
 	$: isIn = $scrollY >= rect?.height;
 
 	$: if (isIn) {
+		$elementColor = 'dark';
 		animate(
 			'#brands > div.flex',
 			{
@@ -48,6 +49,8 @@
 			},
 			{ delay: stagger(0.1) }
 		);
+	} else {
+		$elementColor = 'light';
 	}
 </script>
 

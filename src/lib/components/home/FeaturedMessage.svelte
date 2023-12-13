@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { timeline } from 'motion';
-	import { scrollY } from '$lib/store';
+	import { elementColor, scrollY } from '$lib/store';
 
 	let rect: DOMRect;
 
 	$: isIn = $scrollY >= rect?.height - 200;
 	$: if (isIn) {
+		$elementColor = 'dark';
 		timeline(
 			[
 				'bg',
@@ -64,6 +65,8 @@
 		// 	{ opacity: [0, 1], x: [-100, 0] },
 		// 	{ duration: 0.6, delay: 0.3, easing: [0.17, 0.55, 0.55, 1] }
 		// );
+	} else {
+		$elementColor = 'light';
 	}
 </script>
 
@@ -76,7 +79,7 @@
 		class="max-h-screen h-screen [clip-path:polygon(0%_0%,70%_0%,100%_100%,0%_100%)] bg-[#003B49] z-3 flex flex-col justify-center pl-6"
 	> -->
 	<div id="" class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center pl-6">
-		<h4 class="text-[#E3D268] text-xl opacity-0 font-300 max-w-sm">
+		<h4 class="text-[#E3D268] text-xl opacity-0 font-300 max-w-sm z-4">
 			Somos representantes exclusivos de Wilier e Inspire Fitness. También, distribuidores de
 			equipos True
 		</h4>
