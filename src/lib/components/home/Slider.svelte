@@ -50,16 +50,14 @@
 		on:swiperprogress={onProgress}
 		on:swiperslidechange={onSlideChange}
 	>
-		{#each brands as brand (brand.name)}
+		{#each brands.filter((brand) => brand.name.includes('NZ')) as brand (brand.name)}
 			<swiper-slide>
 				<div class="min-h-screen min-w-full relative">
-					<!-- <h3 class="absolute left-12 top-[20%] text-#E3D268 text-3xl font-light" in:blur>
-						{brand.copy.main}
-					</h3> -->
-					<!-- <p class="absolute left-12 top-[30%] text-white text-lg max-w-[80%]">
-						{brand.copy.secondary}
-					</p> -->
-					<img class="min-w-full min-h-screen object-cover" src={brand.banner} alt={brand.name} />
+					<img
+						class="min-w-full min-h-screen object-cover object-right"
+						src={brand.banner}
+						alt={brand.name}
+					/>
 					<div class="flex absolute top-0 bottom-0 left-0 right-0 justify-center items-center">
 						<img
 							id="sliderBanner"
