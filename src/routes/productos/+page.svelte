@@ -2,7 +2,8 @@
 	import { goto } from '$app/navigation';
 	import { clickOutside } from '$lib/actions/clickOutside';
 	import { productsImages } from '$lib/images';
-	import { animate } from 'motion';
+	import { animate, stagger, timeline } from 'motion';
+	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
 	interface Data {
@@ -55,12 +56,36 @@
 		active = item;
 	}
 
+	function animateElements() {
+		timeline([
+			[
+				'#productCategories',
+				{ opacity: [0, 1], background: ['#fff', '#003B49'] },
+				{ duration: 0.5, easing: 'ease-out' }
+			],
+			[
+				'#productCategories > h3',
+				{ opacity: [0, 1], x: [-10, 0] },
+				{ duration: 0.5, easing: 'ease-out' }
+			],
+			[
+				'#productCategories > ul > button',
+				{ opacity: [0, 1], y: [10, 0] },
+				{ duration: 0.5, easing: 'ease-out', delay: stagger(0.1) }
+			]
+		]);
+	}
+
 	function getImageName(path: string) {
 		return path.replace('.png', '');
 	}
+
+	onMount(() => {
+		animateElements();
+	});
 </script>
 
-<section class="h-screen bg-#003B49 flex flex-col items-center pt-28 p-8">
+<section id="productCategories" class="h-screen bg-#003B49 flex flex-col items-center pt-28 p-8">
 	<h3 class="text-2xl text-#E3D268">{data.content.title}</h3>
 	<ul class="px-6 flex flex-col gap-8 mt-8" use:clickOutside on:clickoutside={() => (active = '')}>
 		{#each data.content.categories as category (category.name)}
@@ -69,12 +94,12 @@
 					{#if active === category.name.toLowerCase()}
 						<div
 							id="top"
-							class="absolute top-0 left-0 w-full h-12 [clip-path:polygon(0%_0%,_100%_0%,_19.74%_81.25%)] bg-#93B7BB"
+							class="absolute top-0 left-0 w-full h-12 [clip-path:polygon(0%_0%,_100%_0%,_19.74%_81.25%)] bg-#93B7BB transition ease"
 							in:topAnimation
 						/>
 						<div
 							id="middle"
-							class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2"
+							class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 transition ease"
 							in:middleAnimation
 						>
 							<h4 id="name" class="text-#003B49 font-bold text-lg">{category.name}</h4>
@@ -82,7 +107,7 @@
 						</div>
 						<div
 							id="bottom"
-							class="absolute bottom-0 left-0 w-full h-12 [clip-path:polygon(76.92%_24.99%,_101.28%_100%,_0%_103%)] bg-#93B7BB"
+							class="absolute bottom-0 left-0 w-full h-12 [clip-path:polygon(76.92%_24.99%,_101.28%_100%,_0%_103%)] bg-#93B7BB transition ease"
 						/>
 					{/if}
 					<img id="image" src={productsImages[getImageName(category.image)]} alt={category.name} />
