@@ -1,11 +1,12 @@
 <script lang="ts">
+	import inView from '$lib/actions/inView';
 	import InspireBrand from '$lib/assets/brands/inspire.png';
 	import NzManufacturingBrand from '$lib/assets/brands/nz-manufacturing.png';
 	import SafettiBrand from '$lib/assets/brands/safetti.png';
 	import SRMBrand from '$lib/assets/brands/srm.png';
 	import TrueBrand from '$lib/assets/brands/true.png';
 	import WilierBrand from '$lib/assets/brands/wilier.png';
-	import { scrollY, elementColor } from '$lib/store';
+	import { elementColor } from '$lib/store';
 	import { animate, stagger } from 'motion';
 
 	const brands = [
@@ -35,12 +36,7 @@
 		}
 	];
 
-	let rect: DOMRect;
-
-	$: isIn = $scrollY >= rect?.height;
-
-	$: if (isIn) {
-		$elementColor = 'dark';
+	function animateElements() {
 		animate(
 			'#brands > div.flex',
 			{
@@ -49,15 +45,16 @@
 			},
 			{ delay: stagger(0.1) }
 		);
-	} else {
-		$elementColor = 'light';
+		$elementColor = 'dark';
 	}
 </script>
 
 <section
 	id="brands"
 	class="min-h-screen h-screen grid grid-cols-2 gap-24 place-items-center place-content-center snap-start snap-always"
-	bind:contentRect={rect}
+	use:inView={{ bottom: 100, top: 100 }}
+	on:enter={animateElements}
+	on:exit={() => ($elementColor = 'light')}
 >
 	{#each brands as brand}
 		<div class="flex items-center justify-center">

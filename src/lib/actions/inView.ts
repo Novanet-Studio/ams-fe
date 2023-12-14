@@ -50,3 +50,5 @@ export const inView: Action<HTMLElement, { params?: InViewParams }> = (node, par
 		}
 	};
 };
+
+export default inView;

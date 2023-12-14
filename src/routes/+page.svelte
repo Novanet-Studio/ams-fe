@@ -22,9 +22,9 @@
 	<title>{data.content.title}</title>
 </svelte:head>
 
-<!-- <div class="overflow-y-scroll snap-y snap-mandatory overflow-scroll h-screen"> -->
-<Main />
-<FeaturedMessage />
-<Brands />
-<Slider />
-<!-- </div> -->
+<div class="overflow-y-scroll snap-y snap-mandatory overflow-scroll h-screen">
+	<Main />
+	<FeaturedMessage />
+	<Brands />
+	<Slider />
+</div>

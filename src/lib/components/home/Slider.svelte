@@ -2,7 +2,7 @@
 	import { animate, inView } from 'motion';
 	import { brands } from '$lib/brands';
 	import { onMount } from 'svelte';
-	import { scrollY } from '$lib/store';
+	import * as actions from '$lib/actions/inView';
 
 	const spaceBetween = 10;
 
@@ -16,26 +16,20 @@
 		});
 	}
 
-	const onProgress = (e: any) => {
-		const [swiper, progress] = e.detail;
-		// console.log(progress);
-	};
-
-	const onSlideChange = (e: any) => {
-		console.log('slide changed');
+	const onSlideChange = () => {
 		animateElements();
 	};
-
-	$: if ($scrollY < 300) {
-		animateElements(true);
-	}
 
 	onMount(() => {
 		animateElements();
 	});
 </script>
 
-<section class="snap-start snap-always h-screen">
+<section
+	class="snap-start snap-always h-screen"
+	use:actions.inView={{ bottom: 100, top: 100 }}
+	on:enter={animateElements}
+>
 	<swiper-container
 		class="min-h-screen w-full top-0"
 		slides-per-view={1}
@@ -47,7 +41,6 @@
 				slidesPerView: 3
 			}
 		}}
-		on:swiperprogress={onProgress}
 		on:swiperslidechange={onSlideChange}
 	>
 		{#each brands.filter((brand) => brand.name.includes('NZ')) as brand (brand.name)}
@@ -59,9 +52,15 @@
 						alt={brand.name}
 					/>
 					<div class="flex absolute top-0 bottom-0 left-0 right-0 justify-center items-center">
-						<img
+						<!-- <img
 							id="sliderBanner"
 							class="p-8 backdrop-filter backdrop-blur-md bg-opacity-50 rounded-md"
+							src={brand.image}
+							alt={brand.name}
+						/> -->
+						<img
+							id="sliderBanner"
+							class="p-8 drop-shadow-sm drop-shadow-color-#ddd rounded-md"
 							src={brand.image}
 							alt={brand.name}
 						/>

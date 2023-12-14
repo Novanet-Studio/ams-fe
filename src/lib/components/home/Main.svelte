@@ -3,7 +3,7 @@
 	import { brands } from '$lib/brands';
 	import { onMount } from 'svelte';
 	import { blur } from 'svelte/transition';
-	import { scrollY } from '$lib/store';
+	import * as actions from '$lib/actions/inView';
 
 	const spaceBetween = 10;
 
@@ -27,27 +27,22 @@
 		});
 	}
 
-	const onProgress = (e: any) => {
-		const [swiper, progress] = e.detail;
-		// console.log(progress);
-	};
-
-	const onSlideChange = (e: any) => {
-		console.log('slide changed');
+	const onSlideChange = () => {
 		animateElements();
 	};
-
-	$: if ($scrollY < 300) {
-		animateElements(true);
-	}
 
 	onMount(() => {
 		animateElements();
 	});
 </script>
 
-<section class="snap-start snap-always h-screen">
+<section
+	class="snap-start snap-always h-screen"
+	use:actions.inView={{ bottom: 100, top: 100 }}
+	on:enter={animateElements}
+>
 	<swiper-container
+		id="mainSlider"
 		class="min-h-screen w-full top-0"
 		slides-per-view={1}
 		space-between={spaceBetween}
@@ -58,9 +53,7 @@
 				slidesPerView: 3
 			}
 		}}
-		on:swiperprogress={onProgress}
 		on:swiperslidechange={onSlideChange}
-		id="mainSlider"
 	>
 		{#each brands as brand (brand.name)}
 			<swiper-slide>
