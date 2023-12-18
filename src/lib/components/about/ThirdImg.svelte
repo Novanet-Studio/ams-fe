@@ -49,8 +49,8 @@
 	use:inView={{ bottom: 100, top: 100 }}
 	on:enter={enterAnimation}
 >
-	<div id="thirdImg" class="h-44rem">
-		<img class="h-44rem object-cover" src={image} alt="Ciclista" />
+	<div id="thirdImg" class="h-84vh">
+		<img class="h-full object-cover" src={image} alt="Ciclista" />
 	</div>
 	<div
 		id="thirdImgFill"

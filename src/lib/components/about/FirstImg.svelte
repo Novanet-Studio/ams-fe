@@ -48,7 +48,7 @@
 </script>
 
 <section bind:this={section} class="w-full h-screen snap-start relative" transition:fade>
-	<div id="firstImg" class="bg-#003B49 h-44rem">
+	<div id="firstImg" class="bg-#003B49 h-84vh">
 		<img class="h-full object-cover" src={image} alt="Ciclistas" />
 	</div>
 	<div
