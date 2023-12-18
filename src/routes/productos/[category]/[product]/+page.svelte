@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { productsImages } from '$lib/images';
+	import { elementColors } from '$lib/store';
 	import { getImage } from '$lib/utils';
 	import { stagger, timeline } from 'motion';
 	import { onMount } from 'svelte';
@@ -30,6 +31,8 @@
 	});
 
 	onMount(() => {
+		$elementColors.copyright = 'dark';
+
 		timeline(
 			[
 				[

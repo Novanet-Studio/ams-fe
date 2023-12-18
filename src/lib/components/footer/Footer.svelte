@@ -1,10 +1,9 @@
 <script>
 	import { elementColors, isOpen } from '$lib/store';
-	import { page } from '$app/stores';
 	import { blur } from 'svelte/transition';
 	import NovanetLogo from '../common/NovanetLogo.svelte';
 
-	$: isDark = $page.url.pathname !== '/' || $elementColors.copyright === 'dark';
+	$: isLight = $elementColors.copyright === 'light' || $isOpen;
 </script>
 
 <footer
@@ -12,14 +11,8 @@
 	transition:blur={{ amount: 10 }}
 >
 	<section class="flex gap-2">
-		<p
-			class="text-sm {$elementColors.copyright === 'light' || $isOpen
-				? 'text-white'
-				: 'text-[#55555A]'}"
-		>
-			Sitio hecho por
-		</p>
-		<NovanetLogo height={24} class="w-24 p-0 m-0" {isDark} />
+		<p class="text-sm {isLight ? 'text-white' : 'text-[#55555A]'}">Sitio hecho por</p>
+		<NovanetLogo height={24} class="w-24 p-0 m-0" isDark={!isLight} />
 	</section>
 	<section class="flex gap-4">
 		<button

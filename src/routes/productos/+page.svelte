@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { clickOutside } from '$lib/actions/clickOutside';
 	import { productsImages } from '$lib/images';
+	import { elementColors } from '$lib/store';
 	import { animate, stagger, timeline } from 'motion';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
@@ -82,6 +83,7 @@
 
 	onMount(() => {
 		animateElements();
+		$elementColors.copyright = 'light';
 	});
 </script>
 
