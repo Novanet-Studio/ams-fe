@@ -4,6 +4,8 @@
 	$: src = $elementColors.logo === 'light' ? '/ams-light.png' : '/ams-dark.png';
 </script>
 
-<picture class="z-10">
-	<img {src} alt="AMS Logo" />
-</picture>
+<a href="/">
+	<picture class="z-10">
+		<img {src} alt="AMS Logo" />
+	</picture>
+</a>
