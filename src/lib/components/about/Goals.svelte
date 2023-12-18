@@ -47,7 +47,7 @@
 
 <section id="goals" class="w-full h-screen snap-start relative">
 	<div
-		class="p-8 pt-24 bg-#003B49 h-full [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)]"
+		class="p-8 pt-24 bg-#003B49 h-94vh [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)]"
 		use:inView={{ bottom: 100, top: 100 }}
 		on:enter={enterAnimation}
 	>

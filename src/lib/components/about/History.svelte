@@ -65,7 +65,7 @@
 	on:enter={enterAnimation}
 	on:exit={exitAnimation}
 >
-	<div class="p-8 pt-24 bg-#003B49 h-full">
+	<div class="p-8 pt-24 bg-#003B49 h-94vh">
 		<h3 class="mb-4 text-3xl text-#E3D268">{topic.title}</h3>
 		<p class="text-sm text-#ddd">{@html topic.description}</p>
 	</div>
