@@ -4,10 +4,12 @@
 	import { onMount } from 'svelte';
 	import { blur } from 'svelte/transition';
 	import * as actions from '$lib/actions/inView';
+	import { elementColors } from '$lib/store';
 
 	const spaceBetween = 10;
 
 	function animateElements(repeat = false) {
+		$elementColors.burger = 'light';
 		inView('swiper-slide', (info) => {
 			animate(
 				info.target.querySelector('h3') as Element,

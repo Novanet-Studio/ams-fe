@@ -3,10 +3,12 @@
 	import { brands } from '$lib/brands';
 	import { onMount } from 'svelte';
 	import * as actions from '$lib/actions/inView';
+	import { elementColors } from '$lib/store';
 
 	const spaceBetween = 10;
 
 	function animateElements(repeat = false) {
+		$elementColors.burger = 'light';
 		inView('swiper-slide', (info) => {
 			animate(
 				info.target.querySelector('div > img#sliderBanner') as Element,

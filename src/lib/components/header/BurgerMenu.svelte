@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isOpen, elementColor } from '$lib/store';
+	import { isOpen, elementColors } from '$lib/store';
 	import { timeline } from 'motion';
 
 	function animationOpen() {
@@ -82,7 +82,7 @@
 	};
 
 	$: $isOpen ? animationOpen() : animationClose();
-	$: color = $isOpen ? 'white' : colors[$elementColor];
+	$: color = $isOpen ? 'white' : colors[$elementColors.burger];
 </script>
 
 <button class="z-99" on:click={() => ($isOpen = !$isOpen)}>

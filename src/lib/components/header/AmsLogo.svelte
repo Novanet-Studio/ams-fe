@@ -1,13 +1,9 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { elementColors } from '$lib/store';
 
-	console.log($page.url.pathname);
+	$: src = $elementColors.logo === 'light' ? '/ams-light.png' : '/ams-dark.png';
 </script>
 
 <picture class="z-10">
-	{#if $page.url.pathname === '/'}
-		<img src="/ams-light.png" alt="AMS Logo" />
-	{:else}
-		<img src="/ams-dark.png" alt="AMS Logo" />
-	{/if}
+	<img {src} alt="AMS Logo" />
 </picture>

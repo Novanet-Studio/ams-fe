@@ -6,7 +6,7 @@
 	import SRMBrand from '$lib/assets/brands/srm.png';
 	import TrueBrand from '$lib/assets/brands/true.png';
 	import WilierBrand from '$lib/assets/brands/wilier.png';
-	import { elementColor } from '$lib/store';
+	import { elementColors } from '$lib/store';
 	import { animate, stagger } from 'motion';
 
 	const brands = [
@@ -45,7 +45,14 @@
 			},
 			{ delay: stagger(0.1) }
 		);
-		$elementColor = 'dark';
+		$elementColors.logo = 'dark';
+		$elementColors.burger = 'dark';
+		$elementColors.copyright = 'dark';
+	}
+
+	function handleExit() {
+		$elementColors.logo = 'light';
+		$elementColors.copyright = 'light';
 	}
 </script>
 
@@ -54,7 +61,7 @@
 	class="min-h-screen h-screen grid grid-cols-2 gap-24 place-items-center place-content-center snap-start snap-always"
 	use:inView={{ bottom: 100, top: 100 }}
 	on:enter={animateElements}
-	on:exit={() => ($elementColor = 'light')}
+	on:exit={handleExit}
 >
 	{#each brands as brand}
 		<div class="flex items-center justify-center">

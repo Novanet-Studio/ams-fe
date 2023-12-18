@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { timeline } from 'motion';
-	import { elementColor } from '$lib/store';
+	import { elementColors } from '$lib/store';
 	import inView from '$lib/actions/inView';
 
 	function animateElements() {
@@ -42,7 +42,7 @@
 			],
 			{ duration: 0.5 }
 		);
-		$elementColor = 'dark';
+		$elementColors.burger = 'dark';
 	}
 </script>
 
@@ -51,7 +51,6 @@
 	class="relative snap-start snap-always max-h-screen min-h-screen w-full"
 	use:inView={{ bottom: 100, top: 100 }}
 	on:enter={animateElements}
-	on:exit={() => ($elementColor = 'light')}
 >
 	<div id="" class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center pl-6">
 		<h4 class="text-[#E3D268] text-xl opacity-0 font-300 max-w-sm z-4">
