@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import FirstImg from '$lib/components/about/FirstImg.svelte';
 	import Goals from '$lib/components/about/Goals.svelte';
 	import History from '$lib/components/about/History.svelte';
 	import Philosophy from '$lib/components/about/Philosophy.svelte';
 	import SecondImg from '$lib/components/about/SecondImg.svelte';
 	import ThirdImg from '$lib/components/about/ThirdImg.svelte';
+	import { elementColors } from '$lib/store';
 	import type { Topic } from '$lib/types';
 
 	interface Contact {
@@ -37,6 +39,12 @@
 		title: data.content.topics[2].title,
 		content: (data.content.topics[2] as unknown as EnterpriseTargets).content as Topic[]
 	};
+
+	onMount(() => {
+		$elementColors.logo = 'light';
+		$elementColors.burger = 'light';
+		$elementColors.copyright = 'dark';
+	});
 </script>
 
 <svelte:head>
