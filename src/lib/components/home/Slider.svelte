@@ -40,7 +40,7 @@
 		pagination={{}}
 		breakpoints={{
 			768: {
-				slidesPerView: 3
+				slidesPerView: 1
 			}
 		}}
 		on:swiperslidechange={onSlideChange}
