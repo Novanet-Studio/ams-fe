@@ -43,7 +43,7 @@
 				x: [-100, 0],
 				opacity: [0, 1]
 			},
-			{ delay: stagger(0.1) }
+			{ duration: 1, delay: stagger(0.1) }
 		);
 		$elementColors.logo = 'dark';
 		$elementColors.burger = 'dark';

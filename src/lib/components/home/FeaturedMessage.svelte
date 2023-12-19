@@ -40,7 +40,7 @@
 					{ duration: 0.5, delay: 0.4, at: 'bg' }
 				]
 			],
-			{ duration: 0.5 }
+			{ duration: 2 }
 		);
 		$elementColors.burger = 'dark';
 	}

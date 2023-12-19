@@ -44,7 +44,7 @@
 				]
 			],
 			{
-				duration: 2
+				duration: 2.5
 			}
 		);
 	}

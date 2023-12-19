@@ -38,7 +38,7 @@
 				]
 			],
 			{
-				duration: 1
+				duration: 2
 			}
 		);
 	}

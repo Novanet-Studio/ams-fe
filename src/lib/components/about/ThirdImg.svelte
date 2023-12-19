@@ -15,7 +15,7 @@
 							'polygon(0% 0%,100% 0%,100% 92%,0% 99%)'
 						]
 					},
-					{ duration: 0.5, delay: 0.2 }
+					{ duration: 1, delay: 0.2 }
 				],
 				[
 					'#thirdImg > img',
@@ -23,7 +23,7 @@
 						opacity: [0, 1],
 						filter: ['blur(10px)', 'blur(0px)']
 					},
-					{ duration: 0.5, delay: 0.3 }
+					{ duration: 1, delay: 0.3 }
 				],
 				[
 					'#thirdImgFill',
@@ -34,11 +34,11 @@
 							'polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 83.06%)'
 						]
 					},
-					{ duration: 0.5, delay: 0 }
+					{ duration: 1, delay: 0 }
 				]
 			],
 			{
-				duration: 1
+				duration: 2
 			}
 		);
 	}

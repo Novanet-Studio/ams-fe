@@ -58,23 +58,28 @@
 	}
 
 	function animateElements() {
-		timeline([
+		timeline(
 			[
-				'#productCategories',
-				{ opacity: [0, 1], background: ['#fff', '#003B49'] },
-				{ duration: 0.5, easing: 'ease-out' }
+				[
+					'#productCategories',
+					{ opacity: [0, 1], background: ['#fff', '#003B49'] },
+					{ duration: 0.5, easing: 'ease-out' }
+				],
+				[
+					'#productCategories > h3',
+					{ opacity: [0, 1], x: [-10, 0] },
+					{ duration: 0.5, easing: 'ease-out' }
+				],
+				[
+					'#productCategories > ul > button',
+					{ opacity: [0, 1], y: [10, 0] },
+					{ duration: 0.5, easing: 'ease-out', delay: stagger(0.1) }
+				]
 			],
-			[
-				'#productCategories > h3',
-				{ opacity: [0, 1], x: [-10, 0] },
-				{ duration: 0.5, easing: 'ease-out' }
-			],
-			[
-				'#productCategories > ul > button',
-				{ opacity: [0, 1], y: [10, 0] },
-				{ duration: 0.5, easing: 'ease-out', delay: stagger(0.1) }
-			]
-		]);
+			{
+				duration: 2
+			}
+		);
 	}
 
 	function getImageName(path: string) {

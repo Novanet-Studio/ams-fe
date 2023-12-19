@@ -32,7 +32,7 @@
 						opacity: [0, 1],
 						x: [-10, 0]
 					},
-					{ duration: 0.5, delay: 0.3 }
+					{ duration: 0.5, delay: 0.5 }
 				],
 				[
 					'#history > div > p',
@@ -40,11 +40,11 @@
 						opacity: [0, 1],
 						x: [-10, 0]
 					},
-					{ duration: 0.5, delay: 0.3 }
+					{ duration: 0.5, delay: 0.5 }
 				]
 			],
 			{
-				duration: 2
+				duration: 2.2
 			}
 		);
 	}

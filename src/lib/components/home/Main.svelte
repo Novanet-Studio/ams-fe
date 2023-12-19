@@ -14,17 +14,17 @@
 			animate(
 				info.target.querySelector('h3') as Element,
 				{ opacity: [0, 1], x: [-100, 0] },
-				{ duration: 0.5, delay: repeat ? 0.1 : 0.5, easing: [0.17, 0.55, 0.55, 1] }
+				{ duration: 1.5, delay: repeat ? 0.1 : 0.5, easing: [0.17, 0.55, 0.55, 1] }
 			);
 			animate(
 				info.target.querySelector('p') as Element,
 				{ opacity: [0, 1], x: [-100, 0] },
-				{ duration: 0.5, delay: repeat ? 0.3 : 0.7, easing: [0.17, 0.55, 0.55, 1] }
+				{ duration: 1.5, delay: repeat ? 0.3 : 0.7, easing: [0.17, 0.55, 0.55, 1] }
 			);
 			animate(
 				info.target.querySelector('img#banner') as Element,
 				{ opacity: [0, 1] },
-				{ duration: 0.5, delay: repeat ? 0.5 : 0.9, easing: [0.17, 0.55, 0.55, 1] }
+				{ duration: 1.5, delay: repeat ? 0.5 : 0.9, easing: [0.17, 0.55, 0.55, 1] }
 			);
 		});
 	}

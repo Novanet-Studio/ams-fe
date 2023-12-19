@@ -16,7 +16,7 @@
 					{
 						opacity: [0, 1]
 					},
-					{ duration: 0.5, delay: 0.3, easing: [0.17, 0.55, 0.55, 1] }
+					{ duration: 1, delay: 0.3, easing: [0.17, 0.55, 0.55, 1] }
 				],
 				[
 					'#goals > div',
@@ -27,7 +27,7 @@
 							'polygon(0 0, 100% 0, 100% 85.77%, 0% 91.23%)'
 						]
 					},
-					{ duration: 0.5 }
+					{ duration: 1 }
 				],
 				[
 					'#goals > div > ul > li',
@@ -35,7 +35,7 @@
 						opacity: [0, 1],
 						x: [-10, 0]
 					},
-					{ delay: stagger(0.1) }
+					{ duration: 1.5, delay: stagger(0.1) }
 				]
 			],
 			{

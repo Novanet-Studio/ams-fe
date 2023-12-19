@@ -77,15 +77,11 @@
 					},
 					{ duration: 0.4, easing: 'ease-out' }
 				],
-				[
-					'#products ul h3',
-					{ opacity: [0, 1], y: [-10, 0] },
-					{ duration: 0.5, easing: 'ease-out' }
-				],
+				['#products ul h3', { opacity: [0, 1], y: [-10, 0] }, { duration: 1, easing: 'ease-out' }],
 				[
 					'#products ul li',
 					{ opacity: [0, 1], y: [10, 0] },
-					{ duration: 0.5, easing: 'ease-out', delay: stagger(0.1) }
+					{ duration: 1, easing: 'ease-out', delay: stagger(0.1) }
 				]
 			],
 			{
