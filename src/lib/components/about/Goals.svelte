@@ -47,15 +47,15 @@
 
 <section id="goals" class="w-full h-screen snap-start relative">
 	<div
-		class="p-8 pt-24 bg-#003B49 h-94vh [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)]"
+		class="p-8 pt-24 bg-#003B49 h-94vh [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)] md:(pt-32 p-12)"
 		use:inView={{ bottom: 100, top: 100 }}
 		on:enter={enterAnimation}
 	>
 		<ul>
 			{#each info.content as item}
 				<li class="mb-4">
-					<h4 class="mb-2 text-xl text-#E3D268">{item.title}</h4>
-					<p class="text-xs text-#ddd">{item.description}</p>
+					<h4 class="mb-2 text-xl text-#E3D268 md:text-2xl">{item.title}</h4>
+					<p class="text-xs text-#ddd md:(text-sm max-w-90%)">{item.description}</p>
 				</li>
 			{/each}
 		</ul>

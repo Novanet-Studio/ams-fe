@@ -102,9 +102,14 @@
 				id="middle"
 				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 z-2"
 			>
-				<h4 id="name" class="text-#003B49 font-bold text-lg">{category?.name}</h4>
+				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl">{category?.name}</h4>
 			</div>
-			<img id="image" src={productsImages[getImage(category?.image)]} alt={category?.name} />
+			<img
+				id="image"
+				class="md:min-w-full"
+				src={productsImages[getImage(category?.image)]}
+				alt={category?.name}
+			/>
 		</div>
 		<div
 			id="bottom"
@@ -113,9 +118,11 @@
 	</div>
 
 	<ul class="px-12 pt-18 mb-18 flex flex-col gap-8 -mt-10 bg-#fff w-full min-h-full">
-		<h3 class="text-center text-2xl text-#003B49 first-letter:uppercase">{productName}</h3>
+		<h3 class="text-center text-2xl text-#003B49 first-letter:uppercase md:text-3xl">
+			{productName}
+		</h3>
 		{#each products as product (product.title)}
-			<li class="border-b pb-3 border-b-#DDDDDD last:pb-34">
+			<li class="border-b pb-3 border-b-#DDDDDD last:pb-34 md:mx-auto">
 				<img src={productsImages[getImage(product.image)]} alt={product.title} />
 				<h4 class="text-#003B49 text-lg font-bold mt-4">{product.title}</h4>
 				<button>Ver especificaciones</button>

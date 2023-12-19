@@ -50,7 +50,7 @@
 	on:enter={enterAnimation}
 >
 	<div id="secondImg" class="h-84vh">
-		<img class="h-full object-cover" src={image} alt="Ciclista" />
+		<img class="h-full object-cover md:(min-w-full object-top)" src={image} alt="Ciclista" />
 	</div>
 	<div
 		id="secondImgFill"

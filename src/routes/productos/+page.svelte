@@ -93,11 +93,11 @@
 </script>
 
 <section id="productCategories" class="h-screen bg-#003B49 flex flex-col items-center pt-28 p-8">
-	<h3 class="text-2xl text-#E3D268">{data.content.title}</h3>
+	<h3 class="text-2xl text-#E3D268 md:text-3xl">{data.content.title}</h3>
 	<ul class="px-6 flex flex-col gap-8 mt-8" use:clickOutside on:clickoutside={() => (active = '')}>
 		{#each data.content.categories as category (category.name)}
 			<button on:click|preventDefault={() => handleActive(category.name.toLowerCase())}>
-				<li id={category.name.toLowerCase()} class="relative">
+				<li id={category.name.toLowerCase()} class="relative md:(max-w-80% mx-auto)">
 					{#if active === category.name.toLowerCase()}
 						<div
 							id="top"

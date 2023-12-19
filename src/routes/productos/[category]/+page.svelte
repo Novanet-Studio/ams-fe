@@ -94,7 +94,7 @@
 </script>
 
 <section id="categories" class="h-screen bg-#003B49 flex flex-col items-center pt-14">
-	<div>
+	<div class="w-full">
 		<div
 			id="top"
 			class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#93B7BB"
@@ -104,10 +104,11 @@
 				id="middle"
 				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 z-2"
 			>
-				<h4 id="name" class="text-#003B49 font-bold text-lg">{category?.name}</h4>
+				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl">{category?.name}</h4>
 			</div>
 			<img
 				id="image"
+				class="md:min-w-full"
 				src={productsImages[getImage(category?.name.toLowerCase())]}
 				alt={category?.name}
 			/>
@@ -123,7 +124,7 @@
 		on:clickoutside={() => (active = '')}
 	>
 		{#each category?.items as item}
-			<button class="last:mb-36" on:click|preventDefault={() => handleActive(item.name)}>
+			<button class="last:mb-36 md:mx-auto" on:click|preventDefault={() => handleActive(item.name)}>
 				<li class="relative">
 					<img src={productsImages[getImage(item.image)]} alt={item.name} />
 					{#if active === item.name}
