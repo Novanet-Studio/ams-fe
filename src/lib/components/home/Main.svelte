@@ -69,7 +69,7 @@
 					<img class="min-w-full min-h-screen object-cover" src={brand.banner} alt={brand.name} />
 					<img
 						id="banner"
-						class="absolute p-6 top-[45%] backdrop-filter backdrop-blur-md bg-opacity-50 rounded-md"
+						class="absolute p-6 top-[45%] drop-shadow drop-shadow-color-#ddd rounded-md"
 						src={brand.image}
 						alt={brand.name}
 					/>
