@@ -48,11 +48,11 @@
 </script>
 
 <section bind:this={section} class="w-full h-screen snap-start relative" transition:fade>
-	<div id="firstImg" class="bg-#003B49 h-84vh">
+	<div id="firstImg" class="bg-#003B49 h-84vh lg:h-81.4vh">
 		<img class="h-full object-cover md:(min-w-full)" src={image} alt="Ciclistas" />
 	</div>
 	<div
 		id="firstImgFill"
-		class="absolute top-0 right-0 bottom-0 [clip-path:polygon(0%_0%,_100%_0%,_100%_88.75%,_0%_83.06%)] bg-[#E3D268] w-full -z-1"
+		class="absolute top-0 right-0 bottom-0 [clip-path:polygon(0%_0%,_100%_0%,_100%_88.75%,_0%_83.06%)] bg-[#E3D268] w-full -z-1 lg:h-97.2vh"
 	/>
 </section>

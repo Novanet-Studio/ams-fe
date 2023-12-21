@@ -61,17 +61,21 @@
 			<swiper-slide>
 				<div class="min-h-screen min-w-full relative">
 					<h3
-						class="absolute left-12 top-[20%] text-#E3D268 text-3xl font-light md:(text-4xl max-w-50%)"
+						class="absolute left-12 top-[20%] text-#E3D268 text-3xl font-light md:(text-4xl max-w-50%) lg:(text-5xl left-16)"
 						in:blur
 					>
 						{brand.copy.main}
 					</h3>
 					<p
-						class="absolute left-12 top-[30%] text-white text-lg max-w-[80%] md:(text-xl top-[30%] max-w-[50%])"
+						class="absolute left-12 top-[30%] text-white text-lg max-w-[80%] md:(text-xl top-[30%] max-w-[50%]) lg:(text-2xl left-16 top-26% max-w-45%)"
 					>
 						{brand.copy.secondary}
 					</p>
-					<img class="min-w-full min-h-screen object-cover" src={brand.banner} alt={brand.name} />
+					<img
+						class="min-w-full min-h-screen object-cover lg:max-h-screen"
+						src={brand.banner}
+						alt={brand.name}
+					/>
 					<img
 						id="banner"
 						class="absolute p-6 top-[45%] drop-shadow drop-shadow-color-#ddd rounded-md md:(top-[40%] left-8)"

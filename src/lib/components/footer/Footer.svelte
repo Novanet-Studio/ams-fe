@@ -7,7 +7,7 @@
 </script>
 
 <footer
-	class="flex justify-between items-center fixed bottom-6 w-full z-10 px-6"
+	class="flex justify-between items-center fixed bottom-6 w-full z-10 px-6 lg:px-16"
 	transition:blur={{ amount: 10 }}
 >
 	<section class="flex gap-2">

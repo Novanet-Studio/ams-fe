@@ -33,7 +33,9 @@
 </script>
 
 <aside
-	class="absolute w-full min-h-screen bg-[#003B49] text-white shadow-lg top-0 bottom-0 z-10 max-h-screen overflow-hidden"
+	class="absolute w-full min-h-screen bg-[#003B49] text-white shadow-lg top-0 bottom-0 z-10 max-h-screen overflow-hidden min-h-screen transition transition-right ease-in-out lg:(transition-right w-1/4) {$isOpen
+		? 'right-0'
+		: '-right-full'}"
 	class:open={$isOpen}
 >
 	<nav class="p-12 text-2xl flex flex-col gap-4 items-center mt-24">
@@ -44,15 +46,3 @@
 		<a class="link block" href="/contacto">Contact</a>
 	</nav>
 </aside>
-
-<style>
-	aside {
-		left: -100%;
-		transition: left 0.3s ease-in-out;
-		min-height: 100vh;
-	}
-
-	.open {
-		left: 0;
-	}
-</style>

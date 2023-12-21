@@ -93,46 +93,53 @@
 	});
 </script>
 
-<section id="categories" class="h-screen bg-#003B49 flex flex-col items-center pt-14">
+<section id="categories" class="h-screen bg-#003B49 flex flex-col items-center pt-14 lg:pt-18">
 	<div class="w-full">
 		<div
 			id="top"
-			class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#93B7BB"
+			class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#93B7BB lg:h-80px"
 		/>
-		<div class="w-full h-36 relative overflow-hidden">
+		<div class="w-full h-36 relative overflow-hidden lg:h-350px">
 			<div
 				id="middle"
 				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 z-2"
 			>
-				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl">{category?.name}</h4>
+				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl lg:text-4xl">
+					{category?.name}
+				</h4>
 			</div>
 			<img
 				id="image"
-				class="md:min-w-full"
+				class="md:min-w-full object-cover object-center"
 				src={productsImages[getImage(category?.name.toLowerCase())]}
 				alt={category?.name}
 			/>
 		</div>
 		<div
 			id="bottom"
-			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB"
+			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB h-80px"
 		/>
 	</div>
 	<ul
-		class="px-12 pt-18 mb-18 flex flex-col gap-8 -mt-10 bg-#fff w-full"
+		class="px-12 pt-18 mb-18 flex flex-col gap-8 -mt-10 bg-#fff w-full lg:(flex-row min-h-full items-start justify-center -mt-20)"
 		use:clickOutside
 		on:clickoutside={() => (active = '')}
 	>
 		{#each category?.items as item}
-			<button class="last:mb-36 md:mx-auto" on:click|preventDefault={() => handleActive(item.name)}>
+			<button
+				class="last:mb-36 md:mx-auto lg:(last:mb-0 mx-0)"
+				on:click|preventDefault={() => handleActive(item.name)}
+			>
 				<li class="relative">
-					<img src={productsImages[getImage(item.image)]} alt={item.name} />
+					<img class="lg:max-w-400px" src={productsImages[getImage(item.image)]} alt={item.name} />
 					{#if active === item.name}
 						<div
 							class="absolute top-0 left-0 w-full h-full bg-#003B49/70 flex justify-center items-center backdrop-blur-2px"
 							transition:blur
 						>
-							<h5 class="font-bold text-xl text-white first-letter:uppercase">{item.name}</h5>
+							<h5 class="font-bold text-xl text-white first-letter:uppercase">
+								{item.name}
+							</h5>
 							<div
 								class="i-ph-arrow-right text-white text-xl"
 								transition:fly={{ x: 10, delay: 300 }}

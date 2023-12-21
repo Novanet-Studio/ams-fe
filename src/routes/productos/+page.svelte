@@ -94,10 +94,14 @@
 
 <section id="productCategories" class="h-screen bg-#003B49 flex flex-col items-center pt-28 p-8">
 	<h3 class="text-2xl text-#E3D268 md:text-3xl">{data.content.title}</h3>
-	<ul class="px-6 flex flex-col gap-8 mt-8" use:clickOutside on:clickoutside={() => (active = '')}>
+	<ul
+		class="px-6 flex flex-col gap-8 mt-8 lg:(flex-row mt-24 gap-24)"
+		use:clickOutside
+		on:clickoutside={() => (active = '')}
+	>
 		{#each data.content.categories as category (category.name)}
 			<button on:click|preventDefault={() => handleActive(category.name.toLowerCase())}>
-				<li id={category.name.toLowerCase()} class="relative md:(max-w-80% mx-auto)">
+				<li id={category.name.toLowerCase()} class="relative md:(max-w-80% mx-auto) lg:max-w-full">
 					{#if active === category.name.toLowerCase()}
 						<div
 							id="top"

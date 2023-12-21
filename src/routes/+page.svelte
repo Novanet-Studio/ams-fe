@@ -24,7 +24,9 @@
 
 <div class="overflow-y-scroll snap-y snap-mandatory overflow-scroll h-screen">
 	<Main />
-	<FeaturedMessage />
-	<Brands />
+	<div class="lg:flex">
+		<FeaturedMessage class="lg:w-1/2" />
+		<Brands class="lg:w-1/2" />
+	</div>
 	<Slider />
 </div>

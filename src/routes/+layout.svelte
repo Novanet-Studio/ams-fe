@@ -13,7 +13,7 @@
 
 <svelte:window bind:scrollY={$scrollY} />
 
-<div class="font-primary relative">
+<div class="font-primary relative overflow-hidden">
 	<Header />
 	<Sidebar />
 	<main>

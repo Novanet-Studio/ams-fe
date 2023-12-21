@@ -3,6 +3,10 @@
 	import { elementColors } from '$lib/store';
 	import inView from '$lib/actions/inView';
 
+	let classname = '';
+
+	export { classname as class };
+
 	function animateElements() {
 		timeline(
 			[
@@ -48,16 +52,22 @@
 
 <section
 	id="featuredMessage"
-	class="relative snap-start snap-always max-h-screen min-h-screen w-full"
+	class="relative snap-start snap-always max-h-screen min-h-screen w-full lg:w-1/2 {classname}"
 	use:inView={{ bottom: 100, top: 100 }}
 	on:enter={animateElements}
 >
-	<div class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center pl-6 md:(pl-10)">
-		<h4 class="text-[#E3D268] text-xl opacity-0 font-300 max-w-sm z-4 md:(text-3xl)">
+	<div
+		class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center pl-6 md:(pl-10) lg:(pl-16 gap-8)"
+	>
+		<h4
+			class="text-[#E3D268] text-xl opacity-0 font-300 max-w-sm z-4 md:text-3xl lg:(text-4xl max-w-40rem)"
+		>
 			Somos representantes exclusivos de Wilier e Inspire Fitness. También, distribuidores de
 			equipos True
 		</h4>
-		<p class="text-[#DDDDDD] font-300 opacity-0 max-w-sm mt-4 md:(text-xl)">
+		<p
+			class="text-[#DDDDDD] font-300 opacity-0 max-w-sm mt-4 md:(text-xl) lg:(text-2xl max-w-36rem)"
+		>
 			Ofrecemos su garantía comercial además de brindarte el servicio que te mereces. Tenemos a tu
 			disposición una selección de las mejores bicicletas y equipos
 		</p>

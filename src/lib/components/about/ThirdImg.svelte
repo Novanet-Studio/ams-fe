@@ -49,11 +49,11 @@
 	use:inView={{ bottom: 100, top: 100 }}
 	on:enter={enterAnimation}
 >
-	<div id="thirdImg" class="h-84vh">
+	<div id="thirdImg" class="h-84vh lg:h-81.4vh">
 		<img class="h-full object-cover md:(min-w-full)" src={image} alt="Ciclista" />
 	</div>
 	<div
 		id="thirdImgFill"
-		class="absolute top-0 right-0 bottom-0 [clip-path:polygon(0%_0.59%,_100%_0%,_100%_88.75%,_0.4%_83.06%)] bg-#93B7BB w-full -z-1"
+		class="absolute top-0 right-0 bottom-0 [clip-path:polygon(0%_0.59%,_100%_0%,_100%_88.75%,_0.4%_83.06%)] bg-#93B7BB w-full -z-1 lg:h-97.2vh"
 	/>
 </section>
