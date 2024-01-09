@@ -2,8 +2,9 @@
 	import { elementColors, isOpen } from '$lib/store';
 	import { blur } from 'svelte/transition';
 	import NovanetLogo from '../common/NovanetLogo.svelte';
+	import { page } from '$app/stores';
 
-	$: isLight = $elementColors.copyright === 'light' || $isOpen;
+	$: isLight = $elementColors.copyright === 'light' || $isOpen || $page.url.pathname === '/';
 </script>
 
 <footer

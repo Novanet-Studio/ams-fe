@@ -46,7 +46,6 @@
 			],
 			{ duration: 2 }
 		);
-		$elementColors.burger = 'dark';
 	}
 </script>
 
