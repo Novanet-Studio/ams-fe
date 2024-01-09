@@ -93,7 +93,7 @@
 	});
 </script>
 
-<section id="categories" class="h-screen bg-#003B49 flex flex-col items-center pt-14 lg:pt-18">
+<section id="categories" class="bg-#003B49 flex flex-col items-center pt-14 lg:pt-18">
 	<div class="w-full">
 		<div
 			id="top"
@@ -117,11 +117,11 @@
 		</div>
 		<div
 			id="bottom"
-			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB h-80px"
+			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB lg:h-80px"
 		/>
 	</div>
 	<ul
-		class="px-12 pt-18 mb-18 flex flex-col gap-8 -mt-10 bg-#fff w-full lg:(flex-row min-h-full items-start justify-center -mt-20)"
+		class="px-12 pt-18 flex flex-col gap-8 -mt-10 min-h-full bg-#fff w-full min-h-screen lg:(flex-row min-h-full items-start justify-center -mt-20)"
 		use:clickOutside
 		on:clickoutside={() => (active = '')}
 	>
