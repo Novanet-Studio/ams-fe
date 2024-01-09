@@ -22,7 +22,7 @@
 	<title>{data.content.title}</title>
 </svelte:head>
 
-<div class="overflow-y-scroll snap-y snap-mandatory overflow-scroll h-screen">
+<div class="overflow-y-scroll snap-y snap-mandatory h-screen">
 	<Main />
 	<div class="lg:flex">
 		<FeaturedMessage class="lg:w-1/2" />
