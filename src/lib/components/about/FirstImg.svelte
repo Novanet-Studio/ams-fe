@@ -1,5 +1,6 @@
 <script lang="ts">
 	import image from '$lib/assets/web/about_1.png';
+	import { isDesktop } from '$lib/store';
 	import { timeline } from 'motion';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
@@ -15,7 +16,7 @@
 						opacity: [0, 1],
 						clipPath: [
 							'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
-							'polygon(0% 0%,100% 0%,100% 92%,0% 99%)'
+							'polygon(0% 0%,100% 0%,100% 91%,0% 98.5%)'
 						]
 					},
 					{ duration: 0.5, delay: 0.2 }
@@ -34,7 +35,9 @@
 						opacity: [0, 1],
 						clipPath: [
 							'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
-							'polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 83.06%)'
+							$isDesktop
+								? 'polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 82.7%)'
+								: 'polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 83.06%)'
 						]
 					},
 					{ duration: 0.5, delay: 0 }

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import inView from '$lib/actions/inView';
+	import { isDesktop } from '$lib/store';
 	import type { Topic } from '$lib/types';
 	import { animate, timeline } from 'motion';
 
@@ -21,7 +22,9 @@
 						opacity: [0, 1],
 						clipPath: [
 							'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
-							'polygon(0 0, 100% 0, 100% 85.77%, 0% 91.23%)'
+							$isDesktop
+								? 'polygon(0 0, 100% 0, 100% 85.4%, 0% 91.23%)'
+								: 'polygon(0 0, 100% 0, 100% 85.77%, 0% 91.23%)'
 						]
 					},
 					{ duration: 0.5 }
@@ -65,8 +68,10 @@
 	on:enter={enterAnimation}
 	on:exit={exitAnimation}
 >
-	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12)">
-		<h3 class="mb-4 text-3xl text-#E3D268 md:text-4xl">{topic.title}</h3>
-		<p class="text-sm text-#ddd md:(text-base max-w-90%)">{@html topic.description}</p>
+	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12) lg:pl-16">
+		<h3 class="mb-4 text-2xl text-#E3D268 md:text-4xl">{topic.title}</h3>
+		<p class="text-0.65rem leading-normal text-#ddd md:(text-sm max-w-90%)">
+			{@html topic.description}
+		</p>
 	</div>
 </section>

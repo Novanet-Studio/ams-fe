@@ -9,6 +9,7 @@ interface ElementColor {
 }
 
 export const isOpen = writable(false);
+export const isDesktop = writable(false);
 export const scrollY = writable(0);
 export const elementColors = writable<ElementColor>({
 	logo: 'light',

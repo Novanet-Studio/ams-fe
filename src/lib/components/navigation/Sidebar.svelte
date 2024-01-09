@@ -82,8 +82,8 @@
 	});
 </script>
 
-<aside
-	class="absolute w-full min-h-screen bg-[#003B49] text-white shadow-lg top-0 bottom-0 z-10 max-h-screen overflow-hidden min-h-screen transition transition-right ease-in-out lg:(transition-right w-20%) {$isOpen
+<menu
+	class="fixed w-full min-h-screen bg-[#003B49] text-white shadow-lg top-0 bottom-0 z-10 max-h-screen overflow-hidden min-h-screen transition transition-right ease-in-out lg:(transition-right w-25%) {$isOpen
 		? 'right-0'
 		: '-right-full'}"
 	class:open={$isOpen}
@@ -104,4 +104,4 @@
 			class="marker w-2 h-2 rounded-full bg-#e3d268 absolute top-10 right-15 transition transition-top animate-pulse hidden lg:block"
 		></div>
 	</nav>
-</aside>
+</menu>

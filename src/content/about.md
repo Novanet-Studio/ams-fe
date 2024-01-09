@@ -22,7 +22,7 @@ topics:
       - title: 'Visión'
         description: 'Nuestra visión es convertirnos en un punto de referencia como distribuidores de las marcas que representamos, obteniendo reconocimiento tanto por la calidad de los productos que vendemos como por  nuestro compromiso con la satisfacción del cliente. Aspiramos a ser la elección preferida de los atletas y aficionados al deporte, ofreciendo una experiencia de compra excepcional y contribuyendo al crecimiento y desarrollo de la comunidad deportiva.'
       - title: 'Valores'
-        description: 'En nuestro negocio, nos guiamos por los siguientes valores fundamentales: calidad, compromiso, innovación y pasión. Nos esforzamos por ofrecer productos de la más alta calidad para garantizar la satisfacción y el rendimiento óptimo de nuestros clientes. Estamos comprometidos con la excelencia en el servicio al cliente, brindando asesoramiento experto y soluciones personalizadas. Buscamos constantemente la innovación en nuestros productos y procesos, manteniéndonos a la vanguardia de las tendencias deportivas. Tenemos una pasión contagiosa por el deporte y su capacidad de transformar vidas, y nos esforzamos por compartir esa pasión con nuestros clientes y comunidad en general.'  
+        description: 'En nuestro negocio, nos guiamos por los siguientes valores fundamentales: calidad, compromiso, innovación y pasión. Nos esforzamos por ofrecer productos de la más alta calidad para garantizar la satisfacción y el rendimiento óptimo de nuestros clientes. Estamos comprometidos con la excelencia en el servicio al cliente, brindando asesoramiento experto y soluciones personalizadas.'  
 
 gallery:
   - name: 'inspire'

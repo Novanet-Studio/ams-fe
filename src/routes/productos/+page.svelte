@@ -95,7 +95,7 @@
 <section id="productCategories" class="h-screen bg-#003B49 flex flex-col items-center pt-28 p-8">
 	<h3 class="text-2xl text-#E3D268 md:text-3xl">{data.content.title}</h3>
 	<ul
-		class="px-6 flex flex-col gap-8 mt-8 lg:(flex-row mt-24 gap-24)"
+		class="px-6 flex flex-col gap-8 mt-8 lg:(flex-row mt-24 gap-10)"
 		use:clickOutside
 		on:clickoutside={() => (active = '')}
 	>

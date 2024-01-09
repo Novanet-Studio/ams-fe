@@ -51,17 +51,15 @@
 	<title>{data.content.title}</title>
 </svelte:head>
 
-<div class="overflow-y-scroll snap-y snap-mandatory overflow-scroll h-screen">
-	<div class="lg:(flex flex-row-reverse)">
-		<FirstImg />
-		<History topic={data.content.topics[0]} />
-	</div>
-	<div class="lg:(flex flex-row-reverse)">
-		<SecondImg />
-		<Philosophy topic={data.content.topics[1]} />
-	</div>
-	<div class="lg:(flex flex-row-reverse)">
-		<ThirdImg />
-		<Goals {info} />
-	</div>
+<div class="lg:(flex flex-row-reverse)">
+	<FirstImg />
+	<History topic={data.content.topics[0]} />
+</div>
+<div class="lg:(flex flex-row-reverse)">
+	<SecondImg />
+	<Philosophy topic={data.content.topics[1]} />
+</div>
+<div class="lg:(flex flex-row-reverse)">
+	<ThirdImg />
+	<Goals {info} />
 </div>
