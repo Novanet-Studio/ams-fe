@@ -66,7 +66,9 @@
 	on:exit={exitAnimation}
 >
 	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12)">
-		<h3 class="mb-4 text-3xl text-#E3D268 md:text-4xl">{topic.title}</h3>
-		<p class="text-sm text-#ddd md:(text-base max-w-90%)">{@html topic.description}</p>
+		<h3 class="mb-4 text-2xl text-#E3D268 md:text-4xl">{topic.title}</h3>
+		<p class="text-0.65rem leading-normal text-#ddd md:(text-base max-w-90%)">
+			{@html topic.description}
+		</p>
 	</div>
 </section>

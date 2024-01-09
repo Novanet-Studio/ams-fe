@@ -59,7 +59,9 @@
 	<div
 		class="p-8 pt-24 bg-#55555A h-94vh [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)] md:(pt-32 p-12)"
 	>
-		<h3 class="mb-4 text-3xl text-#ACC37E md:text-4xl">{topic.title}</h3>
-		<p class="text-sm text-#ddd md:(text-base max-w-90%)">{@html topic.description}</p>
+		<h3 class="mb-4 text-2xl text-#ACC37E md:text-4xl">{topic.title}</h3>
+		<p class="text-0.65rem leading-normal text-#ddd md:(text-base max-w-90%)">
+			{@html topic.description}
+		</p>
 	</div>
 </section>
