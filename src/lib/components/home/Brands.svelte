@@ -62,7 +62,7 @@
 
 <section
 	id="brands"
-	class="min-h-screen h-screen grid grid-cols-2 gap-24 place-items-center place-content-center snap-start snap-always {classname}"
+	class="min-h-screen h-screen grid grid-cols-2 gap-16 place-items-center place-content-center snap-start snap-always {classname}"
 	use:inView={{ bottom: 100, top: 100 }}
 	on:enter={animateElements}
 	on:exit={handleExit}

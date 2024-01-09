@@ -47,26 +47,16 @@
 	>
 		{#each brands.filter((brand) => brand.name.includes('NZ')) as brand (brand.name)}
 			<swiper-slide>
-				<div class="min-h-screen min-w-full relative">
+				<div
+					class="min-h-screen min-w-full bg-center bg-cover flex flex-col justify-center items-center"
+					style="background-image: url({brand.banner})"
+				>
 					<img
-						class="min-w-full min-h-screen object-cover object-right"
-						src={brand.banner}
+						id="sliderBanner"
+						class="p-8 drop-shadow-sm drop-shadow-color-#ddd rounded-md"
+						src={brand.image}
 						alt={brand.name}
 					/>
-					<div class="flex absolute top-0 bottom-0 left-0 right-0 justify-center items-center">
-						<!-- <img
-							id="sliderBanner"
-							class="p-8 backdrop-filter backdrop-blur-md bg-opacity-50 rounded-md"
-							src={brand.image}
-							alt={brand.name}
-						/> -->
-						<img
-							id="sliderBanner"
-							class="p-8 drop-shadow-sm drop-shadow-color-#ddd rounded-md"
-							src={brand.image}
-							alt={brand.name}
-						/>
-					</div>
 				</div>
 			</swiper-slide>
 		{/each}

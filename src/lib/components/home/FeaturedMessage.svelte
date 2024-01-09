@@ -60,13 +60,13 @@
 		class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center pl-6 md:(pl-10) lg:(pl-16 gap-8)"
 	>
 		<h4
-			class="text-[#E3D268] text-xl opacity-0 font-300 max-w-sm z-4 md:text-3xl lg:(text-4xl max-w-40rem)"
+			class="text-[#E3D268] text-lg opacity-0 font-300 max-w-18rem z-4 md:text-3xl lg:(text-4xl max-w-40rem)"
 		>
 			Somos representantes exclusivos de Wilier e Inspire Fitness. También, distribuidores de
 			equipos True
 		</h4>
 		<p
-			class="text-[#DDDDDD] font-300 opacity-0 max-w-sm mt-4 md:(text-xl) lg:(text-2xl max-w-36rem)"
+			class="text-[#DDDDDD] font-300 opacity-0 max-w-18rem mt-4 md:(text-xl) lg:(text-2xl max-w-36rem)"
 		>
 			Ofrecemos su garantía comercial además de brindarte el servicio que te mereces. Tenemos a tu
 			disposición una selección de las mejores bicicletas y equipos
