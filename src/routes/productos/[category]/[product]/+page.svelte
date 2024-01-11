@@ -1,38 +1,20 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { productsImages } from '$lib/images';
-	import { elementColors } from '$lib/store';
-	import { getImage } from '$lib/utils';
-	import { stagger, timeline } from 'motion';
 	import { onMount } from 'svelte';
+	import { stagger, timeline } from 'motion';
+	import { page } from '$app/stores';
+	import { elementColors } from '$lib/store';
+	import { getImageUrl } from '$lib/utils';
+	import type { PageData } from './$houdini';
 
-	interface Data {
-		title: string;
-		page_title: string;
-		categories: Record<string, any>[];
-		products: Record<string, any>[];
-	}
+	export let data: PageData;
 
-	export let data: { content: Data };
+	$: ({ SubcategoryProducts } = data);
 
-	let products: Record<string, any>[] = [];
+	$: productName = $page.params.product;
+	$: category = $SubcategoryProducts?.data?.subcategories?.data[0]?.attributes?.categoria?.data;
+	$: products = $SubcategoryProducts?.data?.subcategories?.data[0].attributes?.productos?.data;
 
-	$: categoryName = $page.url.pathname.split('/')[2];
-	$: productName = $page.url.pathname.split('/')[3];
-	$: category = data.content.categories.find(
-		(category) => category.name.toLowerCase() === categoryName
-	);
-	$: data.content.products.forEach((product) => {
-		const result = product.items.filter((item: any) => item.category === productName);
-
-		if (result.length) {
-			products = result;
-		}
-	});
-
-	onMount(() => {
-		$elementColors.copyright = 'dark';
-
+	function animation() {
 		timeline(
 			[
 				[
@@ -77,7 +59,7 @@
 					},
 					{ duration: 0.2, easing: 'ease-out' }
 				],
-				['#products ul h3', { opacity: [0, 1], y: [-10, 0] }, { duration: 1, easing: 'ease-out' }],
+				['#products h3', { opacity: [0, 1], y: [-10, 0] }, { duration: 1, easing: 'ease-out' }],
 				[
 					'#products ul li',
 					{ opacity: [0, 1], y: [10, 0] },
@@ -88,6 +70,11 @@
 				duration: 2
 			}
 		);
+	}
+
+	onMount(() => {
+		$elementColors.copyright = 'dark';
+		animation();
 	});
 </script>
 
@@ -103,14 +90,14 @@
 				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 z-2"
 			>
 				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl lg:text-4xl">
-					{category?.name}
+					{category?.attributes?.name}
 				</h4>
 			</div>
 			<img
 				id="image"
 				class="md:min-w-full object-cover object-center"
-				src={productsImages[getImage(category?.image)]}
-				alt={category?.name}
+				src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
+				alt={category?.attributes?.name}
 			/>
 		</div>
 		<div
@@ -126,14 +113,14 @@
 		<ul
 			class="px-12 pt-10 mb-18 pb-12 flex flex-col gap-8 min-h-screen lg:(flex-row min-h-full items-start justify-center mb-0 pt-10 max-w-70% mx-auto mb-24)"
 		>
-			{#each products as product (product.title)}
+			{#each products as product (product?.attributes?.name)}
 				<li class="border-b pb-3 border-b-#DDDDDD md:mx-auto lg:(last:mx-0)">
 					<img
 						class="lg:max-w-350px"
-						src={productsImages[getImage(product.image)]}
-						alt={product.title}
+						src={getImageUrl(product?.attributes?.image?.data?.attributes?.url)}
+						alt={product?.attributes?.name}
 					/>
-					<h4 class="text-#003B49 text-lg font-bold mt-4">{product.title}</h4>
+					<h4 class="text-#003B49 text-lg font-bold mt-4">{product?.attributes?.name}</h4>
 					<button>Ver especificaciones</button>
 				</li>
 			{/each}

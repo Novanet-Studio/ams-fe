@@ -2,40 +2,23 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { clickOutside } from '$lib/actions/clickOutside';
-	import { productsImages } from '$lib/images';
 	import { elementColors } from '$lib/store';
-	import { getImage } from '$lib/utils';
+	import { getImageUrl } from '$lib/utils';
 	import { stagger, timeline } from 'motion';
 	import { onMount } from 'svelte';
 	import { blur, fly } from 'svelte/transition';
+	import type { PageData } from './$houdini';
 
-	interface Data {
-		title: string;
-		page_title: string;
-		categories: Record<string, any>[];
-		products: Record<string, any>[];
-	}
+	export let data: PageData;
 
-	export let data: { content: Data };
+	$: ({ Subcategories } = data);
 
 	let active = '';
 
 	$: categoryName = $page.url.pathname.split('/')[2];
-	$: category = data.content.categories.find(
-		(category) => category.name.toLowerCase() === categoryName
-	);
+	$: category = $Subcategories?.data?.subcategories?.data[0]?.attributes?.categoria?.data || {};
 
-	function handleActive(item: string) {
-		if (item === active) {
-			goto(`/productos/${categoryName}/${item}`);
-			return;
-		}
-
-		active = item;
-	}
-
-	onMount(() => {
-		$elementColors.copyright = 'dark';
+	function animation() {
 		timeline(
 			[
 				[
@@ -90,6 +73,20 @@
 				duration: 2
 			}
 		);
+	}
+
+	function handleActive(item: string) {
+		if (item === active) {
+			goto(`/productos/${categoryName}/${item}`);
+			return;
+		}
+
+		active = item;
+	}
+
+	onMount(() => {
+		$elementColors.copyright = 'dark';
+		animation();
 	});
 </script>
 
@@ -105,14 +102,14 @@
 				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 z-2"
 			>
 				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl lg:text-4xl">
-					{category?.name}
+					{category?.attributes?.name}
 				</h4>
 			</div>
 			<img
 				id="image"
 				class="md:min-w-full object-cover object-center"
-				src={productsImages[category?.banner]}
-				alt={category?.name}
+				src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
+				alt={category?.attributes?.name}
 			/>
 		</div>
 		<div
@@ -125,20 +122,24 @@
 		use:clickOutside
 		on:clickoutside={() => (active = '')}
 	>
-		{#each category?.items as item}
+		{#each $Subcategories?.data?.subcategories?.data as subcategory (subcategory?.attributes.name)}
 			<button
 				class="last:mb-36 md:mx-auto lg:(last:mb-0 mx-0)"
-				on:click|preventDefault={() => handleActive(item.name)}
+				on:click|preventDefault={() => handleActive(subcategory?.attributes.name?.toLowerCase())}
 			>
 				<li class="relative">
-					<img class="lg:max-w-360px" src={productsImages[getImage(item.image)]} alt={item.name} />
-					{#if active === item.name}
+					<img
+						class="lg:max-w-360px"
+						src={getImageUrl(subcategory?.attributes?.image?.data?.attributes?.url)}
+						alt={subcategory?.attributes.name}
+					/>
+					{#if active === subcategory?.attributes.name?.toLowerCase()}
 						<div
 							class="absolute top-0 left-0 w-full h-full bg-#003B49/70 flex justify-center items-center backdrop-blur-2px"
 							transition:blur
 						>
 							<h5 class="font-bold text-xl text-white first-letter:uppercase">
-								{item.name}
+								{subcategory?.attributes?.name}
 							</h5>
 							<div
 								class="i-ph-arrow-right text-white text-xl"
