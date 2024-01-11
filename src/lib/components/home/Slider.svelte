@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { animate, inView } from 'motion';
-	import { brands } from '$lib/brands';
 	import { onMount } from 'svelte';
+	import { Navigation } from 'swiper/modules';
+	import { carousel } from '$lib/brands';
 	import * as actions from '$lib/actions/inView';
 	import { elementColors } from '$lib/store';
+	import NavigationBtn from '../common/NavigationBtn.svelte';
 
 	const spaceBetween = 10;
 
@@ -18,6 +20,8 @@
 		});
 	}
 
+	$: swiperEl = document.querySelector('swiper-container');
+
 	const onSlideChange = () => {
 		animateElements();
 	};
@@ -28,39 +32,46 @@
 </script>
 
 <section
-	class="snap-start snap-always h-screen"
+	class="snap-start snap-always h-screen relative"
 	use:actions.inView={{ bottom: 100, top: 100 }}
 	on:enter={animateElements}
 >
+	<NavigationBtn icon="i-fa6-solid-arrow-left" class="prev-btn" />
 	<swiper-container
 		class="min-h-screen w-full top-0"
 		slides-per-view={1}
 		space-between={spaceBetween}
 		centered-slides={true}
+		modules={[Navigation]}
+		navigation={{
+			// enabled: false
+			nextEl: 'next-btn',
+			prevEl: 'prev-btn'
+		}}
 		pagination={{}}
 		breakpoints={{
-			768: {
-				slidesPerView: 1
+			1024: {
+				pagination: false,
+				navigation: true
 			}
 		}}
-		on:swiperslidechange={onSlideChange}
 	>
-		{#each brands.filter((brand) => brand.name.includes('NZ')) as brand (brand.name)}
-			<swiper-slide>
-				<div
-					class="min-h-screen min-w-full bg-center bg-cover flex flex-col justify-center items-center"
-					style="background-image: url({brand.banner})"
-				>
-					<img
-						id="sliderBanner"
-						class="p-8 drop-shadow-sm drop-shadow-color-#ddd rounded-md"
-						src={brand.image}
-						alt={brand.name}
-					/>
-				</div>
+		{#each carousel.accesories as accesory (accesory.name)}
+			<swiper-slide
+				class="min-h-screen min-w-full bg-center bg-cover flex flex-col justify-center items-start pl-16"
+				style="background-image: url({accesory.image})"
+			>
+				<img
+					id="sliderBanner"
+					class="p-8 drop-shadow-sm drop-shadow-color-#ddd rounded-md"
+					src={accesory.logo}
+					alt={accesory.name}
+				/>
 			</swiper-slide>
 		{/each}
 	</swiper-container>
+
+	<NavigationBtn icon="i-fa6-solid-arrow-right" class="next-btn" position="right" />
 </section>
 
 <style>

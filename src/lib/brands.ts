@@ -1,74 +1,96 @@
-// Brands
-import InspireBrand from '$lib/assets/brands/inspire.png';
-import NzManufacturingBrand from '$lib/assets/brands/nz-manufacturing.png';
-import SafettiBrand from '$lib/assets/brands/safetti.png';
-import SRMBrand from '$lib/assets/brands/srm.png';
-import TrueBrand from '$lib/assets/brands/true.png';
-import WilierBrand from '$lib/assets/brands/wilier.png';
+// Logos - Hardware
+import willierLogo from '$lib/assets/brands/avila-multisports-marcas-willier.webp';
+import inspireLogo from '$lib/assets/brands/avila-multisports-marcas-inspire.webp';
+import trueLogo from '$lib/assets/brands/avila-multisports-marcas-true.webp';
 
-// Banners
-import WilierBanner from '$lib/assets/web/Banner_Willier.png';
-import NzManufacturingBanner from '$lib/assets/web/Banner_NZManufacturing.png';
+// Logos - Accessories
+import NZManufacturingLogo from '$lib/assets/brands/avila-multisports-marcas-nz-manufacturing.webp';
+import safettiLogo from '$lib/assets/brands/avila-multisports-marcas-safetti.webp';
+import SRMLogo from '$lib/assets/brands/avila-multisports-marcas-srm.webp';
+
+// Images - Hardware
+import willierImage from '$lib/assets/main/avila-multisports-principal-tubo-direccion-bicicleta-WILLIER.webp';
+import inspireImage from '$lib/assets/main/avila-multisports-principal-mujer-de-espalda-multifuncional-INSPIRE.webp';
+import trueImage from '$lib/assets/main/avila-multisports-principal-personas-corriendo-treadmills-TRUE.webp';
+
+// Images - Accesories
+import NZManufacturingImage from '$lib/assets/accesories/avila-multisports-accesorios-nadador-sumergido-piscina.webp';
+import safettiImage from '$lib/assets/accesories/avila-multisports-accesorios-ciclistas-vestidos-safetti.webp';
+import SRMImage from '$lib/assets/accesories/avila-multisports-accesorios-plato-bicicleta-SRM.webp';
 
 export const brands = [
 	{
 		name: 'Willier',
-		copy: {
-			main: 'Somos representantes exclusivos',
-			secondary:
-				'Una excelente opción para ciclistas que desean una bicicleta de carretera italiana de alta calidad'
-		},
-		image: WilierBrand,
-		banner: WilierBanner
+		image: willierLogo
 	},
 	{
 		name: 'Inspire',
-		copy: {
-			main: 'Somos representantes exclusivos',
-			secondary:
-				'Una excelente opción para ciclistas que desean una bicicleta de carretera italiana de alta calidad'
-		},
-		image: InspireBrand,
-		banner: WilierBanner
-	},
-	{
-		name: 'NZ Manufacturing',
-		copy: {
-			main: 'Somos representantes exclusivos',
-			secondary:
-				'Una excelente opción para ciclistas que desean una bicicleta de carretera italiana de alta calidad'
-		},
-		image: NzManufacturingBrand,
-		banner: NzManufacturingBanner
-	},
-	{
-		name: 'Saffeti',
-		copy: {
-			main: 'Somos representantes exclusivos',
-			secondary:
-				'Una excelente opción para ciclistas que desean una bicicleta de carretera italiana de alta calidad'
-		},
-		image: SafettiBrand,
-		banner: WilierBanner
-	},
-	{
-		name: 'SRM',
-		copy: {
-			main: 'Somos representantes exclusivos',
-			secondary:
-				'Una excelente opción para ciclistas que desean una bicicleta de carretera italiana de alta calidad'
-		},
-		image: SRMBrand,
-		banner: WilierBanner
+		image: inspireLogo
 	},
 	{
 		name: 'True',
-		copy: {
-			main: 'Somos representantes exclusivos',
-			secondary:
-				'Una excelente opción para ciclistas que desean una bicicleta de carretera italiana de alta calidad'
-		},
-		image: TrueBrand,
-		banner: WilierBanner
+		image: trueLogo
+	},
+	{
+		name: 'NZ Manufacturing',
+		image: NZManufacturingLogo
+	},
+	{
+		name: 'Saffeti',
+		image: safettiLogo
+	},
+	{
+		name: 'SRM',
+		image: SRMLogo
 	}
 ];
+
+export const carousel = {
+	hardware: [
+		{
+			name: 'Willier',
+			copy: {
+				main: 'Somos representantes exclusivos',
+				secondary:
+					'Una excelente aplicación para ciclistas que desean una bicicleta de carretera italiana de alta rendimiento'
+			},
+			logo: willierLogo,
+			image: willierImage
+		},
+		{
+			name: 'Inspire',
+			copy: {
+				main: 'Inspirados para ofrecer los mejores productos',
+				secondary: 'Otra gran descripcion aca'
+			},
+			logo: inspireLogo,
+			image: inspireImage
+		},
+		{
+			name: 'True',
+			copy: {
+				main: 'Somos representantes exclusivos',
+				secondary: 'Tu mejor aliado para tus actividades fitness'
+			},
+			logo: trueLogo,
+			image: trueImage
+		}
+	],
+	accesories: [
+		{
+			name: 'NZ Manufacturing',
+			logo: NZManufacturingLogo,
+			image: NZManufacturingImage
+		},
+		{
+			name: 'Saffeti',
+			logo: safettiLogo,
+			image: safettiImage
+		},
+		{
+			name: 'SRM',
+			logo: SRMLogo,
+			image: SRMImage
+		}
+	]
+};

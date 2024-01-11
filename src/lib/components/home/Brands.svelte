@@ -1,42 +1,10 @@
 <script lang="ts">
-	import inView from '$lib/actions/inView';
-	import InspireBrand from '$lib/assets/brands/inspire.png';
-	import NzManufacturingBrand from '$lib/assets/brands/nz-manufacturing.png';
-	import SafettiBrand from '$lib/assets/brands/safetti.png';
-	import SRMBrand from '$lib/assets/brands/srm.png';
-	import TrueBrand from '$lib/assets/brands/true.png';
-	import WilierBrand from '$lib/assets/brands/wilier.png';
-	import { elementColors } from '$lib/store';
 	import { animate, stagger } from 'motion';
+	import inView from '$lib/actions/inView';
+	import { elementColors } from '$lib/store';
+	import { brands } from '$lib/brands';
 
 	let classname = '';
-
-	const brands = [
-		{
-			name: 'Inspire',
-			image: InspireBrand
-		},
-		{
-			name: 'NZ Manufacturing',
-			image: NzManufacturingBrand
-		},
-		{
-			name: 'Saffeti',
-			image: SafettiBrand
-		},
-		{
-			name: 'SRM',
-			image: SRMBrand
-		},
-		{
-			name: 'True',
-			image: TrueBrand
-		},
-		{
-			name: 'Willier',
-			image: WilierBrand
-		}
-	];
 
 	function animateElements() {
 		animate(

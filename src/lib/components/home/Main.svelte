@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { animate, inView } from 'motion';
-	import { brands } from '$lib/brands';
+	import { carousel } from '$lib/brands';
 	import { onMount } from 'svelte';
 	import { blur } from 'svelte/transition';
 	import * as actions from '$lib/actions/inView';
@@ -57,26 +57,26 @@
 		}}
 		on:swiperslidechange={onSlideChange}
 	>
-		{#each brands as brand (brand.name)}
+		{#each carousel.hardware as item (item.name)}
 			<swiper-slide>
 				<div
 					class="min-h-screen min-w-full bg-cover bg-center flex flex-col justify-start pt-36 pl-10 items-start gap-4 md:(pt-40 gap-6) lg:(pl-16 pt-52)"
-					style="background-image: url({brand.banner})"
+					style="background-image: url({item.image})"
 				>
 					<h3
 						class="text-#E3D268 text-2xl font-light max-w-[80%] md:(text-4xl max-w-70%) lg:text-5xl"
 						in:blur
 					>
-						{brand.copy.main}
+						{item.copy.main}
 					</h3>
 					<p class="text-white max-w-[80%] md:(text-xl max-w-60%) lg:(text-2xl max-w-45%)">
-						{brand.copy.secondary}
+						{item.copy.secondary}
 					</p>
 					<img
 						id="banner"
 						class="drop-shadow drop-shadow-color-#ddd w-60% md:(w-30% mt-12)"
-						src={brand.image}
-						alt={brand.name}
+						src={item.logo}
+						alt={item.name}
 					/>
 				</div>
 			</swiper-slide>
