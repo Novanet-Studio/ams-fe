@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { animate, inView } from 'motion';
 	import { onMount } from 'svelte';
-	import { Navigation } from 'swiper/modules';
 	import { carousel } from '$lib/brands';
 	import * as actions from '$lib/actions/inView';
 	import { elementColors } from '$lib/store';
 	import NavigationBtn from '../common/NavigationBtn.svelte';
+	import type { Swiper } from 'swiper/types';
+	import type { SwiperContainer } from 'swiper/element';
+
+	let swiper: Swiper | undefined;
 
 	const spaceBetween = 10;
 
@@ -20,13 +23,12 @@
 		});
 	}
 
-	$: swiperEl = document.querySelector('swiper-container');
-
 	const onSlideChange = () => {
 		animateElements();
 	};
 
 	onMount(() => {
+		swiper = document.querySelector<SwiperContainer>('swiper-container#accesoriesSlider')?.swiper;
 		animateElements();
 	});
 </script>
@@ -36,17 +38,22 @@
 	use:actions.inView={{ bottom: 100, top: 100 }}
 	on:enter={animateElements}
 >
-	<NavigationBtn icon="i-fa6-solid-arrow-left" class="prev-btn" />
+	<NavigationBtn
+		icon="i-fa6-solid-arrow-left"
+		class="prev-btn"
+		on:click={() => swiper?.slidePrev()}
+	/>
 	<swiper-container
+		id="accesoriesSlider"
 		class="min-h-screen w-full top-0"
 		slides-per-view={1}
 		space-between={spaceBetween}
 		centered-slides={true}
-		modules={[Navigation]}
 		navigation={{
-			// enabled: false
-			nextEl: 'next-btn',
-			prevEl: 'prev-btn'
+			enabled: false,
+			nextEl: '.accesories-next-btn',
+			prevEl: '.accesories-prev-btn',
+			disabledClass: 'opacity-50'
 		}}
 		pagination={{}}
 		breakpoints={{
@@ -71,7 +78,12 @@
 		{/each}
 	</swiper-container>
 
-	<NavigationBtn icon="i-fa6-solid-arrow-right" class="next-btn" position="right" />
+	<NavigationBtn
+		icon="i-fa6-solid-arrow-right"
+		class="accesories-next-btn"
+		position="right"
+		on:click={() => swiper?.slideNext()}
+	/>
 </section>
 
 <style>
