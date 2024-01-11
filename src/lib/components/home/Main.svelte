@@ -5,6 +5,11 @@
 	import { blur } from 'svelte/transition';
 	import * as actions from '$lib/actions/inView';
 	import { elementColors } from '$lib/store';
+	import type { SwiperContainer } from 'swiper/element';
+	import type { Swiper } from 'swiper/types';
+	import NavigationBtn from '../common/NavigationBtn.svelte';
+
+	let swiper: Swiper | undefined;
 
 	const spaceBetween = 10;
 
@@ -34,54 +39,71 @@
 	};
 
 	onMount(() => {
+		swiper = document.querySelector<SwiperContainer>('swiper-container#mainSlider')?.swiper;
 		animateElements();
 	});
 </script>
 
 <section
-	class="snap-start snap-always h-screen"
+	class="snap-start snap-always h-screen relative"
 	use:actions.inView={{ bottom: 100, top: 100 }}
 	on:enter={animateElements}
 >
+	<NavigationBtn
+		icon="i-fa6-solid-arrow-left"
+		class="main-prev-btn"
+		on:click={() => swiper?.slidePrev()}
+	/>
 	<swiper-container
 		id="mainSlider"
 		class="w-full"
 		slides-per-view={1}
 		space-between={spaceBetween}
 		centered-slides={true}
+		navigation={{
+			enabled: false,
+			nextEl: '.main-next-btn',
+			prevEl: '.main-prev-btn',
+			disabledClass: 'opacity-50'
+		}}
 		pagination={{}}
 		breakpoints={{
-			768: {
-				slidesPerView: 1
+			1024: {
+				pagination: false,
+				navigation: true
 			}
 		}}
 		on:swiperslidechange={onSlideChange}
 	>
 		{#each carousel.hardware as item (item.name)}
-			<swiper-slide>
-				<div
-					class="min-h-screen min-w-full bg-cover bg-center flex flex-col justify-start pt-36 pl-10 items-start gap-4 md:(pt-40 gap-6) lg:(pl-16 pt-52)"
-					style="background-image: url({item.image})"
+			<swiper-slide
+				class="min-h-screen min-w-full bg-cover bg-center flex flex-col justify-start pt-36 pl-10 items-start gap-4 md:(pt-40 gap-6) lg:(pl-24 pt-52)"
+				style="background-image: url({item.image})"
+			>
+				<h3
+					class="text-#E3D268 text-2xl font-light max-w-[80%] md:(text-4xl max-w-70%) lg:text-5xl"
+					in:blur
 				>
-					<h3
-						class="text-#E3D268 text-2xl font-light max-w-[80%] md:(text-4xl max-w-70%) lg:text-5xl"
-						in:blur
-					>
-						{item.copy.main}
-					</h3>
-					<p class="text-white max-w-[80%] md:(text-xl max-w-60%) lg:(text-2xl max-w-45%)">
-						{item.copy.secondary}
-					</p>
-					<img
-						id="banner"
-						class="drop-shadow drop-shadow-color-#ddd w-60% md:(w-30% mt-12)"
-						src={item.logo}
-						alt={item.name}
-					/>
-				</div>
+					{item.copy.main}
+				</h3>
+				<p class="text-white max-w-[80%] md:(text-xl max-w-60%) lg:(text-2xl max-w-45%)">
+					{item.copy.secondary}
+				</p>
+				<img
+					id="banner"
+					class="drop-shadow drop-shadow-color-#ddd w-60% md:(w-30% mt-12)"
+					src={item.logo}
+					alt={item.name}
+				/>
 			</swiper-slide>
 		{/each}
 	</swiper-container>
+	<NavigationBtn
+		icon="i-fa6-solid-arrow-right"
+		class="main-next-btn"
+		position="right"
+		on:click={() => swiper?.slideNext()}
+	/>
 </section>
 
 <style>
