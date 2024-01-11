@@ -20,7 +20,7 @@ type InViewParams = {
 	bottom?: number;
 };
 
-export const inView: Action<HTMLElement, { params?: InViewParams }> = (node, params = {}) => {
+export const inView: Action<HTMLElement, InViewParams> = (node, params = {}) => {
 	let observer: IntersectionObserver;
 
 	const handleIntersect: IntersectionObserverCallback = (e) => {
