@@ -5,7 +5,7 @@ export async function GET({ url }) {
 	const key = url.searchParams.get('key') ?? '';
 
 	if (!key) {
-		throw error(400, 'No key provided');
+		error(400, 'No key provided');
 	}
 
 	const module = await import(`../../../content/${key}.md`);
