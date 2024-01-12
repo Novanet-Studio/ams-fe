@@ -1,18 +1,11 @@
+import type { SubcategoriesVariables } from './$houdini';
+
 export const ssr = false;
 
-/** @type {import('./$types').PageLoad} */
-export async function load({ fetch }) {
-  const res = await fetch('/api/info?key=products');
-
-  if (res.ok) {
-    const content = await res.json();
-
-    return {
-      content,
-    }
-  }
-
-  return {
-    content: []
-  }
+function capitalizeFirstLetter(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export const _SubcategoriesVariables: SubcategoriesVariables = ({ params }) => ({
+	name: capitalizeFirstLetter(params.category)
+});

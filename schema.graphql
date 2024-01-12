@@ -540,6 +540,7 @@ type Product {
   name: String
   publishedAt: DateTime
   slug: String!
+  subcategoria: SubcategoryEntityResponse
   updatedAt: DateTime
 }
 
@@ -567,6 +568,7 @@ input ProductFiltersInput {
   or: [ProductFiltersInput]
   publishedAt: DateTimeFilterInput
   slug: StringFilterInput
+  subcategoria: SubcategoryFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -576,6 +578,7 @@ input ProductInput {
   name: String
   publishedAt: DateTime
   slug: String
+  subcategoria: ID
 }
 
 type ProductRelationResponseCollection {
@@ -644,6 +647,7 @@ input StringFilterInput {
 }
 
 type Subcategory {
+  categoria: CategoryEntityResponse
   createdAt: DateTime
   image: UploadFileEntityResponse
   name: String
@@ -668,6 +672,7 @@ type SubcategoryEntityResponseCollection {
 
 input SubcategoryFiltersInput {
   and: [SubcategoryFiltersInput]
+  categoria: CategoryFiltersInput
   createdAt: DateTimeFilterInput
   id: IDFilterInput
   name: StringFilterInput
@@ -679,6 +684,7 @@ input SubcategoryFiltersInput {
 }
 
 input SubcategoryInput {
+  categoria: ID
   image: ID
   name: String
   productos: [ID]

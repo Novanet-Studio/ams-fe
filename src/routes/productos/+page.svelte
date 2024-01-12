@@ -8,13 +8,6 @@
 	import { getImageUrl } from '$lib/utils';
 	import type { PageData } from './$houdini';
 
-	interface Data {
-		title: string;
-		page_title: string;
-		categories: Record<string, any>[];
-		products: Record<string, any>[];
-	}
-
 	export let data: PageData;
 
 	$: ({ Categories } = data);
