@@ -51,15 +51,15 @@
 	<title>{data.content.title}</title>
 </svelte:head>
 
-<div class="lg:(flex flex-row-reverse)">
-	<FirstImg />
+<div class="lg:(flex flex-row)">
 	<History topic={data.content.topics[0]} />
+	<FirstImg />
 </div>
-<div class="lg:(flex flex-row-reverse)">
-	<SecondImg />
+<div class="lg:(flex flex-row)">
 	<Philosophy topic={data.content.topics[1]} />
+	<SecondImg />
 </div>
-<div class="lg:(flex flex-row-reverse)">
-	<ThirdImg />
+<div class="lg:(flex flex-row)">
 	<Goals {info} />
+	<ThirdImg />
 </div>
