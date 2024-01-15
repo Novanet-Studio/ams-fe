@@ -54,12 +54,12 @@
 				[
 					'#categories #middle',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.5, easing: 'ease-out', delay: 0.2 }
+					{ duration: 0.1, easing: 'ease-out' }
 				],
 				[
 					'#categories #middle #name',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.5, easing: 'ease-out', delay: 0.2 }
+					{ duration: 0.3, easing: 'ease-out' }
 				],
 				[
 					'#categories #top',
@@ -70,7 +70,7 @@
 							'polygon(0% 100%, 100% 100%, 73.49% 50.75%)'
 						]
 					},
-					{ duration: 0.4, easing: 'ease-out' }
+					{ duration: 0.2, easing: 'ease-out' }
 				],
 				[
 					'#categories #bottom',
@@ -78,7 +78,7 @@
 						opacity: [0, 1],
 						clipPath: ['polygon(40% 70%, 0 0, 100% 0)', 'polygon(32% 60%, 0 0, 100% 0)']
 					},
-					{ duration: 0.4, easing: 'ease-out' }
+					{ duration: 0.2, easing: 'ease-out' }
 				],
 				[
 					'#categories ul > button',
@@ -87,7 +87,7 @@
 				]
 			],
 			{
-				duration: 2.5
+				duration: 2
 			}
 		);
 	});
