@@ -94,6 +94,7 @@
 					class="drop-shadow drop-shadow-color-#ddd w-60% md:(w-30% mt-12)"
 					src={item.logo}
 					alt={item.name}
+					loading="lazy"
 				/>
 			</swiper-slide>
 		{/each}

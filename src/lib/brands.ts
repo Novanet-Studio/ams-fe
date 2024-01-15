@@ -80,17 +80,20 @@ export const carousel = {
 		{
 			name: 'NZ Manufacturing',
 			logo: NZManufacturingLogo,
-			image: NZManufacturingImage
+			image: NZManufacturingImage,
+			classes: ''
 		},
 		{
 			name: 'Saffeti',
 			logo: safettiLogo,
-			image: safettiImage
+			image: safettiImage,
+			classes: 'filter-invert-100'
 		},
 		{
 			name: 'SRM',
 			logo: SRMLogo,
-			image: SRMImage
+			image: SRMImage,
+			classes: 'filter-invert-100 md:filter-invert-1'
 		}
 	]
 };

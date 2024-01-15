@@ -62,6 +62,7 @@
 				navigation: true
 			}
 		}}
+		on:swiperslidechange={onSlideChange}
 	>
 		{#each carousel.accesories as accesory (accesory.name)}
 			<swiper-slide
@@ -70,7 +71,7 @@
 			>
 				<img
 					id="sliderBanner"
-					class="p-8 drop-shadow-sm drop-shadow-color-#ddd rounded-md"
+					class="p-8 drop-shadow-sm drop-shadow-color-#ddd rounded-md {accesory.classes}"
 					src={accesory.logo}
 					alt={accesory.name}
 				/>

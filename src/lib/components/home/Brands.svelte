@@ -7,6 +7,9 @@
 	let classname = '';
 
 	function animateElements() {
+		$elementColors.logo = 'dark';
+		$elementColors.burger = 'dark';
+		$elementColors.copyright = 'dark';
 		animate(
 			'#brands > div.flex',
 			{
@@ -15,9 +18,6 @@
 			},
 			{ duration: 1, delay: stagger(0.1) }
 		);
-		$elementColors.logo = 'dark';
-		$elementColors.burger = 'dark';
-		$elementColors.copyright = 'dark';
 	}
 
 	function handleExit() {

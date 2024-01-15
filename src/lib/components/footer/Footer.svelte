@@ -7,7 +7,7 @@
 	$: $isDesktop = window.matchMedia('(min-width: 1024px)').matches;
 
 	$: isLight =
-		$elementColors.copyright === 'light' || $isOpen || (isDesktop && $page.url.pathname === '/');
+		$elementColors.copyright === 'light' || $isOpen || ($isDesktop && $page.url.pathname === '/');
 </script>
 
 <footer
