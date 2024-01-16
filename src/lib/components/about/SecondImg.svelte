@@ -1,6 +1,6 @@
 <script lang="ts">
 	import inView from '$lib/actions/inView';
-	import image from '$lib/assets/web/about_2.png';
+	import image from '$lib/assets/web/avila-multisports-nosotros-ciclista-parado-pedaleando.webp';
 	import { timeline } from 'motion';
 
 	function enterAnimation() {

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { timeline } from 'motion';
-	import image from '$lib/assets/web/about_3.png';
+	import image from '$lib/assets/web/avila-multisports-nosotros-2-miembros-equipos-ciclismo.webp';
 	import inView from '$lib/actions/inView';
 
 	function enterAnimation() {

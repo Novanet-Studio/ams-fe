@@ -66,12 +66,12 @@
 	>
 		{#each carousel.accesories as accesory (accesory.name)}
 			<swiper-slide
-				class="min-h-screen min-w-full bg-center bg-cover flex flex-col justify-center items-start pl-16"
+				class="min-h-screen min-w-full bg-center bg-cover flex flex-col justify-center"
 				style="background-image: url({accesory.image})"
 			>
 				<img
 					id="sliderBanner"
-					class="p-8 drop-shadow-sm drop-shadow-color-#ddd rounded-md {accesory.classes}"
+					class="p-8 rounded-md w-63 md:w-81 self-center"
 					src={accesory.logo}
 					alt={accesory.name}
 				/>

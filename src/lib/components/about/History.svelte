@@ -70,7 +70,7 @@
 >
 	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12) lg:pl-16">
 		<h3 class="mb-4 text-2xl text-#E3D268 md:text-4xl">{topic.title}</h3>
-		<p class="text-0.65rem leading-normal text-#ddd md:(text-sm max-w-90%)">
+		<p class="text-0.73rem leading-normal text-#ddd md:(text-1.15rem max-w-90%)">
 			{@html topic.description}
 		</p>
 	</div>

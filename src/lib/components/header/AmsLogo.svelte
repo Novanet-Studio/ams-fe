@@ -6,6 +6,6 @@
 
 <a href="/">
 	<picture class="z-10">
-		<img {src} alt="AMS Logo" />
+		<img {src} alt="AMS Logo" class="drop-shadow-sm drop-shadow-color-#000" />
 	</picture>
 </a>

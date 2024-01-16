@@ -1,5 +1,5 @@
 <script lang="ts">
-	import image from '$lib/assets/web/about_1.png';
+	import image from '$lib/assets/web/avila-multisports-nosotros-grupo-ciclistas.webp';
 	import { isDesktop } from '$lib/store';
 	import { timeline } from 'motion';
 	import { onMount } from 'svelte';

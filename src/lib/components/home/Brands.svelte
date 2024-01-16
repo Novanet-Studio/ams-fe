@@ -4,8 +4,6 @@
 	import { elementColors } from '$lib/store';
 	import { brands } from '$lib/brands';
 
-	let classname = '';
-
 	function animateElements() {
 		$elementColors.logo = 'dark';
 		$elementColors.burger = 'dark';
@@ -24,20 +22,26 @@
 		$elementColors.logo = 'light';
 		$elementColors.copyright = 'light';
 	}
-
-	export { classname as class };
 </script>
 
 <section
 	id="brands"
-	class="min-h-screen h-screen grid grid-cols-2 gap-16 place-items-center place-content-center snap-start snap-always {classname}"
+	class="min-h-screen h-screen grid grid-cols-2 gap-18 place-items-center place-content-center snap-start snap-always px-12 md:px-0 lg:w-1/3"
 	use:inView={{ bottom: 100, top: 100 }}
 	on:enter={animateElements}
 	on:exit={handleExit}
 >
 	{#each brands as brand}
 		<div class="flex items-center justify-center">
-			<img src={brand.image} alt={brand.name} class="w-2/3" />
+			{#if brand.name === 'Saffeti' || brand.name === 'SRM'}
+				<img
+					src={brand.image}
+					alt={brand.name}
+					class="max-h-[2.6rem] filter-invert-100 md:(max-h-15)"
+				/>
+			{:else}
+				<img src={brand.image} alt={brand.name} class="max-h-[2.6rem] md:(max-h-15)" />
+			{/if}
 		</div>
 	{/each}
 </section>

@@ -77,21 +77,23 @@
 	>
 		{#each carousel.hardware as item (item.name)}
 			<swiper-slide
-				class="min-h-screen min-w-full bg-cover bg-center flex flex-col justify-start pt-36 pl-10 items-start gap-4 md:(pt-40 gap-6) lg:(pl-24 pt-52)"
+				class="min-h-screen min-w-full bg-cover bg-[-45em] flex flex-col justify-start pt-36 pl-10 items-start gap-4 md:(pt-40 gap-6 bg-center) lg:(pl-24 pt-52)"
 				style="background-image: url({item.image})"
 			>
 				<h3
-					class="text-#E3D268 text-2xl font-light max-w-[80%] md:(text-4xl max-w-70%) lg:text-5xl"
+					class="text-#E3D268 text-2xl font-light max-w-[80%] text-shadow-xl md:(text-4xl max-w-70%) lg:text-5xl"
 					in:blur
 				>
 					{item.copy.main}
 				</h3>
-				<p class="text-white max-w-[80%] md:(text-xl max-w-60%) lg:(text-2xl max-w-45%)">
+				<p
+					class="text-white max-w-[80%] text-shadow-xl md:(text-xl max-w-60%) lg:(text-2xl max-w-45%)"
+				>
 					{item.copy.secondary}
 				</p>
 				<img
 					id="banner"
-					class="drop-shadow drop-shadow-color-#ddd w-60% md:(w-30% mt-12)"
+					class="drop-shadow drop-shadow-color-#eee w-60% md:(w-30% mt-12)"
 					src={item.logo}
 					alt={item.name}
 					loading="lazy"
