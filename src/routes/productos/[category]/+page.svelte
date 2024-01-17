@@ -111,7 +111,7 @@
 			<img
 				id="image"
 				class="md:min-w-full object-cover object-center"
-				src={productsImages[getImage(category?.name.toLowerCase())]}
+				src={productsImages[category?.banner]}
 				alt={category?.name}
 			/>
 		</div>

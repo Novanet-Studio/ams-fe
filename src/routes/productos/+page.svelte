@@ -121,7 +121,7 @@
 							class="absolute bottom-0 left-0 w-full h-12 [clip-path:polygon(76.92%_24.99%,_101.28%_100%,_0%_103%)] bg-#93B7BB transition ease"
 						/>
 					{/if}
-					<img id="image" src={productsImages[getImageName(category.image)]} alt={category.name} />
+					<img id="image" src={productsImages[category.image]} alt={category.name} />
 				</li>
 			</button>
 		{/each}

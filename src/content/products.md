@@ -4,17 +4,19 @@ page_title: 'Avila MultiSport - Productos'
 
 categories:
   - name: Cardio
-    image: 'cardio.png'
+    image: 'cardio'
+    banner: 'cardioBanner'
     items:
       - name: 'treadmills'
-        image: 'treadmills.png'
+        image: 'treadmills'
       - name: 'elípticas'
-        image: 'elipticas.png'
+        image: 'elipticas'
       - name: 'bicicletas'
-        image: 'bicicletas.png'
+        image: 'bicicletas'
 
   - name: Fuerza
-    image: 'strength.png'
+    image: 'strength'
+    banner: 'strengthBanner'
     items:
       - name: 'multi estaciones'
         image: ''

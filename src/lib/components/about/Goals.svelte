@@ -51,7 +51,7 @@
 		use:inView={{ bottom: 100, top: 100 }}
 		on:enter={enterAnimation}
 	>
-		<ul class="grid grid-cols-1 md:grid-cols-2">
+		<ul class="grid grid-cols-1">
 			{#each info.content as item}
 				<li class="mb-4 {item.title.toLowerCase() === 'valores'}">
 					<h4 class="mb-2 text-xl text-#E3D268 md:text-2xl lg:text-3xl">{item.title}</h4>

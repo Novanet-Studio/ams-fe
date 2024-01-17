@@ -5,7 +5,7 @@
 	import { brands } from '$lib/brands';
 
 	function animateElements() {
-		$elementColors.logo = 'dark';
+		$elementColors.logo = 'light';
 		$elementColors.burger = 'dark';
 		$elementColors.copyright = 'dark';
 		animate(
