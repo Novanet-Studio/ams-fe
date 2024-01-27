@@ -83,7 +83,7 @@
 >
 	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12) lg:pl-16">
 		<h3 class="mb-4 text-2xl text-#E3D268 md:text-4xl">Contáctanos</h3>
-		<form class="flex flex-col gap-4 md:gap-6">
+		<form class="flex flex-col gap-4 md:(gap-6 mt-8)">
 			<input class="w-full" type="text" name="name" placeholder="Nombre" />
 			<input class="w-full" type="text" name="phone" placeholder="Teléfono" />
 			<input class="w-full" type="text" name="lastname" placeholder="Apellido" />
