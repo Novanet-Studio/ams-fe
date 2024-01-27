@@ -83,16 +83,17 @@
 >
 	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12) lg:pl-16">
 		<h3 class="mb-4 text-2xl text-#E3D268 md:text-4xl">Contáctanos</h3>
-		<form class="flex flex-col gap-4 md:(gap-6 mt-8)">
-			<input class="w-full" type="text" name="name" placeholder="Nombre" />
-			<input class="w-full" type="text" name="phone" placeholder="Teléfono" />
-			<input class="w-full" type="text" name="lastname" placeholder="Apellido" />
-			<input class="w-full" type="email" name="email" placeholder="Email" />
+		<form class="flex flex-col gap-4 md:(gap-4 mt-8)">
+			<div class="flex flex-col gap-4 lg:(flex-row)">
+				<input class="w-full" type="text" name="name" placeholder="Nombre" />
+				<input class="w-full" type="text" name="phone" placeholder="Teléfono" />
+			</div>
+			<div class="flex flex-col gap-4 lg:(flex-row)">
+				<input class="w-full" type="text" name="lastname" placeholder="Apellido" />
+				<input class="w-full" type="email" name="email" placeholder="Email" />
+			</div>
 			<textarea class="pt-3 pl-3" name="message" id="" rows="4" placeholder="Mensaje"></textarea>
 			<button class="self-start bg-#ACC37E py-2 px-12 rounded-full">Enviar</button>
 		</form>
-		<!-- <p class="text-0.73rem leading-normal text-#ddd md:(text-1.15rem max-w-90%)">
-			{@html topic.description}
-		</p> -->
 	</div>
 </section>

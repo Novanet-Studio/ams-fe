@@ -51,9 +51,7 @@
 </script>
 
 <section bind:this={section} class="w-full h-screen snap-start relative" transition:fade>
-	<div id="map" class="bg-#003B49 h-84vh lg:h-81.4vh">
-		<span>Map goes here...</span>
-	</div>
+	<div id="map" class="bg-#003B49 h-84vh lg:h-81.4vh"></div>
 	<div
 		id="mapFill"
 		class="absolute top-0 right-0 bottom-0 [clip-path:polygon(0%_0%,_100%_0%,_100%_88.75%,_0%_83.06%)] bg-#ACC37E w-full -z-1 lg:h-97.2vh"
