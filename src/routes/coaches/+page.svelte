@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { elementColors } from '$lib/store';
-	import { animate, stagger, timeline } from 'motion';
+	import { stagger, timeline } from 'motion';
 	import { onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
 	import type { Topic } from '$lib/types';
+	import { coaches, coachesBanner } from '$lib/coaches';
 
 	interface Coaches {
 		name: string;
@@ -25,94 +24,142 @@
 		content: data.content.topics[0].description
 	};
 
-	function topAnimation(node) {
-		const ctrl = animate(
-			node,
-			{ y: [10, 0], opacity: [0, 1] },
-			{ duration: 0.2, easing: 'ease-out' }
-		);
-
-		return {
-			duration: ctrl.duration,
-			tick: (t, u) => {
-				// ctrl.currentTime = t;
+	function getColors(index: number) {
+		const colors: { [key: number]: { li: string; path: string } } = {
+			0: {
+				li: 'bg-#93B7BB border-#93B7BB',
+				path: 'bg-#93B7BB'
+			},
+			1: {
+				li: 'bg-#ACC37E border-#ACC37E',
+				path: 'bg-#ACC37E'
+			},
+			2: {
+				li: 'bg-#E3D268 border-#E3D268',
+				path: 'bg-#E3D268'
 			}
 		};
+
+		return colors[index] || colors[0];
 	}
 
-	function middleAnimation(node) {
-		const an = animate(
-			node,
-			{ background: ['#93B7BB', '#93B7BB80'], opacity: [0, 1] },
-			{ duration: 0.2, easing: 'ease-out' }
-		);
+	onMount(() => {
+		$elementColors.copyright = 'dark';
 
-		return {
-			duration: an.duration,
-			tick: () => {
-				// console.log(t);
-			}
-		};
-	}
-
-	function animateElements() {
 		timeline(
 			[
 				[
-					'#coachesList',
-					{ opacity: [0, 1], background: ['#fff', '#003B49'] },
-					{ duration: 0.5, easing: 'ease-out' }
+					'#coaches',
+					{
+						opacity: [0, 1],
+						background: ['#fff', '#003B49']
+					},
+					{ duration: 0.4, easing: 'ease-out' }
 				],
 				[
-					'#coachesList > h3',
+					'#coaches #image',
+					{ opacity: [0, 1], filter: ['blur(2px)', 'blur(0)'] },
+					{ duration: 0.4, easing: 'ease-out' }
+				],
+				[
+					'#coaches #middle',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.5, easing: 'ease-out' }
+					{ duration: 0.1, easing: 'ease-out', delay: 0.2 }
 				],
 				[
-					'#coachesList > ul > li',
+					'#coaches #middle #name',
+					{ opacity: [0, 1], x: [-10, 0] },
+					{ duration: 0.3, easing: 'ease-out', delay: 0.2 }
+				],
+				[
+					'#coaches #top',
+					{
+						opacity: [0, 1],
+						clipPath: [
+							'polygon(0% 100%, 100% 100%, 90% 70%)',
+							'polygon(0% 100%, 100% 100%, 73.49% 50.75%)'
+						]
+					},
+					{ duration: 0.2, easing: 'ease-out' }
+				],
+				[
+					'#coaches #bottom',
+					{
+						opacity: [0, 1],
+						clipPath: ['polygon(40% 70%, 0 0, 100% 0)', 'polygon(32% 60%, 0 0, 100% 0)']
+					},
+					{ duration: 0.2, easing: 'ease-out' }
+				],
+				['#coaches ul h3', { opacity: [0, 1], y: [-10, 0] }, { duration: 1, easing: 'ease-out' }],
+				[
+					'#coaches ul li',
 					{ opacity: [0, 1], y: [10, 0] },
-					{ duration: 0.5, easing: 'ease-out', delay: stagger(0.1) }
+					{ duration: 1, easing: 'ease-out', delay: stagger(0.2) }
 				]
 			],
 			{
 				duration: 2
 			}
 		);
-	}
-
-	onMount(() => {
-		animateElements();
-		$elementColors.copyright = 'light';
 	});
 </script>
 
-<section id="coachesList" class="h-screen bg-#003B49 flex flex-col items-center pt-28 p-8">
-	<h3 class="text-2xl text-#E3D268 md:text-3xl">{info.title}</h3>
-	<p>{info.content}</p>
-	<!-- <ul class="px-6 flex flex-col gap-8 mt-8 lg:(flex-row mt-24 gap-10)">
-		{#each data.content.categories as category (category.name)}
-			<li id={category.name.toLowerCase()} class="relative md:(max-w-80% mx-auto) lg:max-w-full">
-				{#if active === category.name.toLowerCase()}
+<section id="coaches" class="bg-#003B49 flex flex-col items-center pt-14 lg:pt-18">
+	<div class="w-full">
+		<div
+			id="top"
+			class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#93B7BB lg:h-80px"
+		/>
+		<div class="w-full h-36 relative overflow-hidden lg:h-300px">
+			<div
+				id="middle"
+				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 z-2"
+			>
+				<h4 id="name" class="text-#003B49 font-bold text-2xl md:text-3xl lg:text-4xl">Coaches</h4>
+			</div>
+			<img
+				id="image"
+				class="md:min-w-full min-h-full object-cover object-center"
+				src={coachesBanner}
+				alt="Coaches banner"
+			/>
+		</div>
+		<div
+			id="bottom"
+			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB lg:h-80px"
+		/>
+	</div>
+
+	<p class="hidden">{info.content}</p>
+
+	<div class="-mt-12 bg-#fff w-full min-h-full lg:-mt-20">
+		<ul
+			class="px-12 pt-45 mb-18 pb-12 flex flex-col gap-40 min-h-screen lg:(flex-row min-h-full items-start justify-center mb-0 pt-10 max-w-70% mx-auto mb-24)"
+		>
+			{#each coaches as coach, index}
+				<li class="p-6 md:mx-auto relative border lg:(last:mx-0) {getColors(index).li}">
 					<div
-						id="top"
-						class="absolute top-0 left-0 w-full h-12 [clip-path:polygon(0%_0%,_100%_0%,_19.74%_81.25%)] bg-#93B7BB transition ease"
-						in:topAnimation
+						id="coachesTop"
+						class="w-full absolute left-0 -top-65px h-16 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] lg:h-80px {getColors(
+							index
+						).path}"
 					/>
-					<div
-						id="middle"
-						class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 transition ease"
-						in:middleAnimation
-					>
-						<h4 id="name" class="text-#003B49 font-bold text-lg">{category.name}</h4>
-						<div class="i-ph-arrow-right" transition:fly={{ x: -10, delay: 0.5 }}></div>
+					<div class="absolute flex justify-center -top-48% left-0 right-0">
+						<img class="max-w-128px lg:max-w-350px" src={coach.avatar} alt={coach.name} />
 					</div>
+					<h4 class="text-#55555A text-2xl text-center font-bold mt-4">{coach.name}</h4>
+					<div class="text-#55555A font-700 text-sm text-center">
+						Especialidad: <span class="text-sm font-300">{coach.speciality}</span>
+					</div>
+					<p class="text-pretty text-#55555A text-sm mt-2">{coach.shortBio}</p>
 					<div
-						id="bottom"
-						class="absolute bottom-0 left-0 w-full h-12 [clip-path:polygon(76.92%_24.99%,_101.28%_100%,_0%_103%)] bg-#93B7BB transition ease"
+						id="coachesBottom"
+						class="absolute -bottom-48px left-0 w-full h-12 [clip-path:polygon(32%_60%,_0_0,_100%_0)] lg:h-80px {getColors(
+							index
+						).path}"
 					/>
-				{/if}
-				<img id="image" src={productsImages[category.image]} alt={category.name} />
-			</li>
-		{/each}
-	</ul> -->
+				</li>
+			{/each}
+		</ul>
+	</div>
 </section>
