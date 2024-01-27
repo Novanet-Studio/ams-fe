@@ -173,9 +173,3 @@
 		</ul>
 	</div>
 </section>
-
-<!-- <style>
-	div {
-		width: 15.9375rem;
-	}
-</style> -->
