@@ -1,7 +1,7 @@
 <script lang="ts">
 	import inView from '$lib/actions/inView';
 	import { isDesktop } from '$lib/store';
-	import { animate, timeline } from 'motion';
+	import { animate, stagger, timeline } from 'motion';
 
 	function enterAnimation() {
 		timeline(
@@ -35,12 +35,28 @@
 					{ duration: 0.5, delay: 0.5 }
 				],
 				[
-					'#contact > div > p',
+					'#contact > div > form > input',
 					{
 						opacity: [0, 1],
 						x: [-10, 0]
 					},
-					{ duration: 0.5, delay: 0.5 }
+					{ duration: 0.5, delay: stagger(0.3) }
+				],
+				[
+					'#contact > div > form > textarea',
+					{
+						opacity: [0, 1],
+						x: [-10, 0]
+					},
+					{ duration: 0.5, delay: 0.1 }
+				],
+				[
+					'#contact > div > form > button',
+					{
+						opacity: [0, 1],
+						x: [-10, 0]
+					},
+					{ duration: 0.5, delay: 0.1 }
 				]
 			],
 			{
@@ -67,12 +83,12 @@
 >
 	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12) lg:pl-16">
 		<h3 class="mb-4 text-2xl text-#E3D268 md:text-4xl">Contáctanos</h3>
-		<form class="flex flex-col gap-4">
+		<form class="flex flex-col gap-4 md:gap-6">
 			<input class="w-full" type="text" name="name" placeholder="Nombre" />
 			<input class="w-full" type="text" name="phone" placeholder="Teléfono" />
 			<input class="w-full" type="text" name="lastname" placeholder="Apellido" />
 			<input class="w-full" type="email" name="email" placeholder="Email" />
-			<textarea name="message" id="" rows="4" placeholder="Mensaje"></textarea>
+			<textarea class="pt-3 pl-3" name="message" id="" rows="4" placeholder="Mensaje"></textarea>
 			<button class="self-start bg-#ACC37E py-2 px-12 rounded-full">Enviar</button>
 		</form>
 		<!-- <p class="text-0.73rem leading-normal text-#ddd md:(text-1.15rem max-w-90%)">
