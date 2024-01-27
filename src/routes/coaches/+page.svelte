@@ -132,29 +132,33 @@
 
 	<p class="hidden">{info.content}</p>
 
-	<div class="-mt-12 bg-#fff w-full min-h-full lg:-mt-20">
+	<div class="-mt-12 bg-#fff w-full min-h-full md:px-12 lg:-mt-20">
 		<ul
-			class="px-12 pt-45 mb-18 pb-12 flex flex-col gap-40 min-h-screen lg:(flex-row min-h-full items-start justify-center mb-0 pt-10 max-w-70% mx-auto mb-24)"
+			class="px-12 pt-45 mb-18 pb-12 flex flex-col gap-40 min-h-screen md:(mt-40 gap-70) lg:(flex-row min-h-full items-start justify-center mb-0 pt-10 max-w-70% mx-auto mb-24)"
 		>
 			{#each coaches as coach, index}
-				<li class="p-6 md:mx-auto relative border lg:(last:mx-0) {getColors(index).li}">
+				<li class="p-6 md:mx-auto relative border md:p-16 lg:(last:mx-0) {getColors(index).li}">
 					<div
 						id="coachesTop"
-						class="w-full absolute left-0 -top-65px h-16 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] lg:h-80px {getColors(
+						class="w-full absolute left-0 -top-65px h-16 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] md:[clip-path:polygon(0%_100%,_100%_100%,_73.49%_0%)] lg:h-80px {getColors(
 							index
 						).path}"
 					/>
-					<div class="absolute flex justify-center -top-48% left-0 right-0">
-						<img class="max-w-128px lg:max-w-350px" src={coach.avatar} alt={coach.name} />
+					<div class="absolute flex justify-center -top-48% left-0 right-0 md:-top-180px">
+						<img
+							class="max-w-128px md:max-w-255px lg:max-w-350px"
+							src={coach.avatar}
+							alt={coach.name}
+						/>
 					</div>
-					<h4 class="text-#55555A text-2xl text-center font-bold mt-4">{coach.name}</h4>
-					<div class="text-#55555A font-700 text-sm text-center">
-						Especialidad: <span class="text-sm font-300">{coach.speciality}</span>
+					<h4 class="text-#55555A text-2xl text-center font-bold mt-4 md:text-3xl">{coach.name}</h4>
+					<div class="text-#55555A font-700 text-sm text-center md:text-base">
+						Especialidad: <span class="text-sm font-300 md:text-base">{coach.speciality}</span>
 					</div>
-					<p class="text-pretty text-#55555A text-sm mt-2">{coach.shortBio}</p>
+					<p class="text-pretty text-#55555A text-sm mt-2 md:(text-base mt-4)">{coach.shortBio}</p>
 					<div
 						id="coachesBottom"
-						class="absolute -bottom-48px left-0 w-full h-12 [clip-path:polygon(32%_60%,_0_0,_100%_0)] lg:h-80px {getColors(
+						class="absolute -bottom-48px left-0 w-full h-12 [clip-path:polygon(32%_60%,_0_0,_100%_0)] md:[clip-path:polygon(14%_97%,_0_0,_100%_0)] lg:h-80px {getColors(
 							index
 						).path}"
 					/>
