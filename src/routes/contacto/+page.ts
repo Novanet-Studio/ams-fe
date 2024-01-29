@@ -1,4 +1,5 @@
 export const ssr = false;
+export const prerender = true;
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
