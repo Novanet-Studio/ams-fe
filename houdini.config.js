@@ -3,7 +3,7 @@
 /** @type {import('houdini').ConfigFile} */
 const config = {
 	watchSchema: {
-		url: 'http://localhost:1337/graphql'
+		url: 'https://avilamultisport-be-a6e286d55805.herokuapp.com/graphql'
 	},
 	plugins: {
 		'houdini-svelte': {}
