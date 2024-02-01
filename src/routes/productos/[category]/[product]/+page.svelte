@@ -113,17 +113,21 @@
 		<ul
 			class="px-12 pt-10 mb-18 pb-12 flex flex-col gap-8 min-h-screen lg:(flex-row min-h-full items-start justify-center mb-0 pt-10 max-w-70% mx-auto mb-24)"
 		>
-			{#each products as product (product?.attributes?.name)}
-				<li class="border-b pb-3 border-b-#DDDDDD md:mx-auto lg:(last:mx-0)">
-					<img
-						class="lg:max-w-350px"
-						src={getImageUrl(product?.attributes?.image?.data?.attributes?.url)}
-						alt={product?.attributes?.name}
-					/>
-					<h4 class="text-#003B49 text-lg font-bold mt-4">{product?.attributes?.name}</h4>
-					<button>Ver especificaciones</button>
-				</li>
-			{/each}
+			{#if $SubcategoryProducts.fetching}
+				<p>Cargando...</p>
+			{:else}
+				{#each products as product (product?.attributes?.name)}
+					<li class="border-b pb-3 border-b-#DDDDDD md:mx-auto lg:(last:mx-0)">
+						<img
+							class="lg:max-w-350px"
+							src={getImageUrl(product?.attributes?.image?.data?.attributes?.url)}
+							alt={product?.attributes?.name}
+						/>
+						<h4 class="text-#003B49 text-lg font-bold mt-4">{product?.attributes?.name}</h4>
+						<button>Ver especificaciones</button>
+					</li>
+				{/each}
+			{/if}
 		</ul>
 	</div>
 </section>

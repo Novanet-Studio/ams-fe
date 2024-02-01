@@ -122,33 +122,37 @@
 		use:clickOutside
 		on:clickoutside={() => (active = '')}
 	>
-		{#each $Subcategories?.data?.subcategories?.data as subcategory (subcategory?.attributes.name)}
-			<button
-				class="last:mb-36 md:mx-auto lg:(last:mb-0 mx-0)"
-				on:click|preventDefault={() => handleActive(subcategory?.attributes.name?.toLowerCase())}
-			>
-				<li class="relative">
-					<img
-						class="lg:max-w-360px"
-						src={getImageUrl(subcategory?.attributes?.image?.data?.attributes?.url)}
-						alt={subcategory?.attributes.name}
-					/>
-					{#if active === subcategory?.attributes.name?.toLowerCase()}
-						<div
-							class="absolute top-0 left-0 w-full h-full bg-#003B49/70 flex justify-center items-center backdrop-blur-2px"
-							transition:blur
-						>
-							<h5 class="font-bold text-xl text-white first-letter:uppercase">
-								{subcategory?.attributes?.name}
-							</h5>
+		{#if $Subcategories.fetching}
+			<p>Cargando...</p>
+		{:else}
+			{#each $Subcategories?.data?.subcategories?.data as subcategory (subcategory?.attributes.name)}
+				<button
+					class="last:mb-36 md:mx-auto lg:(last:mb-0 mx-0)"
+					on:click|preventDefault={() => handleActive(subcategory?.attributes.name?.toLowerCase())}
+				>
+					<li class="relative">
+						<img
+							class="lg:max-w-360px"
+							src={getImageUrl(subcategory?.attributes?.image?.data?.attributes?.url)}
+							alt={subcategory?.attributes.name}
+						/>
+						{#if active === subcategory?.attributes.name?.toLowerCase()}
 							<div
-								class="i-ph-arrow-right text-white text-xl"
-								transition:fly={{ x: 10, delay: 300 }}
-							></div>
-						</div>
-					{/if}
-				</li>
-			</button>
-		{/each}
+								class="absolute top-0 left-0 w-full h-full bg-#003B49/70 flex justify-center items-center backdrop-blur-2px"
+								transition:blur
+							>
+								<h5 class="font-bold text-xl text-white first-letter:uppercase">
+									{subcategory?.attributes?.name}
+								</h5>
+								<div
+									class="i-ph-arrow-right text-white text-xl"
+									transition:fly={{ x: 10, delay: 300 }}
+								></div>
+							</div>
+						{/if}
+					</li>
+				</button>
+			{/each}
+		{/if}
 	</ul>
 </section>
