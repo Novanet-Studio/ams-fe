@@ -113,10 +113,13 @@
 								class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 transition ease"
 								in:middleAnimation
 							>
-								<h4 id="name" class="text-#003B49 font-bold text-lg">
+								<h4 id="name" class="text-#003B49 font-bold text-5xl">
 									{category?.attributes?.name}
 								</h4>
-								<div class="i-ph-arrow-right" transition:fly={{ x: -10, delay: 0.5 }}></div>
+								<div
+									class="i-ph-arrow-right-bold text-4xl text-#003B49"
+									transition:fly={{ x: -10, delay: 0.5 }}
+								></div>
 							</div>
 							<div
 								id="bottom"

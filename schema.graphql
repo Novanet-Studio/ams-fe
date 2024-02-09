@@ -1,24 +1,3 @@
-type About {
-  Temas(filters: ComponentBasicBasicFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBasicBasic]
-  createdAt: DateTime
-  publishedAt: DateTime
-  updatedAt: DateTime
-}
-
-type AboutEntity {
-  attributes: About
-  id: ID
-}
-
-type AboutEntityResponse {
-  data: AboutEntity
-}
-
-input AboutInput {
-  Temas: [ComponentBasicBasicInput]
-  publishedAt: DateTime
-}
-
 input BooleanFilterInput {
   and: [Boolean]
   between: [Boolean]
@@ -84,69 +63,6 @@ input CategoryInput {
   name: String
   publishedAt: DateTime
   subcategorias: [ID]
-}
-
-type Company {
-  createdAt: DateTime
-  publishedAt: DateTime
-  temas(filters: ComponentBasicBasicFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBasicBasic]
-  updatedAt: DateTime
-}
-
-type CompanyEntity {
-  attributes: Company
-  id: ID
-}
-
-type CompanyEntityResponse {
-  data: CompanyEntity
-}
-
-input CompanyInput {
-  publishedAt: DateTime
-  temas: [ComponentBasicBasicInput]
-}
-
-type ComponentBasicBasic {
-  description: JSON
-  id: ID!
-  title: String
-}
-
-input ComponentBasicBasicFiltersInput {
-  and: [ComponentBasicBasicFiltersInput]
-  description: JSONFilterInput
-  not: ComponentBasicBasicFiltersInput
-  or: [ComponentBasicBasicFiltersInput]
-  title: StringFilterInput
-}
-
-input ComponentBasicBasicInput {
-  description: JSON
-  id: ID
-  title: String
-}
-
-type ComponentMainCarouseCarousel {
-  description: String
-  id: ID!
-  image: UploadFileEntityResponse
-  title: String
-}
-
-input ComponentMainCarouseCarouselFiltersInput {
-  and: [ComponentMainCarouseCarouselFiltersInput]
-  description: StringFilterInput
-  not: ComponentMainCarouseCarouselFiltersInput
-  or: [ComponentMainCarouseCarouselFiltersInput]
-  title: StringFilterInput
-}
-
-input ComponentMainCarouseCarouselInput {
-  description: String
-  id: ID
-  image: ID
-  title: String
 }
 
 type ContentReleasesRelease {
@@ -309,34 +225,7 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-union GenericMorph = About | Category | Company | ComponentBasicBasic | ComponentMainCarouseCarousel | ContentReleasesRelease | ContentReleasesReleaseAction | Home | I18NLocale | Product | Subcategory | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
-
-type Home {
-  brands(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
-  createdAt: DateTime
-  description: String
-  main_carousel(filters: ComponentMainCarouseCarouselFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentMainCarouseCarousel]
-  publishedAt: DateTime
-  title: String
-  updatedAt: DateTime
-}
-
-type HomeEntity {
-  attributes: Home
-  id: ID
-}
-
-type HomeEntityResponse {
-  data: HomeEntity
-}
-
-input HomeInput {
-  brands: [ID]
-  description: String
-  main_carousel: [ComponentMainCarouseCarouselInput]
-  publishedAt: DateTime
-  title: String
-}
+union GenericMorph = Category | ContentReleasesRelease | ContentReleasesReleaseAction | I18NLocale | Product | Subcategory | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type I18NLocale {
   code: String
@@ -466,12 +355,9 @@ type Mutation {
 
   """Create a new user"""
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
-  deleteAbout: AboutEntityResponse
   deleteCategory(id: ID!): CategoryEntityResponse
-  deleteCompany: CompanyEntityResponse
   deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
-  deleteHome: HomeEntityResponse
   deleteProduct(id: ID!): ProductEntityResponse
   deleteSubcategory(id: ID!): SubcategoryEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
@@ -499,13 +385,10 @@ type Mutation {
   Reset user password. Confirm with a code (resetToken from forgotPassword)
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
-  updateAbout(data: AboutInput!): AboutEntityResponse
   updateCategory(data: CategoryInput!, id: ID!): CategoryEntityResponse
-  updateCompany(data: CompanyInput!): CompanyEntityResponse
   updateContentReleasesRelease(data: ContentReleasesReleaseInput!, id: ID!): ContentReleasesReleaseEntityResponse
   updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
-  updateHome(data: HomeInput!): HomeEntityResponse
   updateProduct(data: ProductInput!, id: ID!): ProductEntityResponse
   updateSubcategory(data: SubcategoryInput!, id: ID!): SubcategoryEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
@@ -591,15 +474,12 @@ enum PublicationState {
 }
 
 type Query {
-  about(publicationState: PublicationState = LIVE): AboutEntityResponse
   categories(filters: CategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CategoryEntityResponseCollection
   category(id: ID): CategoryEntityResponse
-  company(publicationState: PublicationState = LIVE): CompanyEntityResponse
   contentReleasesRelease(id: ID): ContentReleasesReleaseEntityResponse
   contentReleasesReleaseAction(id: ID): ContentReleasesReleaseActionEntityResponse
   contentReleasesReleaseActions(filters: ContentReleasesReleaseActionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseActionEntityResponseCollection
   contentReleasesReleases(filters: ContentReleasesReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseEntityResponseCollection
-  home(publicationState: PublicationState = LIVE): HomeEntityResponse
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   me: UsersPermissionsMe
