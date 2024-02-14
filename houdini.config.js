@@ -3,7 +3,9 @@
 /** @type {import('houdini').ConfigFile} */
 const config = {
 	watchSchema: {
-		url: 'https://avilamultisport-be-a6e286d55805.herokuapp.com/graphql'
+		url(env) {
+			return env.WATCH_SCHEMA_URL;
+		}
 	},
 	plugins: {
 		'houdini-svelte': {}
