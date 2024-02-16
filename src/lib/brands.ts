@@ -82,11 +82,11 @@ export const carousel = {
 			logo: NZManufacturingLogo,
 			image: NZManufacturingImage
 		},
-		{
-			name: 'Saffeti',
-			logo: safettiLogo,
-			image: safettiImage
-		},
+		// {
+		// 	name: 'Saffeti',
+		// 	logo: safettiLogo,
+		// 	image: safettiImage
+		// },
 		{
 			name: 'SRM',
 			logo: SRMLogo,
