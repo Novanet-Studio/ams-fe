@@ -35,10 +35,10 @@ export const brands = [
 		name: 'NZ Manufacturing',
 		image: NZManufacturingLogo
 	},
-	{
+	/* 	{
 		name: 'Saffeti',
 		image: safettiLogo
-	},
+	}, */
 	{
 		name: 'SRM',
 		image: SRMLogo
