@@ -35,10 +35,10 @@ export const brands = [
 		name: 'NZ Manufacturing',
 		image: NZManufacturingLogo
 	},
-	{
-		name: 'Saffeti',
-		image: safettiLogo
-	},
+	// {
+	// 	name: 'Saffeti',
+	// 	image: safettiLogo
+	// },
 	{
 		name: 'SRM',
 		image: SRMLogo
@@ -84,7 +84,7 @@ export const carousel = {
 		},
 		{
 			name: 'Saffeti',
-			// logo: safettiLogo,
+			logo: safettiLogo,
 			image: safettiImage
 		},
 		{
