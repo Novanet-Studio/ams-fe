@@ -1,8 +1,8 @@
 import { HoudiniClient } from '$houdini';
-import { env } from '$env/dynamic/public';
+import { PUBLIC_STRAPI_API_URL } from '$env/static/public';
 
 export default new HoudiniClient({
-	url: env.PUBLIC_STRAPI_API_URL
+	url: PUBLIC_STRAPI_API_URL
 
 	// uncomment this to configure the network call (for things like authentication)
 	// for more information, please visit here: https://www.houdinigraphql.com/guides/authentication
