@@ -84,7 +84,7 @@ export const carousel = {
 		},
 		{
 			name: 'Saffeti',
-			logo: safettiLogo,
+			// logo: safettiLogo,
 			image: safettiImage
 		},
 		{

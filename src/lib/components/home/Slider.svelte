@@ -69,12 +69,14 @@
 				class="min-h-screen min-w-full bg-center bg-cover flex flex-col justify-center"
 				style="background-image: url({accesory.image})"
 			>
-				<img
-					id="sliderBanner"
-					class="p-8 rounded-md w-63 md:w-81 self-center"
-					src={accesory.logo}
-					alt={accesory.name}
-				/>
+				{#if accesory.logo}
+					<img
+						id="sliderBanner"
+						class="p-8 rounded-md w-63 md:w-81 self-center"
+						src={accesory.logo}
+						alt={accesory.name}
+					/>
+				{/if}
 			</swiper-slide>
 		{/each}
 	</swiper-container>
