@@ -91,13 +91,16 @@
 				>
 					{item.copy.secondary}
 				</p>
-				<img
-					id="banner"
-					class="drop-shadow drop-shadow-color-#eee w-60% md:(w-30% mt-12)"
-					src={item.logo}
-					alt={item.name}
-					loading="lazy"
-				/>
+				{#if item.name === 'Inspire logo'}
+					<img
+						src={item.logo}
+						alt={item.name}
+						loading="lazy"
+						class="filter-invert-100 w-60% md:(w-30% mt-12)"
+					/>
+				{:else}
+					<img src={item.logo} alt={item.name} loading="lazy" class="w-60% md:(w-30% mt-12)" />
+				{/if}
 			</swiper-slide>
 		{/each}
 	</swiper-container>

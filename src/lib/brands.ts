@@ -20,15 +20,15 @@ import SRMImage from '$lib/assets/accesories/avila-multisports-accesorios-plato-
 
 export const brands = [
 	{
-		name: 'Willier',
+		name: 'Willier logo',
 		image: willierLogo
 	},
 	{
-		name: 'Inspire',
+		name: 'Inspire logo',
 		image: inspireLogo
 	},
 	{
-		name: 'True',
+		name: 'True logo',
 		image: trueLogo
 	},
 	{
@@ -48,7 +48,7 @@ export const brands = [
 export const carousel = {
 	hardware: [
 		{
-			name: 'Willier',
+			name: 'Willier logo',
 			copy: {
 				main: 'Somos representantes exclusivos',
 				secondary:
@@ -58,7 +58,7 @@ export const carousel = {
 			image: willierImage
 		},
 		{
-			name: 'Inspire',
+			name: 'Inspire logo',
 			copy: {
 				main: 'Inspirados para ofrecer los mejores productos',
 				secondary: 'Otra gran descripcion aca'
@@ -67,7 +67,7 @@ export const carousel = {
 			image: inspireImage
 		},
 		{
-			name: 'True',
+			name: 'True logo',
 			copy: {
 				main: 'Somos representantes exclusivos',
 				secondary: 'Tu mejor aliado para tus actividades fitness'

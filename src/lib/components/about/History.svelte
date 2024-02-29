@@ -70,7 +70,9 @@
 >
 	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12) lg:pl-16">
 		<h3 class="mb-4 text-2xl text-#E3D268 md:text-4xl">{topic.title}</h3>
-		<p class="text-0.73rem leading-normal text-#ddd md:(text-1.15rem max-w-90%)">
+		<p
+			class="text-0.73rem leading-normal text-#ddd md:(text-0.75rem max-w-100%) xl:(text-0.9rem) 2xl:(text-1.25rem)"
+		>
 			{@html topic.description}
 		</p>
 	</div>
