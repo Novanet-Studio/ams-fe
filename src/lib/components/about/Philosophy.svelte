@@ -60,10 +60,14 @@
 		class="p-8 pt-24 bg-#55555A h-94vh [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)] md:(pt-32 p-12)"
 	>
 		<h3 class="mb-4 text-2xl text-#ACC37E md:text-4xl">{topic.title}</h3>
-		<p
-			class="text-0.73rem leading-normal text-#ddd md:(text-0.75rem max-w-100%) xl:(text-0.9rem) 2xl:(text-1.25rem)"
+		<div
+			class="max-h-[50vh] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
 		>
-			{@html topic.description}
-		</p>
+			<p
+				class="text-0.9rem leading-normal text-#ddd md:(text-0.75rem max-w-100%) xl:(text-0.9rem) 2xl:(text-1.25rem)"
+			>
+				{@html topic.description}
+			</p>
+		</div>
 	</div>
 </section>

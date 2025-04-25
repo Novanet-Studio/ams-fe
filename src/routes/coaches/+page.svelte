@@ -138,7 +138,7 @@
 		>
 			{#each coaches as coach, index}
 				<li
-					class="p-6 md:mx-auto relative border md:p-16 lg:(last:mx-0 p-8 pt-12 pb-12) {getColors(
+					class="p-6 flex-1 md:mx-auto relative border md:p-16 lg:(last:mx-0 p-8 pt-12 pb-12) {getColors(
 						index
 					).li}"
 				>
@@ -157,7 +157,18 @@
 							alt={coach.name}
 						/>
 					</div>
-					<h4 class="text-#55555A text-2xl text-center font-bold mt-4 md:text-3xl">{coach.name}</h4>
+					<div class="flex justify-center">
+						<a
+							href={coach.instagramProfile}
+							target="_blank"
+							class="flex items-center gap-2 text-2xl text-#55555A hover:text-#47474d"
+						>
+							<h4 class=" text-center font-bold mt-4 md:text-3xl">
+								{coach.name}
+							</h4>
+							<div class="i-fa6-brands-instagram mt-4"></div>
+						</a>
+					</div>
 					<div class="text-#55555A font-700 text-sm text-center md:text-base">
 						Especialidad: <span class="text-sm font-300 md:text-base">{coach.speciality}</span>
 					</div>

@@ -22,17 +22,25 @@
 		<button
 			class="w-8 h-8 rounded-full bg-[#93B7BB] text-[#003B49] flex items-center justify-center md:(w-10 h-10)"
 		>
-			<div class="i-fa6-brands-whatsapp text-lg"></div>
+			<a href="/#" target="_blank">
+				<div class="i-fa6-brands-whatsapp text-lg"></div>
+			</a>
 		</button>
+
 		<button
 			class="w-8 h-8 rounded-full bg-[#ACC37E] text-[#003B49] flex items-center justify-center md:(w-10 h-10)"
 		>
-			<div class="i-fa6-brands-facebook-f text-lg"></div>
+			<a href="/#" target="_blank">
+				<div class="i-fa6-brands-facebook-f text-lg"></div>
+			</a>
 		</button>
+
 		<button
 			class="w-8 h-8 rounded-full bg-[#E3D268] text-[#003B49] flex items-center justify-center md:(w-10 h-10)"
 		>
-			<div class="i-fa6-brands-instagram text-lg"></div>
+			<a href="https://www.instagram.com/avilamultisport/" target="_blank">
+				<div class="i-fa6-brands-instagram text-lg"></div>
+			</a>
 		</button>
 	</section>
 </footer>
