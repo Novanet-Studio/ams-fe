@@ -6,7 +6,10 @@
 
 	let sending = false;
 	let clientError = '';
+	let successMessage = '';
 	const EMAIL_TARGET = 'info@avilamultisport.com';
+
+	let formElement: HTMLFormElement;
 
 	let nameError = '';
 	let lastnameError = '';
@@ -22,10 +25,13 @@
 	function validateName(value: string): boolean {
 		if (!value) {
 			nameError = 'El nombre es requerido';
+
 			return false;
 		}
+
 		if (!NAME_REGEX.test(value)) {
 			nameError = 'El nombre solo debe contener letras y espacios (2-50 caracteres)';
+
 			return false;
 		}
 		nameError = '';
@@ -35,56 +41,76 @@
 	function validateLastname(value: string): boolean {
 		if (!value) {
 			lastnameError = 'El apellido es requerido';
+
 			return false;
 		}
+
 		if (!NAME_REGEX.test(value)) {
 			lastnameError = 'El apellido solo debe contener letras y espacios (2-50 caracteres)';
+
 			return false;
 		}
+
 		lastnameError = '';
+
 		return true;
 	}
 
 	function validateEmail(value: string): boolean {
 		if (!value) {
 			emailError = 'El email es requerido';
+
 			return false;
 		}
+
 		if (!EMAIL_REGEX.test(value)) {
 			emailError = 'Ingrese un email válido';
+
 			return false;
 		}
+
 		emailError = '';
+
 		return true;
 	}
 
 	function validatePhone(value: string): boolean {
 		if (!value) {
 			phoneError = 'El teléfono es requerido';
+
 			return false;
 		}
+
 		if (!PHONE_REGEX.test(value)) {
 			phoneError = 'Ingrese un número de teléfono válido (8-15 dígitos)';
+
 			return false;
 		}
+
 		phoneError = '';
+
 		return true;
 	}
 
 	function validateMessage(value: string): boolean {
 		if (!value) {
 			messageError = 'El mensaje es requerido';
+
 			return false;
 		}
+
 		if (!MESSAGE_REGEX.test(value)) {
 			messageError = 'El mensaje solo puede contener caracteres regulares (máx 256 caracteres)';
+
 			return false;
 		}
+
 		messageError = '';
+
 		return true;
 	}
 
-	function validateForm(formData: FormData): boolean {
+	function validateAllFields(formData: FormData): boolean {
 		const name = formData.get('name') as string;
 		const lastname = formData.get('lastname') as string;
 		const email = formData.get('email') as string;
@@ -100,6 +126,55 @@
 		return isNameValid && isLastnameValid && isEmailValid && isPhoneValid && isMessageValid;
 	}
 
+	function clearFormErrors() {
+		nameError = '';
+		lastnameError = '';
+		emailError = '';
+		phoneError = '';
+		messageError = '';
+		clientError = '';
+	}
+
+	async function handleSubmit(event: Event) {
+		event.preventDefault();
+
+		sending = true;
+		clientError = '';
+		successMessage = '';
+
+		const formData = new FormData(formElement);
+
+		if (!validateAllFields(formData)) {
+			clientError = 'Por favor, corrige los errores en el formulario.';
+			sending = false;
+			return;
+		}
+
+		try {
+			const body = new URLSearchParams(formData as any).toString();
+
+			const response = await fetch(formElement.action, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body
+			});
+
+			if (response.ok) {
+				successMessage = '¡Formulario enviado con éxito! Gracias por contactarnos.';
+
+				if (formElement) formElement.reset();
+
+				clearFormErrors();
+			} else {
+				clientError = `Error al enviar el formulario (${response.status}). Inténtalo de nuevo.`;
+			}
+		} catch (error) {
+			clientError = 'Hubo un problema al conectar con el servidor. Por favor, inténtalo más tarde.';
+		} finally {
+			sending = false;
+		}
+	}
+
 	function isMobileDevice() {
 		if (!browser) return false;
 		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -113,21 +188,6 @@
 			return `mailto:${EMAIL_TARGET}?subject=${subject}`;
 		}
 		return `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL_TARGET}&su=${subject}`;
-	}
-
-	function handleSubmit(event: Event) {
-		clientError = '';
-		sending = true;
-
-		const form = event.target as HTMLFormElement;
-		const formData = new FormData(form);
-
-		if (!validateForm(formData)) {
-			event.preventDefault();
-			clientError = 'Por favor, corrige los errores en el formulario.';
-			sending = false;
-			return;
-		}
 	}
 
 	function enterAnimation() {
@@ -219,16 +279,16 @@
 	on:exit={exitAnimation}
 >
 	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12) lg:pl-16">
-		<h3 class="mb-4 text-2xl text-#E3D268 md:text-4xl">Contáctanos</h3>
+		<h3 class="mb-2 text-2xl text-#E3D268 md:text-4xl">Contáctanos</h3>
 
 		<form
-			class="flex flex-col gap-4 md:(gap-4 mt-8)"
+			bind:this={formElement}
+			class="flex flex-col gap-4 md:(gap-4 mt-4)"
 			name="contact-form"
 			method="POST"
 			data-netlify="true"
 			data-netlify-honeypot="bot-field"
 			on:submit={handleSubmit}
-			action="/thank-you/"
 		>
 			<input type="hidden" name="form-name" value="contact-form" />
 
@@ -305,28 +365,31 @@
 			<div class="w-full">
 				<textarea
 					required
-					class="w-full pt-3 pl-3"
+					class="w-full pt-3 pl-3 resize-none"
 					name="message"
 					rows="4"
 					placeholder="Mensaje"
 					on:input={(e) => validateMessage(e.currentTarget.value)}
 					aria-invalid={messageError ? 'true' : undefined}
 					aria-describedby={messageError ? 'message-error-msg' : undefined}
-				></textarea>
-				{#if messageError}
-					<p id="message-error-msg" class="text-red-500 text-sm mt-1">{messageError}</p>
-				{/if}
+				/>
 			</div>
 
-			{#if clientError}
-				<p class="text-red-500">{clientError}</p>
+			{#if messageError}
+				<p id="message-error-msg" class="text-red-500 text-sm mt-1">{messageError}</p>
 			{/if}
 
-			<button
-				aria-label="Enviar mensaje"
-				class="self-start bg-#ACC37E py-2 px-12 rounded-full"
-				disabled={sending}
-			>
+			{#if clientError}
+				<p class="text-red-500 py-1 pl-2 bg-red-200 border border-red-400 rounded">{clientError}</p>
+			{/if}
+
+			{#if successMessage}
+				<p class="text-green-700 py-1 pl-2 bg-green-200 border border-green-500 rounded">
+					{successMessage}
+				</p>
+			{/if}
+
+			<button class="self-start bg-#ACC37E py-2 px-12 rounded-full" disabled={sending}>
 				{sending ? 'Enviando...' : 'Enviar'}
 			</button>
 		</form>
