@@ -107,7 +107,7 @@
 			</div>
 			<img
 				id="image"
-				class="md:min-w-full object-cover object-center"
+				class="md:min-w-full h-full object-cover object-center"
 				src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
 				alt={category?.attributes?.name}
 			/>
