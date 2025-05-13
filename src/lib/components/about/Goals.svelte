@@ -52,14 +52,18 @@
 		on:enter={enterAnimation}
 	>
 		<ul class="grid grid-cols-1">
-			{#each info.content as item}
-				<li class="mb-4 {item.title.toLowerCase() === 'valores'}">
-					<h4 class="mb-2 text-xl text-#E3D268 md:text-2xl lg:text-3xl">{item.title}</h4>
-					<p class="text-0.73rem leading-normal text-#ddd md:(text-1.15rem max-w-90%)">
-						{item.description}
-					</p>
-				</li>
-			{/each}
+			<div
+				class="max-h-[50vh] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+			>
+				{#each info.content as item}
+					<li class="mb-4 {item.title.toLowerCase() === 'valores'}">
+						<h4 class="mb-2 text-xl text-#E3D268 md:text-2xl lg:text-3xl">{item.title}</h4>
+						<p class="text-0.73rem leading-normal text-#ddd md:(text-1.15rem max-w-90%)">
+							{item.description}
+						</p>
+					</li>
+				{/each}
+			</div>
 		</ul>
 	</div>
 </section>

@@ -64,7 +64,7 @@
 			enabled: false,
 			nextEl: '.main-next-btn',
 			prevEl: '.main-prev-btn',
-			disabledClass: 'opacity-50'
+			disabledClass: 'opacity-90'
 		}}
 		pagination={{}}
 		breakpoints={{
@@ -114,7 +114,7 @@
 
 <style>
 	swiper-container::part(pagination) {
-		--swiper-pagination-bottom: 5rem;
+		--swiper-pagination-bottom: 15vh;
 		--swiper-pagination-color: #fff;
 	}
 </style>
