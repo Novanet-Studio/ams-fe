@@ -25,13 +25,10 @@
 	function validateName(value: string): boolean {
 		if (!value) {
 			nameError = 'El nombre es requerido';
-
 			return false;
 		}
-
 		if (!NAME_REGEX.test(value)) {
 			nameError = 'El nombre solo debe contener letras y espacios (2-50 caracteres)';
-
 			return false;
 		}
 		nameError = '';
@@ -41,72 +38,52 @@
 	function validateLastname(value: string): boolean {
 		if (!value) {
 			lastnameError = 'El apellido es requerido';
-
 			return false;
 		}
-
 		if (!NAME_REGEX.test(value)) {
 			lastnameError = 'El apellido solo debe contener letras y espacios (2-50 caracteres)';
-
 			return false;
 		}
-
 		lastnameError = '';
-
 		return true;
 	}
 
 	function validateEmail(value: string): boolean {
 		if (!value) {
 			emailError = 'El email es requerido';
-
 			return false;
 		}
-
 		if (!EMAIL_REGEX.test(value)) {
 			emailError = 'Ingrese un email válido';
-
 			return false;
 		}
-
 		emailError = '';
-
 		return true;
 	}
 
 	function validatePhone(value: string): boolean {
 		if (!value) {
 			phoneError = 'El teléfono es requerido';
-
 			return false;
 		}
-
 		if (!PHONE_REGEX.test(value)) {
 			phoneError = 'Ingrese un número de teléfono válido (8-15 dígitos)';
-
 			return false;
 		}
-
 		phoneError = '';
-
 		return true;
 	}
 
 	function validateMessage(value: string): boolean {
 		if (!value) {
 			messageError = 'El mensaje es requerido';
-
 			return false;
 		}
-
 		if (!MESSAGE_REGEX.test(value)) {
 			messageError = 'El mensaje solo puede contener caracteres regulares (máx 256 caracteres)';
-
 			return false;
 		}
-
 		messageError = '';
-
 		return true;
 	}
 
@@ -152,6 +129,8 @@
 
 		try {
 			const body = new URLSearchParams(formData as any).toString();
+			console.log('Enviando a:', formElement.action);
+			console.log('Cuerpo del POST:', body);
 
 			const response = await fetch(formElement.action, {
 				method: 'POST',
@@ -161,11 +140,10 @@
 
 			if (response.ok) {
 				successMessage = '¡Formulario enviado con éxito! Gracias por contactarnos.';
-
 				if (formElement) formElement.reset();
-
 				clearFormErrors();
 			} else {
+				const errorData = await response.text();
 				clientError = `Error al enviar el formulario (${response.status}). Inténtalo de nuevo.`;
 			}
 		} catch (error) {
