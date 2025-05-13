@@ -8,6 +8,8 @@
 	import { getImageUrl } from '$lib/utils';
 	import type { PageData } from './$houdini';
 
+	import { coachesBanner } from '$lib/coaches';
+
 	export let data: PageData;
 
 	$: ({ Categories } = data);
@@ -86,11 +88,32 @@
 	});
 </script>
 
-<section
-	id="productCategories"
-	class="h-screen max-h-screen bg-#003B49 flex flex-col items-center pt-28 p-8 overflow-y-auto"
->
-	<h3 class="text-2xl text-#E3D268 md:text-3xl">Productos</h3>
+<section id="productCategories" class="bg-#003B49 flex flex-col items-center pt-14 lg:pt-18">
+	<div class="w-full">
+		<div
+			id="top"
+			class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#93B7BB lg:h-80px"
+		/>
+		<div class="w-full h-36 relative overflow-hidden lg:h-300px">
+			<div
+				id="middle"
+				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 z-2"
+			>
+				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl lg:text-4xl">Productos</h4>
+			</div>
+			<img
+				id="image"
+				class="md:min-w-full h-full object-cover object-center"
+				src={coachesBanner}
+				alt="productBanner"
+			/>
+		</div>
+		<div
+			id="bottom"
+			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB lg:h-80px"
+		/>
+	</div>
+
 	<ul
 		class="px-6 mt-8 pb-20 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:(grid-cols-3)"
 		use:clickOutside
