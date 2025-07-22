@@ -85,7 +85,7 @@
 	$: color = $isOpen ? 'white' : colors[$elementColors.burger];
 </script>
 
-<button class="z-99" on:click={() => ($isOpen = !$isOpen)}>
+<button class="z-99 bg-#003B49 rounded-full p-4" on:click={() => ($isOpen = !$isOpen)}>
 	<svg
 		id="burger"
 		width="30"

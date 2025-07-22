@@ -83,7 +83,7 @@
 </script>
 
 <menu
-	class="fixed w-full min-h-screen bg-[#003B49] text-white shadow-lg top-0 bottom-0 z-10 max-h-screen overflow-hidden min-h-screen transition transition-right ease-in-out lg:(transition-right w-25%) {$isOpen
+	class="fixed w-full min-h-screen bg-[#003B49] text-white shadow-lg top-0 bottom-0 z-10 max-h-screen overflow-hidden min-h-screen transition transition-right ease-in-out lg:(transition-right w-25% p-4) {$isOpen
 		? 'right-0'
 		: '-right-full'}"
 	class:open={$isOpen}

@@ -13,9 +13,9 @@
 </script>
 
 <header
-	class="flex items-center justify-between z-99 p-6 fixed {sticky
+	class="flex items-center justify-between z-99 fixed {sticky
 		? 'bg-#003B49'
-		: 'bg-transparent'} top-0 w-full transition ease lg:(py-12 px-24)"
+		: 'bg-transparent'} top-0 w-full transition ease lg:(py-12 px-16)"
 >
 	<AmsLogo />
 	<BurgerMenu />

@@ -77,7 +77,7 @@
 	>
 		{#each carousel.hardware as item (item.name)}
 			<swiper-slide
-				class="min-h-screen min-w-full bg-cover bg-[-45em] flex flex-col justify-start pt-36 pl-10 items-start gap-4 md:(pt-40 gap-6 bg-center) lg:(pl-24 pt-52)"
+				class="min-h-screen min-w-full bg-cover bg-[-45em] flex flex-col justify-start pt-36 pl-10 items-start gap-4 md:(pt-40 gap-6 bg-center) lg:(px-16 pt-52)"
 				style="background-image: url({item.image})"
 			>
 				<h3
