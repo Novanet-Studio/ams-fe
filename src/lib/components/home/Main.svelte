@@ -87,7 +87,7 @@
 					{item.copy.main}
 				</h3>
 				<p
-					class="text-white max-w-[80%] text-shadow-xl md:(text-xl max-w-60%) lg:(text-2xl max-w-45%)"
+					class="text-white max-w-[80%] text-shadow-x md:(text-xl max-w-60%) lg:(text-2xl max-w-45%)"
 				>
 					{item.copy.secondary}
 				</p>
@@ -96,10 +96,10 @@
 						src={item.logo}
 						alt={item.name}
 						loading="lazy"
-						class="filter-invert-100 w-60% md:(w-30% mt-12)"
+						class="filter-invert-100 w-60% md:(w-20% mt-12)"
 					/>
 				{:else}
-					<img src={item.logo} alt={item.name} loading="lazy" class="w-60% md:(w-30% mt-12)" />
+					<img src={item.logo} alt={item.name} loading="lazy" class="w-60% md:(w-20% mt-12)" />
 				{/if}
 			</swiper-slide>
 		{/each}

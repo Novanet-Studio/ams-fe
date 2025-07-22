@@ -15,7 +15,7 @@
 <header
 	class="flex items-center justify-between z-99 p-6 fixed {sticky
 		? 'bg-#003B49'
-		: 'bg-transparent'} top-0 w-full transition ease lg:(p-12 px-16)"
+		: 'bg-transparent'} top-0 w-full transition ease lg:(py-12 px-24)"
 >
 	<AmsLogo />
 	<BurgerMenu />
