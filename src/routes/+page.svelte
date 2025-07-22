@@ -27,4 +27,3 @@
 	<FeaturedMessage class="lg:w-1/2" />
 	<Brands class="lg:w-1/2" />
 </div>
-<Slider />

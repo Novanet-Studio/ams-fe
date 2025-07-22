@@ -42,16 +42,20 @@ export const brands = [
 		image: trueLogo
 	},
 	{
-		name: 'NZ Manufacturing',
-		image: NZManufacturingLogo
+		name: 'Castelli logo',
+		image: castelliLogo
 	},
-	// {
-	// 	name: 'Saffeti',
-	// 	image: safettiLogo
-	// },
 	{
-		name: 'SRM',
-		image: SRMLogo
+		name: 'Miche logo',
+		image: micheLogo
+	},
+	{
+		name: 'Speedsix logo',
+		image: speedsixLogo
+	},
+	{
+		name: 'Scicon logo',
+		image: sciconLogo
 	}
 ];
 

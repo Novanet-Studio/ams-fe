@@ -63,8 +63,8 @@
 		<h4
 			class="text-[#E3D268] text-lg opacity-0 font-300 max-w-18rem z-4 md:(text-3xl max-w-lg text-balance) lg:(max-w-32rem)"
 		>
-			Somos representantes exclusivos de Wilier e Inspire Fitness. También, distribuidores de
-			equipos True
+			Somos representantes exclusivos de Wilier e Inspire Fitness. También, distribuidores
+			autorizados de equipos True, Castelli, Miche. Speedsix y Scicon
 		</h4>
 		<p
 			class="text-[#DDDDDD] font-300 opacity-0 max-w-18rem mt-4 md:(text-2xl max-w-sm) lg:(text-2xl max-w-31rem)"
