@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import FirstImg from '$lib/components/about/FirstImg.svelte';
+	import HistoryImg from '$lib/components/about/HistoryImg.svelte';
 	import Goals from '$lib/components/about/Goals.svelte';
 	import History from '$lib/components/about/History.svelte';
 	import Philosophy from '$lib/components/about/Philosophy.svelte';
-	import SecondImg from '$lib/components/about/SecondImg.svelte';
-	import ThirdImg from '$lib/components/about/ThirdImg.svelte';
+	import PhilosophyImg from '$lib/components/about/PhilosophyImg.svelte';
+	import GoalsImg from '$lib/components/about/GoalsImg.svelte';
 	import { elementColors } from '$lib/store';
 	import type { Topic } from '$lib/types';
 
@@ -53,13 +53,13 @@
 
 <div class="lg:(flex flex-row)">
 	<History topic={data.content.topics[0]} />
-	<FirstImg />
+	<HistoryImg />
 </div>
 <div class="lg:(flex flex-row)">
 	<Philosophy topic={data.content.topics[1]} />
-	<SecondImg />
+	<PhilosophyImg />
 </div>
 <div class="lg:(flex flex-row)">
 	<Goals {info} />
-	<ThirdImg />
+	<GoalsImg />
 </div>

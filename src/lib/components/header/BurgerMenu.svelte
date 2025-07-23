@@ -78,7 +78,7 @@
 
 	const colors = {
 		light: '#ddd',
-		dark: '#003B49'
+		dark: '#fff'
 	};
 
 	$: $isOpen ? animationOpen() : animationClose();

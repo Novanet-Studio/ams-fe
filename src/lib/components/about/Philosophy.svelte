@@ -1,51 +1,51 @@
 <script lang="ts">
-	import { timeline } from 'motion';
+	import { animate, timeline } from 'motion';
 	import inView from '$lib/actions/inView';
 	import type { Topic } from '$lib/types';
 
 	export let topic: Topic;
 
 	function enterAnimation() {
-		timeline(
+		timeline([
 			[
-				[
-					'#philosophy',
-					{
-						opacity: [0, 1]
-					},
-					{ duration: 0.5, delay: 0.5, easing: [0.17, 0.55, 0.55, 1] }
-				],
-				[
-					'#philosophy > div',
-					{
-						opacity: [0, 1],
-						clipPath: [
-							'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
-							'polygon(0 0, 100% 0, 100% 85.77%, 0% 91.23%)'
-						]
-					},
-					{ duration: 0.5 }
-				],
-				[
-					'#philosophy > div > h3',
-					{
-						opacity: [0, 1],
-						x: [-10, 0]
-					},
-					{ duration: 0.5, delay: 0.3 }
-				],
-				[
-					'#philosophy > div > p',
-					{
-						opacity: [0, 1],
-						x: [-10, 0]
-					},
-					{ duration: 0.5, delay: 0.3 }
-				]
+				'#philosophy',
+				{
+					opacity: [0, 1]
+				}
 			],
-			{
-				duration: 2.5
-			}
+			[
+				'#philosophy > div',
+				{
+					opacity: [0, 1],
+					clipPath: [
+						'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
+						'polygon(0 0, 100% 0, 100% 85.77%, 0% 91.23%)'
+					]
+				}
+			],
+			[
+				'#philosophy > div > h3',
+				{
+					opacity: [0, 1],
+					x: [-10, 0]
+				}
+			],
+			[
+				'#philosophy > div > div > p',
+				{
+					opacity: [0, 1],
+					x: [-10, 0]
+				},
+				{ duration: 0.75 }
+			]
+		]);
+	}
+
+	function exitAnimation() {
+		animate(
+			'#history',
+			{ opacity: [1, 0] },
+			{ duration: 0.5, delay: 0.5, easing: [0.17, 0.55, 0.55, 1] }
 		);
 	}
 </script>
@@ -57,7 +57,7 @@
 	on:enter={enterAnimation}
 >
 	<div
-		class="p-8 pt-24 bg-#55555A h-94vh [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)] md:(pt-32 p-12)"
+		class="p-8 pt-24 bg-#55555A h-94vh [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)] md:(pt-46 p-12)"
 	>
 		<h3 class="mb-4 text-2xl text-#ACC37E md:text-4xl">{topic.title}</h3>
 		<div
