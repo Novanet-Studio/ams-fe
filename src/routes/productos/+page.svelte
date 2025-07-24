@@ -8,7 +8,7 @@
 	import { getImageUrl } from '$lib/utils';
 	import type { PageData } from './$houdini';
 
-	import { coachesBanner } from '$lib/coaches';
+	import { productsBanner } from '$lib/products';
 
 	export let data: PageData;
 
@@ -84,7 +84,7 @@
 
 	onMount(() => {
 		animateElements();
-		$elementColors.copyright = 'light';
+		$elementColors.copyright = 'dark';
 	});
 </script>
 
@@ -97,14 +97,14 @@
 		<div class="w-full h-36 relative overflow-hidden lg:h-300px">
 			<div
 				id="middle"
-				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 z-2"
+				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/70 gap-2 z-2"
 			>
 				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl lg:text-4xl">Productos</h4>
 			</div>
 			<img
 				id="image"
 				class="md:min-w-full h-full object-cover object-center"
-				src={coachesBanner}
+				src={productsBanner}
 				alt="productBanner"
 			/>
 		</div>
@@ -115,7 +115,7 @@
 	</div>
 
 	<ul
-		class="px-6 mt-8 pb-20 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:(grid-cols-3)"
+		class="px-6 mt-8 pb-20 grid gap-8 grid-cols-1 bg-white sm:grid-cols-2 lg:(px-16) lg:pt-30 lg:(grid-cols-3) lg:-mt-20"
 		use:clickOutside
 		on:clickoutside={() => (active = '')}
 	>
@@ -125,39 +125,21 @@
 					on:click|preventDefault={() => handleActive(category?.attributes?.name?.toLowerCase())}
 				>
 					<li id={category?.attributes?.name?.toLowerCase()} class="relative max-w-full">
-						<div
-							id="top"
-							class={`absolute top-0 left-0 w-full h-6 transition ease [clip-path:polygon(0%_0%,_100%_0%,_19.74%_81.25%)] ${
-								active === category?.attributes?.name?.toLowerCase()
-									? ' bg-#93B7BB'
-									: 'bg-#93B7BB/75 md:bg-#93B7BB/50'
-							}`}
-							in:topAnimation
-						/>
-						<div
-							id="middle"
-							class={`absolute bottom-0 left-0 w-full h-8 md:h-12 flex justify-center items-center gap-2 [clip-path:polygon(60%_0,_94%_23%,_100%_100%,_0_100%,_8%_8%)] transition ease z-10 ${
-								active === category?.attributes?.name?.toLowerCase()
-									? ' bg-#93B7BB'
-									: 'bg-#93B7BB/75 md:bg-#93B7BB/50'
-							}`}
-							in:middleAnimation
-						>
-							<h4 id="name" class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-3xl">
-								{category?.attributes?.name}
-							</h4>
-							<div
-								class="i-ph-arrow-right-bold text-xl md:text-2xl text-#003B49"
-								transition:fly={{ x: -10, delay: 0.5 }}
-							></div>
-						</div>
-
 						<img
 							id="image"
 							src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
 							alt={category?.attributes?.name}
 						/>
 					</li>
+					<div class=" flex justify-center p-3 bg-#93B7BB">
+						<h4 id="name" class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-2xl">
+							{category?.attributes?.name}
+						</h4>
+						<div
+							class="i-ph-arrow-right-bold mt-1 ml-1 text-xl md:text-2xl text-#003B49"
+							transition:fly={{ x: -10, delay: 0.5 }}
+						></div>
+					</div>
 				</button>
 			{/each}
 		{/if}

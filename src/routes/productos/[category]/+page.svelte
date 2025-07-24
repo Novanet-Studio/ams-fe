@@ -99,7 +99,7 @@
 		<div class="w-full h-36 relative overflow-hidden lg:h-300px">
 			<div
 				id="middle"
-				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 z-2"
+				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/80 gap-2 z-2"
 			>
 				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl lg:text-4xl">
 					{category?.attributes?.name ?? categoryName}
@@ -117,8 +117,9 @@
 			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB lg:h-80px"
 		/>
 	</div>
+
 	<ul
-		class="px-12 pt-18 pb-20 md:pb-30 gap-8 -mt-10 min-h-full bg-#fff w-full"
+		class="px-12 mt-10 min-h-full bg-#fff w-full md:pb-30 gap-8 lg:pb-20 lg:pt-30 lg:-mt-20"
 		use:clickOutside
 		on:clickoutside={() => (active = '')}
 	>
@@ -140,7 +141,7 @@
 							/>
 
 							<div
-								class={`absolute bottom-0 left-0 w-full flex justify-center items-center backdrop-blur-2px [clip-path:polygon(3%_7%,_93%_0,_100%_50%,_100%_100%,_5%_98%,_0%_50%)] transition ease ${
+								class={`absolute bottom-0 left-0 w-full flex justify-center items-center backdrop-blur-2px transition ease ${
 									active === subcategory?.attributes?.name?.toLowerCase()
 										? 'bg-#003B49'
 										: 'bg-#003B49/70'
@@ -151,7 +152,7 @@
 									{subcategory?.attributes?.name}
 								</h5>
 								<div
-									class="i-ph-arrow-right text-white text-xl"
+									class="i-ph-arrow-right ml-1 text-white text-xl"
 									transition:fly={{ x: 10, delay: 300 }}
 								></div>
 							</div>

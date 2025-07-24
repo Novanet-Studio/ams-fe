@@ -107,7 +107,9 @@
 	</div>
 
 	<div class="-mt-12 bg-#fff w-full min-h-full lg:-mt-20">
-		<h3 class="mt-24 text-center text-2xl text-#003B49 first-letter:uppercase md:text-3xl lg:mt-20">
+		<h3
+			class="mt-24 text-center font-bold text-2xl text-#003B49 first-letter:uppercase md:text-3xl lg:mt-20"
+		>
 			{productName}
 		</h3>
 		<ul
@@ -118,16 +120,20 @@
 					<p>Cargando...</p>
 				{:else}
 					{#each products as product (product?.attributes?.name)}
-						<li
-							class="relative max-w-360px border-b pb-3 border-b-#DDDDDD md:mx-auto lg:(last:mx-0)"
-						>
+						<li class="relative max-w-360px border border-#DDDDDD mb-3 md:mx-auto lg:(last:mx-0)">
 							<img
 								class="lg:max-w-350px"
 								src={getImageUrl(product?.attributes?.image?.data?.attributes?.url)}
 								alt={product?.attributes?.name}
 							/>
-							<h4 class="text-#003B49 text-lg font-bold mt-4">{product?.attributes?.name}</h4>
-							<button>Ver especificaciones</button>
+							<div
+								id="top"
+								class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#ddd lg:h-20px"
+							/>
+							<div class="bg-#ddd p-2">
+								<h4 class="text-#003B49 text-lg font-bold">{product?.attributes?.name}</h4>
+								<button>Ver especificaciones</button>
+							</div>
 						</li>
 					{/each}
 				{/if}
