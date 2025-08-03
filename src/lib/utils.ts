@@ -7,8 +7,6 @@ export const getImage = (name: string) => name.replace('.png', '');
 export const getImageUrl = (path: string | undefined) => {
 	console.log(`path: ${path}`);
 
-	return path;
-
 	return isLocalAssets ? `http://localhost:1337${path}` : path;
 };
 

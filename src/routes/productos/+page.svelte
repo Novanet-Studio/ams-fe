@@ -16,36 +16,6 @@
 
 	let active = '';
 
-	function topAnimation(node: any) {
-		const ctrl = animate(
-			node,
-			{ y: [10, 0], opacity: [0, 1] },
-			{ duration: 0.2, easing: 'ease-out' }
-		);
-
-		return {
-			duration: ctrl.duration,
-			tick: (t: number, u: number) => {
-				// ctrl.currentTime = t;
-			}
-		};
-	}
-
-	function middleAnimation(node: any) {
-		const an = animate(
-			node,
-			{ background: ['#93B7BB', '#93B7BB80'], opacity: [0, 1] },
-			{ duration: 0.2, easing: 'ease-out' }
-		);
-
-		return {
-			duration: an.duration,
-			tick: () => {
-				// console.log(t);
-			}
-		};
-	}
-
 	function handleActive(item: string | undefined) {
 		if (!item) return;
 

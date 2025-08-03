@@ -1,18 +1,20 @@
+import { load_HomeCategories } from '$houdini';
+import type { PageLoad } from './$types';
+
 export const ssr = false;
 
-/** @type {import('./$types').PageLoad} */
-export async function load({ fetch }) {
-	const res = await fetch('/api/info?key=home');
+export const load: PageLoad = async (event) => {
+	const houdiniData = await load_HomeCategories({ event });
 
+	const res = await event.fetch('/api/info?key=home');
+
+	let contentData = [];
 	if (res.ok) {
-		const content = await res.json();
-
-		return {
-			content
-		};
+		contentData = await res.json();
 	}
 
 	return {
-		content: []
+		...houdiniData,
+		content: contentData
 	};
-}
+};

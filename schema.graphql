@@ -1,3 +1,8 @@
+"""
+Indicates exactly one field must be supplied and this field must not be `null`.
+"""
+directive @oneOf on INPUT_OBJECT
+
 input BooleanFilterInput {
   and: [Boolean]
   between: [Boolean]
@@ -185,6 +190,18 @@ enum ENUM_CONTENTRELEASESRELEASEACTION_TYPE {
   unpublish
 }
 
+enum ENUM_EVENT_EVENT_TYPE {
+  Charla
+  Concierto
+  Taller
+}
+
+enum ENUM_EVENT_STATUS {
+  Activo
+  Cancelado
+  Pendiente
+}
+
 enum ENUM_PRODUCT_BRAND {
   Inspire
   NZ_Manufactoring
@@ -192,6 +209,80 @@ enum ENUM_PRODUCT_BRAND {
   Saffeti
   True
   Willier
+}
+
+enum ENUM_TRAINING_LEVEL {
+  Avanzado
+  Intermedio
+  Principiante
+}
+
+enum ENUM_TRAINING_TRAINING_TYPE {
+  Cardio
+  Fuerza
+  Movilidad
+}
+
+type Event {
+  brochure: UploadFileEntityResponse
+  createdAt: DateTime
+  date_end: DateTime
+  date_start: DateTime
+  description: String
+  event_type: ENUM_EVENT_EVENT_TYPE
+  location: String
+  organizer: String
+  portraid_url: UploadFileEntityResponse
+  publishedAt: DateTime
+  status: ENUM_EVENT_STATUS
+  title: String
+  updatedAt: DateTime
+}
+
+type EventEntity {
+  attributes: Event
+  id: ID
+}
+
+type EventEntityResponse {
+  data: EventEntity
+}
+
+type EventEntityResponseCollection {
+  data: [EventEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input EventFiltersInput {
+  and: [EventFiltersInput]
+  createdAt: DateTimeFilterInput
+  date_end: DateTimeFilterInput
+  date_start: DateTimeFilterInput
+  description: StringFilterInput
+  event_type: StringFilterInput
+  id: IDFilterInput
+  location: StringFilterInput
+  not: EventFiltersInput
+  or: [EventFiltersInput]
+  organizer: StringFilterInput
+  publishedAt: DateTimeFilterInput
+  status: StringFilterInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input EventInput {
+  brochure: ID
+  date_end: DateTime
+  date_start: DateTime
+  description: String
+  event_type: ENUM_EVENT_EVENT_TYPE
+  location: String
+  organizer: String
+  portraid_url: ID
+  publishedAt: DateTime
+  status: ENUM_EVENT_STATUS
+  title: String
 }
 
 input FileInfoInput {
@@ -225,7 +316,7 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-union GenericMorph = Category | ContentReleasesRelease | ContentReleasesReleaseAction | I18NLocale | Product | Subcategory | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Category | ContentReleasesRelease | ContentReleasesReleaseAction | Event | I18NLocale | Product | Subcategory | Training | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type I18NLocale {
   code: String
@@ -345,8 +436,10 @@ type Mutation {
   createCategory(data: CategoryInput!): CategoryEntityResponse
   createContentReleasesRelease(data: ContentReleasesReleaseInput!): ContentReleasesReleaseEntityResponse
   createContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!): ContentReleasesReleaseActionEntityResponse
+  createEvent(data: EventInput!): EventEntityResponse
   createProduct(data: ProductInput!): ProductEntityResponse
   createSubcategory(data: SubcategoryInput!): SubcategoryEntityResponse
+  createTraining(data: TrainingInput!): TrainingEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
 
@@ -358,8 +451,10 @@ type Mutation {
   deleteCategory(id: ID!): CategoryEntityResponse
   deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
+  deleteEvent(id: ID!): EventEntityResponse
   deleteProduct(id: ID!): ProductEntityResponse
   deleteSubcategory(id: ID!): SubcategoryEntityResponse
+  deleteTraining(id: ID!): TrainingEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
 
@@ -388,9 +483,11 @@ type Mutation {
   updateCategory(data: CategoryInput!, id: ID!): CategoryEntityResponse
   updateContentReleasesRelease(data: ContentReleasesReleaseInput!, id: ID!): ContentReleasesReleaseEntityResponse
   updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
+  updateEvent(data: EventInput!, id: ID!): EventEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateProduct(data: ProductInput!, id: ID!): ProductEntityResponse
   updateSubcategory(data: SubcategoryInput!, id: ID!): SubcategoryEntityResponse
+  updateTraining(data: TrainingInput!, id: ID!): TrainingEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
 
@@ -420,6 +517,7 @@ type Product {
   brand: ENUM_PRODUCT_BRAND!
   createdAt: DateTime
   image: UploadFileEntityResponse
+  link: String
   name: String
   publishedAt: DateTime
   slug: String!
@@ -446,6 +544,7 @@ input ProductFiltersInput {
   brand: StringFilterInput
   createdAt: DateTimeFilterInput
   id: IDFilterInput
+  link: StringFilterInput
   name: StringFilterInput
   not: ProductFiltersInput
   or: [ProductFiltersInput]
@@ -458,6 +557,7 @@ input ProductFiltersInput {
 input ProductInput {
   brand: ENUM_PRODUCT_BRAND
   image: ID
+  link: String
   name: String
   publishedAt: DateTime
   slug: String
@@ -480,6 +580,8 @@ type Query {
   contentReleasesReleaseAction(id: ID): ContentReleasesReleaseActionEntityResponse
   contentReleasesReleaseActions(filters: ContentReleasesReleaseActionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseActionEntityResponseCollection
   contentReleasesReleases(filters: ContentReleasesReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseEntityResponseCollection
+  event(id: ID): EventEntityResponse
+  events(filters: EventFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): EventEntityResponseCollection
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   me: UsersPermissionsMe
@@ -487,6 +589,8 @@ type Query {
   products(filters: ProductFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ProductEntityResponseCollection
   subcategories(filters: SubcategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): SubcategoryEntityResponseCollection
   subcategory(id: ID): SubcategoryEntityResponse
+  training(id: ID): TrainingEntityResponse
+  trainings(filters: TrainingFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TrainingEntityResponseCollection
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   uploadFolder(id: ID): UploadFolderEntityResponse
@@ -573,6 +677,63 @@ input SubcategoryInput {
 
 type SubcategoryRelationResponseCollection {
   data: [SubcategoryEntity!]!
+}
+
+type Training {
+  createdAt: DateTime
+  description: String
+  duration_weeks: Int
+  frequency: Int
+  level: ENUM_TRAINING_LEVEL
+  portraid_url: UploadFileEntityResponse
+  publishedAt: DateTime
+  target: String
+  title: String
+  training_type: ENUM_TRAINING_TRAINING_TYPE
+  updatedAt: DateTime
+}
+
+type TrainingEntity {
+  attributes: Training
+  id: ID
+}
+
+type TrainingEntityResponse {
+  data: TrainingEntity
+}
+
+type TrainingEntityResponseCollection {
+  data: [TrainingEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input TrainingFiltersInput {
+  and: [TrainingFiltersInput]
+  createdAt: DateTimeFilterInput
+  description: StringFilterInput
+  duration_weeks: IntFilterInput
+  frequency: IntFilterInput
+  id: IDFilterInput
+  level: StringFilterInput
+  not: TrainingFiltersInput
+  or: [TrainingFiltersInput]
+  publishedAt: DateTimeFilterInput
+  target: StringFilterInput
+  title: StringFilterInput
+  training_type: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input TrainingInput {
+  description: String
+  duration_weeks: Int
+  frequency: Int
+  level: ENUM_TRAINING_LEVEL
+  portraid_url: ID
+  publishedAt: DateTime
+  target: String
+  title: String
+  training_type: ENUM_TRAINING_TRAINING_TYPE
 }
 
 """The `Upload` scalar type represents a file upload."""

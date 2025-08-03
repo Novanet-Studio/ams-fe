@@ -1,0 +1,39 @@
+query HomeCategories {
+	categories(sort: "id:asc") {
+		data {
+			id
+			attributes {
+				name
+				image {
+					data {
+						attributes {
+							name
+							url
+							formats
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+query HomeTrainingSessions {
+	categories(sort: "id:asc") {
+		data {
+			id
+			attributes {
+				name
+				image {
+					data {
+						attributes {
+							name
+							url
+							formats
+						}
+					}
+				}
+			}
+		}
+	}
+}

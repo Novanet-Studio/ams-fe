@@ -2,23 +2,18 @@
 	import Brands from '$lib/components/home/Brands.svelte';
 	import FeaturedMessage from '$lib/components/home/FeaturedMessage.svelte';
 	import Main from '$lib/components/home/Main.svelte';
+	import Products from '$lib/components/home/Products.svelte';
+	import YoutubeFollow from '$lib/components/home/YoutubeFollow.svelte';
 
-	interface Data {
-		brands: Record<string, any>[];
-		carousel: Record<string, any>[];
-		highlight: Record<string, any>[];
-		main_carousel: Record<string, any>[];
-		page_title: string;
-		title: string;
-	}
+	import type { PageData } from './$houdini';
 
-	export let data: {
-		content: Data;
-	};
+	export let data: PageData;
+
+	$: ({ content, HomeCategories } = data);
 </script>
 
 <svelte:head>
-	<title>{data.content.title}</title>
+	<title>{content.title}</title>
 </svelte:head>
 
 <Main />
@@ -26,3 +21,6 @@
 	<FeaturedMessage class="lg:w-1/2" />
 	<Brands />
 </div>
+
+<Products data={$HomeCategories} />
+<YoutubeFollow />
