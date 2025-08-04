@@ -40,6 +40,11 @@
 			name: 'Coaches',
 			path: '/coaches'
 		},
+
+		{
+			name: 'Eventos',
+			path: '/eventos'
+		},
 		{
 			name: 'Contacto',
 			path: '/contacto'

@@ -1,0 +1,36 @@
+query Events {
+	events(sort: "id:asc") {
+		data {
+			id
+			attributes {
+				title
+				description
+				location
+				date_start
+				date_end
+				status
+				event_type
+				organizer
+
+				portraid_url {
+					data {
+						attributes {
+							name
+							url
+							formats
+						}
+					}
+				}
+
+				brochure {
+					data {
+						attributes {
+							name
+							url
+						}
+					}
+				}
+			}
+		}
+	}
+}

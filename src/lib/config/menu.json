@@ -1,24 +1,28 @@
 {
-  "main": [
-    {
-      "name": "Inicio",
-      "url": "/"
-    },
-    {
-      "name": "Nosotros",
-      "url": "/nosotros"
-    },
-    {
-      "name": "Productos",
-      "url": "/productos"
-    },
-    {
-      "name": "Coaches",
-      "url": "/coaches"
-    },
-    {
-      "name": "Contacto",
-      "url": "/contacto"
-    }
-  ]
+	"main": [
+		{
+			"name": "Inicio",
+			"url": "/"
+		},
+		{
+			"name": "Nosotros",
+			"url": "/nosotros"
+		},
+		{
+			"name": "Productos",
+			"url": "/productos"
+		},
+		{
+			"name": "Eventos",
+			"url": "/eventos"
+		},
+		{
+			"name": "Coaches",
+			"url": "/coaches"
+		},
+		{
+			"name": "Contacto",
+			"url": "/contacto"
+		}
+	]
 }

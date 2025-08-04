@@ -227,15 +227,15 @@ type Event {
   brochure: UploadFileEntityResponse
   createdAt: DateTime
   date_end: DateTime
-  date_start: DateTime
+  date_start: DateTime!
   description: String
   event_type: ENUM_EVENT_EVENT_TYPE
   location: String
   organizer: String
-  portraid_url: UploadFileEntityResponse
+  portraid_url: UploadFileEntityResponse!
   publishedAt: DateTime
   status: ENUM_EVENT_STATUS
-  title: String
+  title: String!
   updatedAt: DateTime
 }
 
