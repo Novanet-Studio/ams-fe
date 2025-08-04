@@ -4,9 +4,11 @@
 	import { onMount } from 'svelte';
 	import { timeline } from 'motion';
 	import { fly } from 'svelte/transition';
-	import { eventsBanner } from '$lib/events';
 	import { clickOutside } from '$lib/actions/clickOutside';
 	import { elementColors } from '$lib/store';
+
+	//? banner
+	import { eventsBanner } from '$lib/events';
 
 	export let data: PageData;
 	$: ({ Events } = data);

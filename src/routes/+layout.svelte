@@ -13,8 +13,6 @@
 
 <svelte:window bind:scrollY={$scrollY} />
 
-<!-- overflow-y-scroll snap-y snap-mandatory -->
-
 <div class="font-primary">
 	<Header />
 	<Sidebar />

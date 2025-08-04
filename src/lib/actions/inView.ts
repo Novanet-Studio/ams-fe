@@ -1,17 +1,3 @@
-/**
- * This action triggers a custom event on node entering/exiting the viewport.
- * example:
- * <p
- * 	use:inView
- * 	on:enter={() => console.log("enter")}
- * 	on:exit={() => console.log("exit")}
- * >
- *
- * optional params { root, top, bottom }
- * top and bottom are numbers
- * use:inView={ bottom: 100 } // 100 pixels from bottom of viewport
- */
-
 import type { Action } from 'svelte/action';
 
 type InViewParams = {

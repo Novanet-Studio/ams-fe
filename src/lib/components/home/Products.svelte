@@ -8,8 +8,6 @@
 
 	export let data: QueryResult<HomeCategories$result, null>;
 
-	console.log('Categories asd', data);
-
 	let active = '';
 
 	function handleActive(item: string | undefined) {

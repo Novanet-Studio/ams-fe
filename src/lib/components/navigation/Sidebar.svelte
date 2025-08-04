@@ -37,10 +37,9 @@
 			path: '/productos'
 		},
 		{
-			name: 'Coaches',
-			path: '/coaches'
+			name: 'Entrenamientos',
+			path: '/entrenamientos'
 		},
-
 		{
 			name: 'Eventos',
 			path: '/eventos'

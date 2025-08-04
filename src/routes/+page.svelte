@@ -3,6 +3,7 @@
 	import FeaturedMessage from '$lib/components/home/FeaturedMessage.svelte';
 	import Main from '$lib/components/home/Main.svelte';
 	import Products from '$lib/components/home/Products.svelte';
+	import Trainings from '$lib/components/home/Trainings.svelte';
 	import YoutubeFollow from '$lib/components/home/YoutubeFollow.svelte';
 
 	import type { PageData } from './$houdini';
@@ -23,4 +24,5 @@
 </div>
 
 <Products data={$HomeCategories} />
+<Trainings />
 <YoutubeFollow />

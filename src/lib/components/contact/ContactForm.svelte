@@ -129,8 +129,6 @@
 
 		try {
 			const body = new URLSearchParams(formData as any).toString();
-			console.log('Enviando a:', formElement.action);
-			console.log('Cuerpo del POST:', body);
 
 			const response = await fetch(formElement.action, {
 				method: 'POST',
