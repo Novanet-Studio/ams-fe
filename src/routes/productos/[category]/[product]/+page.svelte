@@ -73,6 +73,8 @@
 	onMount(() => {
 		$elementColors.copyright = 'dark';
 		animation();
+
+		console.log('ProductsBySubcategory data:', $ProductsBySubcategory);
 	});
 </script>
 

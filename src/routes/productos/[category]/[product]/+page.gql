@@ -1,5 +1,5 @@
 query ProductsBySubcategory($subcategoryName: String!) {
-	subcategories(filters: { name: { eq: $subcategoryName } }) {
+	subcategories(filters: { name: { eqi: $subcategoryName } }) {
 		data {
 			attributes {
 				name

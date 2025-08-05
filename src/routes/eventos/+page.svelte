@@ -11,6 +11,7 @@
 	import { eventsBanner } from '$lib/events';
 
 	export let data: PageData;
+
 	$: ({ Events } = data);
 
 	let activeEvent: any = null;
@@ -28,6 +29,7 @@
 			duration: 2
 		});
 	}
+
 	onMount(() => {
 		animateElements();
 		$elementColors.copyright = 'dark';
