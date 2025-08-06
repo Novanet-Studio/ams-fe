@@ -37,8 +37,8 @@
 			path: '/productos'
 		},
 		{
-			name: 'Entrenamientos',
-			path: '/entrenamientos'
+			name: 'Entrenamiento',
+			path: '/entrenamiento'
 		},
 		{
 			name: 'Eventos',

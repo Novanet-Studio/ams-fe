@@ -319,13 +319,13 @@
 			>
 				{#each coaches as coach, index}
 					<li
-						class="p-6 flex-1 md:mx-auto relative border md:p-16 lg:(last:mx-0 p-8 pt-12 pb-12) {getColors(
+						class="p-6 flex-1 md:mx-auto relative border md:p-8 lg:(last:mx-0 p-8 pt-12 pb-12) {getColors(
 							index
 						).li}"
 					>
 						<div
 							id="coachesTop"
-							class="w-full absolute left-0 -top-65px h-16 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] md:[clip-path:polygon(0%_100%,_100%_100%,_73.49%_0%)] lg:(h-80px -top-81px [clip-path:polygon(0%_100%,_100%_100%,_80.35%_35%)]) {getColors(
+							class="w-full absolute left-0 -top-65px h-16 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] md:[clip-path:polygon(0%_100%,_100%_100%,_73.49%_0%)] lg:(h-80px -top-80px [clip-path:polygon(0%_100%,_100%_100%,_80.35%_35%)]) {getColors(
 								index
 							).path}"
 						/>
