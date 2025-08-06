@@ -62,7 +62,7 @@
 	<div class="w-full max-w-7xl mx-auto flex flex-col items-center">
 		<div class="text-center">
 			<h4 id="name" class="text-[#E3D268] text-4xl font-bold">Entrenamiento</h4>
-			<p class="mt-4 w-full mx-auto text-white/90 text-lg md:text-xl leading-relaxed">
+			<p class="mt-4 w-full mx-auto text-white/90 d:(text-2xl) lg:(text-2xl) leading-relaxed">
 				Nuestros planes se adaptan a tus necesidades y nivel, con ajustes diarios si los requieres.
 				La diferencia entre ellos radica en el nivel de seguimiento que prefieras. Todo el equipo de
 				Ávila Multisport está disponible para resolver tus dudas.
@@ -80,7 +80,7 @@
 
 					<div
 						id="coachesTop"
-						class="w-full absolute left-0 -top-65px h-16
+						class="w-full absolute left-0 -top-63px h-16
 							[clip-path:polygon(0%_100%,_100%_100%,_75%_50%)]
 							) {getColors(index).path}"
 					/>
@@ -104,11 +104,8 @@
 			{/each}
 		</div>
 
-		<div class="mt-16">
-			<a
-				href="/planes"
-				class="bg-white text-[#003B49] font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition-colors"
-			>
+		<div class="mt-16 bg-white text-center text-[#003B49] p-6">
+			<a href="/planes" class="font-bold text-lg hover:bg-gray-200 transition-colors">
 				Ver toda la información de los planes
 			</a>
 		</div>

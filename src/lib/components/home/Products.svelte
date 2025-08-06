@@ -23,11 +23,9 @@
 </script>
 
 <section class="snap-start snap-always h-screen relative" on:enter={animateElements}>
-	<div
-		class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center pl-6 md:(pl-10) lg:(pl-16 gap-8)"
-	>
+	<div class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center px-6 lg:px-0">
 		<div class="w-full flex justify-center">
-			<h4 id="name" class="text-#e3d268 text-lg md:text-3xl lg:text-4xl">Productos</h4>
+			<h4 id="name" class="text-#e3d268 text-lg md:(text-3xl mb-16) lg:text-4xl">Productos</h4>
 		</div>
 
 		<ul

@@ -5,8 +5,8 @@
 </script>
 
 <section
-	class="snap-start snap-always h-screen w-full relative overflow-hidden"
-	style="background-image: url({backgroundImage}); background-size: cover; background-position: center;"
+	class="snap-start snap-always h-screen w-full relative overflow-hidden bg-cover z-1"
+	style="background-image: url({backgroundImage}); background-position: right 30% bottom;"
 	on:enter={animateElements}
 >
 	<div
@@ -15,7 +15,7 @@
                pl-6 pr-6 md:pl-16 md:pr-10
                "
 	>
-		<div class="max-w-lg">
+		<div>
 			<div class="flex items-center">
 				<div
 					class="flex-shrink-0 w-20 h-20 bg-[#e3d268] rounded-full flex items-center justify-center z-1"
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 
-			<p class="mt-6 text-white/90 text-lg md:text-xl leading-relaxed">
+			<p class="mt-6 text-[#003B49] text-xl leading-relaxed bg-#93B7BB p-6 md:text-2xl">
 				Compartimos experiencias, entrenamientos y la filosofía que nos impulsa a vivir una vida
 				activa y plena.
 			</p>
@@ -36,8 +36,7 @@
 				href="https://www.youtube.com/@Avilamultisport"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="inline-block mt-8 bg-[#e3d268] text-[#003B49] font-bold py-3 px-8 rounded-md
-                       text-lg hover:bg-white transition-colors duration-300"
+				class="inline-block mt-8 bg-[#003B49] text-white font-bold py-3 px-8 text-lg hover:bg-white transition-colors duration-300"
 			>
 				Visítanos
 			</a>
