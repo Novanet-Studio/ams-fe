@@ -81,7 +81,7 @@
 				style="background-image: url({item.image})"
 			>
 				<h3
-					class="text-#E3D268 text-3xl font-light max-w-[80%] text-shadow-xl md:(text-4xl max-w-70%) lg:text-5xl"
+					class="text-#E3D268 text-3xl font-light text-shadow-xl md:(text-4xl max-w-70%) lg:text-5xl"
 					in:blur
 				>
 					{item.copy.main}

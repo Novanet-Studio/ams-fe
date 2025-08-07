@@ -25,11 +25,11 @@
 <section class="snap-start snap-always h-screen relative" on:enter={animateElements}>
 	<div class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center px-6 lg:px-0">
 		<div class="w-full flex justify-center">
-			<h4 id="name" class="text-#e3d268 text-lg md:(text-3xl mb-16) lg:text-4xl">Productos</h4>
+			<h4 id="name" class="text-#e3d268 text-lg mb-8 md:(text-3xl mb-16) lg:text-4xl">Productos</h4>
 		</div>
 
 		<ul
-			class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:(px-16) lg:pt-30 lg:(grid-cols-3) lg:-mt-20"
+			class="grid gap-6 grid-cols-1 lg:(pt-30 px-16 grid-cols-3 -mt-20)"
 			use:clickOutside
 			on:clickoutside={() => (active = '')}
 		>
@@ -43,7 +43,7 @@
 							id="image"
 							src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
 							alt={category?.attributes?.name}
-							class="w-full h-56 object-cover"
+							class="w-full h-40 object-cover"
 						/>
 
 						<div

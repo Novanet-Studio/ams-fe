@@ -12,9 +12,9 @@ topics:
   - title: 'Empresa'
     content:
       - title: 'Misión'
-        description: 'Nuestra misión es proveer a nuestros clientes con productos de alta calidad que los ayuden a alcanzar su máximo potencial atlético. Somos un socio confiable que brinda un **excelente servicio al cliente**, satisfaciendo sus necesidades y fomentando un estilo de vida saludable a través del deporte.'
+        description: 'Ofrecerte productos de alta calidad para que alcances tu máximo potencial atlético. Somos un socio confiable, con un excelente servicio al cliente, que fomenta un estilo de vida saludable a través del deporte.'
       - title: 'Visión'
-        description: 'Aspiramos a ser el distribuidor líder de las marcas que representamos, reconocidos por la calidad de nuestros productos y nuestro compromiso con la satisfacción del cliente. Queremos ser la elección preferida de atletas y aficionados, ofreciendo una experiencia de compra excepcional y contribuyendo al crecimiento de la comunidad deportiva.'
+        description: 'Aspiramos a ser el distribuidor líder, reconocidos por la calidad de nuestros productos y nuestro compromiso con el cliente. Buscamos ser la elección preferida de atletas, ofreciendo una experiencia de compra excepcional.'
       - title: 'Nuestros Valores'
         description: 'En Ávila MultiSport, ofrecemos  productos de la más alta calidad para tu rendimiento óptimo. Compromiso y excelencia en el servicio y asesoramiento experto. Innovación en lo último en tecnología deportiva. Pasión y dedicación al deporte para apoyarte en cada desafío.'  
 
