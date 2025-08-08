@@ -22,10 +22,13 @@
 	function animateElements() {}
 </script>
 
-<section class="snap-start snap-always h-screen relative" on:enter={animateElements}>
-	<div class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center px-6 lg:px-0">
+<section
+	class="snap-start snap-always pt-26 pb-20 lg:pt-18 bg-[#003B49] relative"
+	on:enter={animateElements}
+>
+	<div class="max-h-screen h-screen z-3 flex flex-col justify-center px-6 lg:px-0">
 		<div class="w-full flex justify-center">
-			<h4 id="name" class="text-#e3d268 text-lg mb-8 md:(text-3xl mb-16) lg:text-4xl">Productos</h4>
+			<h4 id="name" class="text-#e3d268 text-3xl mb-8 md:(mb-16) lg:text-4xl">Productos</h4>
 		</div>
 
 		<ul
@@ -43,8 +46,18 @@
 							id="image"
 							src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
 							alt={category?.attributes?.name}
-							class="w-full h-40 object-cover"
+							class="w-full h-40 md:h-auto object-cover"
 						/>
+
+						<div class=" flex justify-center p-3 bg-#93B7BB">
+							<h4 id="name" class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-2xl">
+								{category?.attributes?.name}
+							</h4>
+							<div
+								class="i-ph-arrow-right-bold mt-1 ml-1 text-xl md:text-2xl text-#003B49"
+								transition:fly={{ x: -10, delay: 0.5 }}
+							></div>
+						</div>
 
 						<div
 							class="absolute inset-0 bg-transparent transition-colors duration-300 ease-in-out group-hover:bg-[#93B7BB]/70 flex items-center justify-center"
@@ -60,7 +73,7 @@
 								<div
 									class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200"
 								>
-									<h4 class="text-#003B49 font-bold text-3xl">
+									<h4 class="text-#003B49 font-bold text-2xl">
 										{category?.attributes?.name}
 									</h4>
 								</div>

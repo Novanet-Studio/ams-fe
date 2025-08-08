@@ -140,6 +140,16 @@
 							class="w-full h-56 object-cover"
 						/>
 
+						<div class=" flex justify-center p-3 bg-#93B7BB">
+							<h4 id="name" class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-2xl">
+								{subcategory?.attributes?.name}
+							</h4>
+							<div
+								class="i-ph-arrow-right-bold mt-1 ml-1 text-xl md:text-2xl text-#003B49"
+								transition:fly={{ x: -10, delay: 0.5 }}
+							></div>
+						</div>
+
 						<div
 							class="absolute inset-0 bg-transparent transition-colors duration-300 ease-in-out group-hover:bg-[#93B7BB]/70 flex items-center justify-center"
 						>

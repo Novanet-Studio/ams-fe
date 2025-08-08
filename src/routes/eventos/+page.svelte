@@ -114,19 +114,19 @@
 
 	{#if activeEvent}
 		<div
-			class="fixed inset-0 bg-[#003B49]/60 z-40 flex items-center justify-center p-4"
+			class="fixed inset-0 bg-[#003B49]/90 z-40 flex items-center justify-center p-4"
 			transition:fly={{ y: 20, duration: 300 }}
 		>
 			<div
-				class="bg-white rounded-lg shadow-xl max-w-5xl w-full p-2 flex flex-col md:flex-row relative
-                       max-h-full overflow-y-auto"
+				class="bg-white rounded-lg shadow-xl max-w-6xl overflow-hidden w-full p-2 flex flex-col md:flex-row relative
+                       max-h-full"
 				use:clickOutside
 				on:clickoutside={closeModal}
 				transition:fly={{ y: -20, duration: 300, delay: 100 }}
 			>
 				<button
 					on:click={closeModal}
-					class="absolute -top-3 -right-3 bg-white rounded-full p-1 shadow-lg z-50 hover:bg-gray-200"
+					class="absolute top-3 right-3 bg-white rounded-full p-1 shadow-lg z-50 hover:bg-gray-200"
 				>
 					<div class="i-ph-x-bold text-lg text-gray-700" />
 				</button>

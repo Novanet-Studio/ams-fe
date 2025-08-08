@@ -129,7 +129,7 @@
 			</p>
 
 			<div class="mt-20 snap-start snap-always mb-5 w-full flex justify-center">
-				<h4 id="name" class="text-#003B49 font-bold text-4xl">Planes</h4>
+				<h4 id="name" class="text-#003B49 text-3xl md:text-4xl">Planes</h4>
 			</div>
 
 			<p class="text-xl md:text-2xl leading-relaxed text-gray-600">
@@ -202,9 +202,11 @@
 	class="snap-start snap-always min-h-screen w-full relative overflow-hidden filtered-background"
 	style="--bg-image: url({trainingInfoBg});"
 >
-	<div class="w-full min-h-[100dvh] flex flex-col items-center justify-center">
+	<div class="w-full min-h-[100dvh] flex flex-col items-center justify-center pt-10">
 		<div class="mt-20 w-full flex justify-center">
-			<h4 id="name" class="text-#e3d268 font-bold text-4xl">¿Qué más incluyen los planes?</h4>
+			<h4 id="name" class="text-#e3d268 text-center text-3xl lg:text-4xl">
+				¿Qué más incluyen los planes?
+			</h4>
 		</div>
 
 		<div class="max-w-[90%] xl:max-w-[80%] mx-auto text-center">
@@ -306,11 +308,11 @@
 
 <section
 	id="coaches"
-	class="snap-start snap-always bg-#003B49 flex flex-col items-center pt-14 lg:pt-18"
+	class="snap-start snap-always bg-#003B49 flex flex-col items-center pt-12 pb-26 lg:pt-18"
 >
 	<div class="  w-full min-h-[100dvh] flex flex-col items-center justify-center">
 		<div class="w-full flex justify-center">
-			<h4 id="name" class="text-#e3d268 text-lg md:text-3xl lg:text-4xl">Coaches</h4>
+			<h4 id="name" class="text-#e3d268 text-2xl md:text-3xl lg:text-4xl">Coaches</h4>
 		</div>
 
 		<div class="max-w-[90%] lg:max-w-[80%] mx-auto text-center">

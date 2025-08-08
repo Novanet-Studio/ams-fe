@@ -57,7 +57,7 @@
 			>
 				{#each info.content as item}
 					<li class="mb-4 {item.title.toLowerCase() === 'valores'}">
-						<h4 class="mb-2 mt-4 text-xl text-#E3D268 md:text-2xl lg:text-3xl">{item.title}</h4>
+						<h4 class="mb-2 mt-4 text-2xl text-#E3D268 md:text-2xl lg:text-3xl">{item.title}</h4>
 						<p class="text-#ddd md:(text-xl max-w-100%) lg:text-lg">
 							{item.description}
 						</p>

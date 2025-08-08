@@ -6,6 +6,7 @@ import castelliLogo from '$lib/assets/brands/avila-multisports-marcas-castelli.w
 import micheLogo from '$lib/assets/brands/avila-multisports-marcas-miche.webp';
 import speedsixLogo from '$lib/assets/brands/avila-multisports-marcas-speedsix.webp';
 import sciconLogo from '$lib/assets/brands/avila-multisports-marcas-scicon.webp';
+import rocketLogo from '$lib/assets/brands/avila-multisports-marcas-rocket.webp';
 
 
 // Logos - Accessories
@@ -56,6 +57,10 @@ export const brands = [
 	{
 		name: 'Scicon logo',
 		image: sciconLogo
+	},
+	{
+		name: 'Rocket logo',
+		image: rocketLogo
 	}
 ];
 

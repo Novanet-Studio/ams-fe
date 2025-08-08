@@ -33,7 +33,7 @@
 >
 	{#each brands as brand}
 		<div class="flex items-center justify-center">
-			{#if brand.name === 'Miche logo' || brand.name === 'Speedsix logo' || brand.name === 'Scicon logo'}
+			{#if brand.name === 'Miche logo' || brand.name === 'Speedsix logo' || brand.name === 'Scicon logo' || brand.name === 'Rocket logo'}
 				<img
 					src={brand.image}
 					alt={brand.name}

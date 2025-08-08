@@ -23,7 +23,7 @@
 					<div class="i-ph-youtube-logo-fill text-5xl text-[#003B49]" />
 				</div>
 				<div class="pl-8 pr-4 py-2 ml--4 bg-#003B49">
-					<h2 class="text-white font-bold text-3xl md:text-4xl">Estamos en YouTube</h2>
+					<h2 class="text-white text-3xl md:text-4xl">Estamos en YouTube</h2>
 				</div>
 			</div>
 

@@ -56,12 +56,12 @@
 </script>
 
 <section
-	class="snap-start snap-always min-h-screen w-full relative overflow-hidden filtered-background flex flex-col items-center justify-center p-6 md:p-12"
+	class="snap-start snap-always min-h-screen w-full relative overflow-hidden filtered-background flex flex-col items-center justify-center px-6 pt-26 pb-20 md:(px-12 pb-0)"
 	style="--bg-image: url({backgroundImage});"
 >
 	<div class="w-full max-w-7xl mx-auto flex flex-col items-center">
 		<div class="text-center">
-			<h4 id="name" class="text-[#E3D268] text-4xl font-bold">Entrenamiento</h4>
+			<h4 id="name" class="text-[#E3D268] text-3xl">Entrenamiento</h4>
 			<p class="mt-4 w-full mx-auto text-white/90 d:(text-2xl) lg:(text-2xl) leading-relaxed">
 				Nuestros planes se adaptan a tus necesidades y nivel, con ajustes diarios si los requieres.
 				La diferencia entre ellos radica en el nivel de seguimiento que prefieras. Todo el equipo de
@@ -71,9 +71,9 @@
 
 		<div class="mt-28 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24 gap-x-8 w-full">
 			{#each plans as plan, index}
-				<div class="relative">
+				<div class="relative z-1">
 					<div
-						class="absolute -top-12 left-1/2 -translate-x-1/2 z-10 w-24 h-24 bg-gray-200/90 rounded-full flex items-center justify-center backdrop-blur-sm"
+						class="absolute z-1 -top-12 left-1/2 -translate-x-1/2 z-10 w-20 h-20 md:(w-24 h-24) bg-gray-200/90 rounded-full flex items-center justify-center backdrop-blur-sm"
 					>
 						<span class="text-4xl font-bold text-[#003B49]">{plan.number}</span>
 					</div>
@@ -88,8 +88,8 @@
 					<div class="h-full {plan.color} text-start p-8 pt-16 flex flex-col gap-4">
 						{#each plan.details as item}
 							<div>
-								<p class="text-center font-bold text-[#003B49]">{item.title}</p>
-								<p class="text-center text-sm text-black/60">{item.text}</p>
+								<p class="text-center text-lg font-bold text-[#003B49]">{item.title}</p>
+								<p class="text-center text-lg text-black/60">{item.text}</p>
 							</div>
 						{/each}
 					</div>

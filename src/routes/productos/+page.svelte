@@ -7,6 +7,7 @@
 	import { elementColors } from '$lib/store';
 	import { getImageUrl } from '$lib/utils';
 	import type { PageData } from './$houdini';
+	import { productsBanner } from '$lib/products';
 
 	export let data: PageData;
 	$: ({ Categories } = data);
@@ -58,10 +59,31 @@
 
 <section
 	id="productCategories"
-	class="h-screen bg-#003B49 flex flex-col justify-center items-center pt-14 lg:pt-18"
+	class="bg-#003B49 flex flex-col justify-center items-center pt-26 pb-12 lg:pt-18"
 >
-	<div class="w-full flex justify-center">
-		<h4 id="name" class="text-#e3d268 text-lg md:text-3xl lg:text-4xl">Productos</h4>
+	<div class="w-full">
+		<div
+			id="top"
+			class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#93B7BB lg:h-80px"
+		/>
+		<div class="w-full h-36 relative overflow-hidden lg:h-300px">
+			<div
+				id="middle"
+				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/70 gap-2 z-2"
+			>
+				<h4 id="name" class="text-#003B49 font-bold text-2xl md:text-3xl lg:text-4xl">Productos</h4>
+			</div>
+			<img
+				id="image"
+				class="md:min-w-full h-full object-cover object-center"
+				src={productsBanner}
+				alt="productBanner"
+			/>
+		</div>
+		<div
+			id="bottom"
+			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB lg:h-80px"
+		/>
 	</div>
 
 	<ul
@@ -80,8 +102,18 @@
 							id="image"
 							src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
 							alt={category?.attributes?.name}
-							class="w-full h-56 object-cover"
+							class="w-full h-40 md:h-auto object-cover"
 						/>
+
+						<div class=" flex justify-center p-3 bg-#93B7BB">
+							<h4 id="name" class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-2xl">
+								{category?.attributes?.name}
+							</h4>
+							<div
+								class="i-ph-arrow-right-bold mt-1 ml-1 text-xl md:text-2xl text-#003B49"
+								transition:fly={{ x: -10, delay: 0.5 }}
+							></div>
+						</div>
 
 						<div
 							class="absolute inset-0 bg-transparent transition-colors duration-300 ease-in-out group-hover:bg-[#93B7BB]/70 flex items-center justify-center"
@@ -97,7 +129,7 @@
 								<div
 									class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200"
 								>
-									<h4 class="text-#003B49 font-bold text-3xl">
+									<h4 class="text-#003B49 font-bold text-xl">
 										{category?.attributes?.name}
 									</h4>
 								</div>

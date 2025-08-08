@@ -69,7 +69,7 @@
 	on:exit={exitAnimation}
 >
 	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12) lg:pl-16">
-		<h3 class="mb-4 mt-4 text-2xl text-#E3D268 md:text-4xl">{topic.title}</h3>
+		<h3 class="mb-4 mt-4 text-3xl text-#E3D268 md:text-4xl">{topic.title}</h3>
 		<div
 			class="max-h-[50vh] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
 		>

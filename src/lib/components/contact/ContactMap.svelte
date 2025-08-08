@@ -55,7 +55,7 @@
 		<iframe
 			class="w-full h-full"
 			title="Mapa de ubicación de Avila Multisport"
-			src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d31385.916957960602!2d-66.82160975000001!3d10.48176725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sve!4v1706543997428!5m2!1ses!2sve"
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.429847040909!2d-66.87710482414072!3d10.510658764037924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a59116aaaaaab%3A0x75977b48cd36263e!2sCaracas%20MultiSport!5e0!3m2!1sen!2sve!4v1754673308965!5m2!1sen!2sve"
 			style="border:0;"
 			allowfullscreen={false}
 			loading="lazy"
