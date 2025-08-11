@@ -1,29 +1,51 @@
 <script lang="ts">
-	import { elementColors } from '$lib/store';
-	import { stagger, timeline } from 'motion';
 	import { onMount } from 'svelte';
+	import { stagger, timeline } from 'motion';
 
-	//? banner
-	import { coaches, allies, trainingsBanner, trainingInfoBg, info } from '$lib/training';
+	import { elementColors } from '$lib/store';
+	import type { PageData } from './$types';
+
+	interface Coach {
+		name: string;
+		avatar: string;
+		speciality: string;
+		instagramProfile: string;
+		shortBio: string;
+	}
+
+	interface Ally {
+		name: string;
+		description: string;
+		avatar: string;
+		url: string;
+	}
+
+	interface InfoItem {
+		label: string;
+		icon: string;
+		desc: string;
+	}
+
+	interface ContentData {
+		page_title: string;
+		trainingsBanner: string;
+		trainingInfoBg: string;
+		info: InfoItem[];
+		allies: Ally[];
+		coaches: Coach[];
+	}
+
+	export let data: PageData;
+
+	const content: ContentData = data.content;
 
 	function getColors(index: number): { li: string; path: string } {
 		const colorSets = [
-			{
-				li: 'bg-#93B7BB border-#93B7BB',
-				path: 'bg-#93B7BB'
-			},
-			{
-				li: 'bg-#ACC37E border-#ACC37E',
-				path: 'bg-#ACC37E'
-			},
-			{
-				li: 'bg-#E3D268 border-#E3D268',
-				path: 'bg-#E3D268'
-			}
+			{ li: 'bg-#93B7BB border-#93B7BB', path: 'bg-#93B7BB' },
+			{ li: 'bg-#ACC37E border-#ACC37E', path: 'bg-#ACC37E' },
+			{ li: 'bg-#E3D268 border-#E3D268', path: 'bg-#E3D268' }
 		];
-
 		const effectiveIndex = index % colorSets.length;
-
 		return colorSets[effectiveIndex];
 	}
 
@@ -34,10 +56,7 @@
 			[
 				[
 					'#coaches',
-					{
-						opacity: [0, 1],
-						background: ['#fff', '#003B49']
-					},
+					{ opacity: [0, 1], background: ['#fff', '#003B49'] },
 					{ duration: 0.4, easing: 'ease-out' }
 				],
 				[
@@ -81,12 +100,14 @@
 					{ duration: 1, easing: 'ease-out', delay: stagger(0.2) }
 				]
 			],
-			{
-				duration: 2
-			}
+			{ duration: 2 }
 		);
 	});
 </script>
+
+<svelte:head>
+	<title>{content.page_title}</title>
+</svelte:head>
 
 <section
 	id="banner"
@@ -103,13 +124,13 @@
 				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#ACC37E/50 gap-2 z-2"
 			>
 				<h4 id="name" class="text-#003B49 font-bold text-2xl md:text-3xl lg:text-4xl">
-					Entrenamiento
+					{content.page_title}
 				</h4>
 			</div>
 			<img
 				id="image"
 				class="md:min-w-full min-h-full object-cover object-center"
-				src={trainingsBanner}
+				src={content.trainingsBanner}
 				alt="Training banner"
 			/>
 		</div>
@@ -200,7 +221,7 @@
 
 <section
 	class="snap-start snap-always min-h-screen w-full relative overflow-hidden filtered-background"
-	style="--bg-image: url({trainingInfoBg});"
+	style="--bg-image: url({content.trainingInfoBg});"
 >
 	<div class="w-full min-h-[100dvh] flex flex-col items-center justify-center pt-10">
 		<div class="mt-20 w-full flex justify-center">
@@ -213,13 +234,12 @@
 			<ul
 				class="w-full py-12 md:py-20 grid justify-center gap-x-8 gap-y-22 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
 			>
-				{#each info as i, index}
+				{#each content.info as i, index}
 					<li class="w-full bg-white p-6 flex-1 md:mx-auto relative border lg:(last:mx-0 p-8)">
 						<div
 							id="coachesTop"
 							class="w-full absolute left-0 -top-65px h-16
-							[clip-path:polygon(0%_100%,_100%_100%,_75%_50%)]
-							) {getColors(index).path}"
+							[clip-path:polygon(0%_100%,_100%_100%,_75%_50%)] {getColors(index).path}"
 						/>
 
 						<div class="flex gap-2">
@@ -242,8 +262,7 @@
 						<div
 							id="coachesBottom"
 							class="absolute -bottom-48px left-0 w-full h-12
-							[clip-path:polygon(25%_50%,_0_0,_100%_0)]
-							) {getColors(index).path}"
+							[clip-path:polygon(25%_50%,_0_0,_100%_0)] {getColors(index).path}"
 						/>
 					</li>
 				{/each}
@@ -271,8 +290,8 @@
 		<ul
 			class="w-full py-12 md:py-20 grid justify-center gap-x-8 gap-y-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
 		>
-			{#if allies.length}
-				{#each allies as allie}
+			{#if content.allies.length}
+				{#each content.allies as allie}
 					<li class="flex justify-start items-center gap-4">
 						<div class="flex-shrink-0 w-24 h-24">
 							<img
@@ -291,7 +310,7 @@
 							</p>
 
 							<a
-								href="/#"
+								href={allie.url || '/#'}
 								rel="noopener noreferrer"
 								class="mt-3 inline-block bg-gray-200 text-003B49 font-bold text-sm
                                py-2 px-4 rounded-md hover:bg-gray-300 transition-colors"
@@ -319,7 +338,7 @@
 			<ul
 				class="px-12 pt-45 pb-12 flex flex-col gap-40 min-h-screen md:(mt-40 gap-70) lg:(flex-row min-h-full justify-center mx-auto mb-0 pt-10 gap-6 px-0)"
 			>
-				{#each coaches as coach, index}
+				{#each content.coaches as coach, index}
 					<li
 						class="p-6 flex-1 md:mx-auto relative border md:p-8 lg:(last:mx-0 p-8 pt-12 pb-12) {getColors(
 							index
@@ -376,13 +395,10 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-
 		background-image: var(--bg-image);
 		background-size: cover;
 		background-position: center;
-
 		filter: brightness(0.5) grayscale(100%);
-
 		z-index: -1;
 	}
 </style>
