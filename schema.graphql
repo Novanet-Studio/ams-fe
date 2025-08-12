@@ -190,12 +190,6 @@ enum ENUM_CONTENTRELEASESRELEASEACTION_TYPE {
   unpublish
 }
 
-enum ENUM_EVENT_EVENT_TYPE {
-  Charla
-  Concierto
-  Taller
-}
-
 enum ENUM_EVENT_STATUS {
   Activo
   Cancelado
@@ -226,10 +220,11 @@ enum ENUM_TRAINING_TRAINING_TYPE {
 type Event {
   brochure: UploadFileEntityResponse
   createdAt: DateTime
-  date_end: DateTime
-  date_start: DateTime!
+  date_end: String
+  date_start: String
   description: String
-  event_type: ENUM_EVENT_EVENT_TYPE
+  event_type: String
+  info: String
   location: String
   organizer: String
   portraid_url: UploadFileEntityResponse!
@@ -256,11 +251,12 @@ type EventEntityResponseCollection {
 input EventFiltersInput {
   and: [EventFiltersInput]
   createdAt: DateTimeFilterInput
-  date_end: DateTimeFilterInput
-  date_start: DateTimeFilterInput
+  date_end: StringFilterInput
+  date_start: StringFilterInput
   description: StringFilterInput
   event_type: StringFilterInput
   id: IDFilterInput
+  info: StringFilterInput
   location: StringFilterInput
   not: EventFiltersInput
   or: [EventFiltersInput]
@@ -273,10 +269,11 @@ input EventFiltersInput {
 
 input EventInput {
   brochure: ID
-  date_end: DateTime
-  date_start: DateTime
+  date_end: String
+  date_start: String
   description: String
-  event_type: ENUM_EVENT_EVENT_TYPE
+  event_type: String
+  info: String
   location: String
   organizer: String
   portraid_url: ID

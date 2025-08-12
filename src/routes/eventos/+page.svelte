@@ -143,7 +143,7 @@
 							href={getImageUrl(activeEvent?.attributes?.brochure?.data?.attributes?.url)}
 							download
 							target="_blank"
-							class="bg-#e3d268 text-[#003B49] py-3 px-8 rounded-md text-sm hover:bg-#e3d268/90 transition-colors duration-300 flex justify-center items-center gap-2"
+							class="bg-#e3d268 text-[#003B49] py-3 px-8 rounded-md text-sm hover:bg-#e3d268/80 transition-colors duration-300 flex justify-center items-center gap-2"
 						>
 							Descarga el brochure del evento
 							<div class="i-ph-arrow-down-bold text-sm text-[#003B49]" />
@@ -161,33 +161,13 @@
 							Inicio:
 
 							<b class="text-#003B49">
-								{new Date(activeEvent?.attributes?.date_start).toLocaleDateString('es-ES', {
-									day: 'numeric',
-									month: 'long',
-									year: 'numeric'
-								}) == 'Invalid Date' || activeEvent?.attributes?.date_start == null
-									? 'Por confirmar'
-									: new Date(activeEvent?.attributes?.date_start).toLocaleDateString('es-ES', {
-											day: 'numeric',
-											month: 'long',
-											year: 'numeric'
-										})}
+								{activeEvent?.attributes?.date_start ?? 'Por confirmar'}
 							</b>
 
 							| Finalización:
 
 							<b class="text-#003B49">
-								{new Date(activeEvent?.attributes?.date_end).toLocaleDateString('es-ES', {
-									day: 'numeric',
-									month: 'long',
-									year: 'numeric'
-								}) == 'Invalid Date' || activeEvent?.attributes?.date_end == null
-									? 'Por confirmar'
-									: new Date(activeEvent?.attributes?.date_end).toLocaleDateString('es-ES', {
-											day: 'numeric',
-											month: 'long',
-											year: 'numeric'
-										})}
+								{activeEvent?.attributes?.date_end ?? 'Por confirmar'}
 							</b>
 						</p>
 
@@ -204,6 +184,18 @@
 								{activeEvent?.attributes?.event_type ?? 'Por definir'}
 							</b>
 						</p>
+
+						{#if activeEvent?.attributes?.brochure?.data?.attributes?.url && activeEvent?.attributes?.info}
+							<p class="text-gray-600">
+								{activeEvent?.attributes?.info}
+							</p>
+						{/if}
+
+						{#if activeEvent?.attributes?.brochure?.data?.attributes?.url}
+							Para más detalles del recorrido, recomendaciones logísticas y hoteles, <b>
+								descarga el brochure del evento</b
+							>
+						{/if}
 					</div>
 				</div>
 			</div>
