@@ -105,7 +105,7 @@
 		</div>
 
 		<div class="mt-16 bg-white text-center text-[#003B49] p-6">
-			<a href="/entranamiento" class="font-bold text-lg hover:bg-gray-200 transition-colors">
+			<a href="/entrenamiento" class="font-bold text-lg hover:bg-gray-200 transition-colors">
 				Ver toda la información de los planes
 			</a>
 		</div>
