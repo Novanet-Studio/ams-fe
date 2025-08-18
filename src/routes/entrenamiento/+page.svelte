@@ -159,9 +159,9 @@
 			</p>
 
 			<div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-				<div class="bg-gray-100 rounded-xl p-4 md:p-6 text-center flex flex-col">
+				<div class="bg-gray-100 p-4 md:p-6 text-center flex flex-col">
 					<h3 class="font-bold text-2xl mb-4 text-#003B49">Plan 1</h3>
-					<div class="bg-[#93B7BB] rounded-lg p-6 text-start h-full flex-grow">
+					<div class="bg-[#93B7BB] p-6 text-start h-full flex-grow">
 						<div class="mb-5">
 							<p class="font-bold text-#003B49">Planificación</p>
 							<p class="text-sm text-gray-700">Salvatore Cali</p>
@@ -177,9 +177,9 @@
 					</div>
 				</div>
 
-				<div class="bg-gray-100 rounded-xl p-4 md:p-6 text-center flex flex-col">
+				<div class="bg-gray-100 p-4 md:p-6 text-center flex flex-col">
 					<h3 class="font-bold text-2xl mb-4 text-#003B49">Plan 2</h3>
-					<div class="bg-[#ACC37E] rounded-lg p-6 text-start h-full flex-grow">
+					<div class="bg-[#ACC37E] p-6 text-start h-full flex-grow">
 						<div class="mb-5">
 							<p class="font-bold text-#003B49">Planificación</p>
 							<p class="text-sm text-gray-700">Salvatore Cali</p>
@@ -195,9 +195,9 @@
 					</div>
 				</div>
 
-				<div class="bg-gray-100 rounded-xl p-4 md:p-6 text-center flex flex-col">
+				<div class="bg-gray-100 p-4 md:p-6 text-center flex flex-col">
 					<h3 class="font-bold text-2xl mb-4 text-#003B49">Plan 3</h3>
-					<div class="bg-[#E3D268] rounded-lg p-6 text-start h-full flex-grow">
+					<div class="bg-[#E3D268] p-6 text-start h-full flex-grow">
 						<div class="mb-5">
 							<p class="font-bold text-#003B49">Planificación</p>
 							<p class="text-sm text-gray-700">Salvatore Cali</p>
@@ -238,7 +238,7 @@
 					<li class="w-full bg-white p-6 flex-1 md:mx-auto relative border lg:(last:mx-0 p-8)">
 						<div
 							id="coachesTop"
-							class="w-full absolute left-0 -top-65px h-16
+							class="w-full absolute left-0 -top-64px h-16
 							[clip-path:polygon(0%_100%,_100%_100%,_75%_50%)] {getColors(index).path}"
 						/>
 
@@ -340,13 +340,13 @@
 			>
 				{#each content.coaches as coach, index}
 					<li
-						class="p-6 flex-1 md:mx-auto relative border md:p-8 lg:(last:mx-0 p-8 pt-12 pb-12) {getColors(
+						class="p-6 flex-1 md:mx-auto relative border md:p-8 lg:(last:mx-0 p-5 pt-12 pb-12) {getColors(
 							index
 						).li}"
 					>
 						<div
 							id="coachesTop"
-							class="w-full absolute left-0 -top-65px h-16 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] md:[clip-path:polygon(0%_100%,_100%_100%,_73.49%_0%)] lg:(h-80px -top-80px [clip-path:polygon(0%_100%,_100%_100%,_80.35%_35%)]) {getColors(
+							class="w-full absolute left-0 -top-64px h-16 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] md:[clip-path:polygon(0%_100%,_100%_100%,_73.49%_0%)] lg:(h-80px -top-80px [clip-path:polygon(0%_100%,_100%_100%,_80.35%_35%)]) {getColors(
 								index
 							).path}"
 						/>
@@ -359,22 +359,22 @@
 								alt={coach.name}
 							/>
 						</div>
-						<div class="flex justify-center">
+						<div class="flex justify-left">
 							<a
 								href={coach.instagramProfile}
 								target="_blank"
-								class="flex items-center gap-2 text-2xl text-#55555A hover:text-#47474d"
+								class="flex items-left gap-2 text-2xl text-#55555A hover:text-#47474d"
 							>
-								<h4 class=" text-center font-bold mt-4 text-xl md:text-3xl">
+								<h4 class="text-left font-bold mt-4 text-xl md:text-3xl">
 									{coach.name}
 								</h4>
 								<div class="i-fa6-brands-instagram mt-4"></div>
 							</a>
 						</div>
-						<div class="text-#55555A font-700 text-sm text-center md:text-base">
+						<div class="text-#55555A font-700 text-sm text-left md:text-base">
 							Especialidad: <span class="text-sm font-300 md:text-base">{coach.speciality}</span>
 						</div>
-						<p class="text-pretty text-#55555A text-sm mt-2 md:(text-base mt-4)">
+						<p class="text-left text-#55555A text-sm mt-2 md:(text-base mt-4)">
 							{coach.shortBio}
 						</p>
 						<div

@@ -254,7 +254,7 @@
 	on:enter={enterAnimation}
 	on:exit={exitAnimation}
 >
-	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-32 p-12) lg:pl-16">
+	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-42 p-12 pr-16) lg:pl-16">
 		<h3 class="mb-2 text-2xl text-#E3D268 md:text-4xl">Contáctanos</h3>
 
 		<form
@@ -365,7 +365,7 @@
 				</p>
 			{/if}
 
-			<button class="self-start bg-#ACC37E py-2 px-12 rounded-full" disabled={sending}>
+			<button class="self-start bg-#ACC37E py-2 px-12" disabled={sending}>
 				{sending ? 'Enviando...' : 'Enviar'}
 			</button>
 		</form>

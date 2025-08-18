@@ -6,14 +6,11 @@
 
 <section
 	class="snap-start snap-always h-screen w-full relative overflow-hidden bg-cover z-1"
-	style="background-image: url({backgroundImage}); background-position: right 30% bottom;"
+	style="background-image: url({backgroundImage});"
 	on:enter={animateElements}
 >
 	<div
-		class="relative w-full lg:w-1/2 h-screen z-20
-               flex flex-col justify-center
-               pl-6 pr-6 md:pl-16 md:pr-10
-               "
+		class="relative w-full h-screen z-20 flex flex-col justify-center pl-6 pr-6 md:(pl-16 pr-10)"
 	>
 		<div>
 			<div class="flex items-center">
@@ -27,7 +24,7 @@
 				</div>
 			</div>
 
-			<p class="mt-6 text-[#003B49] text-xl leading-relaxed bg-#93B7BB p-6 md:text-2xl">
+			<p class="mt-6 text-white text-xl lg:text-3xl leading-relaxed py-6">
 				Compartimos experiencias, entrenamientos y la filosofía que nos impulsa a vivir una vida
 				activa y plena.
 			</p>

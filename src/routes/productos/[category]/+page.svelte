@@ -28,11 +28,7 @@
 					},
 					{ duration: 0.4, easing: 'ease-out' }
 				],
-				[
-					'#categories #image',
-					{ opacity: [0, 1], filter: ['blur(2px)', 'blur(0)'] },
-					{ duration: 0.4, easing: 'ease-out' }
-				],
+				['#categories #image', { opacity: [0, 1] }, { duration: 0.4, easing: 'ease-out' }],
 				[
 					'#categories #middle',
 					{ opacity: [0, 1], x: [-10, 0] },
@@ -105,7 +101,7 @@
 			</div>
 			<img
 				id="image"
-				class="w-full h-full object-cover object-center"
+				class="w-full h-full object-cover object-center grayscale"
 				src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
 				alt={category?.attributes?.name}
 			/>
@@ -117,6 +113,11 @@
 	</div>
 
 	<div class="w-full bg-white pb-20 -mt-10 lg:-mt-20">
+		<div class="max-w-[90%] lg:max-w-[80%] mx-auto py-12 md:py-20 text-left">
+			<p class="text-xl md:text-2xl leading-relaxed text-gray-600">
+				{category?.attributes?.description}
+			</p>
+		</div>
 		<ul
 			class="max-w-[90%] lg:max-w-[80%] mx-auto w-full py-12 md:py-20 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
 			use:clickOutside
@@ -171,7 +172,7 @@
 
 								<div
 									class="absolute bottom-0 left-0 w-full h-full bg-[#93B7BB] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
-									style="clip-path: polygon(0% 100%, 100% 100%, 75% 85%)"
+									style="clip-path: inset(80% 0 0 0);"
 								></div>
 							</div>
 						</div>

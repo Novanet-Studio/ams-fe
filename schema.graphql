@@ -1,8 +1,3 @@
-"""
-Indicates exactly one field must be supplied and this field must not be `null`.
-"""
-directive @oneOf on INPUT_OBJECT
-
 input BooleanFilterInput {
   and: [Boolean]
   between: [Boolean]
@@ -30,6 +25,7 @@ input BooleanFilterInput {
 
 type Category {
   createdAt: DateTime
+  description: String
   image: UploadFileEntityResponse
   name: String
   publishedAt: DateTime
@@ -54,6 +50,7 @@ type CategoryEntityResponseCollection {
 input CategoryFiltersInput {
   and: [CategoryFiltersInput]
   createdAt: DateTimeFilterInput
+  description: StringFilterInput
   id: IDFilterInput
   name: StringFilterInput
   not: CategoryFiltersInput
@@ -64,6 +61,7 @@ input CategoryFiltersInput {
 }
 
 input CategoryInput {
+  description: String
   image: ID
   name: String
   publishedAt: DateTime

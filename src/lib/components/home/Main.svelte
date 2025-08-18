@@ -106,7 +106,7 @@
 	</swiper-container>
 	<NavigationBtn
 		icon="i-fa6-solid-arrow-right"
-		class="main-next-btn"
+		class="main-next-btn z-1"
 		position="right"
 		on:click={() => swiper?.slideNext()}
 	/>

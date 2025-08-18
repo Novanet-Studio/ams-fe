@@ -26,6 +26,7 @@ query ProductsBySubcategory($subcategoryName: String!) {
 						attributes {
 							name
 							slug
+							link
 							brand
 							image {
 								data {

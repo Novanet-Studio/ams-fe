@@ -96,7 +96,7 @@
 
 					<div
 						id="coachesBottom"
-						class="absolute -bottom-48px left-0 w-full h-12
+						class="absolute -bottom-47px left-0 w-full h-12
 							[clip-path:polygon(25%_50%,_0_0,_100%_0)]
 							) {getColors(index).path}"
 					/>

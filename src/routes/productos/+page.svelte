@@ -75,7 +75,7 @@
 			</div>
 			<img
 				id="image"
-				class="md:min-w-full h-full object-cover object-center"
+				class="md:min-w-full h-full object-cover object-center grayscale"
 				src={productsBanner}
 				alt="productBanner"
 			/>
@@ -122,7 +122,7 @@
 								class="relative w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
 							>
 								<div
-									class="absolute top-0 left-0 w-full h-full bg-[#93B7BB] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
+									class="absolute top-0 left-0 w-full h-full bg-[#93B7BB] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-250 ease-out"
 									style="clip-path: polygon(0% 0%, 100% 0%, 25% 15%)"
 								/>
 
@@ -135,8 +135,8 @@
 								</div>
 
 								<div
-									class="absolute bottom-0 left-0 w-full h-full bg-[#93B7BB] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
-									style="clip-path: polygon(0% 100%, 100% 100%, 75% 85%)"
+									class="absolute bottom-0 left-0 w-full h-full bg-[#93B7BB] transform translate-y-full group-hover:translate-y-0 transition-transform duration-250 ease-out"
+									style="clip-path: inset(80% 0 0 0);"
 								/>
 							</div>
 						</div>

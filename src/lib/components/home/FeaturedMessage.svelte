@@ -53,24 +53,24 @@
 
 <section
 	id="featuredMessage"
-	class="relative snap-start snap-always max-h-screen min-h-screen w-full lg:w-1/2 {classname}"
+	class="relative snap-start snap-always max-h-screen min-h-screen w-full 2xl:w-1/2 {classname}"
 	use:inView={{ bottom: 100, top: 100 }}
 	on:enter={animateElements}
 >
 	<div
-		class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center pl-6 md:(pl-10) lg:(pl-16 gap-8)"
+		class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center pl-6 md:(pl-10) xl:(pl-16 gap-8)"
 	>
 		<h4
 			class="text-[#E3D268] text-2xl opacity-0 font-300 max-w-18rem z-4 md:(text-3xl max-w-lg text-balance) lg:(max-w-40rem)"
 		>
 			Somos representantes exclusivos de Wilier e Inspire Fitness. También, distribuidores
-			autorizados de equipos True, Castelli, Miche. Speedsix y Scicon
+			autorizados de equipos True, Castelli, Miche, Speedsix y Scicon.
 		</h4>
 		<p
-			class="text-[#DDDDDD] font-300 opacity-0 max-w-18rem mt-4 text-xl md:(text-2xl max-w-sm) lg:(text-2xl max-w-40rem)"
+			class="text-[#DDDDDD] font-300 opacity-0 max-w-18rem mt-4 text-xl md:(text-2xl max-w-sm) xl:(text-xl max-w-40rem)"
 		>
 			Ofrecemos su garantía comercial además de brindarte el servicio que te mereces. Tenemos a tu
-			disposición una selección de las mejores bicicletas y equipos
+			disposición una selección de las mejores bicicletas y equipos.
 		</p>
 	</div>
 	<div

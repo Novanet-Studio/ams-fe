@@ -23,7 +23,7 @@
 </script>
 
 <section
-	class="snap-start snap-always pt-26 pb-20 lg:pt-18 bg-[#003B49] relative"
+	class="snap-start snap-always pt-6 lg:pt-18 bg-[#003B49] relative"
 	on:enter={animateElements}
 >
 	<div class="max-h-screen h-screen z-3 flex flex-col justify-center px-6 lg:px-0">
@@ -32,7 +32,7 @@
 		</div>
 
 		<ul
-			class="grid gap-6 grid-cols-1 lg:(pt-30 px-16 grid-cols-3 -mt-20)"
+			class="grid gap-6 grid-cols-2 lg:(pt-30 px-16 grid-cols-3)"
 			use:clickOutside
 			on:clickoutside={() => (active = '')}
 		>

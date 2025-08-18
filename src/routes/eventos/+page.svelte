@@ -66,7 +66,7 @@
 	</div>
 
 	<div class="w-full bg-white pb-20 -mt-10 lg:-mt-20">
-		<div class="max-w-[90%] lg:max-w-[80%] mx-auto py-12 md:py-20 text-center">
+		<div class="max-w-[90%] lg:max-w-[80%] mx-auto py-12 md:py-20 text-left">
 			<p class="text-xl md:text-2xl leading-relaxed text-gray-600">
 				En Ávila Multisport, cada evento refleja nuestro espíritu de comunidad, montaña y
 				superación. Participamos y organizamos experiencias que celebran el deporte, el bienestar y
@@ -83,7 +83,7 @@
 				{#each $Events.data?.events?.data as event (event?.attributes?.title)}
 					<button
 						on:click|preventDefault={() => handleActive(event)}
-						class="text-left w-full rounded-lg transition-all duration-300"
+						class="text-left w-full transition-all duration-300"
 					>
 						<li
 							id={event?.attributes?.title?.toLowerCase()}
@@ -102,7 +102,7 @@
 								{event?.attributes?.title}
 							</h4>
 							<div
-								class="i-ph-arrow-right-bold mt-1 ml-1 text-xl md:text-2xl text-#003B49"
+								class="i-ph-arrow-right-bold mt-1 md:mt-2 ml-1 text-xl text-3xl text-#003B49"
 								transition:fly={{ x: -10, delay: 0.5 }}
 							></div>
 						</div>
@@ -118,7 +118,7 @@
 			transition:fly={{ y: 20, duration: 300 }}
 		>
 			<div
-				class="bg-white rounded-lg shadow-xl max-w-6xl overflow-hidden w-full p-2 flex flex-col md:flex-row relative
+				class="bg-white shadow-xl max-w-6xl overflow-hidden w-full pt-0 pb-0 pl-0 flex flex-col md:flex-row relative
                        max-h-full"
 				use:clickOutside
 				on:clickoutside={closeModal}
@@ -126,7 +126,7 @@
 			>
 				<button
 					on:click={closeModal}
-					class="absolute top-3 right-3 bg-white rounded-full p-1 shadow-lg z-50 hover:bg-gray-200"
+					class="absolute top-3 right-3 bg-white p-1 shadow-lg z-50 hover:bg-gray-200"
 				>
 					<div class="i-ph-x-bold text-lg text-gray-700" />
 				</button>
@@ -135,7 +135,7 @@
 					<img
 						src={getImageUrl(activeEvent?.attributes?.portraid_url?.data?.attributes?.url)}
 						alt={activeEvent?.attributes?.title}
-						class="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+						class="w-full h-full object-cover md:rounded-t-none"
 					/>
 
 					{#if activeEvent?.attributes?.brochure?.data?.attributes?.url}
@@ -158,31 +158,23 @@
 						<p>{activeEvent?.attributes?.description}</p>
 
 						<p>
-							Inicio:
+							<b class="text-#003B49">Inicio:</b>
 
-							<b class="text-#003B49">
-								{activeEvent?.attributes?.date_start ?? 'Por confirmar'}
-							</b>
+							{activeEvent?.attributes?.date_start ?? 'Por confirmar'}
 
-							| Finalización:
+							| <b class="text-#003B49">Finalización:</b>
 
-							<b class="text-#003B49">
-								{activeEvent?.attributes?.date_end ?? 'Por confirmar'}
-							</b>
+							{activeEvent?.attributes?.date_end ?? 'Por confirmar'}
 						</p>
 
 						<p>
-							Organizador:
-							<b class="text-#003B49">
-								{activeEvent?.attributes?.organizer ?? 'Información no disponible'}
-							</b>
+							<b class="text-#003B49">Organizador:</b>
+							{activeEvent?.attributes?.organizer ?? 'Información no disponible'}
 						</p>
 
 						<p>
-							Tipo de evento:
-							<b class="text-#003B49">
-								{activeEvent?.attributes?.event_type ?? 'Por definir'}
-							</b>
+							<b class="text-#003B49">Tipo de evento:</b>
+							{activeEvent?.attributes?.event_type ?? 'Por definir'}
 						</p>
 
 						{#if activeEvent?.attributes?.brochure?.data?.attributes?.url && activeEvent?.attributes?.info}

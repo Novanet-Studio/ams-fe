@@ -17,6 +17,7 @@ query Subcategories($name: String!) {
 					data {
 						attributes {
 							name
+							description
 							image {
 								data {
 									attributes {

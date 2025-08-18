@@ -23,11 +23,7 @@
 					},
 					{ duration: 0.4, easing: 'ease-out' }
 				],
-				[
-					'#products #image',
-					{ opacity: [0, 1], filter: ['blur(2px)', 'blur(0)'] },
-					{ duration: 0.4, easing: 'ease-out' }
-				],
+				['#products #image', { opacity: [0, 1] }, { duration: 0.4, easing: 'ease-out' }],
 				[
 					'#products #middle',
 					{ opacity: [0, 1], x: [-10, 0] },
@@ -95,14 +91,14 @@
 			</div>
 			<img
 				id="image"
-				class="w-full h-full object-cover object-center"
+				class="w-full h-full object-cover object-center grayscale"
 				src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
 				alt={category?.attributes?.name}
 			/>
 		</div>
 		<div
 			id="bottom"
-			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB lg:h-20"
+			class="bottom-0 left-0 w-full h-10 [clip-path: inset(80% 0 0 0)] bg-#93B7BB lg:h-20"
 		/>
 	</div>
 
@@ -134,9 +130,13 @@
 							<p class="text-sm font-semibold text-gray-500">Marca: {product?.attributes?.brand}</p>
 							<h4 class="text-xl font-bold text-#003B49 mt-1">{product?.attributes?.name}</h4>
 							<div class="flex-grow" />
-							<button class="mt-4 w-full bg-#e3d268 text-[#003B49] font-bold py-2 rounded">
+							<a
+								class="mt-4 w-full bg-#e3d268 text-[#003B49] text-center font-bold py-2 rounded"
+								href={product?.attributes?.link}
+								target="_blank"
+							>
 								Ver especificaciones
-							</button>
+							</a>
 						</div>
 					</li>
 				{/each}
