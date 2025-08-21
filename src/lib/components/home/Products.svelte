@@ -49,14 +49,10 @@
 							class="w-full h-40 md:h-auto object-cover"
 						/>
 
-						<div class=" flex justify-center p-3 bg-#93B7BB">
-							<h4 id="name" class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-2xl">
+						<div class="py-3 bg-#93B7BB">
+							<h4 id="name" class="text-#003B49 font-bold text-sm md:text-xl lg:text-2xl">
 								{category?.attributes?.name}
 							</h4>
-							<div
-								class="i-ph-arrow-right-bold mt-1 ml-1 text-xl md:text-2xl text-#003B49"
-								transition:fly={{ x: -10, delay: 0.5 }}
-							></div>
 						</div>
 
 						<div

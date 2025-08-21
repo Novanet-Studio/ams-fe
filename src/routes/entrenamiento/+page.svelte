@@ -312,8 +312,8 @@
 							<a
 								href={allie.url || '/#'}
 								rel="noopener noreferrer"
-								class="mt-3 inline-block bg-gray-200 text-003B49 font-bold text-sm
-                               py-2 px-4 rounded-md hover:bg-gray-300 transition-colors"
+								class="mt-3 w-fit bg-gray-200 text-003B49 font-bold text-sm
+                               py-2 px-4 hover:bg-gray-300 transition-colors"
 							>
 								Ver más información
 							</a>

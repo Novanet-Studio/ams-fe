@@ -7,27 +7,19 @@ trainingInfoBg: '/images/trainings/avila-multisports-training-info-bg.webp'
 info:
   - label: 'Logística'
     icon: '/images/trainings/info/icon-1.svg'
-    desc: |
-      En las rodadas (solo aplica en Caracas): Vehículo de apoyo, asistencia mecánica, primeros auxilios y traslado en caso de emergencia.
-
-      En los principales eventos en Venezuela como: Reto al Collado del Cóndo, Gran Fondo Virgen del Valle, Reto a la Cumbre, Trianz, Medio Ironman de Cumana.
+    desc: 'En las rodadas (solo aplica en Caracas): Contamos con un completo vehículo de apoyo que brinda asistencia mecánica profesional, primeros auxilios por personal calificado y un servicio de traslado en caso de cualquier emergencia. Este apoyo está diseñado para garantizar la seguridad y tranquilidad de todos los participantes durante el recorrido.'
   - label: 'Uso de instalaciones'
     icon: '/images/trainings/info/icon-2.svg'
-    desc: 'Caracas MultiSport para las actividades de Triatlón es permitido para nuestros miembros, con el fin de practicar diversas actividades de Triatlón, como la natación'
+    desc: 'Caracas MultiSport para las actividades de Triatlón es un beneficio exclusivo para nuestros miembros, permitiéndoles practicar diversas actividades de triatlón de manera organizada y segura. Esto incluye sesiones de natación, ciclismo y carrera, optimizando el entrenamiento en un entorno controlado y con el soporte necesario para alcanzar sus metas deportivas.'
   - label: 'Descuentos especiales'
     icon: '/images/trainings/info/icon-3.svg'
-    desc: 'En todo el portafolio de marcas que manejamos, así como opciones de crédito en algunas de ellas como: Wilier, Miche, Speed Six, Castelli, TRUE, Inspire, Rocket.'
+    desc: 'En nuestro portafolio de marcas, manejamos una amplia variedad de productos de alta calidad para ciclistas de todos los niveles. Contamos con marcas reconocidas a nivel mundial como Wilier, Miche, Speed Six, Castelli, TRUE, Inspire y Rocket. Además, ofrecemos convenientes opciones de crédito en algunas de ellas para facilitar tu compra.'
   - label: 'Planes especiales'
     icon: '/images/trainings/info/icon-4.svg'
-    desc: 'En las instalaciones de nuestros aliados Ccs Multi sport y Luxor Fitness Center'
+    desc: 'Las actividades y entrenamientos se realizan en las modernas instalaciones de nuestros aliados estratégicos, Ccs MultiSport y Luxor Fitness Center. Estos centros están equipados con la tecnología más avanzada y ofrecen un ambiente ideal para que nuestros miembros se preparen y optimicen su rendimiento, garantizando una experiencia de entrenamiento de primer nivel.'
   - label: 'Paseos'
     icon: '/images/trainings/info/icon-5.svg'
-    desc: |
-      En las diferentes zonas turisiticas y gastronómicas:
-
-      - Bailadores, Mérida.
-      - Girona, España.
-      - La gran Vuelta (Valencia-Merida-Valencia)
+    desc: 'Organizamos rodadas en diferentes zonas turísticas y gastronómicas de gran interés, como Bailadores en Mérida y Girona en España. Además, participamos en eventos de gran envergadura como la Gran Vuelta Valencia-Mérida-Valencia. Estas rodadas combinan el desafío deportivo con la oportunidad de disfrutar de paisajes espectaculares y la cultura local.'
 
 allies:
   - name: 'Centro deportivo Ccs Multisport'
@@ -61,15 +53,15 @@ allies:
 
 coaches:
   - name: 'Carolina Lairet'
-    avatar: '/images/trainings/coaches/avila-multisports-coaches-ethy-oziel.webp'
+    avatar: '/images/trainings/coaches/avila-multisports-coaches-carolina-lairet.webp'
     speciality: 'Natacion'
     instagramProfile: 'https://www.instagram.com/nutricioncaro/'
-    shortBio: 'Nutricionista deportiva con especialización de la Universidad Central de Venezuela y un Máster en Nutrición Humana de la Universidad de Barcelona. Ha realizado cursos avanzados en Nutrición Deportiva con el Comité Olímpico Internacional y la Federación Mexicana de Nutrición Deportiva, incluyendo Antropometría ISAK nivel 1.'
+    shortBio: 'Nutricionista deportivo con especialización de la Universidad Central de Venezuela y un Máster en Nutrición Humana de la Universidad de Barcelona. Cuenta con cursos avanzados del Comité Olímpico Internacional, la Federación Mexicana de Nutrición Deportiva y Antropometría ISAK nivel 1.'
   - name: 'Salvatore Cali'
     avatar: '/images/trainings/coaches/avila-multisports-coaches-salvatore-cali.webp'
     speciality: 'Ciclismo'
     instagramProfile: 'https://www.instagram.com/salvadorcali/'
-    shortBio: 'Entrenador de triatlón con casi 30 años de experiencia en la formación de atletas en natación, ciclismo y carrera. Es director de Ccs Multisport y Ávila Multisport, impulsando el desarrollo deportivo en Venezuela. Su enfoque combina educación física, psicología y entrenamiento de alto rendimiento.'
+    shortBio: 'Entrenador de triatlón con casi 30 años de experiencia. Es director de Ccs Multisport y Ávila Multisport, impulsando el desarrollo deportivo en Venezuela. Su enfoque combina educación física, psicología y entrenamiento de alto rendimiento en natación, ciclismo y carrera'
   - name: 'Federico Pisani'
     avatar: '/images/trainings/coaches/avila-multisports-coaches-federico-pisani.webp'
     speciality: 'Fortalecimiento'

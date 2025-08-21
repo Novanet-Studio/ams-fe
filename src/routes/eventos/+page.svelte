@@ -118,7 +118,7 @@
 			transition:fly={{ y: 20, duration: 300 }}
 		>
 			<div
-				class="bg-white shadow-xl max-w-6xl overflow-hidden w-full pt-0 pb-0 pl-0 flex flex-col md:flex-row relative
+				class="bg-white shadow-xl max-w-6xl w-full pt-0 pb-0 pl-0 flex flex-col md:flex-row relative
                        max-h-full"
 				use:clickOutside
 				on:clickoutside={closeModal}
@@ -126,9 +126,9 @@
 			>
 				<button
 					on:click={closeModal}
-					class="absolute top-3 right-3 bg-white p-1 shadow-lg z-50 hover:bg-gray-200"
+					class="absolute top-3 right-3 bg-[#E3D268] p-1 shadow-lg z-50 hover:bg-gray-200"
 				>
-					<div class="i-ph-x-bold text-lg text-gray-700" />
+					<div class="i-ph-x-bold text-xl text-gray-700" />
 				</button>
 
 				<div class="w-full md:w-1/3 flex-shrink-0 flex flex-col gap-2">
@@ -150,7 +150,7 @@
 						</a>
 					{/if}
 				</div>
-				<div class="p-6">
+				<div class="p-6 overflow-y-scroll max-h-[50vh] md:(max-h-auto overflow-hidden)">
 					<h3 class="text-2xl font-bold text-[#003B49]">{activeEvent?.attributes?.title}</h3>
 					<h4 class="text-xl font-bold text-#003B49/50">{activeEvent?.attributes?.location}</h4>
 
