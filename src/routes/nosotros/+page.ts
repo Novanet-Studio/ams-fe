@@ -1,7 +1,7 @@
 export const ssr = false;
 
 /** @type {import('./$types').PageLoad} */
-export async function load({ fetch }) {
+export async function load({ fetch }: any) {
 	const res = await fetch('/api/info?key=about');
 
 	if (res.ok) {

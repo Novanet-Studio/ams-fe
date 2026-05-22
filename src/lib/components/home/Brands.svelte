@@ -28,12 +28,12 @@
 	id="brands"
 	class="min-h-screen h-screen grid grid-cols-2 gap-18 place-items-center place-content-center snap-start snap-always px-12 md:px-0 lg:w-1/3"
 	use:inView={{ bottom: 100, top: 100 }}
-	on:enter={animateElements}
-	on:exit={handleExit}
+	onenter={animateElements}
+	onexit={handleExit}
 >
 	{#each brands as brand}
 		<div class="flex items-center justify-center">
-			{#if brand.name === 'Miche logo' || brand.name === 'Speedsix logo' || brand.name === 'Scicon logo'}
+			{#if brand.name === 'Miche logo' || brand.name === 'Speedsix logo' || brand.name === 'Scicon logo' || brand.name === 'Rocket logo'}
 				<img
 					src={brand.image}
 					alt={brand.name}

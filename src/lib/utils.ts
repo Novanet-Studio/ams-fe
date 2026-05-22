@@ -1,15 +1,19 @@
 import { env } from '$env/dynamic/public';
 
-export const isLocalAssets = env.PUBLIC_LOCAL_ASSETS || false;
+export const isLocalAssets = env.PUBLIC_LOCAL_ASSETS ?? false;
 
 export const getImage = (name: string) => name.replace('.png', '');
 
 export const getImageUrl = (path: string | undefined) => {
-	console.log(`path: ${path}`);
+	if (!path) {
+		return '';
+	}
+
+	if (path.startsWith('/')) {
+		return `http://localhost:1337${path}`;
+	}
 
 	return path;
-
-	return isLocalAssets ? `http://localhost:1337${path}` : path;
 };
 
 export const capitalizeFirstLetter = (string: string) =>

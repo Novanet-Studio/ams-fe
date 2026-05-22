@@ -1,0 +1,11 @@
+query HomeCategories {
+	categories(sort: ["id:asc"]) {
+		documentId
+		name
+		image {
+			name
+			url
+			formats
+		}
+	}
+}

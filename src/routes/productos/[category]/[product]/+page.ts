@@ -1,9 +1,9 @@
-import { capitalizeFirstLetter } from '$lib/utils';
-import type { SubcategoryProductsVariables } from './$houdini';
+import { load_ProductsBySubcategory } from '$houdini';
+import type { PageLoad } from './$types';
 
-export const ssr = false;
-export const prerender = false;
-
-export const _SubcategoryProductsVariables: SubcategoryProductsVariables = ({ params }) => ({
-	name: capitalizeFirstLetter(params.product)
-});
+export const load: PageLoad = async (event) => {
+	return await load_ProductsBySubcategory({
+		event,
+		variables: { subcategoryName: event.params.product }
+	});
+};

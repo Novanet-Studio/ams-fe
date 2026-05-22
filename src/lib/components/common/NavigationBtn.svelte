@@ -1,9 +1,15 @@
 <script lang="ts">
-	export let icon: string;
-	export let classnames = '';
-	export let position: 'left' | 'right' = 'left';
-
-	export { classnames as class };
+	let {
+		icon,
+		class: classnames = '',
+		position = 'left',
+		onclick
+	}: {
+		icon: string;
+		class?: string;
+		position?: 'left' | 'right';
+		onclick?: (e: MouseEvent) => void;
+	} = $props();
 </script>
 
 <button
@@ -11,7 +17,7 @@
 	'left'
 		? 'left-2'
 		: 'right-2'}"
-	on:click
+	{onclick}
 >
-	<div class="{icon} text-white text-md md:text-lg"></div>
+	<div class="{icon} text-white text-md md:text-lg" />
 </button>

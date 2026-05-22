@@ -1,0 +1,23 @@
+query Events {
+	events(sort: ["id:asc"]) {
+		documentId
+		title
+		description
+		location
+		date_start
+		date_end
+		status
+		event_type
+		organizer
+		info
+		portraid_url {
+			name
+			url
+			formats
+		}
+		brochure {
+			name
+			url
+		}
+	}
+}

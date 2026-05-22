@@ -1,21 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { stagger, timeline } from 'motion';
-	import { page } from '$app/stores';
+	import { stagger, animate } from 'motion';
 	import { elementColors } from '$lib/store';
 	import { getImageUrl } from '$lib/utils';
-	import type { PageData } from './$houdini';
 
-	export let data: PageData;
+	let { data }: { data: any } = $props();
+	let ProductsBySubcategory = $derived(data.ProductsBySubcategory);
 
-	$: ({ SubcategoryProducts } = data);
-
-	$: productName = $page.params.product;
-	$: category = $SubcategoryProducts?.data?.subcategories?.data[0]?.attributes?.categoria?.data;
-	$: products = $SubcategoryProducts?.data?.subcategories?.data[0].attributes?.productos?.data;
+	let subcategory = $derived($ProductsBySubcategory?.data?.subcategories[0]);
+	let category = $derived(subcategory?.categoria);
+	let products = $derived(subcategory?.productos);
 
 	function animation() {
-		timeline(
+		animate(
 			[
 				[
 					'#products',
@@ -23,22 +20,18 @@
 						opacity: [0, 1],
 						background: ['#fff', '#003B49']
 					},
-					{ duration: 0.4, easing: 'ease-out' }
+					{ duration: 0.4, ease: 'ease-out' }
 				],
-				[
-					'#products #image',
-					{ opacity: [0, 1], filter: ['blur(2px)', 'blur(0)'] },
-					{ duration: 0.4, easing: 'ease-out' }
-				],
+				['#products #image', { opacity: [0, 1] }, { duration: 0.4, ease: 'ease-out' }],
 				[
 					'#products #middle',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.1, easing: 'ease-out', delay: 0.2 }
+					{ duration: 0.1, ease: 'ease-out', delay: 0.2 }
 				],
 				[
 					'#products #middle #name',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.3, easing: 'ease-out', delay: 0.2 }
+					{ duration: 0.3, ease: 'ease-out', delay: 0.2 }
 				],
 				[
 					'#products #top',
@@ -49,7 +42,7 @@
 							'polygon(0% 100%, 100% 100%, 73.49% 50.75%)'
 						]
 					},
-					{ duration: 0.2, easing: 'ease-out' }
+					{ duration: 0.2, ease: 'ease-out' }
 				],
 				[
 					'#products #bottom',
@@ -57,15 +50,15 @@
 						opacity: [0, 1],
 						clipPath: ['polygon(40% 70%, 0 0, 100% 0)', 'polygon(32% 60%, 0 0, 100% 0)']
 					},
-					{ duration: 0.2, easing: 'ease-out' }
+					{ duration: 0.2, ease: 'ease-out' }
 				],
-				['#products h3', { opacity: [0, 1], y: [-10, 0] }, { duration: 1, easing: 'ease-out' }],
+				['#products h3', { opacity: [0, 1], y: [-10, 0] }, { duration: 1, ease: 'ease-out' }],
 				[
 					'#products ul li',
 					{ opacity: [0, 1], y: [10, 0] },
-					{ duration: 1, easing: 'ease-out', delay: stagger(0.1) }
+					{ duration: 1, ease: 'ease-out', delay: stagger(0.1) }
 				]
-			],
+			] as any,
 			{
 				duration: 2
 			}
@@ -82,62 +75,69 @@
 	<div class="w-full">
 		<div
 			id="top"
-			class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#93B7BB lg:h-80px"
+			class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#93B7BB lg:h-20"
 		/>
-		<div class="w-full h-36 relative overflow-hidden lg:h-300px">
+		<div class="w-full h-48 relative overflow-hidden lg:h-72">
 			<div
 				id="middle"
-				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/50 gap-2 z-2"
+				class="absolute inset-0 flex justify-center items-center bg-#93B7BB/70 gap-2 z-2"
 			>
-				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl lg:text-4xl">
-					{category?.attributes?.name}
+				<h4 id="name" class="text-#003B49 font-bold text-2xl md:text-4xl lg:text-5xl">
+					{category?.name ?? 'Productos'}
 				</h4>
 			</div>
 			<img
 				id="image"
-				class="md:min-w-full object-cover object-center"
-				src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
-				alt={category?.attributes?.name}
+				class="w-full h-full object-cover object-center grayscale"
+				src={getImageUrl(category?.image?.url)}
+				alt={category?.name}
 			/>
 		</div>
 		<div
 			id="bottom"
-			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB lg:h-80px"
+			class="bottom-0 left-0 w-full h-10 [clip-path: inset(80% 0 0 0)] bg-#93B7BB lg:h-20"
 		/>
 	</div>
 
-	<div class="-mt-12 bg-#fff w-full min-h-full lg:-mt-20">
-		<h3
-			class="mt-24 text-center font-bold text-2xl text-#003B49 first-letter:uppercase md:text-3xl lg:mt-20"
-		>
-			{productName}
-		</h3>
+	<div class="w-full bg-white pb-20 lg:-mt-20">
+		<div class="max-w-4xl mx-auto px-6 pt-12 md:pt-20 text-center">
+			<h3 class="font-bold text-3xl text-#003B49 first-letter:uppercase">
+				{subcategory?.name}
+			</h3>
+		</div>
+
 		<ul
-			class="px-12 pt-10 mb-18 pb-12 flex flex-col gap-8 min-h-screen lg:(flex-row min-h-full items-start justify-center mb-0 pt-10 max-w-70% mx-auto mb-24)"
+			class="max-w-7xl mx-auto w-full px-6 py-12 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
 		>
-			<div class="max-w-screen-xl mx-auto grid gap-8 grid-cols-1 md:grid-cols-2 lg:(grid-cols-3)">
-				{#if $SubcategoryProducts.fetching}
-					<p>Cargando...</p>
-				{:else}
-					{#each products as product (product?.attributes?.name)}
-						<li class="relative max-w-360px border border-#DDDDDD mb-3 md:mx-auto lg:(last:mx-0)">
-							<img
-								class="lg:max-w-350px"
-								src={getImageUrl(product?.attributes?.image?.data?.attributes?.url)}
-								alt={product?.attributes?.name}
-							/>
-							<div
-								id="top"
-								class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#ddd lg:h-20px"
-							/>
-							<div class="bg-#ddd p-2">
-								<h4 class="text-#003B49 text-lg font-bold">{product?.attributes?.name}</h4>
-								<button>Ver especificaciones</button>
-							</div>
-						</li>
-					{/each}
-				{/if}
-			</div>
+			{#if $ProductsBySubcategory.fetching}
+				<p class="col-span-full text-center text-gray-500">Cargando productos...</p>
+			{:else if !products?.length}
+				<p class="col-span-full text-center text-gray-500">
+					No hay productos disponibles en esta subcategoría.
+				</p>
+			{:else}
+				{#each products as product (product?.documentId)}
+					<li class="rounded-lg shadow-md overflow-hidden bg-white flex flex-col">
+						<img
+							class="w-full h-64 object-cover"
+							src={getImageUrl(product?.image?.url)}
+							alt={product?.name}
+						/>
+						<div class="p-4 flex flex-col flex-grow">
+							<p class="text-sm font-semibold text-gray-500">Marca: {product?.brand}</p>
+							<h4 class="text-xl font-bold text-#003B49 mt-1">{product?.name}</h4>
+							<div class="flex-grow" />
+							<a
+								class="mt-4 w-full bg-#e3d268 text-[#003B49] text-center font-bold py-2 rounded"
+								href={product?.link}
+								target="_blank"
+							>
+								Ver especificaciones
+							</a>
+						</div>
+					</li>
+				{/each}
+			{/if}
 		</ul>
 	</div>
 </section>

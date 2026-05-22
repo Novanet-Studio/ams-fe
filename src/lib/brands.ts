@@ -6,7 +6,7 @@ import castelliLogo from '$lib/assets/brands/avila-multisports-marcas-castelli.w
 import micheLogo from '$lib/assets/brands/avila-multisports-marcas-miche.webp';
 import speedsixLogo from '$lib/assets/brands/avila-multisports-marcas-speedsix.webp';
 import sciconLogo from '$lib/assets/brands/avila-multisports-marcas-scicon.webp';
-
+import rocketLogo from '$lib/assets/brands/avila-multisports-marcas-rocket.webp';
 
 // Logos - Accessories
 import NZManufacturingLogo from '$lib/assets/brands/avila-multisports-marcas-nz-manufacturing.webp';
@@ -21,7 +21,6 @@ import castelliImage from '$lib/assets/main/avila-multisports-principal-mujer-ci
 import micheImage from '$lib/assets/main/avila-multisports-principal-ruedas-bicicleta-ruta-MICHE.webp';
 import speedsixImage from '$lib/assets/main/avila-multisports-principal-manzana-SPEEEDSIX.webp';
 import sciconImage from '$lib/assets/main/avila-multisports-principal-ciclistas-en-via-SCICON.webp';
-
 
 // Images - Accesories
 import NZManufacturingImage from '$lib/assets/accesories/avila-multisports-accesorios-nadador-sumergido-piscina.webp';
@@ -56,6 +55,10 @@ export const brands = [
 	{
 		name: 'Scicon logo',
 		image: sciconLogo
+	},
+	{
+		name: 'Rocket logo',
+		image: rocketLogo
 	}
 ];
 
@@ -75,7 +78,8 @@ export const carousel = {
 			name: 'Inspire logo',
 			copy: {
 				main: 'Entrena con Propósito',
-				secondary: 'Experimenta la ingeniería de precisión y el diseño ergonómico en cada pieza de nuestro equipo de fuerza'
+				secondary:
+					'Experimenta la ingeniería de precisión y el diseño ergonómico en cada pieza de nuestro equipo de fuerza'
 			},
 			logo: inspireLogo,
 			image: inspireImage
@@ -84,7 +88,8 @@ export const carousel = {
 			name: 'True logo',
 			copy: {
 				main: 'Rendimiento Duradero',
-				secondary: 'Equipos de fitness de primera calidad, diseñados para ofrecer un rendimiento excepcional y una durabilidad superior'
+				secondary:
+					'Equipos de fitness de primera calidad, diseñados para ofrecer un rendimiento excepcional y una durabilidad superior'
 			},
 			logo: trueLogo,
 			image: trueImage
@@ -93,7 +98,8 @@ export const carousel = {
 			name: 'Castelli logo',
 			copy: {
 				main: 'Accesorios de Ciclismo de Élite',
-				secondary: 'Completa tu equipo con accesorios diseñados para rendimiento superior, confort y estilo en cada ruta'
+				secondary:
+					'Completa tu equipo con accesorios diseñados para rendimiento superior, confort y estilo en cada ruta'
 			},
 			logo: castelliLogo,
 			image: castelliImage
@@ -102,7 +108,8 @@ export const carousel = {
 			name: 'Miche logo',
 			copy: {
 				main: 'Ingeniería Italiana en Cada Componente',
-				secondary: 'El equilibrio perfecto entre diseño, tecnología y ligereza para llevar tu pedaleo al siguiente nivel.'
+				secondary:
+					'El equilibrio perfecto entre diseño, tecnología y ligereza para llevar tu pedaleo al siguiente nivel.'
 			},
 			logo: micheLogo,
 			image: micheImage
@@ -111,7 +118,8 @@ export const carousel = {
 			name: 'Speedsix logo',
 			copy: {
 				main: 'Ligereza que Impulsa',
-				secondary: 'Ruedas de carbono para bicicletas de ruta. Diseñadas para una rigidez incomparable y una aceleración sin esfuerzo'
+				secondary:
+					'Ruedas de carbono para bicicletas de ruta. Diseñadas para una rigidez incomparable y una aceleración sin esfuerzo'
 			},
 			logo: speedsixLogo,
 			image: speedsixImage
@@ -120,7 +128,8 @@ export const carousel = {
 			name: 'Scicon logo',
 			copy: {
 				main: 'Equipamiento de Élite para Ciclismo',
-				secondary: 'Desde el viaje hasta la ruta, encuentra accesorios de alta calidad: protección, organización y visión clara para cada ciclista'
+				secondary:
+					'Desde el viaje hasta la ruta, encuentra accesorios de alta calidad: protección, organización y visión clara para cada ciclista'
 			},
 			logo: sciconLogo,
 			image: sciconImage

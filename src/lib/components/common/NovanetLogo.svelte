@@ -1,12 +1,17 @@
 <script lang="ts">
-	let classname = '';
+	let {
+		isDark = false,
+		width = 53,
+		height = 13,
+		class: classname = ''
+	}: {
+		isDark?: boolean;
+		width?: number;
+		height?: number;
+		class?: string;
+	} = $props();
 
-	export let isDark: boolean = false;
-	export let width = 53;
-	export let height = 13;
-	export { classname as class };
-
-	$: color = isDark ? '#1E1E1E' : 'white';
+	let color = $derived(isDark ? '#1E1E1E' : 'white');
 </script>
 
 <svg

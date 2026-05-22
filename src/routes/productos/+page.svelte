@@ -1,56 +1,25 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { animate, stagger, timeline } from 'motion';
+	import { stagger, animate } from 'motion';
 	import { goto } from '$app/navigation';
 	import { clickOutside } from '$lib/actions/clickOutside';
 	import { elementColors } from '$lib/store';
 	import { getImageUrl } from '$lib/utils';
-	import type { PageData } from './$houdini';
 
 	import { productsBanner } from '$lib/products';
 
-	export let data: PageData;
-
-	$: ({ Categories } = data);
+	let { data }: { data: any } = $props();
+	let Categories = $derived(data.Categories);
 
 	let active = '';
-
-	function topAnimation(node: any) {
-		const ctrl = animate(
-			node,
-			{ y: [10, 0], opacity: [0, 1] },
-			{ duration: 0.2, easing: 'ease-out' }
-		);
-
-		return {
-			duration: ctrl.duration,
-			tick: (t: number, u: number) => {
-				// ctrl.currentTime = t;
-			}
-		};
-	}
-
-	function middleAnimation(node: any) {
-		const an = animate(
-			node,
-			{ background: ['#93B7BB', '#93B7BB80'], opacity: [0, 1] },
-			{ duration: 0.2, easing: 'ease-out' }
-		);
-
-		return {
-			duration: an.duration,
-			tick: () => {
-				// console.log(t);
-			}
-		};
-	}
 
 	function handleActive(item: string | undefined) {
 		if (!item) return;
 
 		if (item === active) {
 			goto(`/productos/${item}`);
+
 			return;
 		}
 
@@ -58,24 +27,24 @@
 	}
 
 	function animateElements() {
-		timeline(
+		animate(
 			[
 				[
 					'#productCategories',
 					{ opacity: [0, 1], background: ['#fff', '#003B49'] },
-					{ duration: 0.5, easing: 'ease-out' }
+					{ duration: 0.5, ease: 'ease-out' }
 				],
 				[
 					'#productCategories > h3',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.5, easing: 'ease-out' }
+					{ duration: 0.5, ease: 'ease-out' }
 				],
 				[
 					'#productCategories > ul > button',
 					{ opacity: [0, 1], y: [10, 0] },
-					{ duration: 0.5, easing: 'ease-out', delay: stagger(0.1) }
+					{ duration: 0.5, ease: 'ease-out', delay: stagger(0.1) }
 				]
-			],
+			] as any,
 			{
 				duration: 2
 			}
@@ -84,11 +53,14 @@
 
 	onMount(() => {
 		animateElements();
-		$elementColors.copyright = 'dark';
+		$elementColors.copyright = 'light';
 	});
 </script>
 
-<section id="productCategories" class="bg-#003B49 flex flex-col items-center pt-14 lg:pt-18">
+<section
+	id="productCategories"
+	class="bg-#003B49 flex flex-col justify-center items-center pt-26 pb-12 lg:pt-18"
+>
 	<div class="w-full">
 		<div
 			id="top"
@@ -99,11 +71,11 @@
 				id="middle"
 				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/70 gap-2 z-2"
 			>
-				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl lg:text-4xl">Productos</h4>
+				<h4 id="name" class="text-#003B49 font-bold text-2xl md:text-3xl lg:text-4xl">Productos</h4>
 			</div>
 			<img
 				id="image"
-				class="md:min-w-full h-full object-cover object-center"
+				class="md:min-w-full h-full object-cover object-center grayscale"
 				src={productsBanner}
 				alt="productBanner"
 			/>
@@ -115,32 +87,64 @@
 	</div>
 
 	<ul
-		class="px-6 mt-8 pb-20 grid gap-8 grid-cols-1 bg-white sm:grid-cols-2 lg:(px-16) lg:pt-30 lg:(grid-cols-3) lg:-mt-20"
+		class="max-w-[90%] lg:max-w-[80%] mx-auto w-full py-12 md:py-20 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
 		use:clickOutside
-		on:clickoutside={() => (active = '')}
+		onclickoutside={() => (active = '')}
 	>
-		{#if $Categories.data?.categories?.data.length}
-			{#each $Categories.data?.categories?.data as category (category?.attributes?.name)}
-				<button
-					on:click|preventDefault={() => handleActive(category?.attributes?.name?.toLowerCase())}
-				>
-					<li id={category?.attributes?.name?.toLowerCase()} class="relative max-w-full">
+		{#if $Categories.data?.categories?.length}
+			{#each $Categories.data?.categories as category (category?.name)}
+				<li>
+					<button
+						onclick={(e) => {
+							e.preventDefault();
+							handleActive(category?.name?.toLowerCase());
+						}}
+						class="group block w-full overflow-hidden relative"
+					>
 						<img
 							id="image"
-							src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
-							alt={category?.attributes?.name}
+							src={getImageUrl(category?.image?.url)}
+							alt={category?.name}
+							class="w-full h-40 md:h-auto object-cover"
 						/>
-					</li>
-					<div class=" flex justify-center p-3 bg-#93B7BB">
-						<h4 id="name" class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-2xl">
-							{category?.attributes?.name}
-						</h4>
+
+						<div class=" flex justify-center p-3 bg-#93B7BB">
+							<h4 id="name" class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-2xl">
+								{category?.name}
+							</h4>
+							<div
+								class="i-ph-arrow-right-bold mt-1 ml-1 text-xl md:text-2xl text-#003B49"
+								transition:fly={{ x: -10, delay: 0.5 }}
+							/>
+						</div>
+
 						<div
-							class="i-ph-arrow-right-bold mt-1 ml-1 text-xl md:text-2xl text-#003B49"
-							transition:fly={{ x: -10, delay: 0.5 }}
-						></div>
-					</div>
-				</button>
+							class="absolute inset-0 bg-transparent transition-colors duration-300 ease-in-out group-hover:bg-[#93B7BB]/70 flex items-center justify-center"
+						>
+							<div
+								class="relative w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+							>
+								<div
+									class="absolute top-0 left-0 w-full h-full bg-[#93B7BB] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-250 ease-out"
+									style="clip-path: polygon(0% 0%, 100% 0%, 25% 15%)"
+								/>
+
+								<div
+									class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200"
+								>
+									<h4 class="text-#003B49 font-bold text-xl">
+										{category?.name}
+									</h4>
+								</div>
+
+								<div
+									class="absolute bottom-0 left-0 w-full h-full bg-[#93B7BB] transform translate-y-full group-hover:translate-y-0 transition-transform duration-250 ease-out"
+									style="clip-path: inset(80% 0 0 0);"
+								/>
+							</div>
+						</div>
+					</button>
+				</li>
 			{/each}
 		{/if}
 	</ul>

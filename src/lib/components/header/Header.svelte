@@ -4,18 +4,17 @@
 	import AmsLogo from './AmsLogo.svelte';
 	import BurgerMenu from './BurgerMenu.svelte';
 
-	let sticky = false;
+	let sticky = $state(false);
 
-	$: {
-		if ($scrollY > 100 && $page.url.pathname.includes('productos')) sticky = true;
-		else sticky = false;
-	}
+	$effect(() => {
+		sticky = $scrollY > 100 && $page.url.pathname.includes('productos');
+	});
 </script>
 
 <header
 	class="flex items-center justify-between z-99 fixed {sticky
 		? 'bg-#003B49'
-		: 'bg-transparent'} top-0 w-full transition ease lg:(py-12 px-16)"
+		: 'bg-transparent'} top-0 w-full transition ease p-4 lg:(py-12 px-16)"
 >
 	<AmsLogo />
 	<BurgerMenu />

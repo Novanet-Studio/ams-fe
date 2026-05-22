@@ -4,22 +4,20 @@
 	import { clickOutside } from '$lib/actions/clickOutside';
 	import { elementColors } from '$lib/store';
 	import { getImageUrl } from '$lib/utils';
-	import { stagger, timeline } from 'motion';
+	import { stagger, animate } from 'motion';
 	import { onMount } from 'svelte';
-	import { blur, fly } from 'svelte/transition';
-	import type { PageData } from './$houdini';
+	import { fly } from 'svelte/transition';
 
-	export let data: PageData;
-
-	$: ({ Subcategories } = data);
+	let { data }: { data: any } = $props();
+	let Subcategories = $derived(data.Subcategories);
 
 	let active = '';
 
-	$: categoryName = $page.url.pathname.split('/')[2];
-	$: category = $Subcategories?.data?.subcategories?.data[0]?.attributes?.categoria?.data || {};
+	let categoryName = $derived($page.url.pathname.split('/')[2]);
+	let category = $derived($Subcategories?.data?.subcategories[0]?.categoria);
 
 	function animation() {
-		timeline(
+		animate(
 			[
 				[
 					'#categories',
@@ -27,22 +25,18 @@
 						opacity: [0, 1],
 						background: ['#fff', '#003B49']
 					},
-					{ duration: 0.4, easing: 'ease-out' }
+					{ duration: 0.4, ease: 'ease-out' }
 				],
-				[
-					'#categories #image',
-					{ opacity: [0, 1], filter: ['blur(2px)', 'blur(0)'] },
-					{ duration: 0.4, easing: 'ease-out' }
-				],
+				['#categories #image', { opacity: [0, 1] }, { duration: 0.4, ease: 'ease-out' }],
 				[
 					'#categories #middle',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.1, easing: 'ease-out' }
+					{ duration: 0.1, ease: 'ease-out' }
 				],
 				[
 					'#categories #middle #name',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.3, easing: 'ease-out' }
+					{ duration: 0.3, ease: 'ease-out' }
 				],
 				[
 					'#categories #top',
@@ -53,7 +47,7 @@
 							'polygon(0% 100%, 100% 100%, 73.49% 50.75%)'
 						]
 					},
-					{ duration: 0.2, easing: 'ease-out' }
+					{ duration: 0.2, ease: 'ease-out' }
 				],
 				[
 					'#categories #bottom',
@@ -61,14 +55,14 @@
 						opacity: [0, 1],
 						clipPath: ['polygon(40% 70%, 0 0, 100% 0)', 'polygon(32% 60%, 0 0, 100% 0)']
 					},
-					{ duration: 0.2, easing: 'ease-out' }
+					{ duration: 0.2, ease: 'ease-out' }
 				],
 				[
 					'#categories ul > button',
 					{ opacity: [0, 1], y: [10, 0] },
-					{ duration: 0.5, easing: 'ease-out', delay: stagger(0.1) }
+					{ duration: 0.5, ease: 'ease-out', delay: stagger(0.1) }
 				]
-			],
+			] as any,
 			{
 				duration: 2
 			}
@@ -80,7 +74,6 @@
 			goto(`/productos/${categoryName}/${item}`);
 			return;
 		}
-
 		active = item;
 	}
 
@@ -94,72 +87,99 @@
 	<div class="w-full">
 		<div
 			id="top"
-			class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#93B7BB lg:h-80px"
+			class="w-full h-10 [clip-path:polygon(0%_100%,_100%_100%,_73.49%_50.75%)] bg-#93B7BB lg:h-20"
 		/>
-		<div class="w-full h-36 relative overflow-hidden lg:h-300px">
+		<div class="w-full h-48 relative overflow-hidden lg:h-72">
 			<div
 				id="middle"
-				class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-#93B7BB/80 gap-2 z-2"
+				class="absolute inset-0 flex justify-center items-center bg-#93B7BB/70 gap-2 z-2"
 			>
-				<h4 id="name" class="text-#003B49 font-bold text-lg md:text-3xl lg:text-4xl">
-					{category?.attributes?.name ?? categoryName}
+				<h4 id="name" class="text-#003B49 font-bold text-2xl md:text-4xl lg:text-5xl">
+					{category?.name ?? categoryName}
 				</h4>
 			</div>
 			<img
 				id="image"
-				class="md:min-w-full h-full object-cover object-center"
-				src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
-				alt={category?.attributes?.name}
+				class="w-full h-full object-cover object-center grayscale"
+				src={getImageUrl(category?.image?.url)}
+				alt={category?.name}
 			/>
 		</div>
 		<div
 			id="bottom"
-			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB lg:h-80px"
+			class="bottom-0 left-0 w-full h-10 [clip-path:polygon(32%_60%,_0_0,_100%_0)] bg-#93B7BB lg:h-20"
 		/>
 	</div>
 
-	<ul
-		class="px-12 mt-10 min-h-full bg-#fff w-full md:pb-30 gap-8 lg:pb-20 lg:pt-30 lg:-mt-20"
-		use:clickOutside
-		on:clickoutside={() => (active = '')}
-	>
-		<div class="max-w-screen-xl mx-auto grid gap-8 grid-cols-1 md:grid-cols-2 lg:(grid-cols-3)">
+	<div class="w-full bg-white pb-20 -mt-10 lg:-mt-20">
+		<div class="max-w-[90%] lg:max-w-[80%] mx-auto py-12 md:py-20 text-left">
+			<p class="text-xl md:text-2xl leading-relaxed text-gray-600">
+				{category?.description}
+			</p>
+		</div>
+		<ul
+			class="max-w-[90%] lg:max-w-[80%] mx-auto w-full py-12 md:py-20 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+			use:clickOutside
+			onclickoutside={() => (active = '')}
+		>
 			{#if $Subcategories.fetching}
-				<p>Cargando...</p>
+				<p class="col-span-full text-center text-gray-500">Cargando subcategorías...</p>
+			{:else if !$Subcategories.data?.subcategories?.length}
+				<p class="col-span-full text-center text-gray-500">No hay subcategorías disponibles.</p>
 			{:else}
-				{#each $Subcategories?.data?.subcategories?.data as subcategory (subcategory?.attributes.name)}
+				{#each $Subcategories?.data?.subcategories as subcategory (subcategory?.name)}
 					<button
-						class="flex justify-center"
-						on:click|preventDefault={() =>
-							handleActive(subcategory?.attributes.name?.toLowerCase())}
+						onclick={(e) => {
+							e.preventDefault();
+							handleActive(subcategory?.name?.toLowerCase() ?? '');
+						}}
+						class="group block w-full overflow-hidden relative"
 					>
-						<li class="relative max-w-360px">
-							<img
-								class="w-full"
-								src={getImageUrl(subcategory?.attributes?.image?.data?.attributes?.url)}
-								alt={subcategory?.attributes.name}
-							/>
+						<img
+							id="image"
+							src={getImageUrl(subcategory?.image?.url)}
+							alt={subcategory?.name}
+							class="w-full h-56 object-cover"
+						/>
 
+						<div class=" flex justify-center p-3 bg-#93B7BB">
+							<h4 id="name" class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-2xl">
+								{subcategory?.name}
+							</h4>
 							<div
-								class={`absolute bottom-0 left-0 w-full flex justify-center items-center backdrop-blur-2px transition ease ${
-									active === subcategory?.attributes?.name?.toLowerCase()
-										? 'bg-#003B49'
-										: 'bg-#003B49/70'
-								}`}
-								transition:blur
+								class="i-ph-arrow-right-bold mt-1 ml-1 text-xl md:text-2xl text-#003B49"
+								transition:fly={{ x: -10, delay: 0.5 }}
+							/>
+						</div>
+
+						<div
+							class="absolute inset-0 bg-transparent transition-colors duration-300 ease-in-out group-hover:bg-[#93B7BB]/70 flex items-center justify-center"
+						>
+							<div
+								class="relative w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
 							>
-								<h5 class="font-bold text-xl text-white first-letter:uppercase">
-									{subcategory?.attributes?.name}
-								</h5>
 								<div
-									class="i-ph-arrow-right ml-1 text-white text-xl"
-									transition:fly={{ x: 10, delay: 300 }}
-								></div>
+									class="absolute top-0 left-0 w-full h-full bg-[#93B7BB] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
+									style="clip-path: polygon(0% 0%, 100% 0%, 25% 15%)"
+								/>
+
+								<div
+									class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200"
+								>
+									<h4 class="text-#003B49 font-bold text-3xl">
+										{subcategory?.name}
+									</h4>
+								</div>
+
+								<div
+									class="absolute bottom-0 left-0 w-full h-full bg-[#93B7BB] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
+									style="clip-path: inset(80% 0 0 0);"
+								/>
 							</div>
-						</li>
+						</div>
 					</button>
 				{/each}
 			{/if}
-		</div>
-	</ul>
+		</ul>
+	</div>
 </section>

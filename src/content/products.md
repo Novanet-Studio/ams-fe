@@ -28,7 +28,6 @@ categories:
         image: ''
       - name: 'Banco de almacenaje'
         image: ''
-      
 
 products:
   - name: 'wilier'
