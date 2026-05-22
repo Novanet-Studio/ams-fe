@@ -1,14 +1,14 @@
 <script lang="ts">
 	import image from '$lib/assets/web/avila-multisports-nosotros-grupo-ciclistas.webp';
 	import { isDesktop } from '$lib/store';
-	import { timeline } from 'motion';
+	import { animate } from 'motion';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
 	let section: HTMLElement;
 
 	onMount(() => {
-		timeline(
+		animate(
 			[
 				[
 					'#historyImg',

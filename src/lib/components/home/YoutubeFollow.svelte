@@ -7,7 +7,6 @@
 <section
 	class="snap-start snap-always h-screen w-full relative overflow-hidden bg-cover z-1"
 	style="background-image: url({backgroundImage});"
-	on:enter={animateElements}
 >
 	<div
 		class="relative w-full h-screen z-20 flex flex-col justify-center pl-6 pr-6 md:(pl-16 pr-10)"

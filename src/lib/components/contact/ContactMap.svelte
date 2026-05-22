@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { elementColors, isDesktop } from '$lib/store';
-	import { timeline } from 'motion';
+	import { animate } from 'motion';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
 	let section: HTMLElement;
 
 	onMount(() => {
-		timeline(
+		animate(
 			[
 				[
 					'#map',

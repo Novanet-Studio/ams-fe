@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { stagger, timeline } from 'motion';
+	import { stagger, animate } from 'motion';
 	import { goto } from '$app/navigation';
 	import { clickOutside } from '$lib/actions/clickOutside';
 	import { elementColors } from '$lib/store';
 	import { getImageUrl } from '$lib/utils';
-	import type { PageData } from './$houdini';
+
 	import { productsBanner } from '$lib/products';
 
-	export let data: PageData;
-	$: ({ Categories } = data);
+	let { data }: { data: any } = $props();
+	let Categories = $derived(data.Categories);
 
 	let active = '';
 
@@ -27,24 +27,24 @@
 	}
 
 	function animateElements() {
-		timeline(
+		animate(
 			[
 				[
 					'#productCategories',
 					{ opacity: [0, 1], background: ['#fff', '#003B49'] },
-					{ duration: 0.5, easing: 'ease-out' }
+					{ duration: 0.5, ease: 'ease-out' }
 				],
 				[
 					'#productCategories > h3',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.5, easing: 'ease-out' }
+					{ duration: 0.5, ease: 'ease-out' }
 				],
 				[
 					'#productCategories > ul > button',
 					{ opacity: [0, 1], y: [10, 0] },
-					{ duration: 0.5, easing: 'ease-out', delay: stagger(0.1) }
+					{ duration: 0.5, ease: 'ease-out', delay: stagger(0.1) }
 				]
-			],
+			] as any,
 			{
 				duration: 2
 			}
@@ -89,30 +89,33 @@
 	<ul
 		class="max-w-[90%] lg:max-w-[80%] mx-auto w-full py-12 md:py-20 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
 		use:clickOutside
-		on:clickoutside={() => (active = '')}
+		onclickoutside={() => (active = '')}
 	>
-		{#if $Categories.data?.categories?.data.length}
-			{#each $Categories.data?.categories?.data as category (category?.attributes?.name)}
+		{#if $Categories.data?.categories?.length}
+			{#each $Categories.data?.categories as category (category?.name)}
 				<li>
 					<button
-						on:click|preventDefault={() => handleActive(category?.attributes?.name?.toLowerCase())}
+						onclick={(e) => {
+							e.preventDefault();
+							handleActive(category?.name?.toLowerCase());
+						}}
 						class="group block w-full overflow-hidden relative"
 					>
 						<img
 							id="image"
-							src={getImageUrl(category?.attributes?.image?.data?.attributes?.url)}
-							alt={category?.attributes?.name}
+							src={getImageUrl(category?.image?.url)}
+							alt={category?.name}
 							class="w-full h-40 md:h-auto object-cover"
 						/>
 
 						<div class=" flex justify-center p-3 bg-#93B7BB">
 							<h4 id="name" class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-2xl">
-								{category?.attributes?.name}
+								{category?.name}
 							</h4>
 							<div
 								class="i-ph-arrow-right-bold mt-1 ml-1 text-xl md:text-2xl text-#003B49"
 								transition:fly={{ x: -10, delay: 0.5 }}
-							></div>
+							/>
 						</div>
 
 						<div
@@ -130,7 +133,7 @@
 									class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200"
 								>
 									<h4 class="text-#003B49 font-bold text-xl">
-										{category?.attributes?.name}
+										{category?.name}
 									</h4>
 								</div>
 

@@ -6,11 +6,9 @@
 	import Trainings from '$lib/components/home/Trainings.svelte';
 	import YoutubeFollow from '$lib/components/home/YoutubeFollow.svelte';
 
-	import type { PageData } from './$houdini';
-
-	export let data: PageData;
-
-	$: ({ content, HomeCategories } = data);
+	let { data }: { data: any } = $props();
+	let content = $derived(data.content);
+	let HomeCategories = $derived(data.HomeCategories);
 </script>
 
 <svelte:head>

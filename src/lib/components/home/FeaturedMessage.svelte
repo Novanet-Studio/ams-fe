@@ -1,14 +1,12 @@
 <script lang="ts">
-	import { timeline } from 'motion';
+	import { animate } from 'motion';
 	import { elementColors, isDesktop } from '$lib/store';
 	import inView from '$lib/actions/inView';
 
-	let classname = '';
-
-	export { classname as class };
+	let { class: classname = '' }: { class?: string } = $props();
 
 	function animateElements() {
-		timeline(
+		animate(
 			[
 				'bg',
 				[
@@ -55,7 +53,7 @@
 	id="featuredMessage"
 	class="relative snap-start snap-always max-h-screen min-h-screen w-full 2xl:w-1/2 {classname}"
 	use:inView={{ bottom: 100, top: 100 }}
-	on:enter={animateElements}
+	onenter={animateElements}
 >
 	<div
 		class="max-h-screen h-screen bg-[#003B49] z-3 flex flex-col justify-center pl-6 md:(pl-10) xl:(pl-16 gap-8)"
@@ -75,5 +73,5 @@
 	</div>
 	<div
 		class="absolute top-0 right-0 bottom-0 [clip-path:polygon(70.23%_0%,_100%_0%,_82.52%_41.59%,_72.71%_10.19%)] bg-[#93B7BB] w-full -z-1"
-	></div>
+	/>
 </section>

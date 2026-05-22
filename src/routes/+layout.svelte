@@ -6,9 +6,10 @@
 	import Sidebar from '$lib/components/navigation/Sidebar.svelte';
 	import { scrollY } from '$lib/store';
 	import { register } from 'swiper/element/bundle';
-
-	// register Swiper custom elements
+	import type { Snippet } from 'svelte';
 	register();
+
+	let { children }: { children: Snippet } = $props();
 </script>
 
 <svelte:window bind:scrollY={$scrollY} />
@@ -17,7 +18,7 @@
 	<Header />
 	<Sidebar />
 	<main class="h-screen overflow-y-scroll snap-y snap-mandatory">
-		<slot />
+		{@render children()}
 	</main>
 	<Footer />
 </div>

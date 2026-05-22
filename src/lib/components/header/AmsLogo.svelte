@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { elementColors } from '$lib/store';
 
-	$: src = $elementColors.logo === 'light' ? '/ams-light.svg' : '/ams-dark.svg';
+	let src = $derived($elementColors.logo === 'light' ? '/ams-light.svg' : '/ams-dark.svg');
 </script>
 
 <a href="/">

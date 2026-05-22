@@ -1,19 +1,19 @@
 <script lang="ts">
-	import { timeline } from 'motion';
+	import { animate } from 'motion';
 	import inView from '$lib/actions/inView';
 	import type { Topic } from '$lib/types';
 
-	export let topic: Topic;
+	let { topic }: { topic: Topic } = $props();
 
 	function enterAnimation() {
-		timeline(
+		animate(
 			[
 				[
 					'#philosophy',
 					{
 						opacity: [0, 1]
 					},
-					{ duration: 0.5, delay: 0.5, easing: [0.17, 0.55, 0.55, 1] }
+					{ duration: 0.5, delay: 0.5, ease: [0.17, 0.55, 0.55, 1] }
 				],
 				[
 					'#philosophy > div',
@@ -54,7 +54,7 @@
 	id="philosophy"
 	class="w-full h-screen snap-start relative"
 	use:inView={{ bottom: 100, top: 100 }}
-	on:enter={enterAnimation}
+	onenter={enterAnimation}
 >
 	<div
 		class="p-8 pt-24 bg-#55555A h-94vh [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)] md:(pt-32 p-12)"

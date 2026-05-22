@@ -25,7 +25,11 @@ import type { Action } from 'svelte/action';
 // };
 
 /** Dispatch event on click outside of node */
-export const clickOutside: Action<HTMLElement> = (node) => {
+export const clickOutside: Action<
+	HTMLElement,
+	undefined,
+	{ onclickoutside?: (e: CustomEvent<HTMLElement>) => void }
+> = (node) => {
 	const handleClick = (event: MouseEvent) => {
 		if (node && !node.contains(event.target as Node) && !event.defaultPrevented) {
 			node.dispatchEvent(new CustomEvent('clickoutside', { detail: node }));

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { stagger, timeline } from 'motion';
+	import { stagger, animate } from 'motion';
 
 	import { elementColors } from '$lib/store';
 	import type { PageData } from './$types';
@@ -35,9 +35,9 @@
 		coaches: Coach[];
 	}
 
-	export let data: PageData;
+	let { data }: { data: PageData } = $props();
 
-	const content: ContentData = data.content;
+	const content: ContentData = $derived(data.content);
 
 	function getColors(index: number): { li: string; path: string } {
 		const colorSets = [
@@ -52,27 +52,27 @@
 	onMount(() => {
 		$elementColors.copyright = 'dark';
 
-		timeline(
+		animate(
 			[
 				[
 					'#coaches',
 					{ opacity: [0, 1], background: ['#fff', '#003B49'] },
-					{ duration: 0.4, easing: 'ease-out' }
+					{ duration: 0.4, ease: 'ease-out' }
 				],
 				[
 					'#coaches #image',
 					{ opacity: [0, 1], filter: ['blur(2px)', 'blur(0)'] },
-					{ duration: 0.4, easing: 'ease-out' }
+					{ duration: 0.4, ease: 'ease-out' }
 				],
 				[
 					'#coaches #middle',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.1, easing: 'ease-out', delay: 0.2 }
+					{ duration: 0.1, ease: 'ease-out', delay: 0.2 }
 				],
 				[
 					'#coaches #middle #name',
 					{ opacity: [0, 1], x: [-10, 0] },
-					{ duration: 0.3, easing: 'ease-out', delay: 0.2 }
+					{ duration: 0.3, ease: 'ease-out', delay: 0.2 }
 				],
 				[
 					'#coaches #top',
@@ -83,7 +83,7 @@
 							'polygon(0% 100%, 100% 100%, 73.49% 50.75%)'
 						]
 					},
-					{ duration: 0.2, easing: 'ease-out' }
+					{ duration: 0.2, ease: 'ease-out' }
 				],
 				[
 					'#coaches #bottom',
@@ -91,15 +91,15 @@
 						opacity: [0, 1],
 						clipPath: ['polygon(40% 70%, 0 0, 100% 0)', 'polygon(32% 60%, 0 0, 100% 0)']
 					},
-					{ duration: 0.2, easing: 'ease-out' }
+					{ duration: 0.2, ease: 'ease-out' }
 				],
-				['#coaches ul h3', { opacity: [0, 1], y: [-10, 0] }, { duration: 1, easing: 'ease-out' }],
+				['#coaches ul h3', { opacity: [0, 1], y: [-10, 0] }, { duration: 1, ease: 'ease-out' }],
 				[
 					'#coaches ul li',
 					{ opacity: [0, 1], y: [10, 0] },
-					{ duration: 1, easing: 'ease-out', delay: stagger(0.2) }
+					{ duration: 1, ease: 'ease-out', delay: stagger(0.2) }
 				]
-			],
+			] as any,
 			{ duration: 2 }
 		);
 	});
@@ -368,7 +368,7 @@
 								<h4 class="text-left font-bold mt-4 text-xl md:text-3xl">
 									{coach.name}
 								</h4>
-								<div class="i-fa6-brands-instagram mt-4"></div>
+								<div class="i-fa6-brands-instagram mt-4" />
 							</a>
 						</div>
 						<div class="text-#55555A font-700 text-sm text-left md:text-base">

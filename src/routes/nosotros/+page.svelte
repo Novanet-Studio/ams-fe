@@ -33,12 +33,12 @@
 		topics: Topic[];
 	}
 
-	export let data: { content: Data };
+	let { data }: { data: { content: Data } } = $props();
 
-	const info = {
+	const info = $derived({
 		title: data.content.topics[2].title,
 		content: (data.content.topics[2] as unknown as EnterpriseTargets).content as Topic[]
-	};
+	});
 
 	onMount(() => {
 		$elementColors.logo = 'light';

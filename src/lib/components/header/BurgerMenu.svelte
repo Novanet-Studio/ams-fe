@@ -1,77 +1,77 @@
 <script lang="ts">
 	import { isOpen, elementColors } from '$lib/store';
-	import { timeline } from 'motion';
+	import { animate } from 'motion';
 
 	function animationOpen() {
-		return timeline(
+		return animate(
 			[
 				'burg',
 				[
 					'.top',
 					{ y: -9, transformOrigin: '50% 50%' },
-					{ duration: 0.5, easing: 'ease-in', at: 'burg' }
+					{ duration: 0.5, ease: 'ease-in', at: 'burg' }
 				],
 				[
 					'.mid',
 					{ scale: 0.1, transformOrigin: '50% 50%' },
-					{ duration: 0.5, easing: 'ease-in', at: 'burg' }
+					{ duration: 0.5, ease: 'ease-in', at: 'burg' }
 				],
 				[
 					'.bot',
 					{ y: 9, transformOrigin: '50% 50%' },
-					{ duration: 0.5, easing: 'ease-in', at: 'burg' }
+					{ duration: 0.5, ease: 'ease-in', at: 'burg' }
 				],
 				'rotate',
-				['.top', { y: 4 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
-				['.bot', { y: -4 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
+				['.top', { y: 4 }, { duration: 0.2, ease: 'ease-in', at: 'rotate' }],
+				['.bot', { y: -4 }, { duration: 0.2, ease: 'ease-in', at: 'rotate' }],
 				[
 					'.top',
 					{ rotateZ: 45, transformOrigin: '50% 50%' },
-					{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
+					{ duration: 0.5, ease: 'ease-in', at: 'rotate' }
 				],
 				[
 					'.bot',
 					{ rotateZ: -45, transformOrigin: '50% 50%' },
-					{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
+					{ duration: 0.5, ease: 'ease-in', at: 'rotate' }
 				]
-			],
+			] as any,
 			{ duration: 0.5 }
 		);
 	}
 
 	function animationClose() {
-		return timeline(
+		return animate(
 			[
 				'rotate',
-				['.top', { y: 0 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
-				['.bot', { y: 0 }, { duration: 0.2, easing: 'ease-in', at: 'rotate' }],
+				['.top', { y: 0 }, { duration: 0.2, ease: 'ease-in', at: 'rotate' }],
+				['.bot', { y: 0 }, { duration: 0.2, ease: 'ease-in', at: 'rotate' }],
 				[
 					'.top',
 					{ rotateZ: 0, transformOrigin: '50% 50%' },
-					{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
+					{ duration: 0.5, ease: 'ease-in', at: 'rotate' }
 				],
 				[
 					'.bot',
 					{ rotateZ: 0, transformOrigin: '50% 50%' },
-					{ duration: 0.5, easing: 'ease-in', at: 'rotate' }
+					{ duration: 0.5, ease: 'ease-in', at: 'rotate' }
 				],
 				'burg',
 				[
 					'.top',
 					{ y: 0, transformOrigin: '50% 50%' },
-					{ duration: 0.5, easing: 'ease-in', at: 'burg' }
+					{ duration: 0.5, ease: 'ease-in', at: 'burg' }
 				],
 				[
 					'.mid',
 					{ scale: [1.1, 1], opacity: [0.1, 1], x: [-20, 0] },
-					{ duration: 0.2, easing: 'ease-in', at: 'burg' }
+					{ duration: 0.2, ease: 'ease-in', at: 'burg' }
 				],
 				[
 					'.bot',
 					{ y: 0, transformOrigin: '50% 50%' },
-					{ duration: 0.5, easing: 'ease-in', at: 'burg' }
+					{ duration: 0.5, ease: 'ease-in', at: 'burg' }
 				]
-			],
+			] as any,
 			{ duration: 0.5 }
 		);
 	}
@@ -81,11 +81,13 @@
 		dark: '#fff'
 	};
 
-	$: $isOpen ? animationOpen() : animationClose();
-	$: color = $isOpen ? 'white' : colors[$elementColors.burger];
+	$effect(() => {
+		$isOpen ? animationOpen() : animationClose();
+	});
+	let color = $derived($isOpen ? 'white' : colors[$elementColors.burger]);
 </script>
 
-<button class="z-36 bg-#003B49 rounded-full p-4" on:click={() => ($isOpen = !$isOpen)}>
+<button class="z-36 bg-#003B49 rounded-full p-4" onclick={() => ($isOpen = !$isOpen)}>
 	<svg
 		id="burger"
 		width="30"

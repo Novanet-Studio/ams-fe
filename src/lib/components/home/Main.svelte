@@ -15,21 +15,21 @@
 
 	function animateElements(repeat = false) {
 		$elementColors.burger = 'light';
-		inView('swiper-slide', (info) => {
+		inView('swiper-slide', (element) => {
 			animate(
-				info.target.querySelector('h3') as Element,
+				element.querySelector('h3') as Element,
 				{ opacity: [0, 1], x: [-100, 0] },
-				{ duration: 1.5, delay: repeat ? 0.1 : 0.5, easing: [0.17, 0.55, 0.55, 1] }
+				{ duration: 1.5, delay: repeat ? 0.1 : 0.5, ease: [0.17, 0.55, 0.55, 1] }
 			);
 			animate(
-				info.target.querySelector('p') as Element,
+				element.querySelector('p') as Element,
 				{ opacity: [0, 1], x: [-100, 0] },
-				{ duration: 1.5, delay: repeat ? 0.3 : 0.7, easing: [0.17, 0.55, 0.55, 1] }
+				{ duration: 1.5, delay: repeat ? 0.3 : 0.7, ease: [0.17, 0.55, 0.55, 1] }
 			);
 			animate(
-				info.target.querySelector('img#banner') as Element,
+				element.querySelector('img#banner') as Element,
 				{ opacity: [0, 1] },
-				{ duration: 1.5, delay: repeat ? 0.5 : 0.9, easing: [0.17, 0.55, 0.55, 1] }
+				{ duration: 1.5, delay: repeat ? 0.5 : 0.9, ease: [0.17, 0.55, 0.55, 1] }
 			);
 		});
 	}
@@ -47,12 +47,12 @@
 <section
 	class="snap-start snap-always h-screen relative"
 	use:actions.inView={{ bottom: 100, top: 100 }}
-	on:enter={animateElements}
+	onenter={animateElements}
 >
 	<NavigationBtn
 		icon="i-fa6-solid-arrow-left"
 		class="main-prev-btn"
-		on:click={() => swiper?.slidePrev()}
+		onclick={() => swiper?.slidePrev()}
 	/>
 	<swiper-container
 		id="mainSlider"
@@ -73,7 +73,7 @@
 				navigation: true
 			}
 		}}
-		on:swiperslidechange={onSlideChange}
+		onswiperslidechange={onSlideChange}
 	>
 		{#each carousel.hardware as item (item.name)}
 			<swiper-slide
@@ -108,7 +108,7 @@
 		icon="i-fa6-solid-arrow-right"
 		class="main-next-btn z-1"
 		position="right"
-		on:click={() => swiper?.slideNext()}
+		onclick={() => swiper?.slideNext()}
 	/>
 </section>
 

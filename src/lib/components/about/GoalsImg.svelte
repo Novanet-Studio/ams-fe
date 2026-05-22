@@ -1,10 +1,10 @@
 <script lang="ts">
 	import inView from '$lib/actions/inView';
 	import image from '$lib/assets/web/avila-multisports-nosotros-ciclista-parado-pedaleando.webp';
-	import { timeline } from 'motion';
+	import { animate } from 'motion';
 
 	function enterAnimation() {
-		timeline(
+		animate(
 			[
 				[
 					'#goalsImg',
@@ -47,7 +47,7 @@
 <section
 	class="w-full h-screen snap-start relative"
 	use:inView={{ bottom: 100, top: 100 }}
-	on:enter={enterAnimation}
+	onenter={enterAnimation}
 >
 	<div id="goalsImg" class="h-84vh lg:h-81.4vh">
 		<img class="h-full object-cover md:(min-w-full object-top)" src={image} alt="Ciclista" />

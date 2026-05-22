@@ -1,8 +1,7 @@
 <script lang="ts">
-	import type { PageData } from './$houdini';
 	import { getImageUrl } from '$lib/utils';
 	import { onMount } from 'svelte';
-	import { timeline } from 'motion';
+	import { animate } from 'motion';
 	import { fly } from 'svelte/transition';
 	import { clickOutside } from '$lib/actions/clickOutside';
 	import { elementColors } from '$lib/store';
@@ -10,11 +9,10 @@
 	//? banner
 	import { eventsBanner } from '$lib/events';
 
-	export let data: PageData;
+	let { data }: { data: any } = $props();
+	let Events = $derived(data.Events);
 
-	$: ({ Events } = data);
-
-	let activeEvent: any = null;
+	let activeEvent = $state<any>(null);
 
 	function handleActive(event: any) {
 		activeEvent = event;
@@ -25,7 +23,7 @@
 	}
 
 	function animateElements() {
-		timeline([], {
+		animate([], {
 			duration: 2
 		});
 	}
@@ -77,34 +75,34 @@
 		<ul
 			class="max-w-[90%] lg:max-w-[80%] mx-auto w-full pb-20 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
 			use:clickOutside
-			on:clickoutside={() => null}
+			onclickoutside={() => null}
 		>
-			{#if $Events.data?.events?.data.length}
-				{#each $Events.data?.events?.data as event (event?.attributes?.title)}
+			{#if $Events.data?.events?.length}
+				{#each $Events.data?.events as event (event?.title)}
 					<button
-						on:click|preventDefault={() => handleActive(event)}
+						onclick={(e) => {
+							e.preventDefault();
+							handleActive(event);
+						}}
 						class="text-left w-full transition-all duration-300"
 					>
-						<li
-							id={event?.attributes?.title?.toLowerCase()}
-							class="relative w-full overflow-hidden"
-						>
+						<li id={event?.title?.toLowerCase()} class="relative w-full overflow-hidden">
 							<img
 								id="image"
-								src={getImageUrl(event?.attributes?.portraid_url?.data?.attributes?.url)}
-								alt={event?.attributes?.title}
+								src={getImageUrl(event?.portraid_url?.url)}
+								alt={event?.title}
 								class="w-full h-56 object-cover"
 							/>
 						</li>
 
 						<div class=" flex justify-center p-3 bg-#e3d268">
 							<h4 class="text-#003B49 font-bold text-xl sm:text-2xl lg:text-2xl">
-								{event?.attributes?.title}
+								{event?.title}
 							</h4>
 							<div
 								class="i-ph-arrow-right-bold mt-1 md:mt-2 ml-1 text-xl text-3xl text-#003B49"
 								transition:fly={{ x: -10, delay: 0.5 }}
-							></div>
+							/>
 						</div>
 					</button>
 				{/each}
@@ -121,11 +119,11 @@
 				class="bg-white shadow-xl max-w-6xl w-full pt-0 pb-0 pl-0 flex flex-col md:flex-row relative
                        max-h-full"
 				use:clickOutside
-				on:clickoutside={closeModal}
+				onclickoutside={closeModal}
 				transition:fly={{ y: -20, duration: 300, delay: 100 }}
 			>
 				<button
-					on:click={closeModal}
+					onclick={closeModal}
 					class="absolute top-3 right-3 bg-[#E3D268] p-1 shadow-lg z-50 hover:bg-gray-200"
 				>
 					<div class="i-ph-x-bold text-xl text-gray-700" />
@@ -133,14 +131,14 @@
 
 				<div class="w-full md:w-1/3 flex-shrink-0 flex flex-col gap-2">
 					<img
-						src={getImageUrl(activeEvent?.attributes?.portraid_url?.data?.attributes?.url)}
-						alt={activeEvent?.attributes?.title}
+						src={getImageUrl(activeEvent?.portraid_url?.url)}
+						alt={activeEvent?.title}
 						class="w-full h-full object-cover md:rounded-t-none"
 					/>
 
-					{#if activeEvent?.attributes?.brochure?.data?.attributes?.url}
+					{#if activeEvent?.brochure?.url}
 						<a
-							href={getImageUrl(activeEvent?.attributes?.brochure?.data?.attributes?.url)}
+							href={getImageUrl(activeEvent?.brochure?.url)}
 							download
 							target="_blank"
 							class="bg-#e3d268 text-[#003B49] py-3 px-8 rounded-md text-sm hover:bg-#e3d268/80 transition-colors duration-300 flex justify-center items-center gap-2"
@@ -151,39 +149,39 @@
 					{/if}
 				</div>
 				<div class="p-6 overflow-y-scroll max-h-[50vh] md:(max-h-auto overflow-hidden)">
-					<h3 class="text-2xl font-bold text-[#003B49]">{activeEvent?.attributes?.title}</h3>
-					<h4 class="text-xl font-bold text-#003B49/50">{activeEvent?.attributes?.location}</h4>
+					<h3 class="text-2xl font-bold text-[#003B49]">{activeEvent?.title}</h3>
+					<h4 class="text-xl font-bold text-#003B49/50">{activeEvent?.location}</h4>
 
 					<div class="mt-4 text-gray-600 space-y-2">
-						<p>{activeEvent?.attributes?.description}</p>
+						<p>{activeEvent?.description}</p>
 
 						<p>
 							<b class="text-#003B49">Inicio:</b>
 
-							{activeEvent?.attributes?.date_start ?? 'Por confirmar'}
+							{activeEvent?.date_start ?? 'Por confirmar'}
 
 							| <b class="text-#003B49">Finalización:</b>
 
-							{activeEvent?.attributes?.date_end ?? 'Por confirmar'}
+							{activeEvent?.date_end ?? 'Por confirmar'}
 						</p>
 
 						<p>
 							<b class="text-#003B49">Organizador:</b>
-							{activeEvent?.attributes?.organizer ?? 'Información no disponible'}
+							{activeEvent?.organizer ?? 'Información no disponible'}
 						</p>
 
 						<p>
 							<b class="text-#003B49">Tipo de evento:</b>
-							{activeEvent?.attributes?.event_type ?? 'Por definir'}
+							{activeEvent?.event_type ?? 'Por definir'}
 						</p>
 
-						{#if activeEvent?.attributes?.brochure?.data?.attributes?.url && activeEvent?.attributes?.info}
+						{#if activeEvent?.brochure?.url && activeEvent?.info}
 							<p class="text-gray-600">
-								{activeEvent?.attributes?.info}
+								{activeEvent?.info}
 							</p>
 						{/if}
 
-						{#if activeEvent?.attributes?.brochure?.data?.attributes?.url}
+						{#if activeEvent?.brochure?.url}
 							Para más detalles del recorrido, recomendaciones logísticas y hoteles, <b>
 								descarga el brochure del evento</b
 							>

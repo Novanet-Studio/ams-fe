@@ -1,22 +1,19 @@
 <script lang="ts">
-	import { stagger, timeline } from 'motion';
+	import { stagger, animate } from 'motion';
 	import inView from '$lib/actions/inView';
 	import type { Topic } from '$lib/types';
 
-	export let info: {
-		title: string;
-		content: Topic[];
-	};
+	let { info }: { info: { title: string; content: Topic[] } } = $props();
 
 	function enterAnimation() {
-		timeline(
+		animate(
 			[
 				[
 					'#goals',
 					{
 						opacity: [0, 1]
 					},
-					{ duration: 1, delay: 0.3, easing: [0.17, 0.55, 0.55, 1] }
+					{ duration: 1, delay: 0.3, ease: [0.17, 0.55, 0.55, 1] }
 				],
 				[
 					'#goals > div',
@@ -49,7 +46,7 @@
 	<div
 		class="p-8 pt-24 bg-#003B49 h-94vh [clip-path:polygon(0px_0px,_100%_0px,_100%_85.77%,_0%_91.23%)] md:(pt-32 p-12) lg:(px-16)"
 		use:inView={{ bottom: 100, top: 100 }}
-		on:enter={enterAnimation}
+		onenter={enterAnimation}
 	>
 		<ul class="grid grid-cols-1">
 			<div

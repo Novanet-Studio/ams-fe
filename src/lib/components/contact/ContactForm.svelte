@@ -1,7 +1,7 @@
 <script lang="ts">
 	import inView from '$lib/actions/inView';
 	import { isDesktop } from '$lib/store';
-	import { animate, stagger, timeline } from 'motion';
+	import { animate, stagger } from 'motion';
 	import { browser } from '$app/environment';
 
 	let sending = false;
@@ -168,14 +168,14 @@
 
 	function enterAnimation() {
 		if (!browser) return;
-		timeline(
+		animate(
 			[
 				[
 					'#contact',
 					{
 						opacity: [0, 1]
 					},
-					{ duration: 0.5, delay: 0.5, easing: [0.17, 0.55, 0.55, 1] }
+					{ duration: 0.5, delay: 0.5, ease: [0.17, 0.55, 0.55, 1] }
 				],
 				[
 					'#contact > div',
@@ -242,7 +242,7 @@
 		animate(
 			'#contact',
 			{ opacity: [1, 0] },
-			{ duration: 0.5, delay: 0.5, easing: [0.17, 0.55, 0.55, 1] }
+			{ duration: 0.5, delay: 0.5, ease: [0.17, 0.55, 0.55, 1] }
 		);
 	}
 </script>
@@ -251,8 +251,8 @@
 	id="contact"
 	class="w-full h-screen snap-start relative"
 	use:inView={{ bottom: 100, top: 100 }}
-	on:enter={enterAnimation}
-	on:exit={exitAnimation}
+	onenter={enterAnimation}
+	onexit={exitAnimation}
 >
 	<div class="p-8 pt-24 bg-#003B49 h-94vh md:(pt-42 p-12 pr-16) lg:pl-16">
 		<h3 class="mb-2 text-2xl text-#E3D268 md:text-4xl">Contáctanos</h3>
@@ -264,7 +264,7 @@
 			method="POST"
 			data-netlify="true"
 			data-netlify-honeypot="bot-field"
-			on:submit={handleSubmit}
+			onsubmit={handleSubmit}
 		>
 			<input type="hidden" name="form-name" value="contact-form" />
 
@@ -282,7 +282,7 @@
 						type="text"
 						name="name"
 						placeholder="Nombre"
-						on:input={(e) => validateName(e.currentTarget.value)}
+						oninput={(e) => validateName(e.currentTarget.value)}
 						aria-invalid={nameError ? 'true' : undefined}
 						aria-describedby={nameError ? 'name-error-msg' : undefined}
 					/>
@@ -297,7 +297,7 @@
 						type="text"
 						name="lastname"
 						placeholder="Apellido"
-						on:input={(e) => validateLastname(e.currentTarget.value)}
+						oninput={(e) => validateLastname(e.currentTarget.value)}
 						aria-invalid={lastnameError ? 'true' : undefined}
 						aria-describedby={lastnameError ? 'lastname-error-msg' : undefined}
 					/>
@@ -314,7 +314,7 @@
 						type="email"
 						name="email"
 						placeholder="Email"
-						on:input={(e) => validateEmail(e.currentTarget.value)}
+						oninput={(e) => validateEmail(e.currentTarget.value)}
 						aria-invalid={emailError ? 'true' : undefined}
 						aria-describedby={emailError ? 'email-error-msg' : undefined}
 					/>
@@ -329,7 +329,7 @@
 						type="tel"
 						name="phone"
 						placeholder="Teléfono"
-						on:input={(e) => validatePhone(e.currentTarget.value)}
+						oninput={(e) => validatePhone(e.currentTarget.value)}
 						aria-invalid={phoneError ? 'true' : undefined}
 						aria-describedby={phoneError ? 'phone-error-msg' : undefined}
 					/>
@@ -345,7 +345,7 @@
 					name="message"
 					rows="4"
 					placeholder="Mensaje"
-					on:input={(e) => validateMessage(e.currentTarget.value)}
+					oninput={(e) => validateMessage(e.currentTarget.value)}
 					aria-invalid={messageError ? 'true' : undefined}
 					aria-describedby={messageError ? 'message-error-msg' : undefined}
 				/>
