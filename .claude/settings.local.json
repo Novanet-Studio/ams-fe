@@ -1,0 +1,21 @@
+{
+	"permissions": {
+		"allow": [
+			"mcp__codegraph__codegraph_status",
+			"Bash(codegraph init *)",
+			"Bash(git checkout *)",
+			"Bash(git add *)",
+			"WebSearch",
+			"WebFetch(domain:motion.dev)",
+			"Bash(pnpm build *)",
+			"Bash(git stash *)",
+			"Bash(pnpm install *)",
+			"Bash(pnpm check *)",
+			"Bash(node *)",
+			"Bash(pnpm approve-builds *)",
+			"Bash(pnpm dlx *)",
+			"Bash(npm show *)",
+			"Bash(pnpm info *)"
+		]
+	}
+}
