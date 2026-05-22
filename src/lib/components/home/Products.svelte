@@ -7,8 +7,6 @@
 
 	let { data }: { data: QueryResult<HomeCategories$result, null> } = $props();
 
-	console.log('data', data);
-
 	let active = '';
 
 	function handleActive(item: string | undefined) {
