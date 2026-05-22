@@ -37,7 +37,7 @@ brands:
     alt: 'NZ Manufacturing Logo'
     image: 'https://nzmanufacturing.com'
 
-carousel: 
+carousel:
   - image: 'https://wilier.com'
   - image: 'https://wilier.com'
   - image: 'https://wilier.com'
