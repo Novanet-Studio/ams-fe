@@ -1,64 +1,72 @@
 input BooleanFilterInput {
-  and: [Boolean]
-  between: [Boolean]
-  contains: Boolean
-  containsi: Boolean
-  endsWith: Boolean
-  eq: Boolean
-  eqi: Boolean
-  gt: Boolean
-  gte: Boolean
-  in: [Boolean]
-  lt: Boolean
-  lte: Boolean
-  ne: Boolean
-  nei: Boolean
-  not: BooleanFilterInput
-  notContains: Boolean
-  notContainsi: Boolean
-  notIn: [Boolean]
-  notNull: Boolean
-  null: Boolean
-  or: [Boolean]
-  startsWith: Boolean
+	and: [Boolean]
+	between: [Boolean]
+	contains: Boolean
+	containsi: Boolean
+	endsWith: Boolean
+	eq: Boolean
+	eqi: Boolean
+	gt: Boolean
+	gte: Boolean
+	in: [Boolean]
+	lt: Boolean
+	lte: Boolean
+	ne: Boolean
+	nei: Boolean
+	not: BooleanFilterInput
+	notContains: Boolean
+	notContainsi: Boolean
+	notIn: [Boolean]
+	notNull: Boolean
+	null: Boolean
+	or: [Boolean]
+	startsWith: Boolean
 }
 
 type Category {
-  createdAt: DateTime
-  description: String
-  documentId: ID!
-  image: UploadFile
-  name: String
-  publishedAt: DateTime
-  subcategorias(filters: SubcategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Subcategory]!
-  subcategorias_connection(filters: SubcategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): SubcategoryRelationResponseCollection
-  updatedAt: DateTime
+	createdAt: DateTime
+	description: String
+	documentId: ID!
+	image: UploadFile
+	name: String
+	publishedAt: DateTime
+	subcategorias(
+		filters: SubcategoryFiltersInput
+		pagination: PaginationArg = {}
+		sort: [String] = []
+	): [Subcategory]!
+	subcategorias_connection(
+		filters: SubcategoryFiltersInput
+		pagination: PaginationArg = {}
+		sort: [String] = []
+	): SubcategoryRelationResponseCollection
+	updatedAt: DateTime
 }
 
 type CategoryEntityResponseCollection {
-  nodes: [Category!]!
-  pageInfo: Pagination!
+	nodes: [Category!]!
+	pageInfo: Pagination!
 }
 
 input CategoryFiltersInput {
-  and: [CategoryFiltersInput]
-  createdAt: DateTimeFilterInput
-  description: StringFilterInput
-  documentId: IDFilterInput
-  name: StringFilterInput
-  not: CategoryFiltersInput
-  or: [CategoryFiltersInput]
-  publishedAt: DateTimeFilterInput
-  subcategorias: SubcategoryFiltersInput
-  updatedAt: DateTimeFilterInput
+	and: [CategoryFiltersInput]
+	createdAt: DateTimeFilterInput
+	description: StringFilterInput
+	documentId: IDFilterInput
+	name: StringFilterInput
+	not: CategoryFiltersInput
+	or: [CategoryFiltersInput]
+	publishedAt: DateTimeFilterInput
+	subcategorias: SubcategoryFiltersInput
+	updatedAt: DateTimeFilterInput
 }
 
 input CategoryInput {
-  description: String
-  image: ID
-  name: String
-  publishedAt: DateTime
-  subcategorias: [ID]
+	description: String
+	image: ID
+	name: String
+	publishedAt: DateTime
+	subcategorias: [ID]
 }
 
 """
@@ -67,226 +75,238 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 scalar DateTime
 
 input DateTimeFilterInput {
-  and: [DateTime]
-  between: [DateTime]
-  contains: DateTime
-  containsi: DateTime
-  endsWith: DateTime
-  eq: DateTime
-  eqi: DateTime
-  gt: DateTime
-  gte: DateTime
-  in: [DateTime]
-  lt: DateTime
-  lte: DateTime
-  ne: DateTime
-  nei: DateTime
-  not: DateTimeFilterInput
-  notContains: DateTime
-  notContainsi: DateTime
-  notIn: [DateTime]
-  notNull: Boolean
-  null: Boolean
-  or: [DateTime]
-  startsWith: DateTime
+	and: [DateTime]
+	between: [DateTime]
+	contains: DateTime
+	containsi: DateTime
+	endsWith: DateTime
+	eq: DateTime
+	eqi: DateTime
+	gt: DateTime
+	gte: DateTime
+	in: [DateTime]
+	lt: DateTime
+	lte: DateTime
+	ne: DateTime
+	nei: DateTime
+	not: DateTimeFilterInput
+	notContains: DateTime
+	notContainsi: DateTime
+	notIn: [DateTime]
+	notNull: Boolean
+	null: Boolean
+	or: [DateTime]
+	startsWith: DateTime
 }
 
 type DeleteMutationResponse {
-  documentId: ID!
+	documentId: ID!
 }
 
 enum ENUM_EVENT_STATUS {
-  Activo
-  Cancelado
-  Pendiente
+	Activo
+	Cancelado
+	Pendiente
 }
 
 enum ENUM_PRODUCT_BRAND {
-  Castelli
-  Inspire
-  Miche
-  Scicon
-  Speedsix
-  True
-  Willier
+	Castelli
+	Inspire
+	Miche
+	Scicon
+	Speedsix
+	True
+	Willier
 }
 
 enum ENUM_TRAINING_LEVEL {
-  Avanzado
-  Intermedio
-  Principiante
+	Avanzado
+	Intermedio
+	Principiante
 }
 
 enum ENUM_TRAINING_TRAINING_TYPE {
-  Cardio
-  Fuerza
-  Movilidad
+	Cardio
+	Fuerza
+	Movilidad
 }
 
 type Event {
-  brochure: UploadFile
-  createdAt: DateTime
-  date_end: String
-  date_start: String
-  description: String
-  documentId: ID!
-  event_type: String
-  info: String
-  location: String
-  organizer: String
-  portraid_url: UploadFile!
-  publishedAt: DateTime
-  status: ENUM_EVENT_STATUS
-  title: String!
-  updatedAt: DateTime
+	brochure: UploadFile
+	createdAt: DateTime
+	date_end: String
+	date_start: String
+	description: String
+	documentId: ID!
+	event_type: String
+	info: String
+	location: String
+	organizer: String
+	portraid_url: UploadFile!
+	publishedAt: DateTime
+	status: ENUM_EVENT_STATUS
+	title: String!
+	updatedAt: DateTime
 }
 
 type EventEntityResponseCollection {
-  nodes: [Event!]!
-  pageInfo: Pagination!
+	nodes: [Event!]!
+	pageInfo: Pagination!
 }
 
 input EventFiltersInput {
-  and: [EventFiltersInput]
-  createdAt: DateTimeFilterInput
-  date_end: StringFilterInput
-  date_start: StringFilterInput
-  description: StringFilterInput
-  documentId: IDFilterInput
-  event_type: StringFilterInput
-  info: StringFilterInput
-  location: StringFilterInput
-  not: EventFiltersInput
-  or: [EventFiltersInput]
-  organizer: StringFilterInput
-  publishedAt: DateTimeFilterInput
-  status: StringFilterInput
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
+	and: [EventFiltersInput]
+	createdAt: DateTimeFilterInput
+	date_end: StringFilterInput
+	date_start: StringFilterInput
+	description: StringFilterInput
+	documentId: IDFilterInput
+	event_type: StringFilterInput
+	info: StringFilterInput
+	location: StringFilterInput
+	not: EventFiltersInput
+	or: [EventFiltersInput]
+	organizer: StringFilterInput
+	publishedAt: DateTimeFilterInput
+	status: StringFilterInput
+	title: StringFilterInput
+	updatedAt: DateTimeFilterInput
 }
 
 input EventInput {
-  brochure: ID
-  date_end: String
-  date_start: String
-  description: String
-  event_type: String
-  info: String
-  location: String
-  organizer: String
-  portraid_url: ID
-  publishedAt: DateTime
-  status: ENUM_EVENT_STATUS
-  title: String
+	brochure: ID
+	date_end: String
+	date_start: String
+	description: String
+	event_type: String
+	info: String
+	location: String
+	organizer: String
+	portraid_url: ID
+	publishedAt: DateTime
+	status: ENUM_EVENT_STATUS
+	title: String
 }
 
 input FileInfoInput {
-  alternativeText: String
-  caption: String
-  name: String
+	alternativeText: String
+	caption: String
+	name: String
 }
 
 input FloatFilterInput {
-  and: [Float]
-  between: [Float]
-  contains: Float
-  containsi: Float
-  endsWith: Float
-  eq: Float
-  eqi: Float
-  gt: Float
-  gte: Float
-  in: [Float]
-  lt: Float
-  lte: Float
-  ne: Float
-  nei: Float
-  not: FloatFilterInput
-  notContains: Float
-  notContainsi: Float
-  notIn: [Float]
-  notNull: Boolean
-  null: Boolean
-  or: [Float]
-  startsWith: Float
+	and: [Float]
+	between: [Float]
+	contains: Float
+	containsi: Float
+	endsWith: Float
+	eq: Float
+	eqi: Float
+	gt: Float
+	gte: Float
+	in: [Float]
+	lt: Float
+	lte: Float
+	ne: Float
+	nei: Float
+	not: FloatFilterInput
+	notContains: Float
+	notContainsi: Float
+	notIn: [Float]
+	notNull: Boolean
+	null: Boolean
+	or: [Float]
+	startsWith: Float
 }
 
-union GenericMorph = Category | Event | I18NLocale | Product | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Subcategory | Training | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph =
+	| Category
+	| Event
+	| I18NLocale
+	| Product
+	| ReviewWorkflowsWorkflow
+	| ReviewWorkflowsWorkflowStage
+	| Subcategory
+	| Training
+	| UploadFile
+	| UsersPermissionsPermission
+	| UsersPermissionsRole
+	| UsersPermissionsUser
 
 type I18NLocale {
-  code: String
-  createdAt: DateTime
-  documentId: ID!
-  name: String
-  publishedAt: DateTime
-  updatedAt: DateTime
+	code: String
+	createdAt: DateTime
+	documentId: ID!
+	name: String
+	publishedAt: DateTime
+	updatedAt: DateTime
 }
 
 type I18NLocaleEntityResponseCollection {
-  nodes: [I18NLocale!]!
-  pageInfo: Pagination!
+	nodes: [I18NLocale!]!
+	pageInfo: Pagination!
 }
 
 input I18NLocaleFiltersInput {
-  and: [I18NLocaleFiltersInput]
-  code: StringFilterInput
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  name: StringFilterInput
-  not: I18NLocaleFiltersInput
-  or: [I18NLocaleFiltersInput]
-  publishedAt: DateTimeFilterInput
-  updatedAt: DateTimeFilterInput
+	and: [I18NLocaleFiltersInput]
+	code: StringFilterInput
+	createdAt: DateTimeFilterInput
+	documentId: IDFilterInput
+	name: StringFilterInput
+	not: I18NLocaleFiltersInput
+	or: [I18NLocaleFiltersInput]
+	publishedAt: DateTimeFilterInput
+	updatedAt: DateTimeFilterInput
 }
 
 input IDFilterInput {
-  and: [ID]
-  between: [ID]
-  contains: ID
-  containsi: ID
-  endsWith: ID
-  eq: ID
-  eqi: ID
-  gt: ID
-  gte: ID
-  in: [ID]
-  lt: ID
-  lte: ID
-  ne: ID
-  nei: ID
-  not: IDFilterInput
-  notContains: ID
-  notContainsi: ID
-  notIn: [ID]
-  notNull: Boolean
-  null: Boolean
-  or: [ID]
-  startsWith: ID
+	and: [ID]
+	between: [ID]
+	contains: ID
+	containsi: ID
+	endsWith: ID
+	eq: ID
+	eqi: ID
+	gt: ID
+	gte: ID
+	in: [ID]
+	lt: ID
+	lte: ID
+	ne: ID
+	nei: ID
+	not: IDFilterInput
+	notContains: ID
+	notContainsi: ID
+	notIn: [ID]
+	notNull: Boolean
+	null: Boolean
+	or: [ID]
+	startsWith: ID
 }
 
 input IntFilterInput {
-  and: [Int]
-  between: [Int]
-  contains: Int
-  containsi: Int
-  endsWith: Int
-  eq: Int
-  eqi: Int
-  gt: Int
-  gte: Int
-  in: [Int]
-  lt: Int
-  lte: Int
-  ne: Int
-  nei: Int
-  not: IntFilterInput
-  notContains: Int
-  notContainsi: Int
-  notIn: [Int]
-  notNull: Boolean
-  null: Boolean
-  or: [Int]
-  startsWith: Int
+	and: [Int]
+	between: [Int]
+	contains: Int
+	containsi: Int
+	endsWith: Int
+	eq: Int
+	eqi: Int
+	gt: Int
+	gte: Int
+	in: [Int]
+	lt: Int
+	lte: Int
+	ne: Int
+	nei: Int
+	not: IntFilterInput
+	notContains: Int
+	notContainsi: Int
+	notIn: [Int]
+	notNull: Boolean
+	null: Boolean
+	or: [Int]
+	startsWith: Int
 }
 
 """
@@ -295,608 +315,876 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 scalar JSON
 
 input JSONFilterInput {
-  and: [JSON]
-  between: [JSON]
-  contains: JSON
-  containsi: JSON
-  endsWith: JSON
-  eq: JSON
-  eqi: JSON
-  gt: JSON
-  gte: JSON
-  in: [JSON]
-  lt: JSON
-  lte: JSON
-  ne: JSON
-  nei: JSON
-  not: JSONFilterInput
-  notContains: JSON
-  notContainsi: JSON
-  notIn: [JSON]
-  notNull: Boolean
-  null: Boolean
-  or: [JSON]
-  startsWith: JSON
+	and: [JSON]
+	between: [JSON]
+	contains: JSON
+	containsi: JSON
+	endsWith: JSON
+	eq: JSON
+	eqi: JSON
+	gt: JSON
+	gte: JSON
+	in: [JSON]
+	lt: JSON
+	lte: JSON
+	ne: JSON
+	nei: JSON
+	not: JSONFilterInput
+	notContains: JSON
+	notContainsi: JSON
+	notIn: [JSON]
+	notNull: Boolean
+	null: Boolean
+	or: [JSON]
+	startsWith: JSON
 }
 
 type Mutation {
-  """Change user password. Confirm with the current password."""
-  changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
-  createCategory(data: CategoryInput!, status: PublicationStatus = PUBLISHED): Category
-  createEvent(data: EventInput!, status: PublicationStatus = PUBLISHED): Event
-  createProduct(data: ProductInput!, status: PublicationStatus = PUBLISHED): Product
-  createReviewWorkflowsWorkflow(data: ReviewWorkflowsWorkflowInput!, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflow
-  createReviewWorkflowsWorkflowStage(data: ReviewWorkflowsWorkflowStageInput!, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowStage
-  createSubcategory(data: SubcategoryInput!, status: PublicationStatus = PUBLISHED): Subcategory
-  createTraining(data: TrainingInput!, status: PublicationStatus = PUBLISHED): Training
+	"""
+	Change user password. Confirm with the current password.
+	"""
+	changePassword(
+		currentPassword: String!
+		password: String!
+		passwordConfirmation: String!
+	): UsersPermissionsLoginPayload
+	createCategory(data: CategoryInput!, status: PublicationStatus = PUBLISHED): Category
+	createEvent(data: EventInput!, status: PublicationStatus = PUBLISHED): Event
+	createProduct(data: ProductInput!, status: PublicationStatus = PUBLISHED): Product
+	createReviewWorkflowsWorkflow(
+		data: ReviewWorkflowsWorkflowInput!
+		status: PublicationStatus = PUBLISHED
+	): ReviewWorkflowsWorkflow
+	createReviewWorkflowsWorkflowStage(
+		data: ReviewWorkflowsWorkflowStageInput!
+		status: PublicationStatus = PUBLISHED
+	): ReviewWorkflowsWorkflowStage
+	createSubcategory(data: SubcategoryInput!, status: PublicationStatus = PUBLISHED): Subcategory
+	createTraining(data: TrainingInput!, status: PublicationStatus = PUBLISHED): Training
 
-  """Create a new role"""
-  createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
+	"""
+	Create a new role
+	"""
+	createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
 
-  """Create a new user"""
-  createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
-  deleteCategory(documentId: ID!): DeleteMutationResponse
-  deleteEvent(documentId: ID!): DeleteMutationResponse
-  deleteProduct(documentId: ID!): DeleteMutationResponse
-  deleteReviewWorkflowsWorkflow(documentId: ID!): DeleteMutationResponse
-  deleteReviewWorkflowsWorkflowStage(documentId: ID!): DeleteMutationResponse
-  deleteSubcategory(documentId: ID!): DeleteMutationResponse
-  deleteTraining(documentId: ID!): DeleteMutationResponse
-  deleteUploadFile(id: ID!): UploadFile
+	"""
+	Create a new user
+	"""
+	createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+	deleteCategory(documentId: ID!): DeleteMutationResponse
+	deleteEvent(documentId: ID!): DeleteMutationResponse
+	deleteProduct(documentId: ID!): DeleteMutationResponse
+	deleteReviewWorkflowsWorkflow(documentId: ID!): DeleteMutationResponse
+	deleteReviewWorkflowsWorkflowStage(documentId: ID!): DeleteMutationResponse
+	deleteSubcategory(documentId: ID!): DeleteMutationResponse
+	deleteTraining(documentId: ID!): DeleteMutationResponse
+	deleteUploadFile(id: ID!): UploadFile
 
-  """Delete an existing role"""
-  deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
+	"""
+	Delete an existing role
+	"""
+	deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
 
-  """Delete an existing user"""
-  deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
+	"""
+	Delete an existing user
+	"""
+	deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
 
-  """Confirm an email users email address"""
-  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+	"""
+	Confirm an email users email address
+	"""
+	emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
 
-  """Request a reset password token"""
-  forgotPassword(email: String!): UsersPermissionsPasswordPayload
-  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+	"""
+	Request a reset password token
+	"""
+	forgotPassword(email: String!): UsersPermissionsPasswordPayload
+	login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
 
-  """Register a user"""
-  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+	"""
+	Register a user
+	"""
+	register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
 
-  """
-  Reset user password. Confirm with a code (resetToken from forgotPassword)
-  """
-  resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
-  updateCategory(data: CategoryInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Category
-  updateEvent(data: EventInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Event
-  updateProduct(data: ProductInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Product
-  updateReviewWorkflowsWorkflow(data: ReviewWorkflowsWorkflowInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflow
-  updateReviewWorkflowsWorkflowStage(data: ReviewWorkflowsWorkflowStageInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowStage
-  updateSubcategory(data: SubcategoryInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Subcategory
-  updateTraining(data: TrainingInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Training
-  updateUploadFile(id: ID!, info: FileInfoInput): UploadFile!
+	"""
+	Reset user password. Confirm with a code (resetToken from forgotPassword)
+	"""
+	resetPassword(
+		code: String!
+		password: String!
+		passwordConfirmation: String!
+	): UsersPermissionsLoginPayload
+	updateCategory(
+		data: CategoryInput!
+		documentId: ID!
+		status: PublicationStatus = PUBLISHED
+	): Category
+	updateEvent(data: EventInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Event
+	updateProduct(
+		data: ProductInput!
+		documentId: ID!
+		status: PublicationStatus = PUBLISHED
+	): Product
+	updateReviewWorkflowsWorkflow(
+		data: ReviewWorkflowsWorkflowInput!
+		documentId: ID!
+		status: PublicationStatus = PUBLISHED
+	): ReviewWorkflowsWorkflow
+	updateReviewWorkflowsWorkflowStage(
+		data: ReviewWorkflowsWorkflowStageInput!
+		documentId: ID!
+		status: PublicationStatus = PUBLISHED
+	): ReviewWorkflowsWorkflowStage
+	updateSubcategory(
+		data: SubcategoryInput!
+		documentId: ID!
+		status: PublicationStatus = PUBLISHED
+	): Subcategory
+	updateTraining(
+		data: TrainingInput!
+		documentId: ID!
+		status: PublicationStatus = PUBLISHED
+	): Training
+	updateUploadFile(id: ID!, info: FileInfoInput): UploadFile!
 
-  """Update an existing role"""
-  updateUsersPermissionsRole(data: UsersPermissionsRoleInput!, id: ID!): UsersPermissionsUpdateRolePayload
+	"""
+	Update an existing role
+	"""
+	updateUsersPermissionsRole(
+		data: UsersPermissionsRoleInput!
+		id: ID!
+	): UsersPermissionsUpdateRolePayload
 
-  """Update an existing user"""
-  updateUsersPermissionsUser(data: UsersPermissionsUserInput!, id: ID!): UsersPermissionsUserEntityResponse!
+	"""
+	Update an existing user
+	"""
+	updateUsersPermissionsUser(
+		data: UsersPermissionsUserInput!
+		id: ID!
+	): UsersPermissionsUserEntityResponse!
 }
 
 type Pagination {
-  page: Int!
-  pageCount: Int!
-  pageSize: Int!
-  total: Int!
+	page: Int!
+	pageCount: Int!
+	pageSize: Int!
+	total: Int!
 }
 
 input PaginationArg {
-  limit: Int
-  page: Int
-  pageSize: Int
-  start: Int
+	limit: Int
+	page: Int
+	pageSize: Int
+	start: Int
 }
 
 type Product {
-  brand: ENUM_PRODUCT_BRAND!
-  createdAt: DateTime
-  documentId: ID!
-  image: UploadFile
-  link: String
-  name: String
-  publishedAt: DateTime
-  slug: String!
-  subcategoria: Subcategory
-  updatedAt: DateTime
+	brand: ENUM_PRODUCT_BRAND!
+	createdAt: DateTime
+	documentId: ID!
+	image: UploadFile
+	link: String
+	name: String
+	publishedAt: DateTime
+	slug: String!
+	subcategoria: Subcategory
+	updatedAt: DateTime
 }
 
 type ProductEntityResponseCollection {
-  nodes: [Product!]!
-  pageInfo: Pagination!
+	nodes: [Product!]!
+	pageInfo: Pagination!
 }
 
 input ProductFiltersInput {
-  and: [ProductFiltersInput]
-  brand: StringFilterInput
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  link: StringFilterInput
-  name: StringFilterInput
-  not: ProductFiltersInput
-  or: [ProductFiltersInput]
-  publishedAt: DateTimeFilterInput
-  slug: StringFilterInput
-  subcategoria: SubcategoryFiltersInput
-  updatedAt: DateTimeFilterInput
+	and: [ProductFiltersInput]
+	brand: StringFilterInput
+	createdAt: DateTimeFilterInput
+	documentId: IDFilterInput
+	link: StringFilterInput
+	name: StringFilterInput
+	not: ProductFiltersInput
+	or: [ProductFiltersInput]
+	publishedAt: DateTimeFilterInput
+	slug: StringFilterInput
+	subcategoria: SubcategoryFiltersInput
+	updatedAt: DateTimeFilterInput
 }
 
 input ProductInput {
-  brand: ENUM_PRODUCT_BRAND
-  image: ID
-  link: String
-  name: String
-  publishedAt: DateTime
-  slug: String
-  subcategoria: ID
+	brand: ENUM_PRODUCT_BRAND
+	image: ID
+	link: String
+	name: String
+	publishedAt: DateTime
+	slug: String
+	subcategoria: ID
 }
 
 type ProductRelationResponseCollection {
-  nodes: [Product!]!
+	nodes: [Product!]!
 }
 
 enum PublicationStatus {
-  DRAFT
-  PUBLISHED
+	DRAFT
+	PUBLISHED
 }
 
 type Query {
-  categories(filters: CategoryFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Category]!
-  categories_connection(filters: CategoryFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): CategoryEntityResponseCollection
-  category(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): Category
-  event(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): Event
-  events(filters: EventFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Event]!
-  events_connection(filters: EventFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): EventEntityResponseCollection
-  i18NLocale(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): I18NLocale
-  i18NLocales(filters: I18NLocaleFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [I18NLocale]!
-  i18NLocales_connection(filters: I18NLocaleFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): I18NLocaleEntityResponseCollection
-  me: UsersPermissionsMe
-  product(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): Product
-  products(filters: ProductFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Product]!
-  products_connection(filters: ProductFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): ProductEntityResponseCollection
-  reviewWorkflowsWorkflow(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflow
-  reviewWorkflowsWorkflowStage(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowStage
-  reviewWorkflowsWorkflowStages(filters: ReviewWorkflowsWorkflowStageFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [ReviewWorkflowsWorkflowStage]!
-  reviewWorkflowsWorkflowStages_connection(filters: ReviewWorkflowsWorkflowStageFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowStageEntityResponseCollection
-  reviewWorkflowsWorkflows(filters: ReviewWorkflowsWorkflowFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [ReviewWorkflowsWorkflow]!
-  reviewWorkflowsWorkflows_connection(filters: ReviewWorkflowsWorkflowFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowEntityResponseCollection
-  subcategories(filters: SubcategoryFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Subcategory]!
-  subcategories_connection(filters: SubcategoryFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): SubcategoryEntityResponseCollection
-  subcategory(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): Subcategory
-  training(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): Training
-  trainings(filters: TrainingFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Training]!
-  trainings_connection(filters: TrainingFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): TrainingEntityResponseCollection
-  uploadFile(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): UploadFile
-  uploadFiles(filters: UploadFileFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UploadFile]!
-  uploadFiles_connection(filters: UploadFileFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UploadFileEntityResponseCollection
-  usersPermissionsRole(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): UsersPermissionsRole
-  usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UsersPermissionsRole]!
-  usersPermissionsRoles_connection(filters: UsersPermissionsRoleFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UsersPermissionsRoleEntityResponseCollection
-  usersPermissionsUser(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): UsersPermissionsUser
-  usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UsersPermissionsUser]!
-  usersPermissionsUsers_connection(filters: UsersPermissionsUserFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UsersPermissionsUserEntityResponseCollection
+	categories(
+		filters: CategoryFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [Category]!
+	categories_connection(
+		filters: CategoryFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): CategoryEntityResponseCollection
+	category(
+		documentId: ID!
+		hasPublishedVersion: Boolean
+		status: PublicationStatus = PUBLISHED
+	): Category
+	event(documentId: ID!, hasPublishedVersion: Boolean, status: PublicationStatus = PUBLISHED): Event
+	events(
+		filters: EventFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [Event]!
+	events_connection(
+		filters: EventFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): EventEntityResponseCollection
+	i18NLocale(
+		documentId: ID!
+		hasPublishedVersion: Boolean
+		status: PublicationStatus = PUBLISHED
+	): I18NLocale
+	i18NLocales(
+		filters: I18NLocaleFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [I18NLocale]!
+	i18NLocales_connection(
+		filters: I18NLocaleFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): I18NLocaleEntityResponseCollection
+	me: UsersPermissionsMe
+	product(
+		documentId: ID!
+		hasPublishedVersion: Boolean
+		status: PublicationStatus = PUBLISHED
+	): Product
+	products(
+		filters: ProductFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [Product]!
+	products_connection(
+		filters: ProductFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): ProductEntityResponseCollection
+	reviewWorkflowsWorkflow(
+		documentId: ID!
+		hasPublishedVersion: Boolean
+		status: PublicationStatus = PUBLISHED
+	): ReviewWorkflowsWorkflow
+	reviewWorkflowsWorkflowStage(
+		documentId: ID!
+		hasPublishedVersion: Boolean
+		status: PublicationStatus = PUBLISHED
+	): ReviewWorkflowsWorkflowStage
+	reviewWorkflowsWorkflowStages(
+		filters: ReviewWorkflowsWorkflowStageFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [ReviewWorkflowsWorkflowStage]!
+	reviewWorkflowsWorkflowStages_connection(
+		filters: ReviewWorkflowsWorkflowStageFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): ReviewWorkflowsWorkflowStageEntityResponseCollection
+	reviewWorkflowsWorkflows(
+		filters: ReviewWorkflowsWorkflowFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [ReviewWorkflowsWorkflow]!
+	reviewWorkflowsWorkflows_connection(
+		filters: ReviewWorkflowsWorkflowFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): ReviewWorkflowsWorkflowEntityResponseCollection
+	subcategories(
+		filters: SubcategoryFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [Subcategory]!
+	subcategories_connection(
+		filters: SubcategoryFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): SubcategoryEntityResponseCollection
+	subcategory(
+		documentId: ID!
+		hasPublishedVersion: Boolean
+		status: PublicationStatus = PUBLISHED
+	): Subcategory
+	training(
+		documentId: ID!
+		hasPublishedVersion: Boolean
+		status: PublicationStatus = PUBLISHED
+	): Training
+	trainings(
+		filters: TrainingFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [Training]!
+	trainings_connection(
+		filters: TrainingFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): TrainingEntityResponseCollection
+	uploadFile(
+		documentId: ID!
+		hasPublishedVersion: Boolean
+		status: PublicationStatus = PUBLISHED
+	): UploadFile
+	uploadFiles(
+		filters: UploadFileFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [UploadFile]!
+	uploadFiles_connection(
+		filters: UploadFileFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): UploadFileEntityResponseCollection
+	usersPermissionsRole(
+		documentId: ID!
+		hasPublishedVersion: Boolean
+		status: PublicationStatus = PUBLISHED
+	): UsersPermissionsRole
+	usersPermissionsRoles(
+		filters: UsersPermissionsRoleFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [UsersPermissionsRole]!
+	usersPermissionsRoles_connection(
+		filters: UsersPermissionsRoleFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): UsersPermissionsRoleEntityResponseCollection
+	usersPermissionsUser(
+		documentId: ID!
+		hasPublishedVersion: Boolean
+		status: PublicationStatus = PUBLISHED
+	): UsersPermissionsUser
+	usersPermissionsUsers(
+		filters: UsersPermissionsUserFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): [UsersPermissionsUser]!
+	usersPermissionsUsers_connection(
+		filters: UsersPermissionsUserFiltersInput
+		hasPublishedVersion: Boolean
+		pagination: PaginationArg = {}
+		sort: [String] = []
+		status: PublicationStatus = PUBLISHED
+	): UsersPermissionsUserEntityResponseCollection
 }
 
 type ReviewWorkflowsWorkflow {
-  contentTypes: JSON!
-  createdAt: DateTime
-  documentId: ID!
-  name: String!
-  publishedAt: DateTime
-  stageRequiredToPublish: ReviewWorkflowsWorkflowStage
-  stages(filters: ReviewWorkflowsWorkflowStageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ReviewWorkflowsWorkflowStage]!
-  stages_connection(filters: ReviewWorkflowsWorkflowStageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ReviewWorkflowsWorkflowStageRelationResponseCollection
-  updatedAt: DateTime
+	contentTypes: JSON!
+	createdAt: DateTime
+	documentId: ID!
+	name: String!
+	publishedAt: DateTime
+	stageRequiredToPublish: ReviewWorkflowsWorkflowStage
+	stages(
+		filters: ReviewWorkflowsWorkflowStageFiltersInput
+		pagination: PaginationArg = {}
+		sort: [String] = []
+	): [ReviewWorkflowsWorkflowStage]!
+	stages_connection(
+		filters: ReviewWorkflowsWorkflowStageFiltersInput
+		pagination: PaginationArg = {}
+		sort: [String] = []
+	): ReviewWorkflowsWorkflowStageRelationResponseCollection
+	updatedAt: DateTime
 }
 
 type ReviewWorkflowsWorkflowEntityResponseCollection {
-  nodes: [ReviewWorkflowsWorkflow!]!
-  pageInfo: Pagination!
+	nodes: [ReviewWorkflowsWorkflow!]!
+	pageInfo: Pagination!
 }
 
 input ReviewWorkflowsWorkflowFiltersInput {
-  and: [ReviewWorkflowsWorkflowFiltersInput]
-  contentTypes: JSONFilterInput
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  name: StringFilterInput
-  not: ReviewWorkflowsWorkflowFiltersInput
-  or: [ReviewWorkflowsWorkflowFiltersInput]
-  publishedAt: DateTimeFilterInput
-  stageRequiredToPublish: ReviewWorkflowsWorkflowStageFiltersInput
-  stages: ReviewWorkflowsWorkflowStageFiltersInput
-  updatedAt: DateTimeFilterInput
+	and: [ReviewWorkflowsWorkflowFiltersInput]
+	contentTypes: JSONFilterInput
+	createdAt: DateTimeFilterInput
+	documentId: IDFilterInput
+	name: StringFilterInput
+	not: ReviewWorkflowsWorkflowFiltersInput
+	or: [ReviewWorkflowsWorkflowFiltersInput]
+	publishedAt: DateTimeFilterInput
+	stageRequiredToPublish: ReviewWorkflowsWorkflowStageFiltersInput
+	stages: ReviewWorkflowsWorkflowStageFiltersInput
+	updatedAt: DateTimeFilterInput
 }
 
 input ReviewWorkflowsWorkflowInput {
-  contentTypes: JSON
-  name: String
-  publishedAt: DateTime
-  stageRequiredToPublish: ID
-  stages: [ID]
+	contentTypes: JSON
+	name: String
+	publishedAt: DateTime
+	stageRequiredToPublish: ID
+	stages: [ID]
 }
 
 type ReviewWorkflowsWorkflowStage {
-  color: String
-  createdAt: DateTime
-  documentId: ID!
-  name: String
-  publishedAt: DateTime
-  updatedAt: DateTime
-  workflow: ReviewWorkflowsWorkflow
+	color: String
+	createdAt: DateTime
+	documentId: ID!
+	name: String
+	publishedAt: DateTime
+	updatedAt: DateTime
+	workflow: ReviewWorkflowsWorkflow
 }
 
 type ReviewWorkflowsWorkflowStageEntityResponseCollection {
-  nodes: [ReviewWorkflowsWorkflowStage!]!
-  pageInfo: Pagination!
+	nodes: [ReviewWorkflowsWorkflowStage!]!
+	pageInfo: Pagination!
 }
 
 input ReviewWorkflowsWorkflowStageFiltersInput {
-  and: [ReviewWorkflowsWorkflowStageFiltersInput]
-  color: StringFilterInput
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  name: StringFilterInput
-  not: ReviewWorkflowsWorkflowStageFiltersInput
-  or: [ReviewWorkflowsWorkflowStageFiltersInput]
-  publishedAt: DateTimeFilterInput
-  updatedAt: DateTimeFilterInput
-  workflow: ReviewWorkflowsWorkflowFiltersInput
+	and: [ReviewWorkflowsWorkflowStageFiltersInput]
+	color: StringFilterInput
+	createdAt: DateTimeFilterInput
+	documentId: IDFilterInput
+	name: StringFilterInput
+	not: ReviewWorkflowsWorkflowStageFiltersInput
+	or: [ReviewWorkflowsWorkflowStageFiltersInput]
+	publishedAt: DateTimeFilterInput
+	updatedAt: DateTimeFilterInput
+	workflow: ReviewWorkflowsWorkflowFiltersInput
 }
 
 input ReviewWorkflowsWorkflowStageInput {
-  color: String
-  name: String
-  publishedAt: DateTime
-  workflow: ID
+	color: String
+	name: String
+	publishedAt: DateTime
+	workflow: ID
 }
 
 type ReviewWorkflowsWorkflowStageRelationResponseCollection {
-  nodes: [ReviewWorkflowsWorkflowStage!]!
+	nodes: [ReviewWorkflowsWorkflowStage!]!
 }
 
 input StringFilterInput {
-  and: [String]
-  between: [String]
-  contains: String
-  containsi: String
-  endsWith: String
-  eq: String
-  eqi: String
-  gt: String
-  gte: String
-  in: [String]
-  lt: String
-  lte: String
-  ne: String
-  nei: String
-  not: StringFilterInput
-  notContains: String
-  notContainsi: String
-  notIn: [String]
-  notNull: Boolean
-  null: Boolean
-  or: [String]
-  startsWith: String
+	and: [String]
+	between: [String]
+	contains: String
+	containsi: String
+	endsWith: String
+	eq: String
+	eqi: String
+	gt: String
+	gte: String
+	in: [String]
+	lt: String
+	lte: String
+	ne: String
+	nei: String
+	not: StringFilterInput
+	notContains: String
+	notContainsi: String
+	notIn: [String]
+	notNull: Boolean
+	null: Boolean
+	or: [String]
+	startsWith: String
 }
 
 type Subcategory {
-  categoria: Category
-  createdAt: DateTime
-  documentId: ID!
-  image: UploadFile
-  name: String
-  productos(filters: ProductFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Product]!
-  productos_connection(filters: ProductFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ProductRelationResponseCollection
-  publishedAt: DateTime
-  updatedAt: DateTime
+	categoria: Category
+	createdAt: DateTime
+	documentId: ID!
+	image: UploadFile
+	name: String
+	productos(
+		filters: ProductFiltersInput
+		pagination: PaginationArg = {}
+		sort: [String] = []
+	): [Product]!
+	productos_connection(
+		filters: ProductFiltersInput
+		pagination: PaginationArg = {}
+		sort: [String] = []
+	): ProductRelationResponseCollection
+	publishedAt: DateTime
+	updatedAt: DateTime
 }
 
 type SubcategoryEntityResponseCollection {
-  nodes: [Subcategory!]!
-  pageInfo: Pagination!
+	nodes: [Subcategory!]!
+	pageInfo: Pagination!
 }
 
 input SubcategoryFiltersInput {
-  and: [SubcategoryFiltersInput]
-  categoria: CategoryFiltersInput
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  name: StringFilterInput
-  not: SubcategoryFiltersInput
-  or: [SubcategoryFiltersInput]
-  productos: ProductFiltersInput
-  publishedAt: DateTimeFilterInput
-  updatedAt: DateTimeFilterInput
+	and: [SubcategoryFiltersInput]
+	categoria: CategoryFiltersInput
+	createdAt: DateTimeFilterInput
+	documentId: IDFilterInput
+	name: StringFilterInput
+	not: SubcategoryFiltersInput
+	or: [SubcategoryFiltersInput]
+	productos: ProductFiltersInput
+	publishedAt: DateTimeFilterInput
+	updatedAt: DateTimeFilterInput
 }
 
 input SubcategoryInput {
-  categoria: ID
-  image: ID
-  name: String
-  productos: [ID]
-  publishedAt: DateTime
+	categoria: ID
+	image: ID
+	name: String
+	productos: [ID]
+	publishedAt: DateTime
 }
 
 type SubcategoryRelationResponseCollection {
-  nodes: [Subcategory!]!
+	nodes: [Subcategory!]!
 }
 
 type Training {
-  createdAt: DateTime
-  description: String
-  documentId: ID!
-  duration_weeks: Int
-  frequency: Int
-  level: ENUM_TRAINING_LEVEL
-  portraid_url: UploadFile
-  publishedAt: DateTime
-  target: String
-  title: String
-  training_type: ENUM_TRAINING_TRAINING_TYPE
-  updatedAt: DateTime
+	createdAt: DateTime
+	description: String
+	documentId: ID!
+	duration_weeks: Int
+	frequency: Int
+	level: ENUM_TRAINING_LEVEL
+	portraid_url: UploadFile
+	publishedAt: DateTime
+	target: String
+	title: String
+	training_type: ENUM_TRAINING_TRAINING_TYPE
+	updatedAt: DateTime
 }
 
 type TrainingEntityResponseCollection {
-  nodes: [Training!]!
-  pageInfo: Pagination!
+	nodes: [Training!]!
+	pageInfo: Pagination!
 }
 
 input TrainingFiltersInput {
-  and: [TrainingFiltersInput]
-  createdAt: DateTimeFilterInput
-  description: StringFilterInput
-  documentId: IDFilterInput
-  duration_weeks: IntFilterInput
-  frequency: IntFilterInput
-  level: StringFilterInput
-  not: TrainingFiltersInput
-  or: [TrainingFiltersInput]
-  publishedAt: DateTimeFilterInput
-  target: StringFilterInput
-  title: StringFilterInput
-  training_type: StringFilterInput
-  updatedAt: DateTimeFilterInput
+	and: [TrainingFiltersInput]
+	createdAt: DateTimeFilterInput
+	description: StringFilterInput
+	documentId: IDFilterInput
+	duration_weeks: IntFilterInput
+	frequency: IntFilterInput
+	level: StringFilterInput
+	not: TrainingFiltersInput
+	or: [TrainingFiltersInput]
+	publishedAt: DateTimeFilterInput
+	target: StringFilterInput
+	title: StringFilterInput
+	training_type: StringFilterInput
+	updatedAt: DateTimeFilterInput
 }
 
 input TrainingInput {
-  description: String
-  duration_weeks: Int
-  frequency: Int
-  level: ENUM_TRAINING_LEVEL
-  portraid_url: ID
-  publishedAt: DateTime
-  target: String
-  title: String
-  training_type: ENUM_TRAINING_TRAINING_TYPE
+	description: String
+	duration_weeks: Int
+	frequency: Int
+	level: ENUM_TRAINING_LEVEL
+	portraid_url: ID
+	publishedAt: DateTime
+	target: String
+	title: String
+	training_type: ENUM_TRAINING_TRAINING_TYPE
 }
 
 type UploadFile {
-  alternativeText: String
-  caption: String
-  createdAt: DateTime
-  documentId: ID!
-  ext: String
-  focalPoint: JSON
-  formats: JSON
-  hash: String!
-  height: Int
-  mime: String!
-  name: String!
-  previewUrl: String
-  provider: String!
-  provider_metadata: JSON
-  publishedAt: DateTime
-  related: [GenericMorph]
-  size: Float!
-  updatedAt: DateTime
-  url: String!
-  width: Int
+	alternativeText: String
+	caption: String
+	createdAt: DateTime
+	documentId: ID!
+	ext: String
+	focalPoint: JSON
+	formats: JSON
+	hash: String!
+	height: Int
+	mime: String!
+	name: String!
+	previewUrl: String
+	provider: String!
+	provider_metadata: JSON
+	publishedAt: DateTime
+	related: [GenericMorph]
+	size: Float!
+	updatedAt: DateTime
+	url: String!
+	width: Int
 }
 
 type UploadFileEntityResponseCollection {
-  nodes: [UploadFile!]!
-  pageInfo: Pagination!
+	nodes: [UploadFile!]!
+	pageInfo: Pagination!
 }
 
 input UploadFileFiltersInput {
-  alternativeText: StringFilterInput
-  and: [UploadFileFiltersInput]
-  caption: StringFilterInput
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  ext: StringFilterInput
-  focalPoint: JSONFilterInput
-  formats: JSONFilterInput
-  hash: StringFilterInput
-  height: IntFilterInput
-  mime: StringFilterInput
-  name: StringFilterInput
-  not: UploadFileFiltersInput
-  or: [UploadFileFiltersInput]
-  previewUrl: StringFilterInput
-  provider: StringFilterInput
-  provider_metadata: JSONFilterInput
-  publishedAt: DateTimeFilterInput
-  size: FloatFilterInput
-  updatedAt: DateTimeFilterInput
-  url: StringFilterInput
-  width: IntFilterInput
+	alternativeText: StringFilterInput
+	and: [UploadFileFiltersInput]
+	caption: StringFilterInput
+	createdAt: DateTimeFilterInput
+	documentId: IDFilterInput
+	ext: StringFilterInput
+	focalPoint: JSONFilterInput
+	formats: JSONFilterInput
+	hash: StringFilterInput
+	height: IntFilterInput
+	mime: StringFilterInput
+	name: StringFilterInput
+	not: UploadFileFiltersInput
+	or: [UploadFileFiltersInput]
+	previewUrl: StringFilterInput
+	provider: StringFilterInput
+	provider_metadata: JSONFilterInput
+	publishedAt: DateTimeFilterInput
+	size: FloatFilterInput
+	updatedAt: DateTimeFilterInput
+	url: StringFilterInput
+	width: IntFilterInput
 }
 
 type UsersPermissionsCreateRolePayload {
-  ok: Boolean!
+	ok: Boolean!
 }
 
 type UsersPermissionsDeleteRolePayload {
-  ok: Boolean!
+	ok: Boolean!
 }
 
 input UsersPermissionsLoginInput {
-  identifier: String!
-  password: String!
-  provider: String! = "local"
+	identifier: String!
+	password: String!
+	provider: String! = "local"
 }
 
 type UsersPermissionsLoginPayload {
-  jwt: String
-  user: UsersPermissionsMe!
+	jwt: String
+	user: UsersPermissionsMe!
 }
 
 type UsersPermissionsMe {
-  blocked: Boolean
-  confirmed: Boolean
-  documentId: ID!
-  email: String
-  id: ID!
-  role: UsersPermissionsMeRole
-  username: String!
+	blocked: Boolean
+	confirmed: Boolean
+	documentId: ID!
+	email: String
+	id: ID!
+	role: UsersPermissionsMeRole
+	username: String!
 }
 
 type UsersPermissionsMeRole {
-  description: String
-  id: ID!
-  name: String!
-  type: String
+	description: String
+	id: ID!
+	name: String!
+	type: String
 }
 
 type UsersPermissionsPasswordPayload {
-  ok: Boolean!
+	ok: Boolean!
 }
 
 type UsersPermissionsPermission {
-  action: String!
-  createdAt: DateTime
-  documentId: ID!
-  publishedAt: DateTime
-  role: UsersPermissionsRole
-  updatedAt: DateTime
+	action: String!
+	createdAt: DateTime
+	documentId: ID!
+	publishedAt: DateTime
+	role: UsersPermissionsRole
+	updatedAt: DateTime
 }
 
 input UsersPermissionsPermissionFiltersInput {
-  action: StringFilterInput
-  and: [UsersPermissionsPermissionFiltersInput]
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  not: UsersPermissionsPermissionFiltersInput
-  or: [UsersPermissionsPermissionFiltersInput]
-  publishedAt: DateTimeFilterInput
-  role: UsersPermissionsRoleFiltersInput
-  updatedAt: DateTimeFilterInput
+	action: StringFilterInput
+	and: [UsersPermissionsPermissionFiltersInput]
+	createdAt: DateTimeFilterInput
+	documentId: IDFilterInput
+	not: UsersPermissionsPermissionFiltersInput
+	or: [UsersPermissionsPermissionFiltersInput]
+	publishedAt: DateTimeFilterInput
+	role: UsersPermissionsRoleFiltersInput
+	updatedAt: DateTimeFilterInput
 }
 
 type UsersPermissionsPermissionRelationResponseCollection {
-  nodes: [UsersPermissionsPermission!]!
+	nodes: [UsersPermissionsPermission!]!
 }
 
 input UsersPermissionsRegisterInput {
-  email: String!
-  password: String!
-  username: String!
+	email: String!
+	password: String!
+	username: String!
 }
 
 type UsersPermissionsRole {
-  createdAt: DateTime
-  description: String
-  documentId: ID!
-  name: String!
-  permissions(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UsersPermissionsPermission]!
-  permissions_connection(filters: UsersPermissionsPermissionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsPermissionRelationResponseCollection
-  publishedAt: DateTime
-  type: String
-  updatedAt: DateTime
-  users(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UsersPermissionsUser]!
-  users_connection(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserRelationResponseCollection
+	createdAt: DateTime
+	description: String
+	documentId: ID!
+	name: String!
+	permissions(
+		filters: UsersPermissionsPermissionFiltersInput
+		pagination: PaginationArg = {}
+		sort: [String] = []
+	): [UsersPermissionsPermission]!
+	permissions_connection(
+		filters: UsersPermissionsPermissionFiltersInput
+		pagination: PaginationArg = {}
+		sort: [String] = []
+	): UsersPermissionsPermissionRelationResponseCollection
+	publishedAt: DateTime
+	type: String
+	updatedAt: DateTime
+	users(
+		filters: UsersPermissionsUserFiltersInput
+		pagination: PaginationArg = {}
+		sort: [String] = []
+	): [UsersPermissionsUser]!
+	users_connection(
+		filters: UsersPermissionsUserFiltersInput
+		pagination: PaginationArg = {}
+		sort: [String] = []
+	): UsersPermissionsUserRelationResponseCollection
 }
 
 type UsersPermissionsRoleEntityResponseCollection {
-  nodes: [UsersPermissionsRole!]!
-  pageInfo: Pagination!
+	nodes: [UsersPermissionsRole!]!
+	pageInfo: Pagination!
 }
 
 input UsersPermissionsRoleFiltersInput {
-  and: [UsersPermissionsRoleFiltersInput]
-  createdAt: DateTimeFilterInput
-  description: StringFilterInput
-  documentId: IDFilterInput
-  name: StringFilterInput
-  not: UsersPermissionsRoleFiltersInput
-  or: [UsersPermissionsRoleFiltersInput]
-  permissions: UsersPermissionsPermissionFiltersInput
-  publishedAt: DateTimeFilterInput
-  type: StringFilterInput
-  updatedAt: DateTimeFilterInput
-  users: UsersPermissionsUserFiltersInput
+	and: [UsersPermissionsRoleFiltersInput]
+	createdAt: DateTimeFilterInput
+	description: StringFilterInput
+	documentId: IDFilterInput
+	name: StringFilterInput
+	not: UsersPermissionsRoleFiltersInput
+	or: [UsersPermissionsRoleFiltersInput]
+	permissions: UsersPermissionsPermissionFiltersInput
+	publishedAt: DateTimeFilterInput
+	type: StringFilterInput
+	updatedAt: DateTimeFilterInput
+	users: UsersPermissionsUserFiltersInput
 }
 
 input UsersPermissionsRoleInput {
-  description: String
-  name: String
-  permissions: [ID]
-  publishedAt: DateTime
-  type: String
-  users: [ID]
+	description: String
+	name: String
+	permissions: [ID]
+	publishedAt: DateTime
+	type: String
+	users: [ID]
 }
 
 type UsersPermissionsUpdateRolePayload {
-  ok: Boolean!
+	ok: Boolean!
 }
 
 type UsersPermissionsUser {
-  blocked: Boolean
-  confirmed: Boolean
-  createdAt: DateTime
-  documentId: ID!
-  email: String!
-  provider: String
-  publishedAt: DateTime
-  role: UsersPermissionsRole
-  updatedAt: DateTime
-  username: String!
+	blocked: Boolean
+	confirmed: Boolean
+	createdAt: DateTime
+	documentId: ID!
+	email: String!
+	provider: String
+	publishedAt: DateTime
+	role: UsersPermissionsRole
+	updatedAt: DateTime
+	username: String!
 }
 
 type UsersPermissionsUserEntityResponse {
-  data: UsersPermissionsUser
+	data: UsersPermissionsUser
 }
 
 type UsersPermissionsUserEntityResponseCollection {
-  nodes: [UsersPermissionsUser!]!
-  pageInfo: Pagination!
+	nodes: [UsersPermissionsUser!]!
+	pageInfo: Pagination!
 }
 
 input UsersPermissionsUserFiltersInput {
-  and: [UsersPermissionsUserFiltersInput]
-  blocked: BooleanFilterInput
-  confirmed: BooleanFilterInput
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  email: StringFilterInput
-  not: UsersPermissionsUserFiltersInput
-  or: [UsersPermissionsUserFiltersInput]
-  provider: StringFilterInput
-  publishedAt: DateTimeFilterInput
-  role: UsersPermissionsRoleFiltersInput
-  updatedAt: DateTimeFilterInput
-  username: StringFilterInput
+	and: [UsersPermissionsUserFiltersInput]
+	blocked: BooleanFilterInput
+	confirmed: BooleanFilterInput
+	createdAt: DateTimeFilterInput
+	documentId: IDFilterInput
+	email: StringFilterInput
+	not: UsersPermissionsUserFiltersInput
+	or: [UsersPermissionsUserFiltersInput]
+	provider: StringFilterInput
+	publishedAt: DateTimeFilterInput
+	role: UsersPermissionsRoleFiltersInput
+	updatedAt: DateTimeFilterInput
+	username: StringFilterInput
 }
 
 input UsersPermissionsUserInput {
-  blocked: Boolean
-  confirmed: Boolean
-  email: String
-  password: String
-  provider: String
-  publishedAt: DateTime
-  role: ID
-  username: String
+	blocked: Boolean
+	confirmed: Boolean
+	email: String
+	password: String
+	provider: String
+	publishedAt: DateTime
+	role: ID
+	username: String
 }
 
 type UsersPermissionsUserRelationResponseCollection {
-  nodes: [UsersPermissionsUser!]!
+	nodes: [UsersPermissionsUser!]!
 }
