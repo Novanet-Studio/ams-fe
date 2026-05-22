@@ -1,44 +1,22 @@
 query Subcategories($name: String!) {
 	subcategories(filters: { categoria: { name: { eqi: $name } } }) {
-		data {
-			attributes {
+		name
+		image {
+			name
+			url
+			formats
+		}
+		categoria {
+			name
+			description
+			image {
 				name
-				image {
-					data {
-						attributes {
-							name
-							url
-							formats
-						}
-					}
-				}
-
-				categoria {
-					data {
-						attributes {
-							name
-							description
-							image {
-								data {
-									attributes {
-										name
-										url
-										formats
-									}
-								}
-							}
-						}
-					}
-				}
-
-				productos {
-					data {
-						attributes {
-							slug
-						}
-					}
-				}
+				url
+				formats
 			}
+		}
+		productos {
+			slug
 		}
 	}
 }

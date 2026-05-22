@@ -1,8 +1,12 @@
-import type { SubcategoriesVariables } from './$houdini';
+import { load_Subcategories } from '$houdini';
+import type { PageLoad } from './$types';
 
 export const ssr = false;
 export const prerender = false;
 
-export const _SubcategoriesVariables: SubcategoriesVariables = ({ params }) => ({
-	name: params.category
-});
+export const load: PageLoad = async (event) => {
+	return await load_Subcategories({
+		event,
+		variables: { name: event.params.category }
+	});
+};

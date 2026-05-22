@@ -1,9 +1,9 @@
-import type { ProductsBySubcategoryVariables } from './$houdini';
+import { load_ProductsBySubcategory } from '$houdini';
+import type { PageLoad } from './$types';
 
-export const _ProductsBySubcategoryVariables: ProductsBySubcategoryVariables = ({ params }) => {
-	console.log('ProductsBySubcategoryVariables params:', params);
-
-	return {
-		subcategoryName: params.product
-	};
+export const load: PageLoad = async (event) => {
+	return await load_ProductsBySubcategory({
+		event,
+		variables: { subcategoryName: event.params.product }
+	});
 };

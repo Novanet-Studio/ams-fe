@@ -1,19 +1,11 @@
 query HomeCategories {
-	categories(sort: "id:asc") {
-		data {
-			id
-			attributes {
-				name
-				image {
-					data {
-						attributes {
-							name
-							url
-							formats
-						}
-					}
-				}
-			}
+	categories(sort: ["id:asc"]) {
+		documentId
+		name
+		image {
+			name
+			url
+			formats
 		}
 	}
 }

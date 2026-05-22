@@ -1,45 +1,23 @@
 query ProductsBySubcategory($subcategoryName: String!) {
 	subcategories(filters: { name: { eqi: $subcategoryName } }) {
-		data {
-			attributes {
+		name
+		categoria {
+			name
+			image {
+				url
+				formats
+			}
+		}
+		productos {
+			documentId
+			name
+			slug
+			link
+			brand
+			image {
 				name
-
-				categoria {
-					data {
-						attributes {
-							name
-							image {
-								data {
-									attributes {
-										url
-										formats
-									}
-								}
-							}
-						}
-					}
-				}
-
-				productos {
-					data {
-						id
-						attributes {
-							name
-							slug
-							link
-							brand
-							image {
-								data {
-									attributes {
-										name
-										url
-										formats
-									}
-								}
-							}
-						}
-					}
-				}
+				url
+				formats
 			}
 		}
 	}
