@@ -36,7 +36,7 @@
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.60.1",
 		"unocss": "^66.7.0",
-		"vite": "^8.0.16"
+		"vite": "^7.3.3"
 	},
 	"dependencies": {
 		"@julr/unocss-preset-forms": "^2.0.0",
