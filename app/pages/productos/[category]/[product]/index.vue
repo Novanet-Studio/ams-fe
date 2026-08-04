@@ -113,7 +113,7 @@ onMounted(() => {
           No hay productos disponibles en esta subcategoría.
         </li>
         <template v-else>
-          <ProductProductCard
+          <ProductCard
             v-for="producto in productos"
             :key="producto.slug"
             :name="producto.nombre"
@@ -122,6 +122,8 @@ onMounted(() => {
             :link="producto.link"
           />
         </template>
+        <!-- ponytail: componente es <ProductCard>, no <ProductProductCard>: Nuxt deduplica el prefijo de carpeta cuando el archivo ya empieza con él (product/ProductCard.vue → ProductCard) -->
+
       </ul>
     </div>
   </section>

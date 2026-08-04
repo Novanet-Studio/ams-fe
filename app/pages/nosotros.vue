@@ -19,16 +19,19 @@ useHead({ title: about.title })
 </script>
 
 <template>
-  <div class="lg:flex lg:flex-row">
-    <AboutHistory :topic="historyTopic" />
-    <AboutHistoryImg />
-  </div>
-  <div class="lg:flex lg:flex-row">
-    <AboutPhilosophy :topic="philosophyTopic" />
-    <AboutPhilosophyImg />
-  </div>
-  <div class="lg:flex lg:flex-row">
-    <AboutGoals :info="goalsInfo" />
-    <AboutGoalsImg />
+  <div>
+    <!-- ponytail: raíz única obligatoria para app.pageTransition (out-in); comentario DENTRO del div -->
+    <div class="lg:flex lg:flex-row">
+      <AboutHistory :topic="historyTopic" />
+      <AboutHistoryImg />
+    </div>
+    <div class="lg:flex lg:flex-row">
+      <AboutPhilosophy :topic="philosophyTopic" />
+      <AboutPhilosophyImg />
+    </div>
+    <div class="lg:flex lg:flex-row">
+      <AboutGoals :info="goalsInfo" />
+      <AboutGoalsImg />
+    </div>
   </div>
 </template>

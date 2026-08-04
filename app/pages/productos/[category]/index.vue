@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { animate, stagger } from 'motion-v'
-import { onClickOutside } from '@vueuse/core'
 import { getImageUrl } from '~/utils/functions'
 
 const route = useRoute()
@@ -15,16 +14,8 @@ const { data: subcategoriasResponse, pending } = await useAsyncData(
 const subcategorias = computed(() => subcategoriasResponse.value?.data ?? [])
 const categoria = computed(() => subcategorias.value[0]?.categoria)
 
-const active = ref('')
-const listRef = ref<HTMLElement>()
-onClickOutside(listRef, () => (active.value = ''))
-
 function handleActive(slug: string) {
-  if (slug === active.value) {
-    navigateTo(`/productos/${categoriaSlug}/${slug}`)
-    return
-  }
-  active.value = slug
+  navigateTo(`/productos/${categoriaSlug}/${slug}`)
 }
 
 function animation() {
@@ -120,7 +111,6 @@ onMounted(() => {
         </p>
       </div>
       <ul
-        ref="listRef"
         class="max-w-[90%] lg:max-w-[80%] mx-auto w-full py-12 md:py-20 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       >
         <li v-if="pending" class="col-span-full text-center text-gray-500">

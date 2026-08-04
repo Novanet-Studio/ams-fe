@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { animate, stagger } from 'motion-v'
-import { onClickOutside } from '@vueuse/core'
 import { productsBanner } from '~/utils/banners'
 import { getImageUrl } from '~/utils/functions'
 
@@ -10,17 +9,9 @@ const { data: categoriasResponse } = await useAsyncData('categorias', () =>
 )
 const categorias = computed(() => categoriasResponse.value?.data ?? [])
 
-const active = ref('')
-const listRef = ref<HTMLElement>()
-onClickOutside(listRef, () => (active.value = ''))
-
 function handleActive(slug: string | undefined) {
   if (!slug) return
-  if (slug === active.value) {
-    navigateTo(`/productos/${slug}`)
-    return
-  }
-  active.value = slug
+  navigateTo(`/productos/${slug}`)
 }
 
 function animateElements() {
@@ -85,7 +76,6 @@ onMounted(() => {
     </div>
 
     <ul
-      ref="listRef"
       class="max-w-[90%] lg:max-w-[80%] mx-auto w-full py-12 md:py-20 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
     >
       <li v-for="categoria in categorias" :key="categoria.slug">

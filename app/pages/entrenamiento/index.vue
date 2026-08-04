@@ -68,7 +68,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <section
+  <div>
+    <!-- ponytail: raíz única obligatoria para app.pageTransition (out-in); comentario DENTRO del div -->
+    <section
     id="banner"
     data-color="dark"
     class="snap-start snap-always flex flex-col items-center bg-color-1 pt-14 lg:pt-18"
@@ -354,6 +356,7 @@ onMounted(() => {
       </div>
     </div>
   </section>
+  </div>
 </template>
 
 <style scoped>

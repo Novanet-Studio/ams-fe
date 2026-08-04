@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   ssr: false, // AMS es una SPA total (equivalente a `ssr = false` en cada +page.ts de SvelteKit)
 
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: 'Avila MultiSport',
       meta: [
