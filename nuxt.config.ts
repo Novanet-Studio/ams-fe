@@ -30,6 +30,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      publicMetricoolHash: process.env.PUBLIC_METRICOOL_HASH,
       kairosApiUrl: process.env.KAIROS_API_URL,
       kairosApiKey: process.env.KAIROS_API_KEY,
     },
