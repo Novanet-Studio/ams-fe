@@ -1,4 +1,4 @@
-import { easeInOut } from 'motion-v'
+import { easeInOut } from "motion-v";
 
 export const animations = {
   emblem: {
@@ -51,4 +51,4 @@ export const animations = {
     animate: { opacity: 1 },
     transition: { duration: 0.8, delay: 2, ease: easeInOut },
   },
-}
+};

@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { about } from '~/utils/content'
+import { about } from "~/utils/content";
 
 interface Topic {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
 interface EnterpriseTopic {
-  title: string
-  content: Topic[]
+  title: string;
+  content: Topic[];
 }
 
-const historyTopic = about.topics[0] as unknown as Topic
-const philosophyTopic = about.topics[1] as unknown as Topic
-const goalsInfo = about.topics[2] as unknown as EnterpriseTopic
+const historyTopic = about.topics[0] as unknown as Topic;
+const philosophyTopic = about.topics[1] as unknown as Topic;
+const goalsInfo = about.topics[2] as unknown as EnterpriseTopic;
 
-useHead({ title: about.title })
+useHead({ title: about.title });
 </script>
 
 <template>

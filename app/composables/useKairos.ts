@@ -1,15 +1,15 @@
 export default function useKairos() {
-  const config = useRuntimeConfig()
+  const config = useRuntimeConfig();
 
   async function get<T>(collection: string, params?: Record<string, string>) {
     const { data } = await $fetch<{ data: T[] }>(
       `${config.public.kairosApiUrl}/${collection}`,
       {
-        headers: { 'x-api-key': config.public.kairosApiKey },
+        headers: { "x-api-key": config.public.kairosApiKey },
         params,
       },
-    )
-    return data
+    );
+    return data;
   }
 
   async function getOne<T>(
@@ -19,13 +19,13 @@ export default function useKairos() {
     try {
       const { data } = await $fetch<{ data: T }>(
         `${config.public.kairosApiUrl}/${collection}/${slug}`,
-        { headers: { 'x-api-key': config.public.kairosApiKey } },
-      )
-      return data
+        { headers: { "x-api-key": config.public.kairosApiKey } },
+      );
+      return data;
     } catch {
-      return null
+      return null;
     }
   }
 
-  return { get, getOne }
+  return { get, getOne };
 }

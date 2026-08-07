@@ -1,55 +1,55 @@
 <script setup lang="ts">
-import { animate } from 'motion-v'
-import { useIntersectionObserver } from '@vueuse/core'
+import { animate } from "motion-v";
+import { useIntersectionObserver } from "@vueuse/core";
 
 interface Topic {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
-defineProps<{ topic: Topic }>()
+defineProps<{ topic: Topic }>();
 
-const target = ref<HTMLElement>()
+const target = ref<HTMLElement>();
 
 function enterAnimation() {
   animate(
     [
       [
-        '#philosophy',
+        "#philosophy",
         { opacity: [0, 1] },
         { duration: 0.5, delay: 0.5, ease: [0.17, 0.55, 0.55, 1] },
       ],
       [
-        '#philosophy > div',
+        "#philosophy > div",
         {
           opacity: [0, 1],
           clipPath: [
-            'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
-            'polygon(0 0, 100% 0, 100% 85.77%, 0% 91.23%)',
+            "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+            "polygon(0 0, 100% 0, 100% 85.77%, 0% 91.23%)",
           ],
         },
         { duration: 0.5 },
       ],
       [
-        '#philosophy > div > h3',
+        "#philosophy > div > h3",
         { opacity: [0, 1], x: [-10, 0] },
         { duration: 0.5, delay: 0.3 },
       ],
       [
-        '#philosophy > div > p',
+        "#philosophy > div > p",
         { opacity: [0, 1], x: [-10, 0] },
         { duration: 0.5, delay: 0.3 },
       ],
     ] as any,
     { duration: 2.5 },
-  )
+  );
 }
 
 useIntersectionObserver(
   target,
   ([entry]) => entry?.isIntersecting && enterAnimation(),
-  { rootMargin: '-100px 0px -100px 0px' },
-)
+  { rootMargin: "-100px 0px -100px 0px" },
+);
 </script>
 
 <template>

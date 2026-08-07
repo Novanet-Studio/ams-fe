@@ -1,74 +1,81 @@
 <script setup lang="ts">
-import { animate, stagger } from 'motion-v'
-import { getImageUrl } from '~/utils/functions'
+import { animate, stagger } from "motion-v";
+import { getImageUrl } from "~/utils/functions";
 
-const route = useRoute()
-const categoriaSlug = route.params.category as string
+const route = useRoute();
+const categoriaSlug = route.params.category as string;
 
-const { getSubcategorias } = useSubcategorias()
+const { getSubcategorias } = useSubcategorias();
 const { data: subcategoriasResponse, pending } = await useAsyncData(
   `subcategorias-${categoriaSlug}`,
   () => getSubcategorias(categoriaSlug),
-)
+);
 
-const subcategorias = computed(() => subcategoriasResponse.value?.data ?? [])
-const categoria = computed(() => subcategorias.value[0]?.categoria)
+const subcategorias = computed(() => subcategoriasResponse.value?.data ?? []);
+const categoria = computed(() => subcategorias.value[0]?.categoria);
 
 function handleActive(slug: string) {
-  navigateTo(`/productos/${categoriaSlug}/${slug}`)
+  navigateTo(`/productos/${categoriaSlug}/${slug}`);
 }
 
 function animation() {
   animate(
     [
       [
-        '#categories',
-        { opacity: [0, 1], background: ['#fff', '#003B49'] },
-        { duration: 0.4, ease: 'easeOut' },
+        "#categories",
+        { opacity: [0, 1], background: ["#fff", "#003B49"] },
+        { duration: 0.4, ease: "easeOut" },
       ],
-      ['#categories #image', { opacity: [0, 1] }, { duration: 0.4, ease: 'easeOut' }],
       [
-        '#categories #middle',
+        "#categories #image",
+        { opacity: [0, 1] },
+        { duration: 0.4, ease: "easeOut" },
+      ],
+      [
+        "#categories #middle",
         { opacity: [0, 1], x: [-10, 0] },
-        { duration: 0.1, ease: 'easeOut' },
+        { duration: 0.1, ease: "easeOut" },
       ],
       [
-        '#categories #middle #name',
+        "#categories #middle #name",
         { opacity: [0, 1], x: [-10, 0] },
-        { duration: 0.3, ease: 'easeOut' },
+        { duration: 0.3, ease: "easeOut" },
       ],
       [
-        '#categories #top',
+        "#categories #top",
         {
           opacity: [0, 1],
           clipPath: [
-            'polygon(0% 100%, 100% 100%, 90% 70%)',
-            'polygon(0% 100%, 100% 100%, 73.49% 50.75%)',
+            "polygon(0% 100%, 100% 100%, 90% 70%)",
+            "polygon(0% 100%, 100% 100%, 73.49% 50.75%)",
           ],
         },
-        { duration: 0.2, ease: 'easeOut' },
+        { duration: 0.2, ease: "easeOut" },
       ],
       [
-        '#categories #bottom',
+        "#categories #bottom",
         {
           opacity: [0, 1],
-          clipPath: ['polygon(40% 70%, 0 0, 100% 0)', 'polygon(32% 60%, 0 0, 100% 0)'],
+          clipPath: [
+            "polygon(40% 70%, 0 0, 100% 0)",
+            "polygon(32% 60%, 0 0, 100% 0)",
+          ],
         },
-        { duration: 0.2, ease: 'easeOut' },
+        { duration: 0.2, ease: "easeOut" },
       ],
       [
-        '#categories ul > button',
+        "#categories ul > button",
         { opacity: [0, 1], y: [10, 0] },
-        { duration: 0.5, ease: 'easeOut', delay: stagger(0.1) },
+        { duration: 0.5, ease: "easeOut", delay: stagger(0.1) },
       ],
     ] as any,
     { duration: 2 },
-  )
+  );
 }
 
 onMounted(() => {
-  animation()
-})
+  animation();
+});
 </script>
 
 <template>
@@ -87,7 +94,10 @@ onMounted(() => {
           id="middle"
           class="absolute inset-0 flex justify-center items-center bg-[#93B7BB]/70 gap-2 z-2"
         >
-          <h4 id="name" class="text-[#003B49] font-bold text-2xl md:text-4xl lg:text-5xl">
+          <h4
+            id="name"
+            class="text-[#003B49] font-bold text-2xl md:text-4xl lg:text-5xl"
+          >
             {{ categoria?.nombre ?? categoriaSlug }}
           </h4>
         </div>
@@ -116,7 +126,10 @@ onMounted(() => {
         <li v-if="pending" class="col-span-full text-center text-gray-500">
           Cargando subcategorías...
         </li>
-        <li v-else-if="!subcategorias.length" class="col-span-full text-center text-gray-500">
+        <li
+          v-else-if="!subcategorias.length"
+          class="col-span-full text-center text-gray-500"
+        >
           No hay subcategorías disponibles.
         </li>
         <template v-else>

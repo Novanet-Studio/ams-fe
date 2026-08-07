@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { home } from '~/utils/content'
+import { home } from "~/utils/content";
 
-useHead({ title: home.title })
+useHead({ title: home.title });
 </script>
 
 <template>

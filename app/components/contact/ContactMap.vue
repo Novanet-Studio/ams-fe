@@ -1,44 +1,44 @@
 <script setup lang="ts">
-import { animate } from 'motion-v'
+import { animate } from "motion-v";
 
-const { isDesktop } = useUiState()
+const { isDesktop } = useUiState();
 
 onMounted(() => {
   animate(
     [
       [
-        '#map',
+        "#map",
         {
           opacity: [0, 1],
           clipPath: [
-            'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
-            'polygon(0% 0%,100% 0%,100% 91%,0% 98.5%)',
+            "polygon(0% 0%,100% 0%,100% 100%,0% 100%)",
+            "polygon(0% 0%,100% 0%,100% 91%,0% 98.5%)",
           ],
         },
         { duration: 0.5, delay: 0.2 },
       ],
       [
-        '#map > img',
-        { opacity: [0, 1], filter: ['blur(10px)', 'blur(0px)'] },
+        "#map > img",
+        { opacity: [0, 1], filter: ["blur(10px)", "blur(0px)"] },
         { duration: 0.5, delay: 0.3 },
       ],
       [
-        '#mapFill',
+        "#mapFill",
         {
           opacity: [0, 1],
           clipPath: [
-            'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
+            "polygon(0% 0%,100% 0%,100% 100%,0% 100%)",
             isDesktop.value
-              ? 'polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 82.7%)'
-              : 'polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 83.06%)',
+              ? "polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 82.7%)"
+              : "polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 83.06%)",
           ],
         },
         { duration: 0.5, delay: 0 },
       ],
     ] as any,
     { duration: 2 },
-  )
-})
+  );
+});
 </script>
 
 <template>

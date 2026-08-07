@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { animate, stagger } from 'motion-v'
-import type { Evento } from '~/types'
-import { eventsBanner } from '~/utils/banners'
+import { animate, stagger } from "motion-v";
+import type { Evento } from "~/types";
+import { eventsBanner } from "~/utils/banners";
 
-const { data: eventosResult } = await useAsyncData('eventos', () =>
+const { data: eventosResult } = await useAsyncData("eventos", () =>
   useEventos().getEventos(),
-)
-const eventos = computed<Evento[]>(() => eventosResult.value?.data ?? [])
+);
+const eventos = computed<Evento[]>(() => eventosResult.value?.data ?? []);
 
-const activeEvent = ref<Evento | null>(null)
+const activeEvent = ref<Evento | null>(null);
 
 function handleActive(event: Evento) {
-  activeEvent.value = event
+  activeEvent.value = event;
 }
 
 function closeModal() {
-  activeEvent.value = null
+  activeEvent.value = null;
 }
 
 onMounted(() => {
   animate(
-    '.event-arrow',
+    ".event-arrow",
     { x: [-10, 0], opacity: [0, 1] },
     { duration: 0.3, delay: stagger(0.05, { startDelay: 0.5 }) },
-  )
-})
+  );
+});
 </script>
 
 <template>
@@ -41,7 +41,9 @@ onMounted(() => {
         <div
           class="absolute inset-0 z-2 flex items-center justify-center gap-2 bg-[#e3d268]/70"
         >
-          <h4 class="text-2xl font-bold text-[#003B49] md:text-4xl lg:text-5xl">Eventos</h4>
+          <h4 class="text-2xl font-bold text-[#003B49] md:text-4xl lg:text-5xl">
+            Eventos
+          </h4>
         </div>
         <img
           class="h-full w-full object-cover object-center"
@@ -57,10 +59,10 @@ onMounted(() => {
     <div class="-mt-10 w-full bg-white pb-20 lg:-mt-20">
       <div class="mx-auto max-w-[90%] py-12 text-left md:py-20 lg:max-w-[80%]">
         <p class="text-xl leading-relaxed text-gray-600 md:text-2xl">
-          En Ávila Multisport, cada evento refleja nuestro espíritu de comunidad, montaña y
-          superación. Participamos y organizamos experiencias que celebran el deporte, el
-          bienestar y la conexión con la naturaleza. Acompáñanos en cada kilómetro, cada reto y
-          cada logro.
+          En Ávila Multisport, cada evento refleja nuestro espíritu de
+          comunidad, montaña y superación. Participamos y organizamos
+          experiencias que celebran el deporte, el bienestar y la conexión con
+          la naturaleza. Acompáñanos en cada kilómetro, cada reto y cada logro.
         </p>
       </div>
 

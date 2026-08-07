@@ -1,14 +1,16 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    isDark?: boolean
-    width?: number
-    height?: number
+    isDark?: boolean;
+    width?: number;
+    height?: number;
   }>(),
   { isDark: false, width: 53, height: 13 },
-)
+);
 
-const color = computed(() => (isDark: boolean) => (isDark ? '#1E1E1E' : 'white'))
+const color = computed(
+  () => (isDark: boolean) => (isDark ? "#1E1E1E" : "white"),
+);
 </script>
 
 <template>
@@ -63,7 +65,12 @@ const color = computed(() => (isDark: boolean) => (isDark ? '#1E1E1E' : 'white')
     </g>
     <defs>
       <clipPath id="clip0_197_991">
-        <rect width="52.4634" height="12.1286" fill="white" transform="translate(0.408203)" />
+        <rect
+          width="52.4634"
+          height="12.1286"
+          fill="white"
+          transform="translate(0.408203)"
+        />
       </clipPath>
     </defs>
   </svg>

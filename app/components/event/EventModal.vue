@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import { onClickOutside } from '@vueuse/core'
-import type { Evento } from '~/types'
-import { getImageUrl } from '~/utils/functions'
+import { onClickOutside } from "@vueuse/core";
+import type { Evento } from "~/types";
+import { getImageUrl } from "~/utils/functions";
 
-defineProps<{ event: Evento }>()
-const emit = defineEmits<{ close: [] }>()
+defineProps<{ event: Evento }>();
+const emit = defineEmits<{ close: [] }>();
 
-const panel = ref<HTMLElement>()
-onClickOutside(panel, () => emit('close'))
+const panel = ref<HTMLElement>();
+onClickOutside(panel, () => emit("close"));
 </script>
 
 <template>
   <Transition name="modal-backdrop" appear>
-    <div class="fixed inset-0 z-40 flex items-center justify-center bg-[#003B49]/90 p-4">
+    <div
+      class="fixed inset-0 z-40 flex items-center justify-center bg-[#003B49]/90 p-4"
+    >
       <Transition name="modal-panel" appear>
         <div
           ref="panel"
@@ -45,28 +47,34 @@ onClickOutside(panel, () => emit('close'))
             </a>
           </div>
 
-          <div class="max-h-[50vh] overflow-y-scroll p-6 lg:max-h-none lg:overflow-hidden">
-            <h3 class="text-2xl font-bold text-[#003B49]">{{ event.titulo }}</h3>
-            <h4 class="text-xl font-bold text-[#003B49]/50">{{ event.ubicacion }}</h4>
+          <div
+            class="max-h-[50vh] overflow-y-scroll p-6 lg:max-h-none lg:overflow-hidden"
+          >
+            <h3 class="text-2xl font-bold text-[#003B49]">
+              {{ event.titulo }}
+            </h3>
+            <h4 class="text-xl font-bold text-[#003B49]/50">
+              {{ event.ubicacion }}
+            </h4>
 
             <div class="mt-4 space-y-2 text-gray-600">
               <p>{{ event.descripcion }}</p>
 
               <p>
                 <b class="text-[#003B49]">Inicio:</b>
-                {{ event.fecha_inicio ?? 'Por confirmar' }}
+                {{ event.fecha_inicio ?? "Por confirmar" }}
                 | <b class="text-[#003B49]">Finalización:</b>
-                {{ event.fecha_fin ?? 'Por confirmar' }}
+                {{ event.fecha_fin ?? "Por confirmar" }}
               </p>
 
               <p>
                 <b class="text-[#003B49]">Organizador:</b>
-                {{ event.organizador ?? 'Información no disponible' }}
+                {{ event.organizador ?? "Información no disponible" }}
               </p>
 
               <p>
                 <b class="text-[#003B49]">Tipo de evento:</b>
-                {{ event.tipo_evento ?? 'Por definir' }}
+                {{ event.tipo_evento ?? "Por definir" }}
               </p>
 
               <p v-if="event.brochure && event.info" class="text-gray-600">
@@ -74,7 +82,8 @@ onClickOutside(panel, () => emit('close'))
               </p>
 
               <template v-if="event.brochure">
-                Para más detalles del recorrido, recomendaciones logísticas y hoteles,
+                Para más detalles del recorrido, recomendaciones logísticas y
+                hoteles,
                 <b>descarga el brochure del evento</b>
               </template>
             </div>

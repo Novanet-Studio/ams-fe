@@ -1,50 +1,50 @@
 <script setup lang="ts">
-import { animate } from 'motion-v'
-import { useIntersectionObserver } from '@vueuse/core'
-import image from '~/assets/web/avila-multisports-nosotros-ciclista-parado-pedaleando.webp'
+import { animate } from "motion-v";
+import { useIntersectionObserver } from "@vueuse/core";
+import image from "~/assets/web/avila-multisports-nosotros-ciclista-parado-pedaleando.webp";
 
-const target = ref<HTMLElement>()
+const target = ref<HTMLElement>();
 
 function enterAnimation() {
   animate(
     [
       [
-        '#goalsImg',
+        "#goalsImg",
         {
           opacity: [0, 1],
           clipPath: [
-            'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
-            'polygon(0% 0%,100% 0%,100% 92%,0% 99%)',
+            "polygon(0% 0%,100% 0%,100% 100%,0% 100%)",
+            "polygon(0% 0%,100% 0%,100% 92%,0% 99%)",
           ],
         },
         { duration: 0.5, delay: 0.2 },
       ],
       [
-        '#goalsImg > img',
-        { opacity: [0, 1], filter: ['blur(10px)', 'blur(0px)'] },
+        "#goalsImg > img",
+        { opacity: [0, 1], filter: ["blur(10px)", "blur(0px)"] },
         { duration: 0.5, delay: 0.3 },
       ],
       [
-        '#goalsImgFill',
+        "#goalsImgFill",
         {
           opacity: [0, 1],
           clipPath: [
-            'polygon(0% 0%,100% 0%,100% 100%,0% 100%)',
-            'polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 83.06%)',
+            "polygon(0% 0%,100% 0%,100% 100%,0% 100%)",
+            "polygon(0% 0%, 100% 0%, 100% 88.75%, 0% 83.06%)",
           ],
         },
         { duration: 0.5, delay: 0 },
       ],
     ] as any,
     { duration: 2 },
-  )
+  );
 }
 
 useIntersectionObserver(
   target,
   ([entry]) => entry?.isIntersecting && enterAnimation(),
-  { rootMargin: '-100px 0px -100px 0px' },
-)
+  { rootMargin: "-100px 0px -100px 0px" },
+);
 </script>
 
 <template>

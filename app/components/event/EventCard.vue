@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Evento } from '~/types'
-import { getImageUrl } from '~/utils/functions'
+import type { Evento } from "~/types";
+import { getImageUrl } from "~/utils/functions";
 
-defineProps<{ event: Evento }>()
-defineEmits<{ select: [event: Evento] }>()
+defineProps<{ event: Evento }>();
+defineEmits<{ select: [event: Evento] }>();
 </script>
 
 <template>
@@ -20,13 +20,13 @@ defineEmits<{ select: [event: Evento] }>()
       />
     </li>
 
-    <div class="flex justify-center bg-[#e3d268] p-3">
+    <div class="flex justify-center items-center bg-[#e3d268] p-3">
       <h4 class="text-xl font-bold text-[#003B49] sm:text-2xl lg:text-2xl">
         {{ event.titulo }}
       </h4>
       <Icon
         name="ph:arrow-right-bold"
-        class="event-arrow mt-1 ml-1 text-3xl text-[#003B49] md:mt-2"
+        class="event-arrow text-2xl text-[#003B49] ml-1"
       />
     </div>
   </button>

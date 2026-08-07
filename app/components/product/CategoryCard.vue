@@ -1,22 +1,25 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    name: string
-    imageUrl: string
-    imageClass?: string
-    panelDurationClass?: string
+    name: string;
+    imageUrl: string;
+    imageClass?: string;
+    panelDurationClass?: string;
   }>(),
   {
-    imageClass: 'h-40 md:h-auto',
-    panelDurationClass: 'duration-[250ms]',
+    imageClass: "h-40 md:h-auto",
+    panelDurationClass: "duration-[250ms]",
   },
-)
+);
 
-defineEmits<{ click: [] }>()
+defineEmits<{ click: [] }>();
 </script>
 
 <template>
-  <button class="group block w-full overflow-hidden relative" @click="$emit('click')">
+  <button
+    class="group block w-full overflow-hidden relative"
+    @click="$emit('click')"
+  >
     <img
       id="image"
       :src="imageUrl"
@@ -25,7 +28,10 @@ defineEmits<{ click: [] }>()
     />
 
     <div class="flex justify-center p-3 bg-[#93B7BB]">
-      <h4 id="name" class="text-[#003B49] font-bold text-xl sm:text-2xl lg:text-2xl">
+      <h4
+        id="name"
+        class="text-[#003B49] font-bold text-xl sm:text-2xl lg:text-2xl"
+      >
         {{ name }}
       </h4>
       <Icon
@@ -61,7 +67,7 @@ defineEmits<{ click: [] }>()
             'absolute bottom-0 left-0 w-full h-full bg-[#93B7BB] transform translate-y-full group-hover:translate-y-0 transition-transform ease-out',
             panelDurationClass,
           ]"
-          style="clip-path: inset(80% 0 0 0);"
+          style="clip-path: inset(80% 0 0 0)"
         />
       </div>
     </div>

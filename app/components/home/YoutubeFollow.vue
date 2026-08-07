@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import backgroundImage from '~/assets/main/avila-multisports-shared-bg.webp'
+import backgroundImage from "~/assets/main/avila-multisports-shared-bg.webp";
 </script>
 
 <template>
@@ -9,7 +9,9 @@ import backgroundImage from '~/assets/main/avila-multisports-shared-bg.webp'
     class="relative z-[1] h-screen w-full snap-start snap-always overflow-hidden bg-cover"
     :style="{ backgroundImage: `url(${backgroundImage})` }"
   >
-    <div class="relative z-20 flex h-screen w-full flex-col justify-center pr-6 pl-6 md:pr-10 md:pl-16">
+    <div
+      class="relative z-20 flex h-screen w-full flex-col justify-center pr-6 pl-6 md:pr-10 md:pl-16"
+    >
       <div>
         <div class="flex items-center">
           <div
@@ -23,8 +25,8 @@ import backgroundImage from '~/assets/main/avila-multisports-shared-bg.webp'
         </div>
 
         <p class="mt-6 py-6 text-xl leading-relaxed text-white lg:text-3xl">
-          Compartimos experiencias, entrenamientos y la filosofía que nos impulsa a vivir una vida
-          activa y plena.
+          Compartimos experiencias, entrenamientos y la filosofía que nos
+          impulsa a vivir una vida activa y plena.
         </p>
 
         <a

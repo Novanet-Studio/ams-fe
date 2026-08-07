@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { useUiState } from '~/composables/useUiState'
-import { useSectionObserver } from '~/composables/useSectionObserver'
+import { useUiState } from "~/composables/useUiState";
+import { useSectionObserver } from "~/composables/useSectionObserver";
 
-const { isOpen, isDesktop } = useUiState()
-const { currentCopyrightColor } = useSectionObserver()
-const route = useRoute()
+const { isOpen, isDesktop } = useUiState();
+const { currentCopyrightColor } = useSectionObserver();
+const route = useRoute();
 
 onMounted(() => {
-  isDesktop.value = window.matchMedia('(min-width: 1024px)').matches
-})
+  isDesktop.value = window.matchMedia("(min-width: 1024px)").matches;
+});
 
 const isLight = computed(
   () =>
-    currentCopyrightColor.value === 'light' ||
+    currentCopyrightColor.value === "light" ||
     isOpen.value ||
-    (isDesktop.value && route.path === '/'),
-)
+    (isDesktop.value && route.path === "/"),
+);
 </script>
 
 <template>
@@ -29,13 +29,21 @@ const isLight = computed(
       >
         Sitio hecho por
       </p>
-      <CommonNovanetLogo :height="24" class="w-18 m-0 p-0 md:w-24" :is-dark="!isLight" />
+      <CommonNovanetLogo
+        :height="24"
+        class="w-18 m-0 p-0 md:w-24"
+        :is-dark="!isLight"
+      />
     </section>
     <section class="flex gap-2 md:gap-4">
       <button
         class="flex h-8 w-8 items-center justify-center rounded-full bg-[#ACC37E] text-[#003B49] md:h-10 md:w-10"
       >
-        <a href="https://www.youtube.com/@Avilamultisport" target="_blank" class="flex items-center justify-center">
+        <a
+          href="https://www.youtube.com/@Avilamultisport"
+          target="_blank"
+          class="flex items-center justify-center"
+        >
           <Icon name="fa6-brands:youtube" class="text-lg" />
         </a>
       </button>
@@ -43,7 +51,11 @@ const isLight = computed(
       <button
         class="flex h-8 w-8 items-center justify-center rounded-full bg-[#E3D268] text-[#003B49] md:h-10 md:w-10"
       >
-        <a href="https://www.instagram.com/avilamultisport/" target="_blank" class="flex items-center justify-center">
+        <a
+          href="https://www.instagram.com/avilamultisport/"
+          target="_blank"
+          class="flex items-center justify-center"
+        >
           <Icon name="fa6-brands:instagram" class="text-lg" />
         </a>
       </button>

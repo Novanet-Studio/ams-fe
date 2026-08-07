@@ -1,13 +1,13 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    icon: string
-    position?: 'left' | 'right'
+    icon: string;
+    position?: "left" | "right";
   }>(),
-  { position: 'left' },
-)
+  { position: "left" },
+);
 
-defineEmits<{ click: [e: MouseEvent] }>()
+defineEmits<{ click: [e: MouseEvent] }>();
 </script>
 
 <template>

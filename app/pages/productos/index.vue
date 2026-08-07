@@ -1,45 +1,45 @@
 <script setup lang="ts">
-import { animate, stagger } from 'motion-v'
-import { productsBanner } from '~/utils/banners'
-import { getImageUrl } from '~/utils/functions'
+import { animate, stagger } from "motion-v";
+import { productsBanner } from "~/utils/banners";
+import { getImageUrl } from "~/utils/functions";
 
-const { getCategorias } = useCategorias()
-const { data: categoriasResponse } = await useAsyncData('categorias', () =>
+const { getCategorias } = useCategorias();
+const { data: categoriasResponse } = await useAsyncData("categorias", () =>
   getCategorias(),
-)
-const categorias = computed(() => categoriasResponse.value?.data ?? [])
+);
+const categorias = computed(() => categoriasResponse.value?.data ?? []);
 
 function handleActive(slug: string | undefined) {
-  if (!slug) return
-  navigateTo(`/productos/${slug}`)
+  if (!slug) return;
+  navigateTo(`/productos/${slug}`);
 }
 
 function animateElements() {
   animate(
     [
       [
-        '#productCategories',
-        { opacity: [0, 1], background: ['#fff', '#003B49'] },
-        { duration: 0.5, ease: 'easeOut' },
+        "#productCategories",
+        { opacity: [0, 1], background: ["#fff", "#003B49"] },
+        { duration: 0.5, ease: "easeOut" },
       ],
       [
-        '#productCategories > h3',
+        "#productCategories > h3",
         { opacity: [0, 1], x: [-10, 0] },
-        { duration: 0.5, ease: 'easeOut' },
+        { duration: 0.5, ease: "easeOut" },
       ],
       [
-        '#productCategories > ul > button',
+        "#productCategories > ul > button",
         { opacity: [0, 1], y: [10, 0] },
-        { duration: 0.5, ease: 'easeOut', delay: stagger(0.1) },
+        { duration: 0.5, ease: "easeOut", delay: stagger(0.1) },
       ],
     ] as any,
     { duration: 2 },
-  )
+  );
 }
 
 onMounted(() => {
-  animateElements()
-})
+  animateElements();
+});
 </script>
 
 <template>
@@ -58,7 +58,10 @@ onMounted(() => {
           id="middle"
           class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-[#93B7BB]/70 gap-2 z-2"
         >
-          <h4 id="name" class="text-[#003B49] font-bold text-2xl md:text-3xl lg:text-4xl">
+          <h4
+            id="name"
+            class="text-[#003B49] font-bold text-2xl md:text-3xl lg:text-4xl"
+          >
             Productos
           </h4>
         </div>

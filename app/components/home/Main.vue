@@ -80,7 +80,9 @@ onMounted(() => {
         class="flex! min-h-screen min-w-full flex-col items-start justify-start bg-cover bg-[position:-45em] pt-36 pl-10 md:bg-center md:pt-40 lg:px-16 lg:pt-52"
         :style="{ backgroundImage: `url(${item.image})` }"
       >
-        <div class="flex min-w-full flex-col items-start justify-start gap-4 bg-cover bg-[position:-45em] md:gap-6 md:bg-center">
+        <div
+          class="flex min-w-full flex-col items-start justify-start gap-4 bg-cover bg-[position:-45em] md:gap-6 md:bg-center"
+        >
           <h3
             class="text-3xl font-light text-[#E3D268] [text-shadow:1px_1px_3px_rgb(0_0_0/0.29),2px_4px_7px_rgb(73_64_125/0.35)] md:max-w-[70%] md:text-4xl lg:text-5xl"
           >

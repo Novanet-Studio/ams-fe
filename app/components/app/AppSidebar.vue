@@ -1,61 +1,61 @@
 <script setup lang="ts">
-import { animate, stagger } from 'motion-v'
+import { animate, stagger } from "motion-v";
 
-const { isOpen } = useUiState()
-const route = useRoute()
+const { isOpen } = useUiState();
+const route = useRoute();
 
 const menuItems = [
-  { name: 'Inicio', path: '/' },
-  { name: 'Nosotros', path: '/nosotros' },
-  { name: 'Productos', path: '/productos' },
-  { name: 'Entrenamiento', path: '/entrenamiento' },
-  { name: 'Eventos', path: '/eventos' },
-  { name: 'Contacto', path: '/contacto' },
-]
+  { name: "Inicio", path: "/" },
+  { name: "Nosotros", path: "/nosotros" },
+  { name: "Productos", path: "/productos" },
+  { name: "Entrenamiento", path: "/entrenamiento" },
+  { name: "Eventos", path: "/eventos" },
+  { name: "Contacto", path: "/contacto" },
+];
 
-const ADDITIONAL_OFFSET = 13
+const ADDITIONAL_OFFSET = 13;
 
-const current = computed(() => route.path)
+const current = computed(() => route.path);
 
 function isActive(itemPath: string) {
-  if (current.value === itemPath) return true
-  return current.value.includes('productos') && itemPath === '/productos'
+  if (current.value === itemPath) return true;
+  return current.value.includes("productos") && itemPath === "/productos";
 }
 
 function moveMarker(el: HTMLElement | null) {
-  const marker = document.querySelector<HTMLElement>('.sidebar-marker')
-  if (marker && el) marker.style.top = `${el.offsetTop + ADDITIONAL_OFFSET}px`
+  const marker = document.querySelector<HTMLElement>(".sidebar-marker");
+  if (marker && el) marker.style.top = `${el.offsetTop + ADDITIONAL_OFFSET}px`;
 }
 
 function moveMarkerToActive() {
   nextTick(() => {
-    const active = menuItems.find((item) => isActive(item.path))
-    if (!active) return
-    const el = document.querySelector<HTMLElement>(`a[href="${active.path}"]`)
-    moveMarker(el)
-  })
+    const active = menuItems.find((item) => isActive(item.path));
+    if (!active) return;
+    const el = document.querySelector<HTMLElement>(`a[href="${active.path}"]`);
+    moveMarker(el);
+  });
 }
 
 watch(isOpen, (open) => {
   if (import.meta.client) {
-    document.body.style.overflow = open ? 'hidden' : 'auto'
-    document.body.style.userSelect = open ? 'none' : 'auto'
+    document.body.style.overflow = open ? "hidden" : "auto";
+    document.body.style.userSelect = open ? "none" : "auto";
   }
 
   if (open) {
     animate(
-      '.sidebar-link',
+      ".sidebar-link",
       { x: [-200, 0], opacity: [0, 1] },
       { delay: stagger(0.1), duration: 0.2, ease: [0.22, 0.03, 0.26, 0.1] },
-    )
-    moveMarkerToActive()
+    );
+    moveMarkerToActive();
   }
-})
+});
 
-const router = useRouter()
+const router = useRouter();
 router.afterEach(() => {
-  isOpen.value = false
-})
+  isOpen.value = false;
+});
 </script>
 
 <template>
@@ -74,7 +74,7 @@ router.afterEach(() => {
         :href="item.path"
         @click.prevent="
           () => {
-            $router.push(item.path)
+            $router.push(item.path);
           }
         "
       >
