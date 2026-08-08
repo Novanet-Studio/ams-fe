@@ -25,7 +25,7 @@ useIntersectionObserver(
   ([entry]) => {
     if (entry?.isIntersecting) animateElements();
   },
-  { rootMargin: "-100px 0px -100px 0px" },
+  { threshold: 0.2 },
 );
 </script>
 

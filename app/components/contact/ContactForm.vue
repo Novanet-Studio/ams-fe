@@ -261,7 +261,7 @@ useIntersectionObserver(
     if (entry?.isIntersecting) enterAnimation();
     else exitAnimation();
   },
-  { rootMargin: "-100px 0px -100px 0px" },
+  { threshold: 0.2 },
 );
 </script>
 

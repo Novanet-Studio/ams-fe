@@ -59,7 +59,7 @@ function exitAnimation() {
 useIntersectionObserver(
   target,
   ([entry]) => (entry?.isIntersecting ? enterAnimation() : exitAnimation()),
-  { rootMargin: "-100px 0px -100px 0px" },
+  { threshold: 0.2 },
 );
 </script>
 

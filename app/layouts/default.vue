@@ -3,13 +3,18 @@ const { scrollY } = useUiState();
 const { initObserver } = useSectionObserver();
 const route = useRoute();
 const mainEl = ref<HTMLElement | null>(null);
+const wheelSnap = useWheelSnap(mainEl);
 
 onMounted(() => {
   initObserver();
+  wheelSnap.init();
   scrollY.value = window.scrollY;
   const onScroll = () => (scrollY.value = window.scrollY);
   window.addEventListener("scroll", onScroll, { passive: true });
-  onUnmounted(() => window.removeEventListener("scroll", onScroll));
+  onUnmounted(() => {
+    window.removeEventListener("scroll", onScroll);
+    wheelSnap.cleanup();
+  });
 });
 
 watch(
@@ -27,7 +32,7 @@ watch(
     <AppSidebar />
     <main
       ref="mainEl"
-      class="h-screen snap-y snap-mandatory overflow-y-scroll [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      class="h-screen overflow-y-scroll [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       <slot />
     </main>

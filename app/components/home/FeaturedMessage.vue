@@ -52,7 +52,7 @@ useIntersectionObserver(
   ([entry]) => {
     if (entry?.isIntersecting) animateElements();
   },
-  { rootMargin: "-100px 0px -100px 0px" },
+  { threshold: 0.2 },
 );
 </script>
 
@@ -67,14 +67,14 @@ useIntersectionObserver(
       class="z-[3] flex h-screen max-h-screen flex-col justify-center bg-[#003B49] pl-6 md:pl-10 xl:gap-8 xl:pl-16"
     >
       <h4
-        class="z-[4] max-w-[18rem] text-2xl font-light opacity-0 text-[#E3D268] md:max-w-lg md:text-3xl md:text-balance lg:max-w-[40rem]"
+        class="z-[4] max-w-[18rem] text-2xl font-light opacity-0 text-[#E3D268] md:max-w-lg md:text-3xl md:text-balance lg:max-w-[32rem]"
       >
         Somos representantes exclusivos de Wilier e Inspire Fitness. También,
         distribuidores autorizados de equipos True, Castelli, Miche, Speedsix y
         Scicon.
       </h4>
       <p
-        class="mt-4 max-w-[18rem] text-xl font-light opacity-0 text-[#DDDDDD] md:max-w-sm md:text-2xl xl:max-w-[40rem] xl:text-xl"
+        class="mt-4 max-w-[18rem] text-xl font-light opacity-0 text-[#DDDDDD] md:max-w-sm md:text-2xl xl:max-w-[36rem] xl:text-xl"
       >
         Ofrecemos su garantía comercial además de brindarte el servicio que te
         mereces. Tenemos a tu disposición una selección de las mejores

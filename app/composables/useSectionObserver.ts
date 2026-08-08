@@ -32,7 +32,7 @@ export function useSectionObserver() {
 
     visibleSectionIds.value.clear();
 
-    const options = { threshold: 0.5 };
+    const options = { threshold: 0.2 };
 
     observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
